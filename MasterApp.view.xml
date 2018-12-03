@@ -1,5 +1,5 @@
 <View
-    controllerName="schapp.MasterApp"
+    controllerName="symposiumapp.MasterApp"
     displayBlock="true"
     xmlns="sap.m"
     xmlns:f="sap.f"
@@ -7,16 +7,19 @@
     xmlns:l="sap.ui.layout">
     <l:FixFlex>
         <l:fixContent>
-            <tnt:ToolHeader visible="false" id="ToolHeader_id" >
-                <FlexBox
-                    width="100%"
-                    direction="Row"
-                    alignItems="Center"
-                    justifyContent="SpaceBetween">
-                    <HBox alignItems="Center" id="icontabBar" justifyContent="Start">
+           <VBox alignItems="Stretch" justifyContent="Stretch" height="20%" width="100%">
+                    <HBox>
+                        <Image src="http://localhost/symposiumapp/resources/img/banner.png" densityAware="false" width="100%" height="120px">
+                            <layoutData>
+                                <FlexItemData growFactor="1" />
+                            </layoutData>
+                        </Image>
                     </HBox>
-                </FlexBox>
-            </tnt:ToolHeader>
+                    <VBox>
+        	<Title id="WrappingTitle" text="REGISTRATION-SUBMISSON - PAYMENT MODULE"  class="sapUiResponsiveMargin"/>
+
+                    </VBox>
+                </VBox>
         </l:fixContent>
         <l:flexContent>
             <App id="masterView" />

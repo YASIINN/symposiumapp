@@ -1,0 +1,61 @@
+<View controllerName="symposiumapp.Application.Login.controller.Login" 
+    xmlns="sap.m" 
+    xmlns:core="sap.ui.core" 
+    xmlns:tnt="sap.tnt" 
+    xmlns:l="sap.ui.layout" 
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" 
+    xmlns:f="sap.f" height="100%">
+    <Page enableScrolling="false" showHeader="false">
+        <l:FixFlex class="fixFlexVertical">
+            <l:flexContent>
+                <Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
+                    <headerToolbar>
+                        <Toolbar height="3rem">
+                            <Title text="Login"/>
+                        </Toolbar>
+                    </headerToolbar>
+                    <content>
+                        <FlexBox class="pageBGImage loginWrapper" direction="Column" height="100%" alignItems="Center" justifyContent="Center">
+                            <items>
+                                <FlexBox class="login-content" direction="Column" alignItems="Center" justifyContent="Stretch">
+                                    <items>
+                                        <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                                            <l:Grid hSpacing="1" vSpacing="0" defaultSpan="L12 M12 S12">
+                                                <VBox alignItems="Stretch" justifyContent="Start" width="100%">
+                                                    <HBox alignItems="Center" justifyContent="Stretch" width="100%">
+                                                        <Label text="User Name " width="120px" />
+                                                        <Label text=":" width="10px" />
+                                                        <VBox width="100%">
+                                                            <Input width="100%" value="{/AddUser/0/ufnm}" />
+                                                        </VBox>
+                                                    </HBox>
+                                                    <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
+                                                        <Text width="120px" text="Password"/>
+                                                        <Label text=":" width="10px" />
+                                                        <VBox width="100%">
+                                                            <Input width="100%" value="{/AddUser/0/ulnm}" />
+                                                        </VBox>
+                                                    </HBox>
+                                                    <VBox width="100%" alignItems="End" justifyContent="Stretch">
+                                                        <Button text="Login" press="" type="Emphasized"/>
+                                                    </VBox>
+                                                    <VBox width="100%" alignItems="End" justifyContent="Stretch" class="sapUiTinyMarginTop">
+                                                        <Label text="İf you have not yet registered,please create a new account"/>
+                                                           <Button text="CREATE AN ACCOUNT for SUBMISSION"  app:url="Register" press="createaccount" type="Emphasized"/>
+                                                    </VBox>
+                                                </VBox>
+                                            </l:Grid>
+                                        </VBox>
+                                    </items>
+                                </FlexBox>
+                            </items>
+                        </FlexBox>
+                    </content>
+                </Panel>
+            </l:flexContent>
+        </l:FixFlex>
+        <content>
+
+        </content>
+    </Page>
+</View>

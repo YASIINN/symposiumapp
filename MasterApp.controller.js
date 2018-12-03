@@ -1,1 +1,17 @@
-sap.ui.define(["sap/ui/core/mvc/Controller","sap/ui/model/resource/ResourceModel"],function(e,n){"use strict";return e.extend("schapp.MasterApp",{onInit:function(){var e=new n({bundleName:"schapp.i18n.i18n"});this.getView().setModel(oModel),this.getView().setModel(e,"i18n"),sap.ui.getCore().setModel(e,"i18n"),this.checkSession()},checkSession:function(){setInterval(function(){Servertime.getY().then(function(e){e!=(new Date).toLocaleDateString().split(".")[2]&&sap.m.MessageToast.show("Lütfen Bilgisayarınızın Tarih Ve Saatini Güncelleyiniz.")})},6e5),setInterval(function(){null!=localStorage.getItem("UNM")&&UseronLogin.CheckSession().then(function(e){e||(UseronLogin.outLogin(),window.location.reload())})},6e5)}})});
+sap.ui.define(['sap/ui/core/mvc/Controller', "sap/ui/model/resource/ResourceModel", 'sap/m/MessageBox'], function(Controller, ResourceModel, MessageBox) {
+    "use strict";
+    var myControl = Controller.extend("symposiumapp.MasterApp", {
+        onInit: function() {
+        
+         
+            var i18nModel = new ResourceModel({
+                bundleName: "symposiumapp.i18n.i18n"
+            });
+            this.getView().setModel(i18nModel, "i18n");
+            sap.ui.getCore().setModel(i18nModel, "i18n");
+
+        },
+        
+    });
+    return myControl;
+});
