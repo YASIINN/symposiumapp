@@ -19,45 +19,51 @@ CreateComponent = {
             multiInput.setBusy(false);
         } else sap.ui.core.BusyIndicator.hide();
     },
-    tablaPaginator: function (_this, createId, modelname, pagename, sllength) {
-        if (createId) {
-            var table = sap.ui.getCore().byId(createId);
-            if (_this) {
-                table = _this.getView().byId(
-                    createId)
-            }
-            var oLength = oModel.getProperty("/" + modelname).length;
-            var oActual = oLength / sllength;
-            var oCalculation = (oActual % 1 == 0);
-            if (oCalculation == true) {
-                var oValue = oActual;
-            } else {
-                var oValue = parseInt(oActual) + 1;
-            }
-            oModel.setProperty("/oRows", oModel.getProperty("/" + modelname).slice(0, sllength));
-            table.bindRows("/oRows");
-            if (sap.ui.getCore().byId('pa') != undefined) {
-                sap.ui.getCore().byId('pa').destroy();
-            }
-            var oPaginator = new sap.ui.commons.Paginator("pa", {
-                numberOfPages: oValue,
-                page: function (oEvent) {
-                    var oValue = oEvent;
-                    var oTargetPage = oEvent.getParameter("targetPage");
-                    var oTargetValue = oTargetPage * sllength;
-                    var oSourceValue = oTargetValue - sllength;
-                    var oModel = sap.ui.getCore().getModel();
-                    var oTotalData = oModel.getProperty("/" + modelname);
-                    var oSelectedData = oTotalData.slice(oSourceValue, oTargetValue);
-                    oModel.setProperty("/oRows", oSelectedData);
-                    table.clearSelection();
-                }
-            }).addStyleClass("paginatorStyle");
-            _this.getView().byId(pagename).addItem(oPaginator)
-        }
-    },
     validateemail: function (email) {
         var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);
+    },
+    urlParse: function(value, type) {
+        var dizi = [];
+        var param = value.split('&');
+        param.forEach(function(row, index) {
+            if (row.indexOf("=") > 0) {
+                var value = row.split('=');
+     
+                    dizi.push({
+                        PropertyName: value[0],
+                        Operation: value[1].split(",").length > 1 ? "IN" : "EQ",
+                        PropertyValue: value[1]
+                    })
+                
+            } else if (row.indexOf("<") > 0) {
+                var value = row.split('<');
+                dizi.push({
+                    PropertyName: value[0],
+                    Operation: "LT",
+                    PropertyValue: value[1]
+                })
+            } else if (row.indexOf(">") > 0) {
+                var value = row.split('>');
+                dizi.push({
+                    PropertyName: value[0],
+                    Operation: "GT",
+                    PropertyValue: value[1]
+                })
+            } else if (row.indexOf("%") > 0) {
+                var value = row.split('%');
+                dizi.push({
+                    PropertyName: value[0],
+                    Operation: "CT",
+                    PropertyValue: value[1]
+                })
+            } else if (row.indexOf("!") > 0) {
+                var value = row.split('!');
+                if (type == "N") {
+                    value[1] = parseFloat(value[1])
+                }
+            }
+        })
+        return dizi;
     },
 }

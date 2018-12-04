@@ -68,6 +68,30 @@
                                     </HBox>
 
                                 </VBox>
+                                <VBox width="100%" alignItems="End" justifyContent="Stretch">
+                                    <HBox>
+                                        <Label text="Your account must be avtivated by email automatically sent you via system." class="sapUiTinyMarginTop" press="getAllRegister"/>
+                                    </HBox>
+
+                                </VBox>
+                                <VBox width="100%" alignItems="End" justifyContent="Stretch">
+                                    <HBox>
+                                        <Label text=" If you could not receive activation email please check your SPAM box. " class="sapUiTinyMarginTop" press="getAllRegister"/>
+                                    </HBox>
+
+                                </VBox>
+                                <VBox width="100%" alignItems="End" justifyContent="Stretch">
+                                    <HBox>
+                                        <Label text="If you did not receive,use another email account such as;" class="sapUiTinyMarginTop" press="getAllRegister"/>
+                                    </HBox>
+
+                                </VBox>
+                                                <VBox width="100%" alignItems="End" justifyContent="Stretch">
+                                    <HBox>
+                                        <Label text="gmail,hotmail,etc.Institutional e-mail accounts sometimes do not allow receiving activation email " class="sapUiTinyMarginTop" press="getAllRegister"/>
+                                    </HBox>
+
+                                </VBox>
                             </VBox>
                         </VBox>
                     </VBox>

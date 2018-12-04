@@ -75,7 +75,7 @@ sap.ui.define(
               },
             },
             {
-              pattern: "RegisterCheck",
+              pattern: "RegisterCheck?{param}",
               viewPath: "symposiumapp.Application.RegisterCheck.view",
               name: "RegisterCheck",
               view: "RegisterCheck",

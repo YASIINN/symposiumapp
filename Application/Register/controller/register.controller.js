@@ -38,7 +38,19 @@ sap.ui.define(['sap/m/MessageBox', 'sap/ui/core/mvc/Controller'], function (Mess
         validateData: function () {
             var _this = this
             var result = false
-            if (!CreateComponent.validateemail(oModel.oData.RegisterModel.email) || !CreateComponent.validateemail(oModel.oData.RegisterModel.cemail)) {
+            if (oModel.oData.RegisterModel.ufname.trim() == "") {
+                sap.m.MessageToast.show("please fill in the first and last name fields");
+            } else if (oModel.oData.RegisterModel.ufname.split(" ")[0].length < 3) {
+                sap.m.MessageToast.show("your name cannot be less than 3 characters");
+            } else if (oModel.oData.RegisterModel.ufname.split(" ")[1] == undefined) {
+                sap.m.MessageToast.show("please enter a name after your name and enter your last name");
+            } else if (oModel.oData.RegisterModel.ufname.split(" ")[1].length < 3) {
+                sap.m.MessageToast.show("your last name cannot be less than 3 characters");
+            }
+            else if (oModel.oData.RegisterModel.uniorinst.trim() == "") {
+                sap.m.MessageToast.show("Please fill the field of university or institute");
+            }
+            else if (!CreateComponent.validateemail(oModel.oData.RegisterModel.email) || !CreateComponent.validateemail(oModel.oData.RegisterModel.cemail)) {
                 sap.m.MessageToast.show("Invalid e-mail address");
             } else
                 if (oModel.oData.RegisterModel.email != oModel.oData.RegisterModel.cemail) {
@@ -49,17 +61,17 @@ sap.ui.define(['sap/m/MessageBox', 'sap/ui/core/mvc/Controller'], function (Mess
                     } else
                         if (oModel.oData.RegisterModel.pass.trim() != oModel.oData.RegisterModel.cpass.trim()) {
                             sap.m.MessageToast.show("passwords do not match");
-                        } 
-                             else if (_this.byId("cpt").getValue().trim() == "") {
-                                sap.m.MessageToast.show(" please enter the verification code")
-                                oModel.setProperty("/Captcha", _this.makeid());
-                            } else if (oModel.oData.Captcha != "" || _this.byId("cpt").getValue()) {
-                                sap.m.MessageToast.show("validation code is invalid")
-                                oModel.setProperty("/Captcha", _this.makeid());
-                                _this.byId("cpt").setValue("")
-                            } else {
-                                result = true
-                            }
+                        }
+                        else if (_this.byId("cpt").getValue().trim() == "") {
+                            sap.m.MessageToast.show(" please enter the verification code")
+                            oModel.setProperty("/Captcha", _this.makeid());
+                        } else if (oModel.oData.Captcha != "" || _this.byId("cpt").getValue()) {
+                            sap.m.MessageToast.show("validation code is invalid")
+                            oModel.setProperty("/Captcha", _this.makeid());
+                            _this.byId("cpt").setValue("")
+                        } else {
+                            result = true
+                        }
             return result;
         },
         getAllRegister: function () {

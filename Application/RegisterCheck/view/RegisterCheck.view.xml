@@ -1,5 +1,5 @@
 <View xmlns="sap.m" 
-    xmlns:l="sap.ui.layout" controllerName="schapp.Application.RegisterCheck.controller.RegisterCheck" 
+    xmlns:l="sap.ui.layout" controllerName="symposiumapp.Application.RegisterCheck.controller.RegisterCheck" 
     xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" height="100%">
     <Page showHeader="false">
         <l:FixFlex class="fixFlexVertical">
