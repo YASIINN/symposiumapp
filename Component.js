@@ -41,7 +41,7 @@ sap.ui.define(
               },
               subroutes: [
                 {
-                  pattern: "symposiumapp/Home",
+                  pattern: "Dashboard/Home",
                   viewPath: "symposiumapp.Application.Dashboard.Home.view",
                   name: "Dashboard/Home",
                   view: "Home",

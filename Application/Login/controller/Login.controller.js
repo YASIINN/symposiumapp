@@ -9,26 +9,25 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel', 'sap
                 pass: ""
             }
             oModel.setProperty("/UserModel", UserModel);
-          
         },
         onPress: function () {
             var _this = this;
             if (_this.checkValidate()[0] == false && _this.checkValidate()[1] == "blank") {
-                sap.m.MessageToast.show("Kullanıcı Adı Veya Şifre Alanı Boş Bırakılamaz.");
+                sap.m.MessageToast.show("User Name or Password Field cannot be blank");
             }
             else if (_this.checkValidate()[0] == false && _this.checkValidate()[1] == "length") {
-                sap.m.MessageToast.show("Kullanıcı Adı Veya Şifre Alanı 3 Karakterden Az Olamaz.");
+                sap.m.MessageToast.show("User Name or Password field cannot be less than 3 characters.");
             }
             else {
                 var data = {
-                    name: oModel.oData.UserModel.name.toUpperCase(),
+                    name: oModel.oData.UserModel.name,
                     pass: md5(oModel.oData.UserModel.pass),
                     MN: "LG",
                     SN: "Login"
                 }
                 UseronLogin.onLoginControl(data).then(function (res) {
                     if (res == true) {
-                        _this.onGoHome();
+                        _this.onLogin();
                     }
                 })
             }
@@ -45,15 +44,10 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel', 'sap
             }
             return result;
         },
-        onGoHome: function () {
+        onLogin: function () {
             var _this = this
             if (oModel.oData.UserModel) {
-                UseronLogin.getUserLayout(base64.objectDecode(localStorage.getItem("UNM")).tid).then(function (res) {
-                    oModel.setProperty("/userLayout", res);
-                    window.open("#/Dashboard/Home" + "", "_self");
-                })
-            }
-            else {
+            window.open("#/Dashboard/Home" + "", "_self");
             }
         },
         createaccount: function (oEvent) {

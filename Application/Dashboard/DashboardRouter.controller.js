@@ -11,7 +11,6 @@ sap.ui.define(['sap/ui/core/mvc/Controller'], function (Controller) {
                 pass: ""
             }
             oModel.setProperty("/UserModel", UserModel);
-            oModel.setProperty("/userLayout", []);
             window.location.reload();
         },
         goHomePage:function(){

@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('../dbclas/pdocls.php');
 // header("Content-Type: application/json; charset=UTF-8");
 $db = new database("root", "", "localhost", "symposiumapp");
@@ -11,7 +12,7 @@ $db = new database("root", "", "localhost", "symposiumapp");
 //     "PropertyName"=> "sss",
 //     "PropertyValue"=>"sss",
 //  );
-
-$getRegisterRows = $db->select("registertemptable","1",array());
-print_r($getRegisterRows);
+print_r($_SESSION['UNM']);
+// $getRegisterRows = $db->select("registertemptable","1",array());
+// print_r($getRegisterRows);
 ?>

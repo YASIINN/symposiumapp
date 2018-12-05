@@ -1,5 +1,5 @@
 <mvc:View
- controllerName="schapp.Application.Dashboard.Home.controller.Home" 
+ controllerName="symposiumapp.Application.Dashboard.Home.controller.Home" 
 	height="100%"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m">

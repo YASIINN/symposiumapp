@@ -1,4 +1,4 @@
-jQuery.sap.require("schapp.AllRequest.AllRequest");
+jQuery.sap.require("symposiumapp.AllRequest.AllRequest");
 var loginService = {
     getUserData: function (json) {
         var deferred = new Promise(function (resolve, reject) {

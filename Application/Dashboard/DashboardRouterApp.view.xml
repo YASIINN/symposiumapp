@@ -62,7 +62,7 @@
                         </ScrollContainer>
                     </VBox>
                     <VBox width="100%" height="100%" alignItems="Stretch" justifyContent="Stretch">
-                        <App id="DashboardRouterId" afterNavigate="testNav"/>
+                        <App id="DashboardRouterId" />
                     </VBox>
                 </HBox>
             </l:flexContent>

@@ -26,22 +26,22 @@
                                                         <Label text="User Name " width="120px" />
                                                         <Label text=":" width="10px" />
                                                         <VBox width="100%">
-                                                            <Input width="100%" value="{/AddUser/0/ufnm}" />
+                                                            <Input width="100%" value="{/UserModel/name}" />
                                                         </VBox>
                                                     </HBox>
                                                     <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
                                                         <Text width="120px" text="Password"/>
                                                         <Label text=":" width="10px" />
                                                         <VBox width="100%">
-                                                            <Input width="100%" value="{/AddUser/0/ulnm}" />
+                                                            <Input width="100%" type="Password" value="{/UserModel/pass}" />
                                                         </VBox>
                                                     </HBox>
                                                     <VBox width="100%" alignItems="End" justifyContent="Stretch">
-                                                        <Button text="Login" press="" type="Emphasized"/>
+                                                        <Button text="Login" press="onPress" type="Emphasized"/>
                                                     </VBox>
                                                     <VBox width="100%" alignItems="End" justifyContent="Stretch" class="sapUiTinyMarginTop">
                                                         <Label text="İf you have not yet registered,please create a new account"/>
-                                                           <Button text="CREATE AN ACCOUNT for SUBMISSION"  app:url="Register" press="createaccount" type="Emphasized"/>
+                                                           <Button text="CREATE AN ACCOUNT for SUBMISSION"  app:url="Register" press="onPress" type="Emphasized"/>
                                                     </VBox>
                                                 </VBox>
                                             </l:Grid>
