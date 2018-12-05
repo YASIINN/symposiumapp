@@ -19,29 +19,32 @@
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
     $mail->CharSet = 'UTF-8';
-    if (isset($_POST['systemcheck'])) {
-        $ead = $_POST['maildata'][0]['mail'];
-        $epass = $_POST['maildata'][0]['epass'];
-        $messega = $_POST['maildata'][0]['messega'];
-        $mail->addAddress($ead, 'Email Adres Değişimi');
-    } else {
-        $db = new database("root", "", "localhost", "bitirmeproje");
-        $sysrows = $db->getrows("SELECT * FROM systemsettings");
-        $ead = $sysrows[0]['emailaddres'];
-        $epass = $sysrows[0]['emailpass'];
-        $maildata = $_POST['maildata'];
-        for ($i = 0; $i < count($maildata); $i++) {
-            $umail = $maildata[$i]['mail'];
-            $messega = $maildata[$i]['messega'];
-            $mail->addAddress($umail, 'Kişisel');
-        }
-    }
+    // if (isset($_POST['systemcheck'])) {
+       
+    // } else {
+    //     // $db = new database("root", "", "localhost", "symposiumapp");
+    //     // $sysrows = $db->getrows("SELECT * FROM systemsettings");
+    //     // $ead = $sysrows[0]['emailaddres'];
+    //     // $epass = $sysrows[0]['emailpass'];
+    //     // $maildata = $_POST['maildata'];
+    //     // for ($i = 0; $i < count($maildata); $i++) {
+    //     //     $umail = $maildata[$i]['mail'];
+    //     //     $messega = $maildata[$i]['messega'];
+    //     //     $mail->addAddress($umail, 'Kişisel');
+    //     // }
+    // }
+    $ead = $_POST['maildata'][0]['mail'];
+    $epass = "13271327";
+    // $_POST['maildata'][0]['epass'];
+    $subject= $_POST['maildata'][0]['subject'];
+    $messega = $_POST['maildata'][0]['messega'];
+    $mail->addAddress($ead, 'Email Adres Değişimi');
     $mail->Username = $ead;
     $mail->Password = $epass;
     $mail->setFrom($ead, 'Kayıt Doğrulama');
     $mail->addReplyTo($ead, 'Bilgi');
     $mail->isHTML(true);
-    $mail->Subject = 'Kayıt Aktivitasyon Kodu';
+    $mail->Subject =$subject;
     $mail->Body = $messega;
     $mail->AltBody = ' ';
     if ($mail->Send()) {

@@ -1,9 +1,24 @@
+jQuery.sap.require("symposiumapp.Application.Register.RegisterServicejs.RegisterService");
+jQuery.sap.require("symposiumapp.Servicejs.MailService");
 sap.ui.define(['sap/m/MessageBox', 'sap/ui/core/mvc/Controller'], function (MessageBox, Controller) {
     "use strict";
     var PageController = Controller.extend("symposiumapp.Application.Register.controller.Register", {
         onInit: function () {
             var _this = this;
             _this.getView().setModel(oModel);
+            _this.registermodel();
+            _this.RefreshCaptcha();
+         
+        },
+        submitRegister: function () {
+            var _this = this
+            if (!_this.validateData()) {
+                CreateComponent.hideBusyIndicator();
+            } else {
+                _this.getAllRegister();
+            }
+        },
+        registermodel:function(){
             var RegisterData = {
                 ufname: "",
                 uniorinst: "",
@@ -12,16 +27,7 @@ sap.ui.define(['sap/m/MessageBox', 'sap/ui/core/mvc/Controller'], function (Mess
                 pass: "",
                 cpass: ""
             }
-            _this.RefreshCaptcha();
             oModel.setProperty("/RegisterModel", RegisterData)
-        },
-        submitRegister: function () {
-            var _this = this
-            if (!_this.validateData()) {
-                CreateComponent.hideBusyIndicator();
-            } else {
-
-            }
         },
         makeid: function () {
             var text = "";
@@ -65,7 +71,7 @@ sap.ui.define(['sap/m/MessageBox', 'sap/ui/core/mvc/Controller'], function (Mess
                         else if (_this.byId("cpt").getValue().trim() == "") {
                             sap.m.MessageToast.show(" please enter the verification code")
                             oModel.setProperty("/Captcha", _this.makeid());
-                        } else if (oModel.oData.Captcha != "" || _this.byId("cpt").getValue()) {
+                        } else if (oModel.oData.Captcha != _this.byId("cpt").getValue()) {
                             sap.m.MessageToast.show("validation code is invalid")
                             oModel.setProperty("/Captcha", _this.makeid());
                             _this.byId("cpt").setValue("")
@@ -76,41 +82,54 @@ sap.ui.define(['sap/m/MessageBox', 'sap/ui/core/mvc/Controller'], function (Mess
         },
         getAllRegister: function () {
             var _this = this
-            RegisterService.RegisterReq({ "MN": "GET", where: "rtsno=? OR rttcno=?", param: [parseInt(oModel.oData.RegisterModel.ogrno), oModel.oData.RegisterModel.tcno], SN: "Register" }).then(function (res) {
+            UserService.userReq({ MN: "GET", SN: "User", "where": "ulgnname=?", param: [oModel.oData.RegisterModel.cemail] }).then(function (res) {
                 if (res == "None") {
                     _this.onRegister();
                 } else {
-                    sap.m.MessageToast.show("Öğreni Numarası Veya Tc Kimlik No Geçersiz")
+                    sap.m.MessageToast.show("this email address is available")
                 }
             })
         },
         onRegister: function () {
             CreateComponent.showBusyIndicator();
             var _this = this
-            if (!_this.validateData()) {
-                CreateComponent.hideBusyIndicator();
-            } else {
-                //     var oRouter = sap.ui.core.UIComponent.getRouterFor(_this);
-                //     oModel.oData.RegisterModel.sid = _this.byId("sections").getSelectedKey();
-                //     oModel.oData.RegisterModel.ogrno = parseInt(oModel.oData.RegisterModel.ogrno)
-                //     RegisterService.RegisterReq({ MN: "ADD", SN: "Register", registerdata: [oModel.oData.RegisterModel] }).then(function (res) {
-                //         RegisterService.RegisterReq({ "where": 'rtrcode=?', param: [res[0].activationkey], "MN": "GET", "SN": "Register" }).then(function (res) {
-                //             oModel.setProperty("/userRegister", res);
-                //             oModel.setProperty("/RegisterModel", [])
-                //             var msg = "Aktivitasyon kodu :" + oModel.oData.userRegister[0].rtrcode + "Kaydınız Onaylandıktan Sonra Size Mail İle Bildirim Yapılacaktır.";
-                //             MailService.AddMail({ "maildata": [{ "mail": oModel.oData.userRegister[0].rtemail, "messega": msg }] }).then(function (res) {
-                //                 if (res == "None") {
-                //                     resolve(false);
-                //                     sap.m.MessageToast.show("Mail Gönderilirken Bir Hata Oluştu");
-                //                 } else {
-                //                     CreateComponent.hideBusyIndicator();
-                //                     oRouter.navTo("RegisterCheck")
-                //                 }
-                //             })
-                //         })
-                //     })
-                // }
-            }
+            var lcode = md5(_this.makeid()) + "_" + new Date().toLocaleDateString().split(".")[0] + new Date().toLocaleDateString().split(".")[1] + new Date().toLocaleDateString().split(".")[2];
+            RegisterService.RegisterReq({
+                MN: "ADD", SN: "Register", registerdata: [
+                    {
+                        rtname: oModel.oData.RegisterModel.ufname.split(" ")[0].toUpperCase(),
+                        rtlname: oModel.oData.RegisterModel.ufname.split(" ")[1].toUpperCase(),
+                        rtemail: oModel.oData.RegisterModel.cemail,
+                        rtuniinst: oModel.oData.RegisterModel.uniorinst,
+                        rtpass: md5(oModel.oData.RegisterModel.cpass),
+                        rtlcode: lcode,
+                        rauth: "2"
+                    }
+                ]
+            }).then(function (res) {
+                if (res[0].status == "SuccesAdd") {
+                    RegisterService.RegisterReq({ MN: "GET", SN: "Register", where: "rtemail=?", param: [oModel.oData.RegisterModel.cemail] }).then(function (res) {
+                        if (res[0].rtlcode) {
+                            debugger
+                            var msg = "http://localhost/symposiumapp/#/RegisterCheck?" + res[0].rtlcode;
+                            MailService.AddMail({systemcheck:[], "maildata": [{ "mail": res[0].rtemail, "messega": msg, subject: "record verification" }] }).then(function (res) {
+                                if (res == "None") {
+                                    CreateComponent.hideBusyIndicator();
+                                    sap.m.MessageToast.show("sorry there was a mistake when sending mail");
+                                } else {
+                                    CreateComponent.hideBusyIndicator();
+                                    _this.registermodel();
+                                    sap.m.MessageToast.show("register successful please check your email address");
+                                }
+                            })
+                        } else {
+                            CreateComponent.hideBusyIndicator();
+                        }
+                    })
+                } else {
+                    sap.m.MessageToast.show("Sorry, there is an error please try again later")
+                }
+            });
         }
 
     });
