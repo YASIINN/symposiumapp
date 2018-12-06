@@ -41,7 +41,7 @@
                                                     </VBox>
                                                     <VBox width="100%" alignItems="End" justifyContent="Stretch" class="sapUiTinyMarginTop">
                                                         <Label text="İf you have not yet registered,please create a new account"/>
-                                                           <Button text="CREATE AN ACCOUNT for SUBMISSION"  app:url="Register" press="onPress" type="Emphasized"/>
+                                                           <Button text="CREATE AN ACCOUNT for SUBMISSION"  app:url="Register" press="createaccount" type="Emphasized"/>
                                                     </VBox>
                                                 </VBox>
                                             </l:Grid>
