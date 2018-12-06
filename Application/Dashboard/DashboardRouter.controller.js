@@ -4,6 +4,13 @@ sap.ui.define(['sap/ui/core/mvc/Controller'], function (Controller) {
         onInit: function (oEvent) {
             var _this = this
             _this.getView().setModel(oModel);
+              UseronLogin.onLogin().then(function (res) { 
+                  _this.getView().addEventDelegate({
+                    onBeforeShow: jQuery.proxy(function (evt) {
+                        _this.onBeforeShow(_this);
+                    }, _this)
+                });
+              })
         },
         onClose: function (oEvent) {
             var UserModel = {
