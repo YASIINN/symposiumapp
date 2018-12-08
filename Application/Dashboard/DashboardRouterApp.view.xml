@@ -19,7 +19,7 @@
                             <OverflowToolbarLayoutData priority="NeverOverflow" shrinkable="true"/>
                         </layoutData>
                         <items>
-                            <IconTabFilter text="AnaSayfa"></IconTabFilter>
+                            <IconTabFilter text="HomePage"></IconTabFilter>
                         </items>
                     </IconTabHeader>
                     <ToolbarSpacer>
@@ -38,7 +38,7 @@
                         <menu>
                             <Menu>
                                 <items>
-                                    <MenuItem press="onClose" text="Çıkış Yap"/>
+                                    <MenuItem press="onClose" text="Log Out"/>
                                 </items>
                             </Menu>
                         </menu>
@@ -47,7 +47,7 @@
             </l:fixContent>
             <l:flexContent>
                 <HBox width="100%" height="100%" alignItems="Stretch" justifyContent="Stretch">
-                    <VBox id="leftSideView" height="100%" class="dashboard-left-side sapUiContentPadding">
+                <!--     <VBox id="leftSideView" height="100%" class="dashboard-left-side sapUiContentPadding">
                         <ScrollContainer height="100%" horizontal="false" vertical="true" focusable="false">
                             <List class="dashboard-left-side-items" items="{path: '/userLayout'}">
                                 <CustomListItem app:url="{lyrouter}" type="Active" press="DashboardrouterEvent">
@@ -60,7 +60,7 @@
                             </List>
 
                         </ScrollContainer>
-                    </VBox>
+                    </VBox> -->
                     <VBox width="100%" height="100%" alignItems="Stretch" justifyContent="Stretch">
                         <App id="DashboardRouterId" />
                     </VBox>

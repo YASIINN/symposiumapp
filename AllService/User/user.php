@@ -33,7 +33,7 @@ class User extends database
             return $this->result;
         } else {
             for ($i = 0; $i < count($getRegisterRows); $i++) {
-                $this->result[] = array("status" => "Okey", "usid" => $getRegisterRows[$i]['usid'], "usname" => $getRegisterRows[$i]['usname'], "uslname" => $getRegisterRows[$i]["uslname"]);
+                $this->result[] = array("status" => "Okey", "usid" => $getRegisterRows[$i]['usid'], "usname" => $getRegisterRows[$i]['usname'], "uslname" => $getRegisterRows[$i]["uslname"]  ,"ulgnname" =>$getRegisterRows[$i]['ulgnname']);
             }
             return $this->result;
         }

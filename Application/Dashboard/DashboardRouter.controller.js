@@ -19,6 +19,7 @@ sap.ui.define(['sap/ui/core/mvc/Controller'], function (Controller) {
             }
             oModel.setProperty("/UserModel", UserModel);
             window.location.reload();
+              UseronLogin.outLogin();
         },
         goHomePage:function(){
             window.open("#/Dashboard/Home", "_self");

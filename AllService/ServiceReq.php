@@ -50,6 +50,12 @@ if ($SN == "Login") {
     $result = $login->$MN($_POST['name'], $_POST['pass']);
     echo json_encode($result);
 }
+if($SN=="Title"){
+ include("/Title/title.php");
+    $title = new $SN();
+    $result = $title->$MN();
+    echo json_encode($result);
+}
 if ($SN == "Register") {
     include("/Register/register.php");
     $register = new $SN();
