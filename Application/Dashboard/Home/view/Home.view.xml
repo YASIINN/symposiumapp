@@ -1,242 +1,272 @@
-<mvc:View
- controllerName="symposiumapp.Application.Dashboard.Home.controller.Home" 
-	height="100%"
-	xmlns:mvc="sap.ui.core.mvc"
-	 xmlns:l="sap.ui.layout" 
+<mvc:View controllerName="symposiumapp.Application.Dashboard.Home.controller.Home" height="100%" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns:l="sap.ui.layout" 
     xmlns:core="sap.ui.core" 
     xmlns:u="sap.ui.unified" 
-	xmlns="sap.m">
-	<Page showHeader="false"  enableScrolling="true">
-		<content>
-			     <IconTabBar id="idIconTabBarSeparatorNoIcon" select="changekey" expanded="true" class="sapUiResponsiveContentPadding">
+    xmlns="sap.m">
+    <Page showHeader="false" enableScrolling="true">
+        <content>
+            <IconTabBar id="idIconTabBarSeparatorNoIcon" select="changekey" expanded="true" class="sapUiResponsiveContentPadding">
                 <items>
-                    <IconTabFilter key="project" icon="sap-icon://accept" text=" PROJE SEÇ" iconColor="Positive" count="1">
-                        	<Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
-							<headerToolbar>
-							<Toolbar height="3rem">
-								<Title text="Panel with picture"/>
-							</Toolbar>
-						</headerToolbar>
-							<content>
-                                    <VBox width="100%" alignItems="Stretch" justifyContent="Start">
-                                <VBox alignItems="Stretch" justifyContent="Start" width="100%">
-                                    <HBox alignItems="Center" justifyContent="Stretch" width="100%">
-                                        <Label text="{i18n>ProjectName}" width="130px" />
-                                        <Label text=":" width="10px" />
-                                        <VBox width="100%">
-                                            <Input width="100%" value="{/projectModel/0/pjnm}"/>
-                                        </VBox>
-                                    </HBox>
-                                    <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
-                                        <Text width="130px" text="Position / Title"/>
-                                        <Label text=":" width="10px" />
-                                        <VBox width="100%">
-                                               	<Select forceSelection="false" width="100%" 
-										items="{
+                    <IconTabFilter key="project" icon="sap-icon://accept" text=" STEP" iconColor="Positive" count="1">
+                        <Panel width="auto" class="sapUiResponsiveMargin pnlcls" accessibleRole="Region">
+                            <headerToolbar>
+                                <Toolbar height="3rem">
+                                    <Title text="CORRESSPONDING AUTHOR"/>
+                                </Toolbar>
+                            </headerToolbar>
+                            <content>
+                                <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                                    <VBox alignItems="Stretch" justifyContent="Start" width="100%">
+                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%">
+                                            <Label text="Name SURNAME" width="130px" />
+                                            <Label text=":" width="10px" />
+                                            <VBox width="100%">
+                                                <Input width="100%" value="" placeholder="Please write the corresponding author's Name SURNAME here"/>
+                                            </VBox>
+                                        </HBox>
+                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
+                                            <Text width="130px" text="Position / Title"/>
+                                            <Label text=":" width="10px" />
+                                            <VBox width="100%">
+                                                <Select forceSelection="false" width="100%" items="{
 											path: '/title'}">
-						<core:Item key="{tid}" text="{titletxt}"/>
-												</Select>  
-                                        </VBox>
-                                    </HBox>
-                                    <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
-                                        <Label width="130px" text="{i18n>ProjectTechnologies}"/>
-                                        <Label text=":" width="10px" />
-                                        <VBox width="100%" alignItems="Stretch" justifyContent="Stretch">
-                                 <Input width="100%" value="{/projectModel/0/pjnm}"/>
-                                        </VBox>
-                                    </HBox>
-                                    <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
-                                        <Text width="130px" text="Country"/>
-                                        <Label text=":" width="10px" />
-                                        <VBox width="100%">
-                                         	<Select forceSelection="false" width="100%"
-							showSecondaryValues= "true"
-										items="{
+                                                    <core:Item key="{tid}" text="{titletxt}"/>
+                                                </Select>
+                                            </VBox>
+                                        </HBox>
+                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
+                                            <Label width="130px" text="University/Inst."/>
+                                            <Label text=":" width="10px" />
+                                            <VBox width="100%" alignItems="Stretch" justifyContent="Stretch">
+                                                <Input width="100%" value=" " placeholder="Please write the name of your University or Institute or Organisation here"/>
+                                            </VBox>
+                                        </HBox>
+                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
+                                            <Text width="130px" text="Country"/>
+                                            <Label text=":" width="10px" />
+                                            <VBox width="100%">
+                                                <Select forceSelection="false" width="100%" showSecondaryValues= "true" items="{
 											path: '/AllCountry',
 										sorter: { path: 'name' }
 												}">
-						<core:ListItem key="{key}" text="{name}" additionalText= "{key}"/>
-												</Select>
-                                        </VBox>
-                                    </HBox>
+                                                    <core:ListItem key="{key}" text="{name}" additionalText= "{key}"/>
+                                                </Select>
+                                            </VBox>
+                                        </HBox>
 
-                                    <HBox class="sapUiTinyMarginTop" width="100%" alignItems="Start" justifyContent="Stretch">
-                                        <VBox width="100%" alignItems="Stretch" justifyContent="Start">
-                                            <HBox alignItems="Center" justifyContent="Stretch" width="100%">
-                                                <Text width="130px" text="{i18n>RelatedCourses}"/>
-                                                <Label text=":" width="10px" />
-                                                <VBox width="100%" alignItems="Stretch" justifyContent="Start">
-                                                         <Input width="100%" value="{/projectModel/0/pjnm}"/>
-                                                </VBox>
-                                            </HBox>
-                                        </VBox>
-                                    </HBox>
-                                                  <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
-                                        <Text width="130px" text="{i18n>ProjectQuotas}"/>
-                                        <Label text=":" width="10px" />
-                                        <VBox width="100%">
-                                        <Input value="{/projectModel/0/pjquota}"/>
-                                        </VBox>
-                                    </HBox>
+                                        <HBox class="sapUiTinyMarginTop" width="100%" alignItems="Start" justifyContent="Stretch">
+                                            <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                                                <HBox alignItems="Center" justifyContent="Stretch" width="100%">
+                                                    <Text width="130px" text="Address"/>
+                                                    <Label text=":" width="10px" />
+                                                    <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                                                        <TextArea width="100%" value="" placeholder="Please write the Corresponding Address of the corresponding author here" rows="3" />
+                                                    </VBox>
+                                                </HBox>
+                                            </VBox>
+                                        </HBox>
                                         <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
-                                        <Text width="130px" text="{i18n>ProjectQuotas}"/>
-                                        <Label text=":" width="10px" />
-                                        <VBox width="100%">
-                                        <Input value="{/projectModel/0/pjquota}"/>
-                                        </VBox>
-                                    </HBox>
-                                    <HBox width="100%" alignItems="Center" justifyContent="End" class="sapUiTinyMarginTop">
-                                        <Button  press="onSaveData" type="Default" text="{i18n>Save}" tooltip="{i18n>Save}" />
-                                    </HBox>
+                                            <Text width="130px" text="E-mail"/>
+                                            <Label text=":" width="10px" />
+                                            <VBox width="100%">
+                                                <Input value="" placeholder="Please write the e-mail of the corresponding author here"/>
+                                            </VBox>
+                                        </HBox>
+                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
+                                            <Text width="130px" text="Phone"/>
+                                            <Label text=":" width="10px" />
+                                            <VBox width="100%">
+                                                <Input value="+"/>
+                                            </VBox>
+                                        </HBox>
+                                        <HBox width="100%" alignItems="Center" justifyContent="End" class="sapUiTinyMarginTop">
+                                        </HBox>
+                                    </VBox>
                                 </VBox>
-                        </VBox>
-                        		</content>
-	</Panel>
-		<Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
-		<headerToolbar>
-			<Toolbar height="3rem">
-				<Title text="Panel with picture"/>
-			</Toolbar>
-		</headerToolbar>
-		<content>
-			     <VBox width="100%" alignItems="Stretch" justifyContent="Start">
-                                <VBox alignItems="Stretch" justifyContent="Start" width="100%">
-                                    <HBox alignItems="Center" justifyContent="Stretch" width="100%">
-                                        <Label text="{i18n>ProjectName}" width="130px" />
-                                        <Label text=":" width="10px" />
-                                        <VBox width="100%">
-                                            <Input width="100%" value="{/projectModel/0/pjnm}"/>
-                                        </VBox>
-                                    </HBox>
-                                    <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
-                                        <Text width="130px" text="{i18n>ProjectShortDescription}"/>
-                                        <Label text=":" width="10px" />
-                                        <VBox width="100%">
-                                            <TextArea width="100%" height="100%" value="{/projectModel/0/psd}" />
-                                        </VBox>
-                                    </HBox>
-                                    <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
-                                        <Label width="130px" text="{i18n>ProjectTechnologies}"/>
-                                        <Label text=":" width="10px" />
-                                        <VBox width="100%" alignItems="Stretch" justifyContent="Stretch">
-                                         <TextArea width="100%" height="100%" value="{/projectModel/0/ptek}" />
-                                        </VBox>
-                                    </HBox>
-                                    <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
-                                        <Text width="130px" text="{i18n>ProjectTerm}"/>
-                                        <Label text=":" width="10px" />
-                                        <VBox width="100%">
-                                          
-                                        </VBox>
-                                    </HBox>
+                            </content>
+                        </Panel>
+                        <Panel width="auto" class="sapUiResponsiveMargin pnlcls" accessibleRole="Region">
+                            <headerToolbar>
+                                <Toolbar height="3rem">
+                                    <Title text="ABSTRACT SUBMISSION(S)"/>
+                                    <Label text="You can submit up to 3 abstracts for free" />
+                                </Toolbar>
+                            </headerToolbar>
+                            <content>
+                                <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                                    <VBox alignItems="Stretch" justifyContent="Start" width="100%">
+                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%">
+                                            <Label text="Abstract - 1" width="130px" />
 
-                                    <HBox class="sapUiTinyMarginTop" width="100%" alignItems="Start" justifyContent="Stretch">
-                                        <VBox width="100%" alignItems="Stretch" justifyContent="Start">
-                                            <HBox alignItems="Center" justifyContent="Stretch" width="100%">
-                                                <Text width="130px" text="{i18n>RelatedCourses}"/>
-                                                <Label text=":" width="10px" />
-                                                <VBox width="100%" alignItems="Stretch" justifyContent="Start">
-
-
-                                                    <MultiComboBox  selectionChange="handleSelectionChange" selectionFinish="handleSelectionFinish" items="{
-				path: '/allLesson'
-			}">
-                                                        <core:Item key="{lid}" text="{lnm}" />
-                                                    </MultiComboBox>
-                                                </VBox>
-                                                <Button icon="sap-icon://add" tooltip="{i18n>AddCourse}" type="Transparent" press="addless"/>
-
+                                        </HBox>
+                                        <HBox class="sapUiTinyMarginTop" alignItems="Center" justifyContent="Stretch" width="100%">
+                                            <Label text="Submission Title" width="130px" />
+                                            <Label text=":" width="10px" />
+                                            <VBox width="100%">
+                                                <Input width="100%" value="" placeholder="Please write the TITLE OF THE ABSTRACT here WITH CAPITAL LETTERS"/>
+                                            </VBox>
+                                        </HBox>
+                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
+                                            <Text width="130px" text="Presentation Type"/>
+                                            <Label text=":" width="10px" />
+                                            <HBox width="100%">
+                                                <RadioButton text="ORAL" />
+                                                <RadioButton text="POSTER" />
                                             </HBox>
-                                        </VBox>
-                                    </HBox>
-                                                  <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
-                                        <Text width="130px" text="{i18n>ProjectQuotas}"/>
-                                        <Label text=":" width="10px" />
-                                        <VBox width="100%">
-                                        <Input value="{/projectModel/0/pjquota}"/>
-                                        </VBox>
-                                    </HBox>
-                                    <HBox width="100%" alignItems="Center" justifyContent="End" class="sapUiTinyMarginTop">
-                                        <Button  press="onSaveData" type="Default" text="{i18n>Save}" tooltip="{i18n>Save}" />
-                                    </HBox>
+                                        </HBox>
+                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
+                                            <Label width="130px" text="Topic"/>
+                                            <Label text=":" width="10px" />
+                                            <VBox width="100%" alignItems="Stretch" justifyContent="Stretch">
+                                                <Select forceSelection="false" width="100%">
+                                                    <core:Item key="{tid}" text="titletxt"/>
+                                                    <core:Item key="{tid}" text="Specific"/>
+                                                </Select>
+                                            </VBox>
+                                        </HBox>
+                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
+                                            <Text width="130px" text="Specific Session"/>
+                                            <Label text=":" width="10px" />
+                                            <VBox width="100%">
+                                                <Input value="" enabled="false" placeholder="Please write the Title of the Specific Session and it's Code here if your submission will be presented in and specific session."/>
+                                            </VBox>
+                                        </HBox>
+
+                                        <HBox class="sapUiTinyMarginTop" width="100%" alignItems="Start" justifyContent="Stretch">
+                                            <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                                                <HBox alignItems="Center" justifyContent="Stretch" width="100%">
+                                                    <core:Icon src="sap-icon://download"  width="130px" color="#031E48">
+                                                    </core:Icon>
+                                                    <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                                                        <Label text="1. Step : Download the 'Template', prepare your abstract according to the Template "/>
+                                                    </VBox>
+                                                </HBox>
+                                            </VBox>
+                                        </HBox>
+                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
+                                                                                        <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                                                <HBox alignItems="Center" justifyContent="Stretch" width="100%">
+                                                    <core:Icon src="sap-icon://add"  width="130px" color="#031E48">
+                                                    </core:Icon>
+                                                    <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                                                        <Label text="2. Step : Browse for the 'word file' of abstract you would like to submit "/>
+                                                    </VBox>
+                                                </HBox>
+                                            </VBox>
+                                        </HBox>
+                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
+                                                                                        <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                                                <HBox alignItems="Center" justifyContent="Stretch" width="100%">
+                                                    <core:Icon src="sap-icon://upload"  width="130px" color="#031E48">
+                                                    </core:Icon>
+                                                    <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                                                        <Label text="3. Step :Upload the file "/>
+                                                    </VBox>
+                                                </HBox>
+                                            </VBox>
+                                        </HBox>
+                                        <HBox width="100%" alignItems="Center" justifyContent="End" class="sapUiTinyMarginTop">
+                                            <Button press="onSaveData" type="Default" text="SAVE ABSTRACT" tooltip="{i18n>Save}" />
+                                        </HBox>
+                                    </VBox>
                                 </VBox>
-                        </VBox>
-	
-		</content>
-	</Panel>
-		<Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
-		<headerToolbar>
-			<Toolbar height="3rem">
-				<Title text="Panel with picture"/>
-			</Toolbar>
-		</headerToolbar>
-		<content>
-	     <VBox width="100%" alignItems="Stretch" justifyContent="Start">
-                                <VBox alignItems="Stretch" justifyContent="Start" width="100%">
-                                    <HBox alignItems="Center" justifyContent="Stretch" width="100%">
-                                        <Label text="{i18n>ProjectName}" width="130px" />
-                                        <Label text=":" width="10px" />
-                                        <VBox width="100%">
-                                            <Input width="100%" value="{/projectModel/0/pjnm}"/>
-                                        </VBox>
-                                    </HBox>
-                                    <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
-                                        <Text width="130px" text="{i18n>ProjectShortDescription}"/>
-                                        <Label text=":" width="10px" />
-                                        <VBox width="100%">
-                                            <TextArea width="100%" height="100%" value="{/projectModel/0/psd}" />
-                                        </VBox>
-                                    </HBox>
-                                    <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
-                                        <Label width="130px" text="{i18n>ProjectTechnologies}"/>
-                                        <Label text=":" width="10px" />
-                                        <VBox width="100%" alignItems="Stretch" justifyContent="Stretch">
-                                         <TextArea width="100%" height="100%" value="{/projectModel/0/ptek}" />
-                                        </VBox>
-                                    </HBox>
-                                    <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
-                                        <Text width="130px" text="{i18n>ProjectTerm}"/>
-                                        <Label text=":" width="10px" />
-                                        <VBox width="100%">
-                                          
-                                        </VBox>
-                                    </HBox>
 
-                                    <HBox class="sapUiTinyMarginTop" width="100%" alignItems="Start" justifyContent="Stretch">
-                                        <VBox width="100%" alignItems="Stretch" justifyContent="Start">
-                                            <HBox alignItems="Center" justifyContent="Stretch" width="100%">
-                                                <Text width="130px" text="{i18n>RelatedCourses}"/>
-                                                <Label text=":" width="10px" />
-                                                <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                            </content>
+                        </Panel>
+                        <Panel width="auto" class="sapUiResponsiveMargin pnlcls" accessibleRole="Region">
+                            <headerToolbar>
+                                <Toolbar height="3rem">
+                                    <Title text="FULLTEXT SUBMISSION(S)"/>
+                                    <Label text="You can submit 1 fulltext for free.Each additional onew will be charged to be +190 Euro." />
+                                </Toolbar>
+                            </headerToolbar>
+                            <content>
+                                                                <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                                    <VBox alignItems="Stretch" justifyContent="Start" width="100%">
+                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%">
+                                            <Label text="Fulltext - 1" width="130px" />
 
-
-                                                    <MultiComboBox  selectionChange="handleSelectionChange" selectionFinish="handleSelectionFinish" items="{
-				path: '/allLesson'
-			}">
-                                                        <core:Item key="{lid}" text="{lnm}" />
-                                                    </MultiComboBox>
-                                                </VBox>
-                                                <Button icon="sap-icon://add" tooltip="{i18n>AddCourse}" type="Transparent" press="addless"/>
-
+                                        </HBox>
+                                        <HBox class="sapUiTinyMarginTop" alignItems="Center" justifyContent="Stretch" width="100%">
+                                            <Label text="Submission Title" width="130px" />
+                                            <Label text=":" width="10px" />
+                                            <VBox width="100%">
+                                                <Input width="100%" value="" placeholder="Please write the TITLE OF THE ABSTRACT here WITH CAPITAL LETTERS"/>
+                                            </VBox>
+                                        </HBox>
+                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
+                                            <Text width="130px" text="Presentation Type"/>
+                                            <Label text=":" width="10px" />
+                                            <HBox width="100%">
+                                                <RadioButton text="ORAL" />
+                                                <RadioButton text="POSTER" />
                                             </HBox>
-                                        </VBox>
-                                    </HBox>
-                                                  <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
-                                        <Text width="130px" text="{i18n>ProjectQuotas}"/>
-                                        <Label text=":" width="10px" />
-                                        <VBox width="100%">
-                                        <Input value="{/projectModel/0/pjquota}"/>
-                                        </VBox>
-                                    </HBox>
-                                    <HBox width="100%" alignItems="Center" justifyContent="End" class="sapUiTinyMarginTop">
-                                        <Button  press="onSaveData" type="Default" text="{i18n>Save}" tooltip="{i18n>Save}" />
-                                    </HBox>
-                                </VBox>
-                        </VBox>
+                                        </HBox>
+                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
+                                            <Label width="130px" text="Topic"/>
+                                            <Label text=":" width="10px" />
+                                            <VBox width="100%" alignItems="Stretch" justifyContent="Stretch">
+                                                <Select forceSelection="false" width="100%">
+                                                    <core:Item key="{tid}" text="titletxt"/>
+                                                    <core:Item key="{tid}" text="Specific"/>
+                                                </Select>
+                                            </VBox>
+                                        </HBox>
+                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
+                                            <Text width="130px" text="Specific Session"/>
+                                            <Label text=":" width="10px" />
+                                            <VBox width="100%">
+                                                <Input value="" enabled="false" placeholder="Please write the Title of the Specific Session and it's Code here if your submission will be presented in and specific session."/>
+                                            </VBox>
+                                        </HBox>
 
-		</content>
-	</Panel>
-	                    </IconTabFilter>
+                                        <HBox class="sapUiTinyMarginTop" width="100%" alignItems="Start" justifyContent="Stretch">
+                                            <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                                                <HBox alignItems="Center" justifyContent="Stretch" width="100%">
+                                                    <core:Icon src="sap-icon://download"  width="130px" color="#031E48">
+                                                    </core:Icon>
+                                                    <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                                                        <Label text="1. Step : Download the 'Template', prepare your abstract according to the Template "/>
+                                                    </VBox>
+                                                </HBox>
+                                            </VBox>
+                                        </HBox>
+                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
+                                                                                        <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                                                <HBox alignItems="Center" justifyContent="Stretch" width="100%">
+                                                    <core:Icon src="sap-icon://add"  width="130px" color="#031E48">
+                                                    </core:Icon>
+                                                    <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                                                        <Label text="2. Step : Browse for the 'word file' of abstract you would like to submit "/>
+                                                    </VBox>
+                                                </HBox>
+                                            </VBox>
+                                        </HBox>
+                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
+                                                                                        <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                                                <HBox alignItems="Center" justifyContent="Stretch" width="100%">
+                                                    <core:Icon src="sap-icon://upload"  width="130px" color="#031E48">
+                                                    </core:Icon>
+                                                    <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                                                        <Label text="3. Step :Upload the file "/>
+                                                    </VBox>
+                                                </HBox>
+                                            </VBox>
+                                        </HBox>
+                                        <HBox width="100%" alignItems="Center" justifyContent="End" class="sapUiTinyMarginTop">
+                                            <Button press="onSaveData" type="Default" text="SAVE FULLTEXT" tooltip="{i18n>Save}" />
+                                        </HBox>
+                                    </VBox>
+                                </VBox>
+
+                            </content>
+
+                        </Panel>
+                                <HBox>
+                        <Label text="Please consider that you can submit 1 fulltext for free.Each additional fulltext will be charged to be +190 Euro."/>
+                                </HBox>
+                    </IconTabFilter>
                     <IconTabSeparator icon=""/>
                     <IconTabFilter key="point" icon="sap-icon://add" iconColor="Neutral" text=" NOT GİR" count="2">
                         <Table inset="false" items="{
@@ -269,8 +299,8 @@
                         </HBox>
                     </IconTabFilter>
                     <IconTabSeparator icon=""/>
-                    </items>
-                </IconTabBar>
-		</content>
-	</Page>
+                </items>
+            </IconTabBar>
+        </content>
+    </Page>
 </mvc:View>

@@ -8,7 +8,7 @@
     <Page enableScrolling="false" showHeader="false">
         <l:FixFlex class="fixFlexVertical">
             <l:flexContent>
-                <Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
+                <Panel width="auto" class="sapUiResponsiveMargin pnlcls" accessibleRole="Region">
                     <headerToolbar>
                         <Toolbar height="3rem">
                             <Title text="Login"/>

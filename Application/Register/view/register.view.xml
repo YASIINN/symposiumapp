@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
     <Page visible="true" enableScrolling="true" showHeader="false">
         <content>
-            <Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
+            <Panel width="auto" class="sapUiResponsiveMargin pnlcls" accessibleRole="Region">
                 <headerToolbar>
                     <Toolbar height="3rem">
                         <Title text="CREATE AN ACCOUNT"/>
