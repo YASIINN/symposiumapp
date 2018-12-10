@@ -5,35 +5,38 @@ header("Content-Type: application/json; charset=UTF-8");
 class User extends database
 {
     public $result = array();
-    public function GETUL($tid)
-    {
-        if (isset($_SESSION["UNM"])) {
-            $userLayoutRows = $this->getrows("SELECT  * FROM layout
-                    where tid=?", array($tid));
-            if (count($userLayoutRows) == 0) {
-                $this->result = array("status" => "None");
-                return $this->result;
-            } else {
-                for ($i = 0; $i < count($userLayoutRows); $i++) {
-                    $this->result[] = array("status" => "Okey", "lid" => $userLayoutRows[$i]['lid'], "lynm" => $userLayoutRows[$i]['lynm'], "lyrouter" => $userLayoutRows[$i]["lyrouter"], "tid" => $userLayoutRows[$i]["tid"], );
-                }
-                return $this->result;
-            }
-        }
-    }
     public function GET($where, $param)
     {
         $fparam = array();
         for ($index = 0; $index < count($param); $index++) {
             array_push($fparam, $param[$index]);
         }
-        $getRegisterRows = $this->select("usertable", $where, $fparam);
+        $getRegisterRows = $this->getrows("SELECT * FROM usertable u 
+        INNER JOIN  titletable t ON u.tid=t.tid 
+        INNER JOIN authoritytable a ON u.uauth=a.atid WHERE $where
+        ", $fparam);
+        //  $this->select("usertable", $where, $fparam);
         if (count($getRegisterRows) == 0) {
             $this->result = array("status" => "None");
             return $this->result;
         } else {
             for ($i = 0; $i < count($getRegisterRows); $i++) {
-                $this->result[] = array("status" => "Okey", "usid" => $getRegisterRows[$i]['usid'], "usname" => $getRegisterRows[$i]['usname'], "uslname" => $getRegisterRows[$i]["uslname"]  ,"ulgnname" =>$getRegisterRows[$i]['ulgnname']);
+                $this->result[] = array(
+                    "status" => "Okey", "usid" =>
+                        $getRegisterRows[$i]['usid'],
+                    "usname" => $getRegisterRows[$i]['usname'],
+                    "uslname" => $getRegisterRows[$i]["uslname"],
+                    "ulgnname" => $getRegisterRows[$i]['ulgnname'],
+                    "uniorinst" => $getRegisterRows[$i]['uniorinst'],
+                    "country" => $getRegisterRows[$i]['country'],
+                    "tid" => $getRegisterRows[$i]['tid'],
+                    "uauth" => $getRegisterRows[$i]['uauth'],
+                    "atname" => $getRegisterRows[$i]['atname'],
+                    "titletxt" => $getRegisterRows[$i]['titletxt'],
+                    "adress" => $getRegisterRows[$i]['adress'],
+                    "ftextquota" => $getRegisterRows[$i]['ftextquota'],
+                    "absquota" => $getRegisterRows[$i]['absquota'],
+                );
             }
             return $this->result;
         }

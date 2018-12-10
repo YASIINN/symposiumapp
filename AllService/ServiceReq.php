@@ -9,6 +9,12 @@ if ($SN == "Authority") {
     $result = $authority->$MN();
     echo json_encode($result);
 }
+if($SN=="BroadcastType"){
+    include("/BroadcastType/broadcasttype.php");
+    $broadcasttype = new $SN();
+    $result = $broadcasttype->$MN();
+    echo json_encode($result);
+}
 if ($SN == "Session") {
     include("/Session/session.php");
     $session = new $SN();
@@ -22,10 +28,8 @@ if ($SN == "Session") {
 if ($SN == "User") {
     include("/User/user.php");
     $user = new $SN();
-    if ($MN == "GETUL") {
-        $result = $user->$MN($_POST['tid']);
-    } else if ($MN == "GET") {
-        $result = $user->$MN($_POST['where'],$_POST['param']);
+    if ($MN == "GET") {
+        $result = $user->$MN($_POST['where'], $_POST['param']);
     } else if ($MN == "ADD") {
         $result = $user->$MN($_POST['userdata']);
     } else if ($MN == "GAUW") {
@@ -50,8 +54,14 @@ if ($SN == "Login") {
     $result = $login->$MN($_POST['name'], $_POST['pass']);
     echo json_encode($result);
 }
-if($SN=="Title"){
- include("/Title/title.php");
+if ($SN == "Title") {
+    include("/Title/title.php");
+    $title = new $SN();
+    $result = $title->$MN();
+    echo json_encode($result);
+}
+if($SN=="File"){
+    include("/File/file.php");
     $title = new $SN();
     $result = $title->$MN();
     echo json_encode($result);

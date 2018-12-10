@@ -39,6 +39,7 @@
                             <Menu>
                                 <items>
                                     <MenuItem press="onClose" text="Log Out"/>
+                                    <MenuItem id="manage" press="gomanage" text="Management Panel"/>
                                 </items>
                             </Menu>
                         </menu>

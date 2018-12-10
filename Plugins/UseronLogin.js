@@ -29,9 +29,7 @@ var UseronLogin = {
         return deferred;
     },
     onUserControl: function (param) {
-        debugger
         var deferred = new Promise(function (resolve, reject) {
-            // $where, $param
             UserService.userReq({ where:"ulgnname=?" ,"param":[ param.ulgnname], "MN": "GET", 'SN': 'User' }).then(function (res) {
                 if (res == "None") {
                     resolve(false);

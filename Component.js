@@ -51,17 +51,7 @@ sap.ui.define(
                     keys: [version]
                   },
                 },
-                {
-                  pattern: "Dashboard/ProjectEntry",
-                  viewPath: "symposiumapp.Application.Dashboard.ProjectEntry.view",
-                  name: "Dashboard/ProjectEntry",
-                  view: "ProjectEntry",
-                  targetControl: "DashboardRouterId",
-                  transition: "show",
-                  cache: {
-                    keys: [version]
-                  },
-                }]
+                ]
             },
             {
               pattern: "Register",
@@ -84,6 +74,29 @@ sap.ui.define(
               cache: {
                 keys: [version]
               },
+            },
+            {
+              pattern: "ManagementPanel",
+              viewPath: "symposiumapp.Application.ManagementPanel",
+              name: "ManagementPanel",
+              view: "ManagementPanelRouterApp",
+              targetControl: "masterView",
+              transition: "show",
+              cache: {
+                keys: [version]
+              },
+              subroutes: [{
+                pattern: "ManagementPanel/ManageAllSettings",
+                viewPath: "symposiumapp.Application.ManagementPanel.ManageAllSettings.view",
+                name: "ManagementPanel/ManageAllSettings",
+                view: "ManageAllSettings",
+                targetControl: "ManagementRouterId",
+                transition: "show",
+                cache: {
+                  keys: [version]
+                },
+              },
+              ]
             },
             {
               pattern: "Login",

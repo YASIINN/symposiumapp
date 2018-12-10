@@ -22,14 +22,14 @@
                                             <Label text="Name SURNAME" width="130px" />
                                             <Label text=":" width="10px" />
                                             <VBox width="100%">
-                                                <Input width="100%" value="" placeholder="Please write the corresponding author's Name SURNAME here"/>
+                                                <Input width="100%" value="{/author/ufname}" placeholder="Please write the corresponding author's Name SURNAME here"/>
                                             </VBox>
                                         </HBox>
                                         <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
                                             <Text width="130px" text="Position / Title"/>
                                             <Label text=":" width="10px" />
                                             <VBox width="100%">
-                                                <Select forceSelection="false" width="100%" items="{
+                                                <Select forceSelection="false" id="postitle" width="100%" items="{
 											path: '/title'}">
                                                     <core:Item key="{tid}" text="{titletxt}"/>
                                                 </Select>
@@ -39,14 +39,14 @@
                                             <Label width="130px" text="University/Inst."/>
                                             <Label text=":" width="10px" />
                                             <VBox width="100%" alignItems="Stretch" justifyContent="Stretch">
-                                                <Input width="100%" value=" " placeholder="Please write the name of your University or Institute or Organisation here"/>
+                                                <Input width="100%" value="{/author/uniorinst}" placeholder="Please write the name of your University or Institute or Organisation here"/>
                                             </VBox>
                                         </HBox>
                                         <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
                                             <Text width="130px" text="Country"/>
                                             <Label text=":" width="10px" />
                                             <VBox width="100%">
-                                                <Select forceSelection="false" width="100%" showSecondaryValues= "true" items="{
+                                                <Select forceSelection="false" id="countryall" width="100%" showSecondaryValues= "true" items="{
 											path: '/AllCountry',
 										sorter: { path: 'name' }
 												}">
@@ -61,7 +61,7 @@
                                                     <Text width="130px" text="Address"/>
                                                     <Label text=":" width="10px" />
                                                     <VBox width="100%" alignItems="Stretch" justifyContent="Start">
-                                                        <TextArea width="100%" value="" placeholder="Please write the Corresponding Address of the corresponding author here" rows="3" />
+                                                        <TextArea width="100%" value="{/author/addres}" placeholder="Please write the Corresponding Address of the corresponding author here" rows="3" />
                                                     </VBox>
                                                 </HBox>
                                             </VBox>
@@ -70,17 +70,23 @@
                                             <Text width="130px" text="E-mail"/>
                                             <Label text=":" width="10px" />
                                             <VBox width="100%">
-                                                <Input value="" placeholder="Please write the e-mail of the corresponding author here"/>
+                                                <Input value="{/author/email}" placeholder="Please write the e-mail of the corresponding author here"/>
                                             </VBox>
                                         </HBox>
                                         <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
                                             <Text width="130px" text="Phone"/>
                                             <Label text=":" width="10px" />
                                             <VBox width="100%">
-                                                <Input value="+"/>
+                                                <MaskInput width="100%" mask = "+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC" id="pnmbr" placeholder = "Enter Phone number">
+                                                    <rules>
+                                                        <MaskInputRule maskFormatSymbol = "C"  regex = "[A-Z0-9]"/>
+                                                    </rules>
+                                                </MaskInput>
+                                                <!-- <Input value="+{/author/phone}" /> -->
                                             </VBox>
                                         </HBox>
                                         <HBox width="100%" alignItems="Center" justifyContent="End" class="sapUiTinyMarginTop">
+                                            <Button press="uservalidate" type="Default" text="SAVE AUTHOR" tooltip="{i18n>Save}" />
                                         </HBox>
                                     </VBox>
                                 </VBox>
@@ -136,18 +142,24 @@
                                         <HBox class="sapUiTinyMarginTop" width="100%" alignItems="Start" justifyContent="Stretch">
                                             <VBox width="100%" alignItems="Stretch" justifyContent="Start">
                                                 <HBox alignItems="Center" justifyContent="Stretch" width="100%">
-                                                    <core:Icon src="sap-icon://download"  width="130px" color="#031E48">
+                                                    <core:Icon src="sap-icon://download" width="130px" color="#031E48">
                                                     </core:Icon>
                                                     <VBox width="100%" alignItems="Stretch" justifyContent="Start">
-                                                        <Label text="1. Step : Download the 'Template', prepare your abstract according to the Template "/>
+                                                        <HBox>
+
+                                                            <Label class="sapUiLargeMarginEnd" text="1. Step : Download the 'Template', prepare your abstract according to the Template "/>
+                                                            <core:Icon src="sap-icon://doc-attachment" class="size1" color="#031E48">
+                                                            </core:Icon>
+                                                            <Link text="Template"  href="http://localhost/symposiumapp/sysword/sistem.docx" />
+                                                        </HBox>
                                                     </VBox>
                                                 </HBox>
                                             </VBox>
                                         </HBox>
                                         <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
-                                                                                        <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                                            <VBox width="100%" alignItems="Stretch" justifyContent="Start">
                                                 <HBox alignItems="Center" justifyContent="Stretch" width="100%">
-                                                    <core:Icon src="sap-icon://add"  width="130px" color="#031E48">
+                                                    <core:Icon src="sap-icon://add" width="130px" color="#031E48">
                                                     </core:Icon>
                                                     <VBox width="100%" alignItems="Stretch" justifyContent="Start">
                                                         <Label text="2. Step : Browse for the 'word file' of abstract you would like to submit "/>
@@ -156,15 +168,23 @@
                                             </VBox>
                                         </HBox>
                                         <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
-                                                                                        <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                                            <VBox width="100%" alignItems="Stretch" justifyContent="Start">
                                                 <HBox alignItems="Center" justifyContent="Stretch" width="100%">
-                                                    <core:Icon src="sap-icon://upload"  width="130px" color="#031E48">
+                                                    <core:Icon src="sap-icon://upload" width="130px" color="#031E48">
                                                     </core:Icon>
                                                     <VBox width="100%" alignItems="Stretch" justifyContent="Start">
                                                         <Label text="3. Step :Upload the file "/>
                                                     </VBox>
                                                 </HBox>
+                                                          <VBox>
+                                                  <HBox>
+                                                  <!-- fileType= "pdf" -->
+                                    <u:FileUploader id="fileUploader" uploadUrl="/TranskriptFolder" change="changefile" style="Emphasized"  tooltip="PDF DOSYASI SEÇİNİZ.." />
+                                   <Button text="Yükle" press="allResult" icon="sap-icon://upload"/>
+                                </HBox>
+                                </VBox>
                                             </VBox>
+                                  
                                         </HBox>
                                         <HBox width="100%" alignItems="Center" justifyContent="End" class="sapUiTinyMarginTop">
                                             <Button press="onSaveData" type="Default" text="SAVE ABSTRACT" tooltip="{i18n>Save}" />
@@ -182,7 +202,7 @@
                                 </Toolbar>
                             </headerToolbar>
                             <content>
-                                                                <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                                <VBox width="100%" alignItems="Stretch" justifyContent="Start">
                                     <VBox alignItems="Stretch" justifyContent="Start" width="100%">
                                         <HBox alignItems="Center" justifyContent="Stretch" width="100%">
                                             <Label text="Fulltext - 1" width="130px" />
@@ -223,19 +243,24 @@
 
                                         <HBox class="sapUiTinyMarginTop" width="100%" alignItems="Start" justifyContent="Stretch">
                                             <VBox width="100%" alignItems="Stretch" justifyContent="Start">
-                                                <HBox alignItems="Center" justifyContent="Stretch" width="100%">
-                                                    <core:Icon src="sap-icon://download"  width="130px" color="#031E48">
+                                                 <HBox alignItems="Center" justifyContent="Stretch" width="100%">
+                                                    <core:Icon src="sap-icon://download" width="130px" color="#031E48">
                                                     </core:Icon>
                                                     <VBox width="100%" alignItems="Stretch" justifyContent="Start">
-                                                        <Label text="1. Step : Download the 'Template', prepare your abstract according to the Template "/>
+                                                        <HBox>
+                                                            <Label class="sapUiLargeMarginEnd" text="1. Step : Download the 'Template', prepare your abstract according to the Template "/>
+                                                            <core:Icon src="sap-icon://doc-attachment" class="size1" color="#031E48">
+                                                            </core:Icon>
+                                                            <Link text="Template"  href="http://localhost/symposiumapp/sysword/sistem.docx" />
+                                                        </HBox>
                                                     </VBox>
                                                 </HBox>
                                             </VBox>
                                         </HBox>
                                         <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
-                                                                                        <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                                            <VBox width="100%" alignItems="Stretch" justifyContent="Start">
                                                 <HBox alignItems="Center" justifyContent="Stretch" width="100%">
-                                                    <core:Icon src="sap-icon://add"  width="130px" color="#031E48">
+                                                    <core:Icon src="sap-icon://add" width="130px" color="#031E48">
                                                     </core:Icon>
                                                     <VBox width="100%" alignItems="Stretch" justifyContent="Start">
                                                         <Label text="2. Step : Browse for the 'word file' of abstract you would like to submit "/>
@@ -244,9 +269,9 @@
                                             </VBox>
                                         </HBox>
                                         <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
-                                                                                        <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                                            <VBox width="100%" alignItems="Stretch" justifyContent="Start">
                                                 <HBox alignItems="Center" justifyContent="Stretch" width="100%">
-                                                    <core:Icon src="sap-icon://upload"  width="130px" color="#031E48">
+                                                    <core:Icon src="sap-icon://upload" width="130px" color="#031E48">
                                                     </core:Icon>
                                                     <VBox width="100%" alignItems="Stretch" justifyContent="Start">
                                                         <Label text="3. Step :Upload the file "/>
@@ -259,13 +284,11 @@
                                         </HBox>
                                     </VBox>
                                 </VBox>
-
                             </content>
-
                         </Panel>
-                                <HBox>
-                        <Label text="Please consider that you can submit 1 fulltext for free.Each additional fulltext will be charged to be +190 Euro."/>
-                                </HBox>
+                        <HBox>
+                            <Label text="Please consider that you can submit 1 fulltext for free.Each additional fulltext will be charged to be +190 Euro."/>
+                        </HBox>
                     </IconTabFilter>
                     <IconTabSeparator icon=""/>
                     <IconTabFilter key="point" icon="sap-icon://add" iconColor="Neutral" text=" NOT GİR" count="2">
