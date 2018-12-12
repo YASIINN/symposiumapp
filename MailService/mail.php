@@ -34,7 +34,7 @@
     //     // }
     // }
     $ead = $_POST['maildata'][0]['mail'];
-    $epass = "13271327";
+    $epass = "4d32adf5";
     // $_POST['maildata'][0]['epass'];
     $subject= $_POST['maildata'][0]['subject'];
     $messega = $_POST['maildata'][0]['messega'];

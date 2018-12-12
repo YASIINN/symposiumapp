@@ -8,7 +8,7 @@ sap.ui.define(['sap/m/MessageBox', 'sap/ui/core/mvc/Controller'], function (Mess
             _this.getView().setModel(oModel);
             _this.registermodel();
             _this.RefreshCaptcha();
-         
+
         },
         submitRegister: function () {
             var _this = this
@@ -18,7 +18,7 @@ sap.ui.define(['sap/m/MessageBox', 'sap/ui/core/mvc/Controller'], function (Mess
                 _this.getAllRegister();
             }
         },
-        registermodel:function(){
+        registermodel: function () {
             var RegisterData = {
                 ufname: "",
                 uniorinst: "",
@@ -28,6 +28,7 @@ sap.ui.define(['sap/m/MessageBox', 'sap/ui/core/mvc/Controller'], function (Mess
                 cpass: ""
             }
             oModel.setProperty("/RegisterModel", RegisterData)
+            _this.byId("cpt").setValue("");
         },
         makeid: function () {
             var text = "";
@@ -82,9 +83,16 @@ sap.ui.define(['sap/m/MessageBox', 'sap/ui/core/mvc/Controller'], function (Mess
         },
         getAllRegister: function () {
             var _this = this
-            UserService.userReq({ MN: "GET", SN: "User", "where": "ulgnname=?", param: [oModel.oData.RegisterModel.cemail] }).then(function (res) {
+            RegisterService.RegisterReq({MN:"GET",SN:"Register",where:"rtemail=?",param:[oModel.oData.RegisterModel.cemail]}).then(function (res) {
                 if (res == "None") {
-                    _this.onRegister();
+                    debugger
+                    UserService.userReq({ MN: "GET", SN: "User", "where": "ulgnname=?", param: [oModel.oData.RegisterModel.cemail] }).then(function (res) {
+                        if (res == "None") {
+                            _this.onRegister();
+                        } else {
+                            sap.m.MessageToast.show("this email address is available")
+                        }
+                    })
                 } else {
                     sap.m.MessageToast.show("this email address is available")
                 }
@@ -112,7 +120,7 @@ sap.ui.define(['sap/m/MessageBox', 'sap/ui/core/mvc/Controller'], function (Mess
                         if (res[0].rtlcode) {
                             debugger
                             var msg = "http://localhost/symposiumapp/#/RegisterCheck?" + res[0].rtlcode;
-                            MailService.AddMail({systemcheck:[], "maildata": [{ "mail": res[0].rtemail, "messega": msg, subject: "record verification" }] }).then(function (res) {
+                            MailService.AddMail({ systemcheck: [], "maildata": [{ "mail": res[0].rtemail, "messega": msg, subject: "record verification" }] }).then(function (res) {
                                 if (res == "None") {
                                     CreateComponent.hideBusyIndicator();
                                     sap.m.MessageToast.show("sorry there was a mistake when sending mail");

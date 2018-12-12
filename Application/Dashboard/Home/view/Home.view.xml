@@ -9,44 +9,30 @@
             <IconTabBar id="idIconTabBarSeparatorNoIcon" select="changekey" expanded="true" class="sapUiResponsiveContentPadding">
                 <items>
                     <IconTabFilter key="project" icon="sap-icon://accept" text=" STEP" iconColor="Positive" count="1">
-                        <Panel width="auto" class="sapUiResponsiveMargin pnlcls" accessibleRole="Region">
+                        <Panel width="auto" id="panel0" class="sapUiResponsiveMargin pnlcls" accessibleRole="Region">
                             <headerToolbar>
                                 <Toolbar height="3rem">
-                                    <Title text="CORRESSPONDING AUTHOR"/>
+                                    <Title text="please fill in the following fields"/>
                                 </Toolbar>
                             </headerToolbar>
                             <content>
                                 <VBox width="100%" alignItems="Stretch" justifyContent="Start">
                                     <VBox alignItems="Stretch" justifyContent="Start" width="100%">
-                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%">
-                                            <Label text="Name SURNAME" width="130px" />
-                                            <Label text=":" width="10px" />
-                                            <VBox width="100%">
-                                                <Input width="100%" value="{/author/ufname}" placeholder="Please write the corresponding author's Name SURNAME here"/>
-                                            </VBox>
-                                        </HBox>
                                         <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
                                             <Text width="130px" text="Position / Title"/>
                                             <Label text=":" width="10px" />
                                             <VBox width="100%">
-                                                <Select forceSelection="false" id="postitle" width="100%" items="{
+                                                <Select forceSelection="false" id="settitle" width="100%" items="{
 											path: '/title'}">
                                                     <core:Item key="{tid}" text="{titletxt}"/>
                                                 </Select>
                                             </VBox>
                                         </HBox>
                                         <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
-                                            <Label width="130px" text="University/Inst."/>
-                                            <Label text=":" width="10px" />
-                                            <VBox width="100%" alignItems="Stretch" justifyContent="Stretch">
-                                                <Input width="100%" value="{/author/uniorinst}" placeholder="Please write the name of your University or Institute or Organisation here"/>
-                                            </VBox>
-                                        </HBox>
-                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
                                             <Text width="130px" text="Country"/>
                                             <Label text=":" width="10px" />
                                             <VBox width="100%">
-                                                <Select forceSelection="false" id="countryall" width="100%" showSecondaryValues= "true" items="{
+                                                <Select forceSelection="false" id="countryallset" width="100%" showSecondaryValues= "true" items="{
 											path: '/AllCountry',
 										sorter: { path: 'name' }
 												}">
@@ -54,45 +40,68 @@
                                                 </Select>
                                             </VBox>
                                         </HBox>
-
-                                        <HBox class="sapUiTinyMarginTop" width="100%" alignItems="Start" justifyContent="Stretch">
-                                            <VBox width="100%" alignItems="Stretch" justifyContent="Start">
-                                                <HBox alignItems="Center" justifyContent="Stretch" width="100%">
-                                                    <Text width="130px" text="Address"/>
-                                                    <Label text=":" width="10px" />
-                                                    <VBox width="100%" alignItems="Stretch" justifyContent="Start">
-                                                        <TextArea width="100%" value="{/author/addres}" placeholder="Please write the Corresponding Address of the corresponding author here" rows="3" />
-                                                    </VBox>
-                                                </HBox>
-                                            </VBox>
-                                        </HBox>
-                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
-                                            <Text width="130px" text="E-mail"/>
+                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%">
+                                            <Text width="130px" text="Address"/>
                                             <Label text=":" width="10px" />
-                                            <VBox width="100%">
-                                                <Input value="{/author/email}" placeholder="Please write the e-mail of the corresponding author here"/>
+                                            <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                                                <TextArea width="100%" value="{/author/addres}" placeholder="Please write the Corresponding Address of the corresponding author here" rows="3" />
                                             </VBox>
                                         </HBox>
                                         <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
                                             <Text width="130px" text="Phone"/>
                                             <Label text=":" width="10px" />
                                             <VBox width="100%">
-                                                <MaskInput width="100%" mask = "+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC" id="pnmbr" placeholder = "Enter Phone number">
+                                                <MaskInput width="100%" mask = "+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC" id="pnmbrset" placeholder = "Enter Phone number">
                                                     <rules>
                                                         <MaskInputRule maskFormatSymbol = "C"  regex = "[A-Z0-9]"/>
                                                     </rules>
                                                 </MaskInput>
-                                                <!-- <Input value="+{/author/phone}" /> -->
                                             </VBox>
                                         </HBox>
                                         <HBox width="100%" alignItems="Center" justifyContent="End" class="sapUiTinyMarginTop">
-                                            <Button press="uservalidate" type="Default" text="SAVE AUTHOR" tooltip="{i18n>Save}" />
+                                            <Button press="onsetinfo" type="Default" text="UPDATE INFO" tooltip="{i18n>Save}" />
                                         </HBox>
                                     </VBox>
                                 </VBox>
                             </content>
                         </Panel>
-                        <Panel width="auto" class="sapUiResponsiveMargin pnlcls" accessibleRole="Region">
+
+
+
+
+
+
+
+
+
+                        <Panel width="auto" class="sapUiResponsiveMargin pnlcls" id="panel1" accessibleRole="Region">
+                            <headerToolbar>
+                                <Toolbar height="3rem">
+                                    <Title text="SELECT ARTİCLE TYPE"/>
+                                </Toolbar>
+                            </headerToolbar>
+                            <content>
+                                <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                                    <VBox alignItems="Stretch" justifyContent="Start" width="100%">
+                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
+                                            <Text width="130px" text="Select Type" />
+                                            <Label text=":" width="10px" />
+                                            <VBox width="100%">
+                                                <Select forceSelection="false" id="absid" change="changetype" width="100%" items="{
+											path: '/btype',
+										sorter: { path: 'name' }
+												}">
+                                                    <core:ListItem key="{absid}" text="{abstxt}" />
+                                                </Select>
+                                            </VBox>
+                                        </HBox>
+                                    </VBox>
+                                </VBox>
+                            </content>
+                        </Panel>
+
+
+                        <Panel width="auto" id="panel2" class="sapUiResponsiveMargin pnlcls" accessibleRole="Region">
                             <headerToolbar>
                                 <Toolbar height="3rem">
                                     <Title text="ABSTRACT SUBMISSION(S)"/>
@@ -110,24 +119,25 @@
                                             <Label text="Submission Title" width="130px" />
                                             <Label text=":" width="10px" />
                                             <VBox width="100%">
-                                                <Input width="100%" value="" placeholder="Please write the TITLE OF THE ABSTRACT here WITH CAPITAL LETTERS"/>
+                                                <Input width="100%" id="titleid" value="" placeholder="Please write the TITLE OF THE ABSTRACT here WITH CAPITAL LETTERS"/>
                                             </VBox>
                                         </HBox>
                                         <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
                                             <Text width="130px" text="Presentation Type"/>
                                             <Label text=":" width="10px" />
                                             <HBox width="100%">
-                                                <RadioButton text="ORAL" />
-                                                <RadioButton text="POSTER" />
+                                                <RadioButton text="ORAL" id="oralid" />
+                                                <RadioButton text="POSTER" id="posterid" />
+
                                             </HBox>
                                         </HBox>
                                         <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
                                             <Label width="130px" text="Topic"/>
                                             <Label text=":" width="10px" />
                                             <VBox width="100%" alignItems="Stretch" justifyContent="Stretch">
-                                                <Select forceSelection="false" width="100%">
-                                                    <core:Item key="{tid}" text="titletxt"/>
-                                                    <core:Item key="{tid}" text="Specific"/>
+                                                <Select forceSelection="false" width="100%" id="topicid">
+                                                    <core:Item key="1" text="titletxt"/>
+                                                    <core:Item key="2" text="Specific"/>
                                                 </Select>
                                             </VBox>
                                         </HBox>
@@ -135,66 +145,66 @@
                                             <Text width="130px" text="Specific Session"/>
                                             <Label text=":" width="10px" />
                                             <VBox width="100%">
-                                                <Input value="" enabled="false" placeholder="Please write the Title of the Specific Session and it's Code here if your submission will be presented in and specific session."/>
+                                                <Input value="" id="specificid" enabled="false" placeholder="Please write the Title of the Specific Session and it's Code here if your submission will be presented in and specific session."/>
                                             </VBox>
                                         </HBox>
 
-                                        <HBox class="sapUiTinyMarginTop" width="100%" alignItems="Start" justifyContent="Stretch">
-                                            <VBox width="100%" alignItems="Stretch" justifyContent="Start">
-                                                <HBox alignItems="Center" justifyContent="Stretch" width="100%">
-                                                    <core:Icon src="sap-icon://download" width="130px" color="#031E48">
+                                        <HBox class="sapUiTinyMarginTop" width="100%" alignItems="Stretch" justifyContent="Stretch">
+                                            <core:Icon src="sap-icon://download" width="130px" color="#031E48">
+                                            </core:Icon>
+                                            <HBox width="100%" alignItems="Stretch" justifyContent="Stretch">
+                                                <Label class="sapUiLargeMarginEnd" text="1. Step : Download the 'Template', prepare your abstract according to the Template "/>
+                                                <HBox width="100%" alignItems="End" justifyContent="End">
+                                                    <core:Icon src="sap-icon://doc-attachment" class="size1 sapUiTinyMarginEnd" color="#031E48">
                                                     </core:Icon>
-                                                    <VBox width="100%" alignItems="Stretch" justifyContent="Start">
-                                                        <HBox>
+                                                    <Link text="Abstract_Template" href="http://localhost/symposiumapp/sysword/Abstract_Template.docx" />
+                                                </HBox>
+                                            </HBox>
+                                        </HBox>
+                                        <HBox class="sapUiTinyMarginTop" alignItems="Stretch" justifyContent="Stretch" width="100%">
+                                            <core:Icon src="sap-icon://add" width="130px" color="#031E48">
+                                            </core:Icon>
+                                            <HBox width="100%" alignItems="Stretch" justifyContent="Stretch">
+                                                <Label class="sapUiLargeMarginEnd" text="2. Step : Browse for the 'word file' of abstract you would like to submit "/>
+                                                <HBox width="100%" alignItems="End" justifyContent="End">
+                                                    <u:FileUploader id="fileUploader" fileType="docx,doc" uploadUrl="/" change="changefile" style="Emphasized" tooltip="PDF DOSYASI SEÇİNİZ.." />
+                                                </HBox>
+                                            </HBox>
+                                        </HBox>
+                                        <HBox alignItems="Stretch" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
+                                            <core:Icon src="sap-icon://upload" width="130px" color="#031E48">
+                                            </core:Icon>
+                                            <HBox width="100%" alignItems="Stretch" justifyContent="Stretch">
+                                                <Label text="3. Step :Add Author's "/>
 
-                                                            <Label class="sapUiLargeMarginEnd" text="1. Step : Download the 'Template', prepare your abstract according to the Template "/>
-                                                            <core:Icon src="sap-icon://doc-attachment" class="size1" color="#031E48">
-                                                            </core:Icon>
-                                                            <Link text="Template"  href="http://localhost/symposiumapp/sysword/sistem.docx" />
-                                                        </HBox>
-                                                    </VBox>
+                                                <HBox width="100%" alignItems="End" justifyContent="End">
+                                                   
+                                                    <MultiInput id="multiinput1" width="700px"  tokens="{
+                                                                path: '/authorsuser'
+                                                            }" tokenUpdate="onRemoveAuthors">
+                                                        <tokens>
+                                                            <Token key="{mail}" text="{usname}" />
+                                                        </tokens>
+                                                    </MultiInput>
+                                                    <Button class="sapUiLargeMarginBegin" text="Add Author's " press="addauthors" />
                                                 </HBox>
-                                            </VBox>
+                                            </HBox>
                                         </HBox>
-                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
-                                            <VBox width="100%" alignItems="Stretch" justifyContent="Start">
-                                                <HBox alignItems="Center" justifyContent="Stretch" width="100%">
-                                                    <core:Icon src="sap-icon://add" width="130px" color="#031E48">
-                                                    </core:Icon>
-                                                    <VBox width="100%" alignItems="Stretch" justifyContent="Start">
-                                                        <Label text="2. Step : Browse for the 'word file' of abstract you would like to submit "/>
-                                                    </VBox>
-                                                </HBox>
-                                            </VBox>
-                                        </HBox>
-                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
-                                            <VBox width="100%" alignItems="Stretch" justifyContent="Start">
-                                                <HBox alignItems="Center" justifyContent="Stretch" width="100%">
+                                        <HBox alignItems="Stretch" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
                                                     <core:Icon src="sap-icon://upload" width="130px" color="#031E48">
                                                     </core:Icon>
-                                                    <VBox width="100%" alignItems="Stretch" justifyContent="Start">
-                                                        <Label text="3. Step :Upload the file "/>
-                                                    </VBox>
+                                                            <HBox width="100%" alignItems="Stretch" justifyContent="Stretch">
+                                                            <Label text="4. Step :Upload the file " class="sapUiLargeMarginEnd"/>
+                                                               <HBox width="100%" alignItems="End" justifyContent="End">
+                                                            <Button press="abstractvalidate" type="Default" text="SAVE ABSTRACT" tooltip="{i18n>Save}" />
+                                                        </HBox>
                                                 </HBox>
-                                                          <VBox>
-                                                  <HBox>
-                                                  <!-- fileType= "pdf" -->
-                                    <u:FileUploader id="fileUploader" uploadUrl="/TranskriptFolder" change="changefile" style="Emphasized"  tooltip="PDF DOSYASI SEÇİNİZ.." />
-                                   <Button text="Yükle" press="allResult" icon="sap-icon://upload"/>
-                                </HBox>
-                                </VBox>
-                                            </VBox>
-                                  
-                                        </HBox>
-                                        <HBox width="100%" alignItems="Center" justifyContent="End" class="sapUiTinyMarginTop">
-                                            <Button press="onSaveData" type="Default" text="SAVE ABSTRACT" tooltip="{i18n>Save}" />
                                         </HBox>
                                     </VBox>
                                 </VBox>
-
                             </content>
                         </Panel>
-                        <Panel width="auto" class="sapUiResponsiveMargin pnlcls" accessibleRole="Region">
+                        <Panel width="auto" id="panel3" class="sapUiResponsiveMargin pnlcls" accessibleRole="Region">
                             <headerToolbar>
                                 <Toolbar height="3rem">
                                     <Title text="FULLTEXT SUBMISSION(S)"/>
@@ -206,7 +216,6 @@
                                     <VBox alignItems="Stretch" justifyContent="Start" width="100%">
                                         <HBox alignItems="Center" justifyContent="Stretch" width="100%">
                                             <Label text="Fulltext - 1" width="130px" />
-
                                         </HBox>
                                         <HBox class="sapUiTinyMarginTop" alignItems="Center" justifyContent="Stretch" width="100%">
                                             <Label text="Submission Title" width="130px" />
@@ -243,7 +252,7 @@
 
                                         <HBox class="sapUiTinyMarginTop" width="100%" alignItems="Start" justifyContent="Stretch">
                                             <VBox width="100%" alignItems="Stretch" justifyContent="Start">
-                                                 <HBox alignItems="Center" justifyContent="Stretch" width="100%">
+                                                <HBox alignItems="Center" justifyContent="Stretch" width="100%">
                                                     <core:Icon src="sap-icon://download" width="130px" color="#031E48">
                                                     </core:Icon>
                                                     <VBox width="100%" alignItems="Stretch" justifyContent="Start">
@@ -251,7 +260,7 @@
                                                             <Label class="sapUiLargeMarginEnd" text="1. Step : Download the 'Template', prepare your abstract according to the Template "/>
                                                             <core:Icon src="sap-icon://doc-attachment" class="size1" color="#031E48">
                                                             </core:Icon>
-                                                            <Link text="Template"  href="http://localhost/symposiumapp/sysword/sistem.docx" />
+                                                            <Link text="Fulltext_Template" href="http://localhost/symposiumapp/sysword/Fulltext_Template.docx" />
                                                         </HBox>
                                                     </VBox>
                                                 </HBox>
@@ -287,7 +296,7 @@
                             </content>
                         </Panel>
                         <HBox>
-                            <Label text="Please consider that you can submit 1 fulltext for free.Each additional fulltext will be charged to be +190 Euro."/>
+                            <Label id="footerinfo" text="Please consider that you can submit 1 fulltext for free.Each additional fulltext will be charged to be +190 Euro."/>
                         </HBox>
                     </IconTabFilter>
                     <IconTabSeparator icon=""/>

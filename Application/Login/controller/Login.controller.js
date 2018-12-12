@@ -47,6 +47,7 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel', 'sap
         onLogin: function () {
             var _this = this
             if (oModel.oData.UserModel) {
+                window.location.reload();
             window.open("#/Dashboard/Home" + "", "_self");
             }
         },

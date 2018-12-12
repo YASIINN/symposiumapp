@@ -1,0 +1,83 @@
+  <Panel width="auto" class="sapUiResponsiveMargin pnlcls" id="panel1" accessibleRole="Region">
+                            <headerToolbar>
+                                <Toolbar height="3rem">
+                                    <Title text="CORRESSPONDING AUTHOR"/>
+                                </Toolbar>
+                            </headerToolbar>
+                            <content>
+                                <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                                    <VBox alignItems="Stretch" justifyContent="Start" width="100%">
+                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%">
+                                            <Label text="Name SURNAME" width="130px" />
+                                            <Label text=":" width="10px" />
+                                            <VBox width="100%">
+                                                <Input width="100%" value="{/author/ufname}" placeholder="Please write the corresponding author's Name SURNAME here"/>
+                                            </VBox>
+                                        </HBox>
+                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
+                                            <Text width="130px" text="Position / Title"/>
+                                            <Label text=":" width="10px" />
+                                            <VBox width="100%">
+                                                <Select forceSelection="false" id="postitle" width="100%" items="{
+											path: '/title'}">
+                                                    <core:Item key="{tid}" text="{titletxt}"/>
+                                                </Select>
+                                            </VBox>
+                                        </HBox>
+                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
+                                            <Label width="130px" text="University/Inst."/>
+                                            <Label text=":" width="10px" />
+                                            <VBox width="100%" alignItems="Stretch" justifyContent="Stretch">
+                                                <Input width="100%" value="{/author/uniorinst}" placeholder="Please write the name of your University or Institute or Organisation here"/>
+                                            </VBox>
+                                        </HBox>
+                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
+                                            <Text width="130px" text="Country"/>
+                                            <Label text=":" width="10px" />
+                                            <VBox width="100%">
+                                                <Select forceSelection="false" id="countryall" width="100%" showSecondaryValues= "true" items="{
+											path: '/AllCountry',
+										sorter: { path: 'name' }
+												}">
+                                                    <core:ListItem key="{key}" text="{name}" additionalText= "{key}"/>
+                                                </Select>
+                                            </VBox>
+                                        </HBox>
+
+                                        <HBox class="sapUiTinyMarginTop" width="100%" alignItems="Start" justifyContent="Stretch">
+                                            <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                                                <HBox alignItems="Center" justifyContent="Stretch" width="100%">
+                                                    <Text width="130px" text="Address"/>
+                                                    <Label text=":" width="10px" />
+                                                    <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                                                        <TextArea width="100%" value="{/author/addres}" placeholder="Please write the Corresponding Address of the corresponding author here" rows="3" />
+                                                    </VBox>
+                                                </HBox>
+                                            </VBox>
+                                        </HBox>
+                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
+                                            <Text width="130px" text="E-mail"/>
+                                            <Label text=":" width="10px" />
+                                            <VBox width="100%">
+                                                <Input value="{/author/email}" placeholder="Please write the e-mail of the corresponding author here"/>
+                                            </VBox>
+                                        </HBox>
+                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
+                                            <Text width="130px" text="Phone"/>
+                                            <Label text=":" width="10px" />
+                                            <VBox width="100%">
+                                                <MaskInput width="100%" mask = "+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC" id="pnmbr" placeholder = "Enter Phone number">
+                                                    <rules>
+                                                        <MaskInputRule maskFormatSymbol = "C"  regex = "[A-Z0-9]"/>
+                                                    </rules>
+                                                </MaskInput>
+                                                <!-- <Input value="+{/author/phone}" /> -->
+                                            </VBox>
+                                        </HBox>
+                                        <HBox width="100%" alignItems="Center" justifyContent="End" class="sapUiTinyMarginTop">
+                                            <Button press="uservalidate" type="Default" text="SAVE AUTHOR" tooltip="{i18n>Save}" />
+                                        </HBox>
+                                    </VBox>
+                                </VBox>
+                            </content>
+                        </Panel>

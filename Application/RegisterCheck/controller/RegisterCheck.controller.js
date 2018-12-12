@@ -70,6 +70,12 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel', 'sap
                 ulgnname: param[0].rtemail,
                 upass: param[0].rtpass,
                 mail: param[0].rtemail,
+                country: "",
+                tid: "1",
+                adress: "",
+                ftextquota: "0",
+                absquota: "0",
+                mainaut: "1",
             }
             UserService.userReq({ userdata: [userData], MN: "ADD", SN: "User" }).then(function (res) {
                 if (res == "SuccesAdd") {

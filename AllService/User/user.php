@@ -13,7 +13,10 @@ class User extends database
         }
         $getRegisterRows = $this->getrows("SELECT * FROM usertable u 
         INNER JOIN  titletable t ON u.tid=t.tid 
-        INNER JOIN authoritytable a ON u.uauth=a.atid WHERE $where
+        INNER JOIN authoritytable a ON u.uauth=a.atid
+        INNER JOIN phonetable p ON p.uid=u.usid
+        INNER JOIN passtable pa ON pa.uid=u.usid
+         WHERE $where
         ", $fparam);
         //  $this->select("usertable", $where, $fparam);
         if (count($getRegisterRows) == 0) {
@@ -36,6 +39,8 @@ class User extends database
                     "adress" => $getRegisterRows[$i]['adress'],
                     "ftextquota" => $getRegisterRows[$i]['ftextquota'],
                     "absquota" => $getRegisterRows[$i]['absquota'],
+                    "pnmbr" => $getRegisterRows[$i]['pnmbr'],
+                    "axp" => $getRegisterRows[$i]['pass'],
                 );
             }
             return $this->result;
@@ -43,7 +48,6 @@ class User extends database
     }
     public function ADD($userdata)
     {
-
         for ($i = 0; $i < count($userdata); $i++) {
             $data = array(
                 "usname" => $userdata[$i]['usname'],
@@ -51,39 +55,83 @@ class User extends database
                 "uauth" => $userdata[$i]['uauth'],
                 "uniorinst" => $userdata[$i]['uniorinst'],
                 "ulgnname" => $userdata[$i]['ulgnname'],
+                "country" => $userdata[$i]['country'],
+                "tid" => $userdata[$i]['tid'],
+                "adress" => $userdata[$i]['adress'],
+                "ftextquota" => $userdata[$i]['ftextquota'],
+                "absquota" => $userdata[$i]['absquota'],
+                "mainaut" => $userdata[$i]['mainaut'],
             );
             $addRows = $this->insert('usertable', $data);
-        }
-        if ($addRows) {
-            $userRows = $this->getrows("SELECT  * FROM usertable  where ulgnname=?", array($userdata[0]['ulgnname']));
+            $userRows = $this->getrows("SELECT  * FROM usertable  where ulgnname=?", array($userdata[$i]['ulgnname']));
             $uid = $userRows[0]['usid'];
-            $data = array(
-                "pass" => $userdata[0]['upass'],
-                "uid" => $uid
-            );
-            $addpassRows = $this->insert('passtable', $data);
-            if ($addpassRows) {
+
+            if ($addRows) {
                 $data = array(
-                    "mail" => $userdata[0]['mail'],
+                    "pass" => $userdata[$i]['upass'],
                     "uid" => $uid
                 );
-                $addmailRows = $this->insert('mailtable', $data);
-                if ($addmailRows) {
-                    $this->result = array("status" => "SuccesAdd", "usid" => $uid);
-                    return $this->result;
+                $addpassRows = $this->insert('passtable', $data);
+                if ($addpassRows) {
+                    $data = array(
+                        "mail" => $userdata[$i]['mail'],
+                        "uid" => $uid
+                    );
+                    $addmailRows = $this->insert('mailtable', $data);
+                    if ($addmailRows) {
+                        if (isset($userdata[0]['pnmbr'])) {
+                            $data = array(
+                                "pnmbr" => $userdata[$i]['pnmbr'],
+                                "uid" => $uid
+                            );
+                            $addphoneRows = $this->insert("phonetable", $data);
+                            if ($addphoneRows) {
+                                    $this->result[] = array("status" => "SuccesAdd", "usid" => $userRows);
+                            } else {
+                                $this->result = array("status" => "None");
+                            }
+                        } else {
+                            $this->result = array("status" => "SuccesAdd", "usid" => $uid);
+                        }
+                    } else {
+                        $this->result = array("status" => "None");
+                    }
                 } else {
                     $this->result = array("status" => "None");
-                    return $this->result;
                 }
+            } else {
+                $this->result = array("status" => "None");
+            }
+
+
+        }
+        return $this->result;
+
+    }
+    public function SET($userdata, $where, $param)
+    {
+        if (isset($_SESSION["UNM"])) {
+            for ($index = 0; $index < count($userdata); $index++) {
+                $data = array(
+                    "country" => $userdata[$index]['country'],
+                    "tid" => $userdata[$index]['tid'],
+                    "adress" => $userdata[$index]['adress'],
+                );
+                $upP = $this->update("usertable", $data, $where, array($param));
+            }
+            if ($upP) {
+                $this->result = array("status" => "SuccedUpdate");
+                return $this->result;
             } else {
                 $this->result = array("status" => "None");
                 return $this->result;
             }
-        } else {
-            $this->result = array("status" => "None");
-            return $this->result;
         }
     }
+
+
+
+
     public function GAUW($uwhere, $uparam, $mwhere, $mparam, $pwhere, $pparam)
     {
         if (isset($_SESSION["UNM"])) {
@@ -109,24 +157,6 @@ class User extends database
                     return $this->result;
                 }
             }
-        }
-    }
-    public function GETPU($pass)
-    {
-        if (isset($_SESSION["UNM"])) {
-            $upassrows = $this->getrows("SELECT  * FROM pass p
-            INNER JOIN user u on p.uid=u.uid
-             WHERE  pass=?", array($pass));
-            if (count($upassrows) == 0) {
-                $this->result = array("status" => "None");
-                return $this->result;
-            } else {
-                for ($i = 0; $i < count($upassrows); $i++) {
-                    $this->result[] = array("Status" => "Okey", "uid" => $upassrows[$i]['uid'], "ufnm" => $upassrows[$i]['ufnm'], "ulnm" => $upassrows[$i]["ulnm"], "unm" => $upassrows[$i]["unm"], "upnt" => $upassrows[$i]["upnt"], "usno" => $upassrows[$i]["usno"], "tid" => $upassrows[$i]["tid"], "uauthr" => $upassrows[$i]["uauthr"]);
-                }
-                return $this->result;
-            }
-
         }
     }
     public function SETQUOTA($param, $where, $userdata)

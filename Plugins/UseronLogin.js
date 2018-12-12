@@ -30,13 +30,15 @@ var UseronLogin = {
     },
     onUserControl: function (param) {
         var deferred = new Promise(function (resolve, reject) {
-            UserService.userReq({ where:"ulgnname=?" ,"param":[ param.ulgnname], "MN": "GET", 'SN': 'User' }).then(function (res) {
+            UserService.userReq({ where: "ulgnname=?", "param": [param.ulgnname], "MN": "GET", 'SN': 'User' }).then(function (res) {
                 if (res == "None") {
                     resolve(false);
                     sap.m.MessageToast.show("username or password is incorrect");
                 } else {
                     res.forEach(element => {
                         element.fullname = element.usname + " " + element.uslname;
+                        element.fullnametit = element.titletxt + " " + element.usname + " " + element.uslname;
+                        element.axp = btoa(element.axp)
                     });
                     oModel.setProperty("/UserModel", res);
                     localStorage.setItem("UNM", base64.objectEncode(res));
@@ -55,7 +57,7 @@ var UseronLogin = {
                 if (res) {
                     resolve(true)
                 } else {
-                    sap.m.MessageToast.show("Oturumunuz Düştü !");
+                    sap.m.MessageToast.show("Your Session is Lost!");
                     resolve(false)
                 }
             })
