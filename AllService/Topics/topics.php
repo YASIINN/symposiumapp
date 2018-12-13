@@ -2,43 +2,45 @@
 session_start();
 require_once('../dbclas/pdocls.php');
 header("Content-Type: application/json; charset=UTF-8");
-class Title extends database
+class Topics extends database
 {
     public $result = array();
-    public function GETTİTLE()
+    public function GETTOPİC()
     {
         if (isset($_SESSION["UNM"])) {
-            $titleRows = $this->select("titletable","1",array());
+            $titleRows = $this->select("topicstable", "1", array());
             if (count($titleRows) == 0) {
                 $this->result = array("status" => "None");
                 return $this->result;
             } else {
                 for ($i = 0; $i < count($titleRows); $i++) {
-                    $this->result[] = array("status" => "Okey", "tid" => $titleRows[$i]['tid'], "titletxt" => $titleRows[$i]['titletxt'], );
+                    $this->result[] = array("status" => "Okey", "tpid" => $titleRows[$i]['tpid'], "tptxt" => $titleRows[$i]['tptxt']);
                 }
                 return $this->result;
             }
         }
     }
-    public function DELTİTLE($where,$param){
+    public function DELTOPİC($where, $param)
+    {
         if (isset($_SESSION["UNM"])) {
-            $delrow = $this->delete("titletable", $where, array($param));
+            $delrow = $this->delete("topicstable", $where, array($param));
             if ($delrow) {
                 $this->result = array("status" => "SuccesDel");
             } else {
                 $this->result = array("status" => "None");
             }
+
         }
         return $this->result;
     }
-    public function EDİTTİTLE($tdata, $where, $param)
+    public function EDİTTOPİC($tdata, $where, $param)
     {
         if (isset($_SESSION["UNM"])) {
             for ($index = 0; $index < count($tdata); $index++) {
                 $data = array(
-                    "titletxt"=>$tdata[$index]['titletxt']
+                    "tptxt"=>$tdata[$index]['tptxt']
                 );
-                $upP = $this->update("titletable", $data, $where, array($param));
+                $upP = $this->update("topicstable", $data, $where, array($param));
             }
             if ($upP) {
                 $this->result = array("status" => "SuccedUpdate");
@@ -48,14 +50,14 @@ class Title extends database
         }
         return $this->result;
     }
-    public function ADDTİTLE($tdata)
+    public function ADDTOPİC($tdata)
     {
         if (isset($_SESSION["UNM"])) {
             for ($index = 0; $index < count($tdata); $index++) {
                 $data = array(
-                    "titletxt"=>$tdata[$index]['titletxt']
+                    "tptxt"=>$tdata[$index]['tptxt']
                 );
-                $add = $this->insert("titletable",$data);
+                $add = $this->insert("topicstable",$data);
             }
             if ($add) {
                 $this->result = array("status" => "SuccesAdd");

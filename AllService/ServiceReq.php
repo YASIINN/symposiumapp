@@ -39,17 +39,37 @@ if ($SN == "Session") {
     }
     echo json_encode($result);
 }
-if($SN=="UserMail"){
+if ($SN == "UserMail") {
     include("/UserMail/usermail.php");
     $usmail = new $SN();
     $result = $usmail->$MN($_POST['where']);
+    echo json_encode($result);
+}
+if ($SN == "Topics") {
+    include("/Topics/topics.php");
+    $topics = new $SN();
+    if ($MN == "DELTOPİC") {
+        $result = $topics->$MN($_POST['where'], $_POST['param']);
+    } else if ($MN == "GETTOPİC") {
+        $result = $topics->$MN();
+    } else if ($MN == "EDİTTOPİC") {
+        $result = $topics->$MN($_POST['tdata'], $_POST['where'], $_POST['param']);
+    } else if ($MN == "ADDTOPİC") {
+        $result = $topics->$MN($_POST['tdata']);
+    }
     echo json_encode($result);
 }
 if ($SN == "User") {
     include("/User/user.php");
     $user = new $SN();
     if ($MN == "GET") {
-        $result = $user->$MN($_POST['where'], $_POST['param']);
+        $result;
+        if (isset($_POST['param'])) {
+            $result = $_POST['param'];
+        } else {
+            $result = "not";
+        }
+        $result = $user->$MN($_POST['where'], $result);
     } else if ($MN == "ADD") {
         $result = $user->$MN($_POST['userdata']);
     } else if ($MN == "GAUW") {
@@ -63,6 +83,14 @@ if ($SN == "User") {
     }
     echo json_encode($result);
 }
+if($SN=="GeneralSettings"){
+    include("/GeneralSettings/generalsettings.php");
+    $gsettings = new $SN();
+    if($MN=="GETGSETTİNGS"){
+        $result = $gsettings->$MN();
+    }
+    echo json_encode($result);
+}
 if ($SN == "Login") {
     include("/Login/login.php");
     $login = new $SN();
@@ -72,7 +100,15 @@ if ($SN == "Login") {
 if ($SN == "Title") {
     include("/Title/title.php");
     $title = new $SN();
-    $result = $title->$MN();
+    if ($MN == "DELTİTLE") {
+        $result = $title->$MN($_POST['where'], $_POST['param']);
+    } else if ($MN == "GETTİTLE") {
+        $result = $title->$MN();
+    }else if($MN=="EDİTTİTLE"){
+        $result = $title->$MN($_POST['tdata'], $_POST['where'], $_POST['param']);
+    } else if($MN=="ADDTİTLE"){
+        $result = $title->$MN($_POST['tdata']);
+    }
     echo json_encode($result);
 }
 if ($SN == "File") {
@@ -111,10 +147,10 @@ if ($SN == "SystemSettings") {
     }
     echo json_encode($result);
 }
-if($SN=="Relation"){
+if ($SN == "Relation") {
     include("/Relation/relation.php");
     $relation = new $SN();
-    if($MN=="ADD"){
+    if ($MN == "ADD") {
         $result = $relation->$MN($_POST['data']);
     }
     echo json_encode($result);

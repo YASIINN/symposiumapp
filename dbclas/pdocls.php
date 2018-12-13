@@ -40,39 +40,7 @@ class database
             echo "Hata :" . $e->getMessage();
         }
     }
-    public function selecttojoin($table, $tablerelation, array $params,$where="1")
-    {
-        try {
-            $query=$this->jtable($table,$tablerelation);
-            $sql="SELECT * FROM".$query."WHERE"." ".$where;
-            // $sql = "SELECT * FROM `$table` WHERE $where ";
-            $stmt = $this->datab->prepare($sql);
-            $stmt->execute($params);
-            return $stmt->fetchAll();
-        } catch (PDOException $e) {
-            echo "Hata :" . $e->getMessage();
-        }
-    }
-    public function jtable($table, $tablerelation)
-    {
-        $res = "";
-        for ($i = 0; $i < count($table); $i++) {
-            $t = "t" . $i;
-            if ($i == 0) {
-                $res .= " " . $table[$i] . " " . $t . "  " . "INNER JOIN";
-            } else if ($i == count($table) - 1) {
-                $prev = explode("t", $t);
-                $prev = $prev[1] - 1;
-                $res .= " " . $table[$i] . " " . $t . " ON" . " " . $t . '.' . $tablerelation[$i] . '=' . "t" . $prev . '.' . $tablerelation[$i-1] . "  ";
-            } else {
-                $prev = explode("t", $t);
-                $prev = $prev[1] - 1;
-                $res .= " " . $table[$i] . " " . $t . " ON" . " " . $t . '.' . $tablerelation[$i] . '=' . "t" . $prev . '.' . $tablerelation[$i-1] . "  " . "INNER JOIN";
-            }
 
-        }
-        return $res;
-    }
     public function getrows($query, $params = array())
     {
         try {
@@ -117,5 +85,15 @@ class database
         } catch (PDOException $e) {
             echo "Kayıt Silinemedi Hata :" . $e->getMessage();
         }
+    }
+    public function DoOrDie($bool) {
+        if ($bool) {
+            $this->datab->commit();
+        } else {
+            $this->datab->rollback();
+        }
+    }
+    public function beginTransaction() {
+        $this->datab->beginTransaction();
     }
 } ?>

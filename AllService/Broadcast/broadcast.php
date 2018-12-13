@@ -17,17 +17,22 @@ class Broadcast extends database
                     "abtype" => $broadcastdata[$i]['abtype'],
                     "fileid" => $broadcastdata[$i]['fileid'],
                 );
+                if(null !==$this->beginTransaction()){
+                    $this->beginTransaction();
+                }
                 $addRows = $this->insert('broadcasttable', $data);
             }
             if ($addRows) {
                 $getbroadcast=$this->select("broadcasttable","brdcastname=?",array($name));
                 $this->result[] = array("status" => "SuccesAdd","btid"=>$getbroadcast[0]['btid']);
-                return $this->result;
+                 $this->result;
+                 $this->DoOrDie(true);
             } else {
                 $this->result[] = array("status" => "None");
-                return $this->result;
+                 $this->result;
+                 $this->DoOrDie(false);
             }
-
         }
+        return $this->result;
     }
 } ?>

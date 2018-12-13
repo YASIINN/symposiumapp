@@ -1,4 +1,3 @@
-// jQuery.sap.require("schapp.Application.Dashboard.ProjectSelect.FileUpload.fileupload");
 var authorpaneldialog = ""
 var authorarray = [];
 var authorpanel = {

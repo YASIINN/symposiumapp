@@ -13,16 +13,22 @@ class Phone extends database
                     "pnmbr" => $pdata[$i]['pnmbr'],
                     "uid" => $pdata[$i]['uid']
                 );
+                if(null !==$this->beginTransaction()){
+                    $this->beginTransaction();
+                }
                 $addRows = $this->insert('phonetable', $data);
             }
             if ($addRows) {
                 $this->result = array("status" => "SuccesAdd");
-                return $this->result;
+                $this->result;
+                $this->DoOrDie(true);
             } else {
                 $this->result = array("status" => "None");
-                return $this->result;
+                $this->result;
+                $this->DoOrDie(false);
             }
 
         }
+        return $this->result;
     }
 } ?>

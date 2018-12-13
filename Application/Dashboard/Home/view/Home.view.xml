@@ -103,16 +103,27 @@
 
                         <Panel width="auto" id="panel2" class="sapUiResponsiveMargin pnlcls" accessibleRole="Region">
                             <headerToolbar>
+
+                       
                                 <Toolbar height="3rem">
                                     <Title text="ABSTRACT SUBMISSION(S)"/>
                                     <Label text="You can submit up to 3 abstracts for free" />
+                                  
                                 </Toolbar>
+                                
                             </headerToolbar>
+                                    <HBox alignItems="End" justifyContent="End">
+                                    <Text text="You have uploaded" class="sapUiTinyMarginEnd" />
+                                    <Text text="{/UserModel/0/absquota}" class="sapUiTinyMarginEnd"/>
+                                    <Text text=" pieces in total" class="sapUiTinyMarginEnd"/>
+                                    </HBox>
+                                    <!-- You have uploaded 2 pieces in total -->
+                           
                             <content>
                                 <VBox width="100%" alignItems="Stretch" justifyContent="Start">
                                     <VBox alignItems="Stretch" justifyContent="Start" width="100%">
                                         <HBox alignItems="Center" justifyContent="Stretch" width="100%">
-                                            <Label text="Abstract - 1" width="130px" />
+                                            <Label text="Abstract" width="130px" />
 
                                         </HBox>
                                         <HBox class="sapUiTinyMarginTop" alignItems="Center" justifyContent="Stretch" width="100%">
@@ -135,9 +146,10 @@
                                             <Label width="130px" text="Topic"/>
                                             <Label text=":" width="10px" />
                                             <VBox width="100%" alignItems="Stretch" justifyContent="Stretch">
-                                                <Select forceSelection="false" width="100%" id="topicid">
-                                                    <core:Item key="1" text="titletxt"/>
-                                                    <core:Item key="2" text="Specific"/>
+                                                   <Select forceSelection="false" width="100%" id="topicid"  items="{
+											path: '/topics'
+												}" >
+                                                    <core:Item key="{tpid}" text="{tptxt}"/>
                                                 </Select>
                                             </VBox>
                                         </HBox>
@@ -208,7 +220,7 @@
                             <headerToolbar>
                                 <Toolbar height="3rem">
                                     <Title text="FULLTEXT SUBMISSION(S)"/>
-                                    <Label text="You can submit 1 fulltext for free.Each additional onew will be charged to be +190 Euro." />
+                                    <Label id="footeuro" text="You can submit 1 fulltext for free.Each additional onew will be charged to be +190 Euro." />
                                 </Toolbar>
                             </headerToolbar>
                             <content>
@@ -236,9 +248,10 @@
                                             <Label width="130px" text="Topic"/>
                                             <Label text=":" width="10px" />
                                             <VBox width="100%" alignItems="Stretch" justifyContent="Stretch">
-                                                <Select forceSelection="false" width="100%">
-                                                    <core:Item key="{tid}" text="titletxt"/>
-                                                    <core:Item key="{tid}" text="Specific"/>
+                                                <Select forceSelection="false"  width="100%"  items="{
+											path: '/topics'
+												}" >
+                                                    <core:Item key="{tpid}" text="{tptxt}"/>
                                                 </Select>
                                             </VBox>
                                         </HBox>

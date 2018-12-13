@@ -13,13 +13,19 @@ class Relation extends database
                     "usid" => $data[$i]['usid'],
                     "btid" => $data[$i]['btid'],
                 );
+                // if(null !==$this->beginTransaction()){
+                //     $this->beginTransaction();
+                // }
                 $addRows = $this->insert('autrelbrodtable', $ardata);
             }
             if ($addRows) {
-                return $this->result = array("status" => "SuccesAdd");
+                 $this->result = array("status" => "SuccesAdd");
+                //  $this->DoOrDie(true);
             } else {
-                return $this->result = array("status" => "None");
+                 $this->result = array("status" => "None");
+                //  $this->DoOrDie(false);
             }
         }
+        return $this->result ;
     }
 } ?>

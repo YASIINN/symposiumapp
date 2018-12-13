@@ -10,7 +10,7 @@ class UserMail extends database
         if (isset($_SESSION["UNM"])) {
             $mailrows = $this->select("mailtable",$where,array());
             if (count($mailrows) == 0) {
-                $this->result = array("status" => "None");
+                $this->result[] = array("status" => "None");
                 return $this->result;
             } else {
                 for ($i = 0; $i < count($mailrows); $i++) {

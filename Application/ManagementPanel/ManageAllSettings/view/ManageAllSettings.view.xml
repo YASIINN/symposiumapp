@@ -2,55 +2,113 @@
     xmlns:mvc="sap.ui.core.mvc" 
     xmlns:core="sap.ui.core" 
     xmlns="sap.m">
-    <Table id="LessonOnProject" inset="false" items="{
-			path: '/LessonOnProject'
-		}">
-        <headerToolbar>
-            <Toolbar>
-                <content>
-                    <Title text="Projeler" level="H2"/>
-                    <ToolbarSpacer />
-                </content>
-            </Toolbar>
-        </headerToolbar>
-        <infoToolbar>
-        </infoToolbar>
-        <columns>
-            <Column width="12em">
-                <Text text="Proje ID" />
-            </Column>
-            <Column width="12em" visible="true" id="Meid">
-                <Text text="Proje Öneri Sahibi" />
-            </Column>
-            <Column minScreenWidth="Tablet">
-                <Text text="Proje Adı" />
-            </Column>
-            <Column minScreenWidth="Desktop">
-                <Text text="Proje İçeriği" />
-            </Column>
-            <Column minScreenWidth="Desktop">
-                <Text text="Proje Teknolojileri" />
-            </Column>
+       <Page showHeader="false" enableScrolling="true">
+        <content>
+            <IconTabBar id="idIconTabBarSeparatorNoIcon" select="changekey" expanded="true" class="sapUiResponsiveContentPadding">
+                <items>
+                    <IconTabFilter key="general" icon="sap-icon://action-settings" text="General Settings " iconColor="Positive" count="1">
+                     <Text text="Başlangıç Tarihi" />
+                     	<DatePicker
+			            id="DP4"
+                        valueFormat="dd-MM-yyyy"
+			            displayFormat="dd-MM-yyyy"
+		            	value="{path:'/generalsettings/0/gsbegdt'}"
+			class="sapUiSmallMarginBottom"/>   
+                    <Text text="Bitiş Tarihi" />
+                         	<DatePicker
+			            id="DP5"
+                        valueFormat="dd-MM-yyyy"
+			            displayFormat="dd-MM-yyyy"
+		            	value="{path:'/generalsettings/0/gsenddt'}"
+			class="sapUiSmallMarginBottom"/>   
+                    </IconTabFilter>
+                    <IconTabSeparator icon=""/>
+                    <IconTabFilter key="topics" icon="sap-icon://list" iconColor="Natural" text="Topic Settings" count="2">
+                        <Button text="Add New Topic"  type="Transparent"  icon="sap-icon://add" press="addtopic" />
+                     <Table id="topicstable" inset="false" items="{
+                                            path: '/edittopics'
+                                        }">
+                            <infoToolbar>
+                                <Toolbar active="true">
+                                    <Label text="list of topics in the system"/>
+                                </Toolbar>
+                            </infoToolbar>
+                            <columns>
+                                <Column width="3rem">
+                                    <Text text="Topic Name" />
+                                </Column>
+                                       <Column width="3rem">
+                                             </Column>
 
-            <Column minScreenWidth="Desktop">
-                <Text text="Proje Dönemi" />
-            </Column>
-            <Column minScreenWidth="Desktop">
-                <Text text="Proje Yayınlanma" />
-            </Column>
-        </columns>
-        <items>
-            <ColumnListItem>
-                <cells>
-                    <Text text="{pjid}" />
-                    <Text text="{ufnm}" />
-                    <Text text="{pjnm}"/>
-                    <Text text="{pjcntn}"/>
-                    <Text text="{pjtechnology}" />
-                    <Text text="{pjperiod}" />
-                    <Text text="{pjselect}" />
-                </cells>
-            </ColumnListItem>
-        </items>
-    </Table>
+                                                     <Column width="10rem">
+                                             </Column>
+                                
+                            </columns>
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <ObjectIdentifier text="{tptxt}"/>
+                                        <HBox>
+                                        <Button type="Transparent" icon="sap-icon://delete" tooltip="Delete" press="deletetopic"/>
+                                         <Button type="Transparent" icon="sap-icon://edit" tooltip="Edit" press="setvisible"/>
+                                         </HBox>
+                                         <HBox width="100%" alignItems="Stretch" justifyContent="Stretch">
+                                        <Input value="{tptxt}" width="500px" enabled="false" visible="false" />
+                                          <Button type="Transparent" icon="sap-icon://save" tooltip="Save" text="Click here to save the change" press="edittopic" visible="false"/>
+                                         </HBox>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </IconTabFilter>
+                    <IconTabSeparator icon=""/>
+                          <IconTabFilter key="titles" icon="sap-icon://key-user-settings" iconColor="Positive" text="Title Settings" count="3">
+                                            <Button text="Add New Title"  type="Transparent"  icon="sap-icon://add" press="addtitle" />
+                     <Table id="titlestable" inset="false" items="{
+                                            path: '/titleset'
+                                        }">
+                            <infoToolbar>
+                                <Toolbar active="true">
+                                    <Label text="list of title in the system"/>
+                                </Toolbar>
+                            </infoToolbar>
+                            <columns>
+                                <Column width="3rem">
+                                    <Text text="Title Name" />
+                                </Column>
+                                       <Column width="3rem">
+                                             </Column>
+
+                                                     <Column width="10rem">
+                                             </Column>
+                                
+                            </columns>
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <ObjectIdentifier text="{titletxt}"/>
+                                        <HBox>
+                                        <Button type="Transparent" icon="sap-icon://delete" tooltip="Delete" press="deltitle"/>
+                                         <Button type="Transparent" icon="sap-icon://edit" tooltip="Edit" press="setvisible"/>
+                                         </HBox>
+                                         <HBox width="100%" alignItems="Stretch" justifyContent="Stretch">
+                                        <Input value="{titletxt}" width="500px" enabled="false" visible="false" />
+                                          <Button type="Transparent" icon="sap-icon://save" tooltip="Save" text="Click here to save the change" press="edittitle" visible="false"/>
+                                         </HBox>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                  
+                  
+                  
+                    </IconTabFilter>
+                    <IconTabSeparator icon=""/>
+                           <IconTabFilter key="files" icon="sap-icon://attachment" iconColor="Natural" text="Template Folder Settings" count="4">
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+        </content>
+    </Page>
+    
 </mvc:View>

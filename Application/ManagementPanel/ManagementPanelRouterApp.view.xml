@@ -11,7 +11,7 @@
                         <OverflowToolbarLayoutData priority="NeverOverflow" shrinkable="true"/>
                     </layoutData>
                     <items>
-                        <IconTabFilter key="ManagementPanel/ManageAllSettings" text="İlgili Projeler"></IconTabFilter>
+                        <IconTabFilter key="ManagementPanel/ManageAllSettings" text="SystemSettings"></IconTabFilter>
                     </items>
                 </IconTabHeader>
                 <ToolbarSpacer>
@@ -23,15 +23,15 @@
                         <OverflowToolbarLayoutData priority="NeverOverflow"/>
                     </layoutData>
                 </HBox>
-                <MenuButton text="{/UserModel/0/fullname}" type="Transparent" class="profile-button">
+                <MenuButton text="{/UserModel/0/fullnametit}" type="Transparent" class="profile-button">
                     <layoutData>
                         <OverflowToolbarLayoutData priority="NeverOverflow"/>
                     </layoutData>
                     <menu>
                         <Menu>
                             <items>
-                                <MenuItem press="onClose" text="Çıkış Yap"/>
-                                <MenuItem press="onGoHome" text="Ana Sayfa"/>
+                                <MenuItem press="onClose" text="Log Out"/>
+                                <MenuItem press="onGoHome" text="Dashboard"/>
                             </items>
                         </Menu>
                     </menu>

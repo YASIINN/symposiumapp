@@ -16,15 +16,21 @@ class Register extends database
                 "rtlcode" => $registerdata[$i]['rtlcode'],
                 "rauth" => $registerdata[$i]['rauth'],
             );
+            if(null !==$this->beginTransaction()){
+                $this->beginTransaction();
+            }
             $addRows = $this->insert('registertemptable', $data);
         }
         if ($addRows) {
             $this->result[] = array("status" => "SuccesAdd");
-            return $this->result;
+             $this->result;
+             $this->DoOrDie(true);
         } else {
             $this->result = array("status" => "None");
-            return $this->result;
+             $this->result;
+             $this->DoOrDie(false);
         }
+        return $this->result;
     }
     public function GET($where, $param)
     {
@@ -35,24 +41,31 @@ class Register extends database
         $getRegisterRows = $this->select("registertemptable",$where,$fparam);
         if (count($getRegisterRows) == 0) {
             $this->result = array("status" => "None");
-            return $this->result;
+             $this->result;
         } else {
             for ($i = 0; $i < count($getRegisterRows); $i++) {
                 $this->result[] = array("status" => "Okey", "rtid" => $getRegisterRows[$i]['rtid'], "rtname" => $getRegisterRows[$i]['rtname'], "rtlname" => $getRegisterRows[$i]["rtlname"], "rtemail" => $getRegisterRows[$i]["rtemail"], "rtuniinst" => $getRegisterRows[$i]["rtuniinst"], "rtpass" => $getRegisterRows[$i]["rtpass"], "rtlcode" => $getRegisterRows[$i]['rtlcode'],'rauth'=>$getRegisterRows[$i]['rauth']);
             }
-            return $this->result;
+             $this->result;
         }
+        return $this->result;
     }
     public function DEL($where, $param)
     {
+        if(null !==$this->beginTransaction()){
+            $this->beginTransaction();
+        }
         $delete =$this->delete("registertemptable",$where,array($param));
         if ($delete) {
             $this->result = array("status" => "SuccesDel");
-            return $this->result;
+             $this->result;
+             $this->DoOrDie(true);
         } else {
             $this->result = array("status" => "None");
-            return $this->result;
+             $this->result;
+             $this->DoOrDie(false);
         }
+        return $this->result;
     }
     public function DELALL()
     {
