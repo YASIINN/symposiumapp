@@ -104,12 +104,19 @@
                                     </VBox>
                                 </HBox>
                                 <HBox alignItems="End" justifyContent="End">
+                                   <Button type="Transparent" icon="sap-icon://edit" tooltip="Edit File Name İn System" press="editfilevisible"/>
                                     <Button type="Transparent" icon="sap-icon://delete" tooltip="Delete System Template File" press="delfile"/>
                                 </HBox>
 
                             </CustomListItem>
                         </List>
+                
+                        <HBox alignItems="Stretch" justifyContent="Stretch" id="efnamehbox" visible="false">
+                        <Input value="" placeholder="Enter  new file name" />
+                        <Button icon="sap-icon://save" tooltip="Click here to save the change" press="editfile"  id="editfnamebtn" type="Transparent" />
+                        </HBox>
                     </IconTabFilter>
+
                 </items>
             </IconTabBar>
         </content>

@@ -15,11 +15,12 @@ $db = new database("root", "", "localhost", "symposiumapp");
 // else{
 //     echo "adasdsa";
 // }
-if(file_exists("../sysword/sistem.docx")){
-    echo "sildim";
-    unlink("../sysword/sistem.docx");
-}else{
-    echo "dosya yok";
-}
+// if(file_exists("../sysword/sistem.docx")){
+//     echo "sildim";
+//     unlink("../sysword/sistem.docx");
+// }else{
+//     echo "dosya yok";
+// }
+rename("../sysword/asdsad.docx","../sysword/fff.docx");
 
 ?>

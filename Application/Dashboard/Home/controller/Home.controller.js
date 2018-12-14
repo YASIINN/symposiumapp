@@ -230,6 +230,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                 UserService.userReq({ MN: "SET", SN: "User", where: "usid=?", userdata: userdata, param: oModel.oData.UserModel[0].usid }).then(function (res) {
                     if (res == "SuccedUpdate") {
                         sap.m.MessageToast.show("Your Transaction Took Place With Success");
+                        delete oModel.oData.authorsuser
+                        oModel.setProperty("/fdata",[])
                         _this.byId("titleid").setValue("");
                         _this.byId("oralid").setSelected(false)
                         _this.byId("posterid").setSelected(false)

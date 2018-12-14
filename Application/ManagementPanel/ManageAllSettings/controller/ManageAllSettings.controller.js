@@ -8,6 +8,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
         onInit: function () {
             var _this = this;
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            _this.getgeneralsettings();
             oRouter.getRoute("ManagementPanel/ManageAllSettings").attachPatternMatched(_this.onBeforeShow, _this);
         },
         getalltopic: function () {
@@ -47,9 +48,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                     CreateComponent.hideBusyIndicator();
                 }
             })
-        },
-        addfile:function(){
-
         },
         edittopic: function (oEvent) {
             var _this = this
@@ -182,6 +180,18 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                     _this.getalltopic();
                 })
             }
+        },
+        editfilevisible: function (oEvent) {
+            var _this = this
+            oEvent.oSource._getBindingContext().sPath
+            if(!_this.byId("efnamehbox").getVisible()){
+                _this.byId("efnamehbox").setVisible(true);
+            }else{
+                _this.byId("efnamehbox").setVisible(false);
+            }
+        },
+        editfile:function(oEvent){
+
         },
         getalltitles: function (oEvent) {
             PluginService.getPlugin({ SN: "Title", MN: "GETTİTLE" }).then(function (res) {

@@ -19,7 +19,8 @@
                             <OverflowToolbarLayoutData priority="NeverOverflow" shrinkable="true"/>
                         </layoutData>
                         <items>
-                            <IconTabFilter text="HomePage"></IconTabFilter>
+                            <IconTabFilter key="home" text="HomePage"></IconTabFilter>
+                            <IconTabFilter key="myarticle" text="My Articles"></IconTabFilter>
                         </items>
                     </IconTabHeader>
                     <ToolbarSpacer>

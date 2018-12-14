@@ -176,7 +176,7 @@
                                                                 path: '/authorsuser'
                                                             }" tokenUpdate="onRemoveAuthors">
                                                         <tokens>
-                                                            <Token key="{mail}" text="{usname}" />
+                                                            <Token key="{mail}" text="{ulgnname}" />
                                                         </tokens>
                                                     </MultiInput>
                                                     <Button class="sapUiLargeMarginBegin" text="Add Author's " press="addauthors" />
@@ -204,6 +204,11 @@
                                     <Label id="footeuro" text="You can submit 1 fulltext for free.Each additional onew will be charged to be +190 Euro." />
                                 </Toolbar>
                             </headerToolbar>
+                            <HBox alignItems="End" justifyContent="End">
+                                    <Text text="You have uploaded" class="sapUiTinyMarginEnd" />
+                                    <Text text="{/UserModel/0/ftextquota}" class="sapUiTinyMarginEnd"/>
+                                    <Text text=" pieces in total" class="sapUiTinyMarginEnd"/>
+                                    </HBox>
                             <content>
                                 <VBox width="100%" alignItems="Stretch" justifyContent="Start">
                                     <VBox alignItems="Stretch" justifyContent="Start" width="100%">
@@ -278,7 +283,7 @@
                                                                 path: '/authorsuser'
                                                             }" tokenUpdate="onRemoveAuthors">
                                                         <tokens>
-                                                            <Token key="{mail}" text="{usname}" />
+                                                            <Token key="{mail}" text="{ulgnname}" />
                                                         </tokens>
                                                     </MultiInput>
                                                     <Button class="sapUiLargeMarginBegin" text="Add Author's " press="addauthors" />

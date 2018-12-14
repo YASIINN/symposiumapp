@@ -51,6 +51,17 @@ sap.ui.define(
                     keys: [version]
                   },
                 },
+                {
+                  pattern: "Dashboard/MyArticles",
+                  viewPath: "symposiumapp.Application.Dashboard.MyArticles.view",
+                  name: "Dashboard/MyArticles",
+                  view: "MyArticles",
+                  targetControl: "DashboardRouterId",
+                  transition: "show",
+                  cache: {
+                    keys: [version]
+                  },
+                },
                 ]
             },
             {

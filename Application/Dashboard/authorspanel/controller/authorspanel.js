@@ -1,3 +1,4 @@
+jQuery.sap.require("symposiumapp.Servicejs.PluginsService");
 var authorpaneldialog = ""
 var authorarray = [];
 var authorpanel = {
@@ -14,6 +15,7 @@ var authorpanel = {
                 stretchOnPhone: true,
                 showCloseButton: true,
                 beforeClose: function () {
+                    authorarray = [];
                     sap.ui.getCore().byId("postitle").destroy();
                     sap.ui.getCore().byId("countryall").destroy();
                     sap.ui.getCore().byId("pnmbr").destroy();
@@ -56,19 +58,19 @@ var authorpanel = {
                 }
             }).addStyleClass("sapUiNoMargin"))
         var panelarea = new sap.m.HBox({
-            width:"100%",
-            height:"100%",
+            width: "100%",
+            height: "100%",
             alignItems: sap.m.FlexAlignItems.Stretch,
             justifyContent: sap.m.FlexJustifyContent.Stretch,
             items: [
                 new sap.m.VBox({
-                    width:"100%",
-                    height:"100%",
+                    width: "100%",
+                    height: "100%",
                     alignItems: sap.m.FlexAlignItems.Stretch,
                     justifyContent: sap.m.FlexJustifyContent.Stretch,
                     items: [
                         new sap.m.HBox({
-                            width:"100%",
+                            width: "100%",
                             alignItems: sap.m.FlexAlignItems.Stretch,
                             justifyContent: sap.m.FlexJustifyContent.Stretch,
                             items: [
@@ -81,12 +83,12 @@ var authorpanel = {
                                     width: "10px"
                                 }),
                                 new sap.m.VBox({
-                                    width:"100%",
+                                    width: "100%",
                                     alignItems: sap.m.FlexAlignItems.Stretch,
                                     justifyContent: sap.m.FlexJustifyContent.Stretch,
                                     items: [
                                         new sap.m.Input({
-                                            width:"100%",
+                                            width: "100%",
                                             value: "{/author/ufname}",
                                             placeholder: "Please write the corresponding author's Name SURNAME here"
                                         })
@@ -94,7 +96,7 @@ var authorpanel = {
                                 })
                             ]
                         }),
-                           
+
                         new sap.m.HBox({
                             width: "100%",
                             alignItems: sap.m.FlexAlignItems.Stretch,
@@ -311,7 +313,6 @@ var authorpanel = {
     },
     createauthors: function (_this) {
         if (authorarray.length) {
-            debugger
             var result = authorarray.filter(function (x) {
                 if (x.mail != oModel.oData.author.email) {
                     return 0;
@@ -342,24 +343,31 @@ var authorpanel = {
                 sap.m.MessageToast.show("email address has already been added");
             }
         } else {
-            authorarray.push({
-                usname: oModel.oData.author.ufname.split(" ")[0],
-                uslname: oModel.oData.author.ufname.split(" ")[1],
-                uauth: 2,
-                uniorinst: oModel.oData.author.uniorinst,
-                ulgnname: oModel.oData.author.email,
-                upass: atob(oModel.oData.UserModel[0].axp),
-                mail: oModel.oData.author.email,
-                country: sap.ui.getCore().byId("countryall").getSelectedKey(),
-                tid: sap.ui.getCore().byId("postitle").getSelectedKey() == "" ? "1" : sap.ui.getCore().byId("postitle").getSelectedKey(),
-                adress: oModel.oData.author.addres,
-                ftextquota: "0",
-                absquota: "0",
-                mainaut: "0",
-                pnmbr: sap.ui.getCore().byId("pnmbr").getValue()
+            PluginService.getPlugin({ MN: "GETMAİL", SN: "UserMail", where: "mail IN" + "('" + oModel.oData.author.email + "')" }).then(function (res) {
+                if (res[0].status == "Okey") {
+                    sap.m.MessageToast.show("this email address is already registered in the system");
+                } else {
+                    authorarray.push({
+                        usname: oModel.oData.author.ufname.split(" ")[0],
+                        uslname: oModel.oData.author.ufname.split(" ")[1],
+                        uauth: 2,
+                        uniorinst: oModel.oData.author.uniorinst,
+                        ulgnname: oModel.oData.author.email,
+                        upass: atob(oModel.oData.UserModel[0].axp),
+                        mail: oModel.oData.author.email,
+                        country: sap.ui.getCore().byId("countryall").getSelectedKey(),
+                        tid: sap.ui.getCore().byId("postitle").getSelectedKey() == "" ? "1" : sap.ui.getCore().byId("postitle").getSelectedKey(),
+                        adress: oModel.oData.author.addres,
+                        ftextquota: "0",
+                        absquota: "0",
+                        mainaut: "0",
+                        pnmbr: sap.ui.getCore().byId("pnmbr").getValue()
+                    })
+                    oModel.setProperty("/authorsuser", authorarray);
+                    authorpanel.setauthormodel();
+                }
             })
-            oModel.setProperty("/authorsuser", authorarray);
-            authorpanel.setauthormodel();
+
         }
     },
     setauthormodel: function () {
