@@ -169,8 +169,9 @@
                                                 <HBox width="100%" alignItems="End" justifyContent="End">
                                                     <core:Icon src="sap-icon://doc-attachment" class="size1 sapUiTinyMarginEnd" color="#031E48">
                                                     </core:Icon>
-                                                    <Link text="Abstract_Template" href="http://localhost/symposiumapp/sysword/Abstract_Template.docx" />
+                                                    <Link text="{/gtfolder/0/gsfname}" href="/symposiumapp{/gtfolder/0/gsftemppath}" />
                                                 </HBox>
+                                            
                                             </HBox>
                                         </HBox>
                                         <HBox class="sapUiTinyMarginTop" alignItems="Stretch" justifyContent="Stretch" width="100%">
@@ -273,7 +274,7 @@
                                                             <Label class="sapUiLargeMarginEnd" text="1. Step : Download the 'Template', prepare your abstract according to the Template "/>
                                                             <core:Icon src="sap-icon://doc-attachment" class="size1" color="#031E48">
                                                             </core:Icon>
-                                                            <Link text="Fulltext_Template" href="http://localhost/symposiumapp/sysword/Fulltext_Template.docx" />
+                                                            <Link text="{/gtfolder/0/gsfname}" href="/symposiumapp{/gtfolder/0/gsftemppath}" />
                                                         </HBox>
                                                     </VBox>
                                                 </HBox>

@@ -114,7 +114,27 @@ if ($SN == "Title") {
 if ($SN == "File") {
     include("/File/file.php");
     $title = new $SN();
-    $result = $title->$MN($_FILES, $_POST['usid'], $_POST['fileext'], $_POST['size'], $_POST['type']);
+    // if($MN=="EDEL"){
+    //     $result = $title->$MN($_POST['where'], $_POST['param'], $_POST['fname'], $_POST['ext'],$_POST['which']);
+    // }else
+   
+   if($MN=="ADD"){
+        $result = $title->$MN($_FILES, $_POST['usid'], $_POST['fileext'], $_POST['size'], $_POST['type']);
+    }
+    echo json_encode($result);
+}
+if($SN=="GeneralSetFolder"){
+    include("/GeneralSetFolder/generalsetfolder.php");
+    $gsfolder = new $SN();
+    if($MN=="GET"){
+        $result = $gsfolder->$MN();
+    }
+    else if($MN=="GETWHERE")
+    {
+        $result = $gsfolder->$MN($_POST['where'],$_POST['param']);
+    } else if($MN=="DEL"){
+        $result = $gsfolder->$MN($_POST['where'],$_POST['param'],$_POST['fname']);
+    }
     echo json_encode($result);
 }
 if ($SN == "Register") {

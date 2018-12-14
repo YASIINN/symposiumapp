@@ -2,30 +2,20 @@
     xmlns:mvc="sap.ui.core.mvc" 
     xmlns:core="sap.ui.core" 
     xmlns="sap.m">
-       <Page showHeader="false" enableScrolling="true">
+    <Page showHeader="false" enableScrolling="true">
         <content>
             <IconTabBar id="idIconTabBarSeparatorNoIcon" select="changekey" expanded="true" class="sapUiResponsiveContentPadding">
                 <items>
                     <IconTabFilter key="general" icon="sap-icon://action-settings" text="General Settings " iconColor="Positive" count="1">
-                     <Text text="Başlangıç Tarihi" />
-                     	<DatePicker
-			            id="DP4"
-                        valueFormat="dd-MM-yyyy"
-			            displayFormat="dd-MM-yyyy"
-		            	value="{path:'/generalsettings/0/gsbegdt'}"
-			class="sapUiSmallMarginBottom"/>   
-                    <Text text="Bitiş Tarihi" />
-                         	<DatePicker
-			            id="DP5"
-                        valueFormat="dd-MM-yyyy"
-			            displayFormat="dd-MM-yyyy"
-		            	value="{path:'/generalsettings/0/gsenddt'}"
-			class="sapUiSmallMarginBottom"/>   
+                        <Text text="Starting Date" />
+                        <DatePicker id="DP4" valueFormat="dd-MM-yyyy" displayFormat="dd-MM-yyyy" value="{path:'/generalsettings/0/gsbegdt'}" class="sapUiSmallMarginBottom"/>
+                        <Text text="End Date" />
+                        <DatePicker id="DP5" valueFormat="dd-MM-yyyy" displayFormat="dd-MM-yyyy" value="{path:'/generalsettings/0/gsenddt'}" class="sapUiSmallMarginBottom"/>
                     </IconTabFilter>
                     <IconTabSeparator icon=""/>
                     <IconTabFilter key="topics" icon="sap-icon://list" iconColor="Natural" text="Topic Settings" count="2">
-                        <Button text="Add New Topic"  type="Transparent"  icon="sap-icon://add" press="addtopic" />
-                     <Table id="topicstable" inset="false" items="{
+                        <Button text="Add New Topic" type="Transparent" icon="sap-icon://add" press="addtopic" />
+                        <Table id="topicstable" inset="false" items="{
                                             path: '/edittopics'
                                         }">
                             <infoToolbar>
@@ -37,34 +27,34 @@
                                 <Column width="3rem">
                                     <Text text="Topic Name" />
                                 </Column>
-                                       <Column width="3rem">
-                                             </Column>
+                                <Column width="3rem">
+                                </Column>
 
-                                                     <Column width="10rem">
-                                             </Column>
-                                
+                                <Column width="10rem">
+                                </Column>
+
                             </columns>
                             <items>
                                 <ColumnListItem>
                                     <cells>
                                         <ObjectIdentifier text="{tptxt}"/>
                                         <HBox>
-                                        <Button type="Transparent" icon="sap-icon://delete" tooltip="Delete" press="deletetopic"/>
-                                         <Button type="Transparent" icon="sap-icon://edit" tooltip="Edit" press="setvisible"/>
-                                         </HBox>
-                                         <HBox width="100%" alignItems="Stretch" justifyContent="Stretch">
-                                        <Input value="{tptxt}" width="500px" enabled="false" visible="false" />
-                                          <Button type="Transparent" icon="sap-icon://save" tooltip="Save" text="Click here to save the change" press="edittopic" visible="false"/>
-                                         </HBox>
+                                            <Button type="Transparent" icon="sap-icon://delete" tooltip="Delete" press="deletetopic"/>
+                                            <Button type="Transparent" icon="sap-icon://edit" tooltip="Edit" press="setvisible"/>
+                                        </HBox>
+                                        <HBox width="100%" alignItems="Stretch" justifyContent="Stretch">
+                                            <Input value="{tptxt}" width="500px" enabled="false" visible="false" />
+                                            <Button type="Transparent" icon="sap-icon://save" tooltip="Save" text="Click here to save the change" press="edittopic" visible="false"/>
+                                        </HBox>
                                     </cells>
                                 </ColumnListItem>
                             </items>
                         </Table>
                     </IconTabFilter>
                     <IconTabSeparator icon=""/>
-                          <IconTabFilter key="titles" icon="sap-icon://key-user-settings" iconColor="Positive" text="Title Settings" count="3">
-                                            <Button text="Add New Title"  type="Transparent"  icon="sap-icon://add" press="addtitle" />
-                     <Table id="titlestable" inset="false" items="{
+                    <IconTabFilter key="titles" icon="sap-icon://key-user-settings" iconColor="Positive" text="Title Settings" count="3">
+                        <Button text="Add New Title" type="Transparent" icon="sap-icon://add" press="addtitle" />
+                        <Table id="titlestable" inset="false" items="{
                                             path: '/titleset'
                                         }">
                             <infoToolbar>
@@ -76,39 +66,53 @@
                                 <Column width="3rem">
                                     <Text text="Title Name" />
                                 </Column>
-                                       <Column width="3rem">
-                                             </Column>
+                                <Column width="3rem">
+                                </Column>
 
-                                                     <Column width="10rem">
-                                             </Column>
-                                
+                                <Column width="10rem">
+                                </Column>
+
                             </columns>
                             <items>
                                 <ColumnListItem>
                                     <cells>
                                         <ObjectIdentifier text="{titletxt}"/>
                                         <HBox>
-                                        <Button type="Transparent" icon="sap-icon://delete" tooltip="Delete" press="deltitle"/>
-                                         <Button type="Transparent" icon="sap-icon://edit" tooltip="Edit" press="setvisible"/>
-                                         </HBox>
-                                         <HBox width="100%" alignItems="Stretch" justifyContent="Stretch">
-                                        <Input value="{titletxt}" width="500px" enabled="false" visible="false" />
-                                          <Button type="Transparent" icon="sap-icon://save" tooltip="Save" text="Click here to save the change" press="edittitle" visible="false"/>
-                                         </HBox>
+                                            <Button type="Transparent" icon="sap-icon://delete" tooltip="Delete" press="deltitle"/>
+                                            <Button type="Transparent" icon="sap-icon://edit" tooltip="Edit" press="setvisible"/>
+                                        </HBox>
+                                        <HBox width="100%" alignItems="Stretch" justifyContent="Stretch">
+                                            <Input value="{titletxt}" width="500px" enabled="false" visible="false" />
+                                            <Button type="Transparent" icon="sap-icon://save" tooltip="Save" text="Click here to save the change" press="edittitle" visible="false"/>
+                                        </HBox>
                                     </cells>
                                 </ColumnListItem>
                             </items>
                         </Table>
-                  
-                  
-                  
+
+
+
                     </IconTabFilter>
                     <IconTabSeparator icon=""/>
-                           <IconTabFilter key="files" icon="sap-icon://attachment" iconColor="Natural" text="Template Folder Settings" count="4">
+                    <IconTabFilter key="files" icon="sap-icon://attachment" iconColor="Natural" text="Template Folder Settings" count="4">
+                        <List headerText="System Template Files" items="{path: '/gsetfolder'}">
+                            <CustomListItem>
+                                <HBox>
+                                    <core:Icon size="2rem" src="sap-icon://attachment-photo" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" />
+                                    <VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
+                                        <Link text="{gsfname}" target="{ProductPicUrl}" href="/symposiumapp{gsftemppath}"/>
+                                    </VBox>
+                                </HBox>
+                                <HBox alignItems="End" justifyContent="End">
+                                    <Button type="Transparent" icon="sap-icon://delete" tooltip="Delete System Template File" press="delfile"/>
+                                </HBox>
+
+                            </CustomListItem>
+                        </List>
                     </IconTabFilter>
                 </items>
             </IconTabBar>
         </content>
     </Page>
-    
+
 </mvc:View>

@@ -1,3 +1,5 @@
+jQuery.sap.require("symposiumapp.Application.ManagementPanel.ManageAllSettings.GeneralSetFolderService.generalsetfolder");
+jQuery.sap.require("symposiumapp.Application.ManagementPanel.ManageAllSettings.GeneralsettingsService.generalsettings");
 jQuery.sap.require("symposiumapp.ApiRequest.ApiRequset");
 jQuery.sap.require("symposiumapp.Servicejs.PluginsService");
 jQuery.sap.require("symposiumapp.Application.Dashboard.Home.folderservice.folder");
@@ -182,27 +184,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
             }
 
         },
-        setquota: function () {
-            // SystemService.getSystemSetting({
-            //     MN: "SETSYS", SN: "SystemSettings",
-            //     where: oModel.oData.UserModel[0].sid,
-            //     param: [{
-            //         pjscontenjan: oModel.oData.SysSettings[0].pjscontenjan,
-            //         emailaddres: oModel.oData.SysSettings[0].emailaddres,
-            //         emailpass: oModel.oData.SysSettings[0].emailpass,
-            //         notice: oModel.oData.SysSettings[0].notice,
-            //         quotaoneducator: oModel.oData.SysSettings[0].quotaoneducator
-            //     }]
-            // }).then(function (res) {
-            // UserService.userReq({ MN: "SET", SN: "User", "where": "usid=?", param: [oModel.oData.author.email] }).then(function (res) {
-            //     if (res == "ssss") {
 
-
-            //     } else {
-            //         CreateComponent.hideBusyIndicator()
-            //     }
-            // })
-        },
         getuser: function () {
             UserService.userReq({ MN: "GET", SN: "User", "where": "ulgnname=?", param: [oModel.oData.author.email] }).then(function (res) {
                 if (res == "None") {
@@ -331,18 +313,19 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
             // titleid oralid posterid topicid specificid
         },
         changetype: function (oEvent) {
-            debugger
             var _this = this
             switch (oEvent.oSource.getSelectedKey()) {
                 case "2":
                     _this.byId("panel3").setVisible(false)
                     _this.byId("panel2").setVisible(true)
                     _this.byId("footerinfo").setVisible(false)
+                   _this.getgeneralsettingsfolder("2");
                     break;
                 case "1":
                     _this.byId("panel2").setVisible(false)
                     _this.byId("panel3").setVisible(true)
                     _this.byId("footerinfo").setVisible(true)
+                    _this.getgeneralsettingsfolder("1");
                     break;
             }
         },
@@ -362,6 +345,22 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                 oModel.setProperty("/topics", res)
             })
         },
+        getgeneralsettings: function (oEvent) {
+            generalsettings.gsettingreq({ MN: "GETGSETTİNGS", SN: "GeneralSettings" }).then(function (res) {
+                res.forEach(element => {
+                    element.gsabsfoldertemp = element.gsabsfoldertemp
+                    element.gsftxtfoldertemp =  element.gsftxtfoldertemp
+                });
+                oModel.setProperty("/generalsettings", res);
+
+                CreateComponent.hideBusyIndicator()
+            })
+        },
+        getgeneralsettingsfolder: function (data) {
+            gsetfolder.gsetfolderreq({MN:"GETWHERE",SN:"GeneralSetFolder",where:"gsfabstype=?",param:data}).then(function (res) {
+                oModel.setProperty("/gtfolder", res);
+            })
+        },
         onBeforeShow: function () {
             var _this = this
             UseronLogin.onLogin().then(function (e) {
@@ -370,6 +369,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                 _this.getcountry();
                 _this.getPosition();
                 _this.BroadcastType();
+                _this.getgeneralsettings();
             })
         }
     })

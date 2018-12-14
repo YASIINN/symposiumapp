@@ -16,8 +16,6 @@ class GeneralSettings extends database
                 for ($i = 0; $i < count($gsettings); $i++) {
                     $this->result[] = array("status" => "Okey", "gsid" => $gsettings[$i]['gsid'], "gsbegdt" => $gsettings[$i]['gsbegdt'],
                     "gsenddt" => $gsettings[$i]['gsenddt'],
-                    "gsabsfoldertemp" => $gsettings[$i]['gsabsfoldertemp'],
-                    "gsftxtfoldertemp" => $gsettings[$i]['gsftxtfoldertemp'],
                 );
                 }
                 return $this->result;

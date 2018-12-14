@@ -1,6 +1,8 @@
+jQuery.sap.require("symposiumapp.Application.Dashboard.Home.folderservice.folder");
 jQuery.sap.require("symposiumapp.Servicejs.PluginsService");
+jQuery.sap.require("symposiumapp.Application.ManagementPanel.ManageAllSettings.GeneralSetFolderService.generalsetfolder");
 jQuery.sap.require("symposiumapp.Application.ManagementPanel.ManageAllSettings.GeneralsettingsService.generalsettings");
-sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/export/Spreadsheet", 'sap/ui/model/Filter'], function (Controller, Spreadsheet, Filter) {
+sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/Filter'], function (Controller, MessageBox, Filter) {
     "use strict";
     return Controller.extend("symposiumapp.Application.ManagementPanel.ManageAllSettings.controller.ManageAllSettings", {
         onInit: function () {
@@ -13,6 +15,40 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/export/Spreadsheet", 'sap/u
                 oModel.setProperty("/edittopics", res)
                 CreateComponent.hideBusyIndicator()
             })
+        },
+        delfile: function (oEvent) {
+            var _this = this
+            var event = oEvent.oSource._getBindingContext().sPath
+            MessageBox.warning(
+                "Are you sure you want to delete this file.",
+                {
+                    actions: [sap.m.MessageBox.Action.OK, sap.m.MessageBox.Action.CANCEL],
+                    styleClass: "sapUiSizeCompact",
+                    initialFocus: MessageBox.Action.CANCEL,
+                    onClose: function (sAction) {
+                        if (sAction == "OK") {
+                            _this.delfilesys(event);
+                        }
+                    }
+                }
+            );
+        },
+        delfilesys: function (data) {
+            var _this = this
+            CreateComponent.showBusyIndicator();
+            const lastindex = oModel.getProperty(data).gsftemppath.lastIndexOf("/");
+            const foldername = oModel.getProperty(data).gsftemppath.slice(lastindex).split("/")[1]
+            gsetfolder.gsetfolderreq({ MN: "DEL", SN: "GeneralSetFolder", where: "gsfid=?", param: oModel.getProperty(data).gsfid, fname: foldername }).then(function (res) {
+                if (res == "SuccesDel") {
+                    sap.m.MessageToast.show("Deletion took place successfully")
+                    _this.getgeneralsettingsfolder();
+                } else {
+                    sap.m.MessageToast.show("file not found or an error occurred please try again later");
+                    CreateComponent.hideBusyIndicator();
+                }
+            })
+        },
+        addfile:function(){
 
         },
         edittopic: function (oEvent) {
@@ -83,11 +119,26 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/export/Spreadsheet", 'sap/u
                     CreateComponent.showBusyIndicator()
                     _this.getgeneralsettings();
                     break;
+                case "files":
+                    CreateComponent.showBusyIndicator()
+                    _this.getgeneralsettingsfolder();
+                    break;
             }
+        },
+        getgeneralsettingsfolder: function (oEvent) {
+            gsetfolder.gsetfolderreq({ MN: "GET", SN: "GeneralSetFolder" }).then(function (res) {
+                oModel.setProperty("/gsetfolder", res);
+                CreateComponent.hideBusyIndicator()
+            })
         },
         getgeneralsettings: function (oEvent) {
             generalsettings.gsettingreq({ MN: "GETGSETTİNGS", SN: "GeneralSettings" }).then(function (res) {
+                res.forEach(element => {
+                    element.gsabsfoldertemp = element.gsabsfoldertemp
+                    element.gsftxtfoldertemp = element.gsftxtfoldertemp
+                });
                 oModel.setProperty("/generalsettings", res);
+
                 CreateComponent.hideBusyIndicator()
             })
         },
