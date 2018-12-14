@@ -14,6 +14,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
             _this.setauthormodel();
             e.getView().setModel(oModel),
                 sap.ui.core.UIComponent.getRouterFor(this).getRoute("Dashboard/Home").attachPatternMatched(e.onBeforeShow, e)
+            this.getView().byId('fileuploadftext').oBrowse.mProperties.text = "Browse"
+            this.getView().byId('fileUploader').oBrowse.mProperties.text = "Browse"
         },
         getcountry: function () {
             if (localStorage.getItem("country") == null) {
@@ -52,30 +54,47 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
             form_data.append('type', oModel.oData.fdata["type"]);
             folderservice.folderreq(form_data).then(function (res) {
                 if (res.status == "SuccesAdd") {
-                    _this.addbroadcast(res.fid);
+                    _this.addbroadcast(res.fid, _this.byId("absid").getSelectedKey());
                 } else {
                     CreateComponent.hideBusyIndicator()
                 }
             })
         },
-        addbroadcast: function (file) {
+        addbroadcast: function (file, key) {
             var _this = this
-            broadcastService.broadcastreq({
-                MN: "ADD", SN: "Broadcast", broadcastdata: [{
-                    brdcastname: _this.byId("titleid").getValue(),
-                    brdsubject: _this.byId("topicid").getSelectedItem().mProperties.text,
-                    abtype: _this.byId("absid").getSelectedKey(),
-                    brdcasttype: _this.byId("oralid").getSelected() == true ? "1" : "2",
-                    fileid: file
-                }]
-            }).then(function (res) {
-                if (res[0].status == "SuccesAdd") {
-                    _this.addauthorsuser(res[0].btid);
-                } else {
-                    CreateComponent.hideBusyIndicator()
-
-                }
-            })
+            if (key == "2") {
+                broadcastService.broadcastreq({
+                    MN: "ADD", SN: "Broadcast", broadcastdata: [{
+                        brdcastname: _this.byId("titleid").getValue(),
+                        brdsubject: _this.byId("topicid").getSelectedItem().mProperties.text,
+                        abtype: key,
+                        brdcasttype: _this.byId("oralid").getSelected() == true ? "1" : "2",
+                        fileid: file
+                    }]
+                }).then(function (res) {
+                    if (res[0].status == "SuccesAdd") {
+                        _this.addauthorsuser(res[0].btid);
+                    } else {
+                        CreateComponent.hideBusyIndicator()
+                    }
+                })
+            } else if (key == "1") {
+                broadcastService.broadcastreq({
+                    MN: "ADD", SN: "Broadcast", broadcastdata: [{
+                        brdcastname: _this.byId("fttid").getValue(),
+                        brdsubject: _this.byId("fttopicid").getSelectedItem().mProperties.text,
+                        abtype: key,
+                        brdcasttype: _this.byId("ftoid").getSelected() == true ? "1" : "2",
+                        fileid: file
+                    }]
+                }).then(function (res) {
+                    if (res[0].status == "SuccesAdd") {
+                        _this.addauthorsuser(res[0].btid);
+                    } else {
+                        CreateComponent.hideBusyIndicator()
+                    }
+                })
+            }
         },
         addauthorsuser: function (btid) {
             var _this = this
@@ -179,12 +198,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                     } else {
                         CreateComponent.hideBusyIndicator()
                     }
-                    debugger
                 })
             }
-
         },
-
         getuser: function () {
             UserService.userReq({ MN: "GET", SN: "User", "where": "ulgnname=?", param: [oModel.oData.author.email] }).then(function (res) {
                 if (res == "None") {
@@ -309,19 +325,41 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                 _this.addfile();
             }
         },
-        onsaveabstract: function () {
-            // titleid oralid posterid topicid specificid
+        fulltextvalidate: function () {
+            CreateComponent.showBusyIndicator()
+            var _this = this
+            if (_this.byId("fttid").getValue().trim() == "") {
+                CreateComponent.hideBusyIndicator()
+                sap.m.MessageToast.show("please fill in the Title field");
+            } else if (_this.byId("ftoid").getSelected() == false && _this.byId("ftpstrid").getSelected() == false) {
+                CreateComponent.hideBusyIndicator()
+                sap.m.MessageToast.show("please fill in the  Presentation Type field");
+            } else if (_this.byId("fttopicid").getSelectedKey() == "") {
+                CreateComponent.hideBusyIndicator()
+                sap.m.MessageToast.show("please fill in the Topic field");
+            }
+            else {
+                _this.addfile();
+            }
         },
         changetype: function (oEvent) {
             var _this = this
             switch (oEvent.oSource.getSelectedKey()) {
                 case "2":
+                    _this.byId("fileuploadftext").setValue(' ');
+                    delete oModel.oData.authorsuser
+                    delete oModel.oData.fdata
+                    oModel.refresh();
                     _this.byId("panel3").setVisible(false)
                     _this.byId("panel2").setVisible(true)
                     _this.byId("footerinfo").setVisible(false)
-                   _this.getgeneralsettingsfolder("2");
+                    _this.getgeneralsettingsfolder("2");
                     break;
                 case "1":
+                    _this.byId("fileUploader").setValue(' ');
+                    delete oModel.oData.authorsuser
+                    delete oModel.oData.fdata
+                    oModel.refresh();
                     _this.byId("panel2").setVisible(false)
                     _this.byId("panel3").setVisible(true)
                     _this.byId("footerinfo").setVisible(true)
@@ -331,7 +369,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
         },
         addauthors: function () {
             var _this = this
-            debugger
             jQuery.sap.require("symposiumapp.Application.Dashboard.authorspanel.controller.authorspanel");
             authorpanel.open(this)
         },
@@ -349,7 +386,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
             generalsettings.gsettingreq({ MN: "GETGSETTİNGS", SN: "GeneralSettings" }).then(function (res) {
                 res.forEach(element => {
                     element.gsabsfoldertemp = element.gsabsfoldertemp
-                    element.gsftxtfoldertemp =  element.gsftxtfoldertemp
+                    element.gsftxtfoldertemp = element.gsftxtfoldertemp
                 });
                 oModel.setProperty("/generalsettings", res);
 
@@ -357,7 +394,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
             })
         },
         getgeneralsettingsfolder: function (data) {
-            gsetfolder.gsetfolderreq({MN:"GETWHERE",SN:"GeneralSetFolder",where:"gsfabstype=?",param:data}).then(function (res) {
+            gsetfolder.gsetfolderreq({ MN: "GETWHERE", SN: "GeneralSetFolder", where: "gsfabstype=?", param: data }).then(function (res) {
                 oModel.setProperty("/gtfolder", res);
             })
         },
