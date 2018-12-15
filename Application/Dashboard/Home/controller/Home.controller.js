@@ -231,7 +231,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                     if (res == "SuccedUpdate") {
                         sap.m.MessageToast.show("Your Transaction Took Place With Success");
                         delete oModel.oData.authorsuser
-                        oModel.setProperty("/fdata",[])
+                        oModel.setProperty("/fdata", [])
                         _this.byId("titleid").setValue("");
                         _this.byId("oralid").setSelected(false)
                         _this.byId("posterid").setSelected(false)
@@ -403,12 +403,25 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
         onBeforeShow: function () {
             var _this = this
             UseronLogin.onLogin().then(function (e) {
-                _this.gettopics();
-                _this.checkfirslogin();
-                _this.getcountry();
-                _this.getPosition();
-                _this.BroadcastType();
-                _this.getgeneralsettings();
+                var startdate = new Date(moment(oModel.oData.generalsettings[0].gsbegdt, "DD-MM-YYYY"))
+                var enddate = new Date(moment(oModel.oData.generalsettings[0].gsenddt, "DD-MM-YYYY"))
+                var nowdate = new Date();
+                if (startdate < nowdate && startdate < enddate) {
+                    _this.gettopics();
+                    _this.checkfirslogin();
+                    _this.getcountry();
+                    _this.getPosition();
+                    _this.BroadcastType();
+                    _this.getgeneralsettings();
+                }
+                else {
+                    _this.byId("panel0").setVisible(false)
+                    _this.byId("panel1").setVisible(false)
+                    _this.byId("panel2").setVisible(false)
+                    _this.byId("panel3").setVisible(false)
+                    _this.byId("footerinfo").setVisible(false)
+                    _this.byId("panel00").setVisible(true);
+                }
             })
         }
     })

@@ -14,13 +14,13 @@
                             <OverflowToolbarLayoutData priority="NeverOverflow"/>
                         </layoutData>
                     </Button>
-                    <IconTabHeader showOverflowSelectList="true" backgroundDesign="Transparent" select="goHomePage" mode="Standard">
+                    <IconTabHeader showOverflowSelectList="true" backgroundDesign="Transparent" id="dashboardtab" select="goHomePage" mode="Standard">
                         <layoutData>
                             <OverflowToolbarLayoutData priority="NeverOverflow" shrinkable="true"/>
                         </layoutData>
                         <items>
-                            <IconTabFilter key="home" text="HomePage"></IconTabFilter>
-                            <IconTabFilter key="myarticle" text="My Articles"></IconTabFilter>
+                            <IconTabFilter key="Dashboard/Home" text="HomePage"></IconTabFilter>
+                            <IconTabFilter key="Dashboard/MyArticles" text="My Articles"></IconTabFilter>
                         </items>
                     </IconTabHeader>
                     <ToolbarSpacer>

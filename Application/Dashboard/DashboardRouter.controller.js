@@ -4,15 +4,23 @@ sap.ui.define(['sap/ui/core/mvc/Controller'], function (Controller) {
         onInit: function (oEvent) {
             var _this = this
             _this.getView().setModel(oModel);
+            _this.getView().addEventDelegate({
+                onBeforeShow: jQuery.proxy(function (evt) {
+                    _this.onBeforeShow(_this);
+                }, _this)
+            });
             UseronLogin.onLogin().then(function (res) {
-
                 oModel.oData.UserModel[0].uauth == "2" ? _this.byId("manage").setVisible(false) : _this.byId("manage").setVisible(true);
-                _this.getView().addEventDelegate({
-                    onBeforeShow: jQuery.proxy(function (evt) {
-                        _this.onBeforeShow(_this);
-                    }, _this)
-                });
+              
             })
+        },
+        onBeforeShow: function (argument) {
+            var _this = this
+            var selectView = _this.getOwnerComponent().getRouter();
+            selectView = selectView._oRouter._prevMatchedRequest
+            selectView = selectView.split("?")[0]
+            var IconTabFilter = _this.getView().byId("dashboardtab");
+            IconTabFilter.setSelectedKey(selectView);
         },
         onClose: function (oEvent) {
             var UserModel = {
@@ -24,15 +32,13 @@ sap.ui.define(['sap/ui/core/mvc/Controller'], function (Controller) {
             UseronLogin.outLogin();
         },
         goHomePage: function (oEvent) {
-            debugger
-            if (oEvent.oSource.getSelectedKey() == "myarticle") {
+            if (oEvent.oSource.getSelectedKey() == "Dashboard/MyArticles") {
                 window.open("#/Dashboard/MyArticles", "_self");
             } else {
                 window.open("#/Dashboard/Home", "_self");
             }
         },
         gomanage: function () {
-            debugger
             window.open("#/ManagementPanel/ManageAllSettings", "_blank");
         },
         DashboardrouterEvent: function (oEvent) {

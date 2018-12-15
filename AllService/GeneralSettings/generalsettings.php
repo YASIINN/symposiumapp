@@ -7,7 +7,6 @@ class GeneralSettings extends database
     public $result = array();
     public function GETGSETTİNGS()
     {
-        if (isset($_SESSION["UNM"])) {
             $gsettings = $this->select("generalsettings", "1", array());
             if (count($gsettings) == 0) {
                 $this->result = array("status" => "None");
@@ -20,7 +19,6 @@ class GeneralSettings extends database
                 }
                 return $this->result;
             }
-        }
     }
     // public function DELTOPİC($where, $param)
     // {

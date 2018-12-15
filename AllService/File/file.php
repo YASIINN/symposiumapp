@@ -12,7 +12,7 @@ class File extends database
             $filename = bin2hex(openssl_random_pseudo_bytes(10));
             $filename = $filename . "_" . $usid;
             move_uploaded_file($tempPath, "../allword/$filename.$fileext");
-            $fpath = "http://localhost/symposiumapp/allword/" . $filename;
+            $fpath = "'/allword/'" . $filename;
             $data = array(
                 "bcfsize" => $size,
                 "bcftype" => $type,

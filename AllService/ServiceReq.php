@@ -20,6 +20,8 @@ if ($SN == "Broadcast") {
     $broadcast = new $SN();
     if ($MN == "ADD") {
         $result = $broadcast->$MN($_POST['broadcastdata']);
+    }else if($MN=="GET"){
+        $result = $broadcast->$MN($_POST['where'],$_POST['param']);
     }
     echo json_encode($result);
 }
@@ -113,11 +115,7 @@ if ($SN == "Title") {
 }
 if ($SN == "File") {
     include("/File/file.php");
-    $title = new $SN();
-    // if($MN=="EDEL"){
-    //     $result = $title->$MN($_POST['where'], $_POST['param'], $_POST['fname'], $_POST['ext'],$_POST['which']);
-    // }else
-   
+    $title = new $SN();   
    if($MN=="ADD"){
         $result = $title->$MN($_FILES, $_POST['usid'], $_POST['fileext'], $_POST['size'], $_POST['type']);
     }
@@ -172,6 +170,8 @@ if ($SN == "Relation") {
     $relation = new $SN();
     if ($MN == "ADD") {
         $result = $relation->$MN($_POST['data']);
+    }else if($MN=="DEL"){
+        $result = $relation->$MN($_POST['where'],$_POST['param']);
     }
     echo json_encode($result);
 

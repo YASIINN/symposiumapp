@@ -13,17 +13,23 @@ class Relation extends database
                     "usid" => $data[$i]['usid'],
                     "btid" => $data[$i]['btid'],
                 );
-                // if(null !==$this->beginTransaction()){
-                //     $this->beginTransaction();
-                // }
                 $addRows = $this->insert('autrelbrodtable', $ardata);
             }
             if ($addRows) {
                  $this->result = array("status" => "SuccesAdd");
-                //  $this->DoOrDie(true);
             } else {
                  $this->result = array("status" => "None");
-                //  $this->DoOrDie(false);
+            }
+        }
+        return $this->result ;
+    }
+    public function DEL($where,$param){
+        if (isset($_SESSION["UNM"])) {
+            $del =$this->delete("autrelbrodtable",$where,array($param));
+            if($del){
+                $this->result = array("status" => "SuccesDel");
+            }else{
+                $this->result = array("status" => "None");
             }
         }
         return $this->result ;

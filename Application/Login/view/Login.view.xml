@@ -14,8 +14,17 @@
                             <Title text="Login"/>
                         </Toolbar>
                     </headerToolbar>
+                    <HBox alignItems="Start" justifyContent="Start">
+                        <Text text="The article upload process is between the specified dates" class="sapUiTinyMarginEnd" />
+                    </HBox>
+                    <HBox alignItems="Start" justifyContent="Start">
+                        <Text text="Starting Date :  {/generalsettings/0/gsbegdt}" class="sapUiTinyMarginEnd" />
+                    </HBox>
+                    <HBox alignItems="Start" justifyContent="Start">
+                        <Text text="End Date :  {/generalsettings/0/gsenddt}" class="sapUiTinyMarginEnd" />
+                    </HBox>
                     <content>
-                        <FlexBox class="pageBGImage loginWrapper" direction="Column" height="100%" alignItems="Center" justifyContent="Center">
+                        <FlexBox class="pageBGImage loginWrapper sapUiLargeMarginTop" direction="Column" height="100%" alignItems="Center" justifyContent="Center">
                             <items>
                                 <FlexBox class="login-content" direction="Column" alignItems="Center" justifyContent="Stretch">
                                     <items>
@@ -41,7 +50,7 @@
                                                     </VBox>
                                                     <VBox width="100%" alignItems="End" justifyContent="Stretch" class="sapUiTinyMarginTop">
                                                         <Label text="İf you have not yet registered,please create a new account"/>
-                                                           <Button text="CREATE AN ACCOUNT for SUBMISSION"  app:url="Register" press="createaccount" type="Emphasized"/>
+                                                        <Button text="CREATE AN ACCOUNT for SUBMISSION" app:url="Register" press="createaccount" type="Emphasized"/>
                                                     </VBox>
                                                 </VBox>
                                             </l:Grid>

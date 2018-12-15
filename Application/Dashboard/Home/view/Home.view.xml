@@ -9,6 +9,24 @@
             <IconTabBar id="idIconTabBarSeparatorNoIcon" select="changekey" expanded="true" class="sapUiResponsiveContentPadding">
                 <items>
                     <IconTabFilter key="project" icon="sap-icon://accept" text=" STEP" iconColor="Positive" count="1">
+                       
+                        <Panel width="auto" id="panel00" visible="false" class="sapUiResponsiveMargin pnlcls" accessibleRole="Region">
+                            <headerToolbar>
+                                <Toolbar height="3rem">
+                                    <Title text="Information"/>
+                                </Toolbar>
+                            </headerToolbar>
+                            <content>
+                                <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                                    <VBox alignItems="Stretch" justifyContent="Start" width="100%">
+                                        <HBox alignItems="Center" justifyContent="Center" width="100%" class="sapUiTinyMarginTop">
+                                            <Title width="100%" text="Article installation has expired"/>
+                                        </HBox>
+                                    </VBox>
+                                </VBox>
+                            </content>
+                        </Panel>
+                       
                         <Panel width="auto" id="panel0" class="sapUiResponsiveMargin pnlcls" accessibleRole="Region">
                             <headerToolbar>
                                 <Toolbar height="3rem">
