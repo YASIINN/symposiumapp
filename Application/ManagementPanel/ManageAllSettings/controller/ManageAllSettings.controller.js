@@ -17,12 +17,57 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                 CreateComponent.hideBusyIndicator()
             })
         },
+        datecontrol: function (oEvent) {
+            var _this = this
+            var oDP = oEvent.oSource;
+            var sValue = oEvent.getParameter("value");
+            var bValid = oEvent.getParameter("valid");
+            this._iEvent++;
+            if (bValid) oDP.setValueState(sap.ui.core.ValueState.None);
+            else oDP.setValueState(sap.ui.core.ValueState.Error);
+
+        },
+        setdateenb: function () {
+            var _this = this
+            _this.byId("savedate").setVisible(!_this.byId("savedate").getVisible())
+            _this.byId("DP4").setEnabled(!_this.byId("DP4").getEnabled())
+            _this.byId("DP5").setEnabled(!_this.byId("DP5").getEnabled())
+        },
+        setsysdate: function () {
+            var _this = this
+            CreateComponent.showBusyIndicator();
+            var datedate = [{
+                gsbegdt: oModel.oData.generalsettings[0].gsbegdt,
+                gsenddt: oModel.oData.generalsettings[0].gsenddt
+            }]
+            generalsettings.gsettingreq({ MN: "SET", SN: "GeneralSettings", data: datedate, "where": "gsid=?", param: "1" }).then(function (res) {
+                if (res == "SuccedUpdate") {
+                    sap.m.MessageToast.show("the update process took place successfully")
+                    _this.setdateenb();
+                    _this.getgeneralsettings();
+                    CreateComponent.hideBusyIndicator();
+                } else {
+                    sap.m.MessageToast.show("an unexpected error has occurred please try again later");
+                    CreateComponent.hideBusyIndicator();
+                }
+            })
+        },
         delfile: function (oEvent) {
             var _this = this
             var event = oEvent.oSource._getBindingContext().sPath
+            // const tindex = oEvent.oSource._getBindingContext().sPath.split("/")[2]
+            // if(oModel.oData.titleset[tindex].tid=="1"){
+            //     sap.m.MessageToast.show("this record cannot be deleted");
+            // }else{
+            // PluginService.getPlugin({ SN: "Title", MN: "DELTİTLE", where: "tid=?", param: oModel.oData.titleset[tindex].tid }).then(function (res) {
+            //     CreateComponent.showBusyIndicator()
+            //     _this.getalltitles();
+            // })
+            // }
             MessageBox.warning(
                 "Are you sure you want to delete this file.",
                 {
+                    title: "Information",
                     actions: [sap.m.MessageBox.Action.OK, sap.m.MessageBox.Action.CANCEL],
                     styleClass: "sapUiSizeCompact",
                     initialFocus: MessageBox.Action.CANCEL,
@@ -33,6 +78,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                     }
                 }
             );
+        },
+        setfilevisible: function (oEvent) {
+
         },
         delfilesys: function (data) {
             var _this = this
@@ -84,6 +132,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
         },
         deletetopic: function (oEvent) {
             var _this = this
+            debugger
             const tindex = oEvent.oSource._getBindingContext().sPath.split("/")[2]
             PluginService.getPlugin({ SN: "Topics", MN: "DELTOPİC", where: "tpid=?", param: oModel.oData.edittopics[tindex].tpid }).then(function (res) {
                 CreateComponent.showBusyIndicator()
@@ -153,10 +202,14 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
         deltitle: function (oEvent) {
             var _this = this
             const tindex = oEvent.oSource._getBindingContext().sPath.split("/")[2]
-            PluginService.getPlugin({ SN: "Title", MN: "DELTİTLE", where: "tid=?", param: oModel.oData.titleset[tindex].tid }).then(function (res) {
-                CreateComponent.showBusyIndicator()
-                _this.getalltitles();
-            })
+            if (oModel.oData.titleset[tindex].tid == "1") {
+                sap.m.MessageToast.show("this record cannot be deleted");
+            } else {
+                PluginService.getPlugin({ SN: "Title", MN: "DELTİTLE", where: "tid=?", param: oModel.oData.titleset[tindex].tid }).then(function (res) {
+                    CreateComponent.showBusyIndicator()
+                    _this.getalltitles();
+                })
+            }
         },
         edittitle: function (oEvent) {
             var _this = this
@@ -174,8 +227,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                     })
                 }
             } else {
-
-                PluginService.getPlugin({ SN: "Title", MN: "EDİTTİTLE", where: "tpid=?", param: oModel.oData.titleset[tindex].tid, tdata: [{ titletxt: oModel.oData.titleset[tindex].titletxt }] }).then(function (res) {
+                PluginService.getPlugin({ SN: "Title", MN: "EDİTTİTLE", where: "tid=?", param: oModel.oData.titleset[tindex].tid, tdata: [{ titletxt: oModel.oData.titleset[tindex].titletxt }] }).then(function (res) {
                     CreateComponent.showBusyIndicator()
                     _this.getalltopic();
                 })
@@ -183,15 +235,41 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
         },
         editfilevisible: function (oEvent) {
             var _this = this
-            oEvent.oSource._getBindingContext().sPath
-            if(!_this.byId("efnamehbox").getVisible()){
-                _this.byId("efnamehbox").setVisible(true);
-            }else{
-                _this.byId("efnamehbox").setVisible(false);
+            var tindex = oEvent.oSource._getBindingContext().sPath.split("/")[2]
+            oModel.setProperty("/prevname", JSON.parse(JSON.stringify(oModel.getProperty(oEvent.oSource._getBindingContext().sPath).gsfname)));
+            if (oEvent.oSource.oParent.oParent.oParent.getItems()[tindex].getCells()[2].getItems()[0].getEnabled()) {
+                oEvent.oSource.oParent.oParent.oParent.getItems()[tindex].getCells()[2].getItems()[0].setEnabled(false)
+                oEvent.oSource.oParent.oParent.oParent.getItems()[tindex].getCells()[2].getItems()[0].setVisible(false)
+                oEvent.oSource.oParent.oParent.oParent.getItems()[tindex].getCells()[2].getItems()[1].setVisible(false)
+            } else {
+                oEvent.oSource.oParent.oParent.oParent.getItems()[tindex].getCells()[2].getItems()[0].setEnabled(true)
+                oEvent.oSource.oParent.oParent.oParent.getItems()[tindex].getCells()[2].getItems()[0].setVisible(true)
+                oEvent.oSource.oParent.oParent.oParent.getItems()[tindex].getCells()[2].getItems()[1].setVisible(true)
             }
         },
-        editfile:function(oEvent){
-
+        editfile: function (oEvent) {
+            if (oModel.getProperty(oEvent.oSource._getBindingContext().sPath).gsfname == "") {
+                sap.m.MessageToast.show("please enter the file name")
+            } else {    
+                CreateComponent.showBusyIndicator();
+                var id = oModel.getProperty(oEvent.oSource._getBindingContext().sPath).gsfid
+                var filedata = [{
+                    "gsfname": oModel.getProperty(oEvent.oSource._getBindingContext().sPath).gsfname,
+                    "gsftemppath": "/sysword/" + oModel.oData.gsetfolder[0].gsfname + oModel.oData.gsetfolder[0].gsftype,
+                    "gsftype": oModel.getProperty(oEvent.oSource._getBindingContext().sPath).gsftype,
+                    "gsfabstype": oModel.getProperty(oEvent.oSource._getBindingContext().sPath).gsfabstype,
+                }]
+                gsetfolder.gsetfolderreq({ MN: "SET", SN: "GeneralSetFolder", data: filedata, where: "gsfid=?", param: id, prevname: oModel.oData.prevname }).then(function (res) {
+                    if (res == "SuccedUpdate") {
+                        sap.m.MessageToast.show("Your update has been successfully completed")
+                        CreateComponent.hideBusyIndicator();
+                        _this.getgeneralsettingsfolder();
+                    } else {
+                        sap.m.MessageToast.show("an unexpected error has occurred please try again later");
+                        CreateComponent.hideBusyIndicator();
+                    }
+                })
+            }
         },
         getalltitles: function (oEvent) {
             PluginService.getPlugin({ SN: "Title", MN: "GETTİTLE" }).then(function (res) {

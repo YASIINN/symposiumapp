@@ -34,4 +34,22 @@ class Relation extends database
         }
         return $this->result ;
     }
+    public function GET($where,$param){
+        if (isset($_SESSION["UNM"])) {
+            $getrel =$this->select("autrelbrodtable",$where,array($param));
+            if(count($getrel)==0){
+                $this->result = array("status" => "None");
+            }else{
+                for ($i=0; $i <count($getrel) ; $i++) { 
+                    $this->result[] = array("status" => "Okey",
+                     "arbid" => $getrel[$i]['arbid'], 
+                     "usid" => $getrel[$i]['usid'],
+                    "btid" => $getrel[$i]["btid"],
+                    "count"=>count($getrel)
+                );
+            };
+            }
+        }
+        return $this->result ;
+    }
 } ?>

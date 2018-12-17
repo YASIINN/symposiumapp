@@ -15,6 +15,7 @@ class Register extends database
                 "rtpass" => $registerdata[$i]['rtpass'],
                 "rtlcode" => $registerdata[$i]['rtlcode'],
                 "rauth" => $registerdata[$i]['rauth'],
+                "rphone"=>$registerdata[$i]['rphone'],
             );
             if(null !==$this->beginTransaction()){
                 $this->beginTransaction();
@@ -44,7 +45,7 @@ class Register extends database
              $this->result;
         } else {
             for ($i = 0; $i < count($getRegisterRows); $i++) {
-                $this->result[] = array("status" => "Okey", "rtid" => $getRegisterRows[$i]['rtid'], "rtname" => $getRegisterRows[$i]['rtname'], "rtlname" => $getRegisterRows[$i]["rtlname"], "rtemail" => $getRegisterRows[$i]["rtemail"], "rtuniinst" => $getRegisterRows[$i]["rtuniinst"], "rtpass" => $getRegisterRows[$i]["rtpass"], "rtlcode" => $getRegisterRows[$i]['rtlcode'],'rauth'=>$getRegisterRows[$i]['rauth']);
+                $this->result[] = array("status" => "Okey", "rtid" => $getRegisterRows[$i]['rtid'], "rtname" => $getRegisterRows[$i]['rtname'], "rtlname" => $getRegisterRows[$i]["rtlname"], "rtemail" => $getRegisterRows[$i]["rtemail"], "rtuniinst" => $getRegisterRows[$i]["rtuniinst"], "rtpass" => $getRegisterRows[$i]["rtpass"], "rtlcode" => $getRegisterRows[$i]['rtlcode'],'rauth'=>$getRegisterRows[$i]['rauth'],"rphone"=>$getRegisterRows[$i]['rphone']);
             }
         }
         return $this->result;

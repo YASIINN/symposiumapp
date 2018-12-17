@@ -45,6 +45,17 @@
                                         <Input placeholder="user@server.com" width="100%" value="{/RegisterModel/cemail}"/>
                                     </VBox>
                                 </HBox>
+                                       <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
+                                            <Text width="130px" text="Phone"/>
+                                            <Label text=":" width="10px" />
+                                            <VBox width="100%">
+                                                <MaskInput width="100%" mask = "+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC" id="pnmbrset" placeholder = "Enter Phone number">
+                                                    <rules>
+                                                        <MaskInputRule maskFormatSymbol = "C"  regex = "[A-Z0-9]"/>
+                                                    </rules>
+                                                </MaskInput>
+                                            </VBox>
+                                        </HBox>
                                 <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
                                     <Label width="130px" text="Password"/>
                                     <Label text=":" width="10px" />

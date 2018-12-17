@@ -5,19 +5,20 @@ header("Content-Type: application/json; charset=UTF-8");
 class File extends database
 {
     public $result = array();
-    public function ADD($files, $usid, $fileext, $size, $type)
+    public function ADD($files, $usid, $fileext, $size, $type,$bcext)
     {
         if ($files) {
             $tempPath = $_FILES['file']['tmp_name'];
             $filename = bin2hex(openssl_random_pseudo_bytes(10));
             $filename = $filename . "_" . $usid;
             move_uploaded_file($tempPath, "../allword/$filename.$fileext");
-            $fpath = "'/allword/'" . $filename;
+            $fpath = "/allword/" . $filename;
             $data = array(
                 "bcfsize" => $size,
                 "bcftype" => $type,
                 "bcfname" => $filename,
-                "bcfpath" => $fpath
+                "bcfpath" => $fpath,
+                "bcext"=>$bcext
             );
             if(null !==$this->beginTransaction()){
                 $this->beginTransaction();
@@ -36,6 +37,27 @@ class File extends database
         } else {
             $this->result = array("status" => "None");
             $this->result;
+        }
+        return $this->result;
+    }
+    public function DEL($where,$param,$fname){
+        if(null !==$this->beginTransaction()){
+            $this->beginTransaction();
+        }
+        $file=$fname;
+        if(file_exists("../allword/$file")){
+            $del =$this->delete("broadcastfile",$where,array($param));
+            if ($del) {
+                $this->result = array("status" => "SuccesDel");
+                 unlink("../allword/$file");
+                 $this->DoOrDie(true);
+            } else {
+                $this->result = array("status" => "None");
+                 $this->DoOrDie(false);
+            }
+     
+        }else{
+            $this->result = array("status" => "None","aaa"=>$file);
         }
         return $this->result;
     }

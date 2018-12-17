@@ -74,14 +74,10 @@ if ($SN == "User") {
         $result = $user->$MN($_POST['where'], $result);
     } else if ($MN == "ADD") {
         $result = $user->$MN($_POST['userdata']);
-    } else if ($MN == "GAUW") {
-        $result = $user->$MN($_POST['uwhere'], $_POST['uparam'], $_POST['mwhere'], $_POST['mparam'], $_POST['pwhere'], $_POST['pparam']);
-    } else if ($MN == "ADDRU") {
-        $result = $user->$MN($_POST['userdata']);
-    } else if ($MN == "GETPU") {
-        $result = $user->$MN($_POST['pass']);
-    } else if ($MN == "SET") {
+    }   else if ($MN == "SET") {
         $result = $user->$MN($_POST['userdata'], $_POST['where'], $_POST['param']);
+    }else if($MN=="DEL"){
+        $result = $user->$MN($_POST['where'], $_POST['param']);
     }
     echo json_encode($result);
 }
@@ -90,6 +86,8 @@ if($SN=="GeneralSettings"){
     $gsettings = new $SN();
     if($MN=="GETGSETTİNGS"){
         $result = $gsettings->$MN();
+    }else if($MN=="SET"){
+        $result = $gsettings->$MN($_POST['data'],$_POST['where'],$_POST['param']);
     }
     echo json_encode($result);
 }
@@ -115,9 +113,11 @@ if ($SN == "Title") {
 }
 if ($SN == "File") {
     include("/File/file.php");
-    $title = new $SN();   
+    $file = new $SN();   
    if($MN=="ADD"){
-        $result = $title->$MN($_FILES, $_POST['usid'], $_POST['fileext'], $_POST['size'], $_POST['type']);
+        $result = $file->$MN($_FILES, $_POST['usid'], $_POST['fileext'], $_POST['size'], $_POST['type'],$_POST['bcext']);
+    }else if($MN=="DEL"){
+        $result=$file->$MN($_POST['where'],$_POST['param'],$_POST['fname']);
     }
     echo json_encode($result);
 }
@@ -126,6 +126,9 @@ if($SN=="GeneralSetFolder"){
     $gsfolder = new $SN();
     if($MN=="GET"){
         $result = $gsfolder->$MN();
+    }else if($MN=="SET"){
+        // data,$where,$param,$prevname){
+            $result = $gsfolder->$MN($_POST['data'],$_POST['where'],$_POST['param'],$_POST['prevname']);
     }
     else if($MN=="GETWHERE")
     {
@@ -155,22 +158,14 @@ if ($SN == "Register") {
     }
     echo json_encode($result);
 }
-if ($SN == "SystemSettings") {
-    include("/SystemSettings/systemsettings.php");
-    $settings = new $SN();
-    if ($MN == "SETSYS") {
-        $result = $settings->$MN($_POST['param']);
-    } else if ($MN == "GETSYS") {
-        $result = $settings->$MN();
-    }
-    echo json_encode($result);
-}
 if ($SN == "Relation") {
     include("/Relation/relation.php");
     $relation = new $SN();
     if ($MN == "ADD") {
         $result = $relation->$MN($_POST['data']);
     }else if($MN=="DEL"){
+        $result = $relation->$MN($_POST['where'],$_POST['param']);
+    }else if($MN=="GET"){
         $result = $relation->$MN($_POST['where'],$_POST['param']);
     }
     echo json_encode($result);

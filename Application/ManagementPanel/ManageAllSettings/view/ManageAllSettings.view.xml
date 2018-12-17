@@ -7,10 +7,18 @@
             <IconTabBar id="idIconTabBarSeparatorNoIcon" select="changekey" expanded="true" class="sapUiResponsiveContentPadding">
                 <items>
                     <IconTabFilter key="general" icon="sap-icon://action-settings" text="General Settings " iconColor="Positive" count="1">
+                        <HBox alignItems="End" justifyContent="End">
+                        <Button text="Edit"  icon="sap-icon://edit" press="setdateenb" type="Emphasized" />
+                        </HBox>
+                        <VBox>
                         <Text text="Starting Date" />
-                        <DatePicker id="DP4" valueFormat="dd-MM-yyyy" displayFormat="dd-MM-yyyy" value="{path:'/generalsettings/0/gsbegdt'}" class="sapUiSmallMarginBottom"/>
+                        <DatePicker change="datecontrol" enabled="false" id="DP4" valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy" value="{path:'/generalsettings/0/gsbegdt'}" class="sapUiSmallMarginBottom"/>
                         <Text text="End Date" />
-                        <DatePicker id="DP5" valueFormat="dd-MM-yyyy" displayFormat="dd-MM-yyyy" value="{path:'/generalsettings/0/gsenddt'}" class="sapUiSmallMarginBottom"/>
+                        <DatePicker change="datecontrol" id="DP5" enabled="false" valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy" value="{path:'/generalsettings/0/gsenddt'}" class="sapUiSmallMarginBottom"/>
+                    </VBox>
+               <HBox alignItems="End" justifyContent="End">
+                        <Button id="savedate" visible="false" text="Save"  press="setsysdate" icon="sap-icon://save" type="Emphasized" />
+                        </HBox>                 
                     </IconTabFilter>
                     <IconTabSeparator icon=""/>
                     <IconTabFilter key="topics" icon="sap-icon://list" iconColor="Natural" text="Topic Settings" count="2">
@@ -95,13 +103,61 @@
                     </IconTabFilter>
                     <IconTabSeparator icon=""/>
                     <IconTabFilter key="files" icon="sap-icon://attachment" iconColor="Natural" text="Template Folder Settings" count="4">
-                        <List headerText="System Template Files" items="{path: '/gsetfolder'}">
+                        
+                          <Table id="filestable" inset="false" items="{
+                                            path: '/gsetfolder'
+                                        }">
+                            <infoToolbar>
+                                <Toolbar active="true">
+                                    <Label text="System Template Files"/>
+                                </Toolbar>
+                            </infoToolbar>
+                            <columns>
+                                <Column width="3rem">
+                                    <Text text="Folder Name" />
+                                </Column>
+                                <Column width="3rem">
+                                </Column>
+
+                                <Column width="10rem">
+                                </Column>
+
+                            </columns>
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <Link text="{gsfname}" target="" href="/symposiumapp{gsftemppath}"/>
+                                        <HBox>
+                                          <Button type="Transparent" icon="sap-icon://delete" tooltip="Delete System Template File" press="delfile"/>
+                                            <Button type="Transparent" icon="sap-icon://edit" tooltip="Edit" press="editfilevisible"/>
+                                        </HBox>
+                                        <HBox width="100%" alignItems="Stretch" justifyContent="Stretch">
+                                            <Input value="{gsfname}" width="500px" enabled="false" visible="false" />
+                                            <Button type="Transparent" icon="sap-icon://save" tooltip="Save" text="Click here to save the change" press="editfile" visible="false"/>
+                                        </HBox>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <!-- <List headerText="System Template Files" items="{path: '/gsetfolder'}">
                             <CustomListItem>
                                 <HBox>
                                     <core:Icon size="2rem" src="sap-icon://attachment-photo" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" />
                                     <VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
-                                        <Link text="{gsfname}" target="{ProductPicUrl}" href="/symposiumapp{gsftemppath}"/>
                                     </VBox>
+                                </HBox>
+                                  <HBox alignItems="Center" justifyContent="Center" id="efnamehbox" visible="false">
+                                <Input value="" placeholder="Enter  new file name" />
+                                    <Button icon="sap-icon://save" tooltip="Click here to save the change" press="editfile"  id="editfnamebtn" type="Transparent" />
                                 </HBox>
                                 <HBox alignItems="End" justifyContent="End">
                                    <Button type="Transparent" icon="sap-icon://edit" tooltip="Edit File Name İn System" press="editfilevisible"/>
@@ -109,12 +165,9 @@
                                 </HBox>
 
                             </CustomListItem>
-                        </List>
+                        </List> -->
                 
-                        <HBox alignItems="Stretch" justifyContent="Stretch" id="efnamehbox" visible="false">
-                        <Input value="" placeholder="Enter  new file name" />
-                        <Button icon="sap-icon://save" tooltip="Click here to save the change" press="editfile"  id="editfnamebtn" type="Transparent" />
-                        </HBox>
+                      
                     </IconTabFilter>
 
                 </items>

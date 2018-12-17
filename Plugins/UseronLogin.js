@@ -29,6 +29,7 @@ var UseronLogin = {
         return deferred;
     },
     onUserControl: function (param) {
+        debugger
         var deferred = new Promise(function (resolve, reject) {
             UserService.userReq({ where: "ulgnname=?", "param": [param.ulgnname], "MN": "GET", 'SN': 'User' }).then(function (res) {
                 if (res == "None") {
@@ -89,6 +90,7 @@ var UseronLogin = {
         return deferred;
     },
     onLoginControl: function (param) {
+        debugger
         localStorage.clear();
         sessionStorage.clear();
         var deferred = new Promise(function (resolve, reject) {

@@ -74,4 +74,26 @@ class GeneralSetFolder extends database
         }
         return $this->result;
     }
+    public function SET($data,$where,$param,$prevname){
+        $pname=$prevname.$data[0]['gsftype'];
+        $nname=$data[0]['gsfname'].$data[0]['gsftype'];
+        if (isset($_SESSION["UNM"])) {
+            for ($index = 0; $index < count($data); $index++) {
+                $sdata = array(
+                    "gsfname"=>$data[$index]['gsfname'],
+                    "gsftemppath"=>$data[$index]['gsftemppath'],
+                    "gsftype"=>$data[$index]['gsftype'],
+                    "gsfabstype"=>$data[$index]['gsfabstype'],
+                );
+                $upP = $this->update("generalsettingsfolder", $sdata, $where, array($param));
+            }
+            if ($upP) {
+                rename("../sysword/$pname","../sysword/$nname");
+                $this->result = array("status" => "SuccedUpdate");
+            } else {
+                $this->result = array("status" => "None");
+            }
+        }
+        return $this->result;
+    }
 } ?>

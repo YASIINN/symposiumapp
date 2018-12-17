@@ -19,6 +19,7 @@ sap.ui.define(['sap/m/MessageBox', 'sap/ui/core/mvc/Controller'], function (Mess
             }
         },
         registermodel: function () {
+            var _this = this
             var RegisterData = {
                 ufname: "",
                 uniorinst: "",
@@ -29,6 +30,7 @@ sap.ui.define(['sap/m/MessageBox', 'sap/ui/core/mvc/Controller'], function (Mess
             }
             oModel.setProperty("/RegisterModel", RegisterData)
             _this.byId("cpt").setValue("");
+            _this.byId("pnmbrset").setValue("")
         },
         makeid: function () {
             var text = "";
@@ -62,7 +64,11 @@ sap.ui.define(['sap/m/MessageBox', 'sap/ui/core/mvc/Controller'], function (Mess
             } else
                 if (oModel.oData.RegisterModel.email != oModel.oData.RegisterModel.cemail) {
                     sap.m.MessageToast.show("email addresses do not match");
-                } else
+                } 
+                else if (_this.byId("pnmbrset").getValue().trim() == "") {
+                    sap.m.MessageToast.show("please fill in the Phone field");
+                }
+                else
                     if (oModel.oData.RegisterModel.pass.trim().length < 8 || oModel.oData.RegisterModel.cpass.trim().length < 8) {
                         sap.m.MessageToast.show("Please enter at least 8 characters");
                     } else
@@ -83,7 +89,7 @@ sap.ui.define(['sap/m/MessageBox', 'sap/ui/core/mvc/Controller'], function (Mess
         },
         getAllRegister: function () {
             var _this = this
-            RegisterService.RegisterReq({MN:"GET",SN:"Register",where:"rtemail=?",param:[oModel.oData.RegisterModel.cemail]}).then(function (res) {
+            RegisterService.RegisterReq({ MN: "GET", SN: "Register", where: "rtemail=?", param: [oModel.oData.RegisterModel.cemail] }).then(function (res) {
                 if (res == "None") {
                     debugger
                     UserService.userReq({ MN: "GET", SN: "User", "where": "ulgnname=?", param: [oModel.oData.RegisterModel.cemail] }).then(function (res) {
@@ -111,14 +117,14 @@ sap.ui.define(['sap/m/MessageBox', 'sap/ui/core/mvc/Controller'], function (Mess
                         rtuniinst: oModel.oData.RegisterModel.uniorinst,
                         rtpass: md5(oModel.oData.RegisterModel.cpass),
                         rtlcode: lcode,
-                        rauth: "2"
+                        rauth: "2",
+                        rphone:_this.byId("pnmbrset").getValue()
                     }
                 ]
             }).then(function (res) {
                 if (res[0].status == "SuccesAdd") {
                     RegisterService.RegisterReq({ MN: "GET", SN: "Register", where: "rtemail=?", param: [oModel.oData.RegisterModel.cemail] }).then(function (res) {
                         if (res[0].rtlcode) {
-                            debugger
                             var msg = "http://localhost/symposiumapp/#/RegisterCheck?" + res[0].rtlcode;
                             MailService.AddMail({ systemcheck: [], "maildata": [{ "mail": res[0].rtemail, "messega": msg, subject: "record verification" }] }).then(function (res) {
                                 if (res == "None") {

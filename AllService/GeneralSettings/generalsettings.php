@@ -33,23 +33,24 @@ class GeneralSettings extends database
     //     }
     //     return $this->result;
     // }
-    // public function EDİTTOPİC($tdata, $where, $param)
-    // {
-    //     if (isset($_SESSION["UNM"])) {
-    //         for ($index = 0; $index < count($tdata); $index++) {
-    //             $data = array(
-    //                 "tptxt"=>$tdata[$index]['tptxt']
-    //             );
-    //             $upP = $this->update("topicstable", $data, $where, array($param));
-    //         }
-    //         if ($upP) {
-    //             $this->result = array("status" => "SuccedUpdate");
-    //         } else {
-    //             $this->result = array("status" => "None");
-    //         }
-    //     }
-    //     return $this->result;
-    // }
+    public function SET($data, $where, $param)
+    {
+        if (isset($_SESSION["UNM"])) {
+            for ($index = 0; $index < count($data); $index++) {
+                $sdata = array(
+                    "gsbegdt"=>$data[$index]['gsbegdt'],
+                    "gsenddt"=>$data[$index]['gsenddt']
+                );
+                $upP = $this->update("generalsettings", $sdata, $where, array($param));
+            }
+            if ($upP) {
+                $this->result = array("status" => "SuccedUpdate");
+            } else {
+                $this->result = array("status" => "None");
+            }
+        }
+        return $this->result;
+    }
     // public function ADDTOPİC($tdata)
     // {
     //     if (isset($_SESSION["UNM"])) {

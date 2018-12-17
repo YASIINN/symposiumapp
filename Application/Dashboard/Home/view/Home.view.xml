@@ -65,17 +65,6 @@
                                                 <TextArea width="100%" value="{/author/addres}" placeholder="Please write the Corresponding Address of the corresponding author here" rows="3" />
                                             </VBox>
                                         </HBox>
-                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
-                                            <Text width="130px" text="Phone"/>
-                                            <Label text=":" width="10px" />
-                                            <VBox width="100%">
-                                                <MaskInput width="100%" mask = "+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC" id="pnmbrset" placeholder = "Enter Phone number">
-                                                    <rules>
-                                                        <MaskInputRule maskFormatSymbol = "C"  regex = "[A-Z0-9]"/>
-                                                    </rules>
-                                                </MaskInput>
-                                            </VBox>
-                                        </HBox>
                                         <HBox width="100%" alignItems="Center" justifyContent="End" class="sapUiTinyMarginTop">
                                             <Button press="onsetinfo" type="Default" text="UPDATE INFO" tooltip="{i18n>Save}" />
                                         </HBox>

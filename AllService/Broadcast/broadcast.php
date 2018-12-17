@@ -75,7 +75,8 @@ class Broadcast extends database
                  'abstxt'=>$getbrrows[$i]['abstxt'],
                  'bcfid'=>$getbrrows[$i]['bcfid'],
                  'bcfname'=>$getbrrows[$i]['bcfname'],
-                 'bcfpath'=>$getbrrows[$i]['bcfpath']);
+                 'bcfpath'=>$getbrrows[$i]['bcfpath'],
+                 "bcext"=>$getbrrows[$i]['bcext']);
                 }
             }
         }

@@ -17,14 +17,13 @@ class User extends database
         INNER JOIN authoritytable a ON u.uauth=a.atid
         INNER JOIN phonetable p ON p.uid=u.usid
         INNER JOIN passtable pa ON pa.uid=u.usid
-        WHERE $where ", $fparam);
+        WHERE $where", $fparam);
         if (count($getRegisterRows) == 0) {
-            $this->result = array("status" => "None");
+            $this->result = array("status" => "None","aa"=>$param,"bb"=>$where,"cc"=>$fparam);
         } else {
             for ($i = 0; $i < count($getRegisterRows); $i++) {
                 $this->result[] = array(
-                    "status" => "Okey", "usid" =>
-                        $getRegisterRows[$i]['usid'],
+                    "status" => "Okey", "usid" =>$getRegisterRows[$i]['usid'],
                     "usname" => $getRegisterRows[$i]['usname'],
                     "uslname" => $getRegisterRows[$i]["uslname"],
                     "ulgnname" => $getRegisterRows[$i]['ulgnname'],
@@ -94,8 +93,9 @@ class User extends database
                                 $this->DoOrDie(false);
                             }
                         } else {
-                            $this->result = array("status" => "SuccesAdd", "usid" => $uid);
-                            $this->DoOrDie(true);
+                            $this->result = array("status" => "None");
+                            // $this->result = array("status" => "SuccesAdd", "usid" => $uid);
+                            $this->DoOrDie(false);
                         }
                     } else {
                         $this->result = array("status" => "None");
@@ -146,50 +146,16 @@ class User extends database
         }
         return $this->result;
     }
-    public function GAUW($uwhere, $uparam, $mwhere, $mparam, $pwhere, $pparam)
-    {
-        if (isset($_SESSION["UNM"])) {
-            $userWhereRows = $this->getrows("SELECT  * FROM user WHERE $uwhere", array($uparam));
-            {
-                if (count($userWhereRows) == 0) {
-                    $mailWhereRows = $this->getrows("SELECT  * FROM mail WHERE $mwhere", array($mparam));
-                    if (count($mailWhereRows) == 0) {
-                        $phoneWhereRows = $this->getrows("SELECT  * FROM phone WHERE $pwhere", array($pparam));
-                        if (count($phoneWhereRows) == 0) {
-                            $this->result = array("status" => "None");
-                            return $this->result;
-                        } else {
-                            $this->result = array("status" => "haveP");
-                            return $this->result;
-                        }
-                    } else {
-                        $this->result = array("status" => "haveM");
-                        return $this->result;
-                    }
-                } else {
-                    $this->result = array("status" => "haveUNM");
-                    return $this->result;
-                }
-            }
+    public function DEL($where,$param){
+        $del =$this->delete("usertable",$where,array($param));
+        if ($del) {
+            $this->result = array("status" => "SuccesDel");
+
+        } else {
+            $this->result = array("status" => "None");
         }
+        return $this->result;
     }
-    public function SETQUOTA($param, $where, $userdata)
-    {
-        if (isset($_SESSION["UNM"])) {
-            for ($index = 0; $index < count($userdata); $index++) {
-                $data = array(
-                    "quotaremain" => $userdata[$index]['quotaremain']
-                );
-            }
-            $updatequota = $this->update("user", $data, $where, array($param));
-            if ($updatequota) {
-                $this->result = array("status" => "SuccedUpdate");
-                return $this->result;
-            } else {
-                $this->result = array("status" => "None");
-                return $this->result;
-            }
-        }
-    }
+   
 }
 ?>

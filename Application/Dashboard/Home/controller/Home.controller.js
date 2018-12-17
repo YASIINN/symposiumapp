@@ -52,6 +52,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
             form_data.append('size', oModel.oData.fdata["size"]);
             form_data.append('fileext', oModel.oData.fdata["name"].split(".")[1]);
             form_data.append('type', oModel.oData.fdata["type"]);
+            form_data.append("bcext", oModel.oData.fdata.name.slice(oModel.oData.fdata.name.lastIndexOf(".")));
             folderservice.folderreq(form_data).then(function (res) {
                 if (res.status == "SuccesAdd") {
                     _this.addbroadcast(res.fid, _this.byId("absid").getSelectedKey());
@@ -116,7 +117,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                                     authors.splice(index, 1);
                                 }
                             }
-
                         }
                         UserService.userReq({ MN: "ADD", SN: "User", userdata: authors }).then(function (res) {
                             if (res[0].status == "SuccesAdd") {
@@ -211,8 +211,21 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
             })
         },
         onsetinfo: function (qouta) {
+
             CreateComponent.showBusyIndicator()
             var _this = this
+            var tid = "";
+            if (oModel.oData.UserModel[0].tid == "") {
+                if (_this.byId("settitle").getSelectedKey() == "") {
+                    tid = "1"
+                } else {
+                    tid = "1"
+                }
+            } else if (oModel.oData.UserModel[0].tid == "1") {
+                tid = _this.byId("settitle").getSelectedKey()
+            } else {
+                tid = oModel.oData.UserModel[0].tid
+            }
             var userdata = [{
                 usname: oModel.oData.UserModel[0].usname,
                 uslname: oModel.oData.UserModel[0].uslname,
@@ -220,19 +233,23 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                 uniorinst: oModel.oData.UserModel[0].uniorinst,
                 ulgnname: oModel.oData.UserModel[0].ulgnname,
                 country: oModel.oData.UserModel[0].country == "" ? _this.byId("countryallset").getSelectedKey() : oModel.oData.UserModel[0].country,
-                tid: oModel.oData.UserModel[0].tid == "" ? _this.byId("settitle").getSelectedKey() == "" ? "1" : _this.byId("settitle").getSelectedKey() : oModel.oData.UserModel[0].tid,
+                tid: tid,
                 adress: oModel.oData.author.addres,
                 ftextquota: oModel.oData.UserModel[0].ftextquota,
                 absquota: oModel.oData.UserModel[0].absquota,
                 mainaut: oModel.oData.UserModel[0].mainaut
             }]
-            if (qouta) {
+            if (qouta == "quota") {
                 UserService.userReq({ MN: "SET", SN: "User", where: "usid=?", userdata: userdata, param: oModel.oData.UserModel[0].usid }).then(function (res) {
                     if (res == "SuccedUpdate") {
                         sap.m.MessageToast.show("Your Transaction Took Place With Success");
-                        delete oModel.oData.authorsuser
                         oModel.setProperty("/fdata", [])
+                        _this.byId("fileuploadftext").setValue(' ')
+                        _this.byId("fttid").setValue("")
                         _this.byId("titleid").setValue("");
+                        _this.byId("ftoid").setSelected(false)
+                        _this.byId("ftpstrid").setSelected(false)
+                        _this.byId("fttopicid").setSelectedKey("")
                         _this.byId("oralid").setSelected(false)
                         _this.byId("posterid").setSelected(false)
                         _this.byId("topicid").setSelectedKey("");
@@ -244,36 +261,25 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                         sap.m.MessageToast.show("an unexpected error has occurred please try again later")
                     }
                 })
-
             } else {
                 if (!_this.byId("countryallset").getSelectedKey()) {
                     sap.m.MessageToast.show("please fill in the country field");
                 }
                 else if (oModel.oData.author.addres.trim() == "") {
                     sap.m.MessageToast.show("please fill in the Address field");
-                } else if (_this.byId("pnmbrset").getValue().trim() == "") {
-                    sap.m.MessageToast.show("please fill in the Phone field");
                 } else {
+                    debugger
                     UserService.userReq({ MN: "SET", SN: "User", where: "usid=?", userdata: userdata, param: oModel.oData.UserModel[0].usid }).then(function (res) {
                         if (res == "SuccedUpdate") {
-                            PluginService.getPlugin({
-                                SN: "Phone", MN: "ADD", pdata: [{
-                                    pnmbr: oModel.oData.UserModel[0].pnmbr == "" ? _this.byId("pnmbrset").getValue() : oModel.oData.UserModel[0].pnmbr,
-                                    uid: oModel.oData.UserModel[0].usid
-                                }]
-                            }).then(function (res) {
-                                if (res == "SuccesAdd") {
-                                    _this.byId("panel0").setVisible(false)
-                                    _this.byId("panel1").setVisible(true)
-                                    _this.byId("panel2").setVisible(true)
-                                    _this.byId("panel3").setVisible(true)
-                                    _this.byId("footerinfo").setVisible(true)
-                                    sap.m.MessageToast.show("Thank you created your information")
-                                } else {
-                                    sap.m.MessageToast.show("an unexpected error has occurred please try again later")
-                                }
-                            })
-                        } else {
+                            _this.byId("panel0").setVisible(false)
+                            _this.byId("panel1").setVisible(true)
+                            // _this.byId("panel2").setVisible(true)
+                            // _this.byId("panel3").setVisible(true)
+                            // _this.byId("footerinfo").setVisible(true)
+                            sap.m.MessageToast.show("Thank you created your information")
+                            CreateComponent.hideBusyIndicator()
+                        }
+                        else {
                             CreateComponent.hideBusyIndicator()
                             sap.m.MessageToast.show("an unexpected error has occurred please try again later")
                         }
@@ -403,8 +409,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
         onBeforeShow: function () {
             var _this = this
             UseronLogin.onLogin().then(function (e) {
-                var startdate = new Date(moment(oModel.oData.generalsettings[0].gsbegdt, "DD-MM-YYYY"))
-                var enddate = new Date(moment(oModel.oData.generalsettings[0].gsenddt, "DD-MM-YYYY"))
+                var startdate = new Date(moment(oModel.oData.generalsettings[0].gsbegdt, "DD.MM.YYYY"))
+                var enddate = new Date(moment(oModel.oData.generalsettings[0].gsenddt, "DD.MM.YYYY"))
                 var nowdate = new Date();
                 if (startdate < nowdate && startdate < enddate) {
                     _this.gettopics();
