@@ -8,8 +8,7 @@
         <content>
             <IconTabBar id="idIconTabBarSeparatorNoIcon" select="changekey" expanded="true" class="sapUiResponsiveContentPadding">
                 <items>
-                    <IconTabFilter key="project" icon="sap-icon://accept" text=" STEP" iconColor="Positive" count="1">
-                       
+                    <IconTabFilter key="project" icon="sap-icon://create" text=" Create Article" iconColor="Positive" count="1">
                         <Panel width="auto" id="panel00" visible="false" class="sapUiResponsiveMargin pnlcls" accessibleRole="Region">
                             <headerToolbar>
                                 <Toolbar height="3rem">

@@ -2,19 +2,21 @@
 session_start();
 require_once('../dbclas/pdocls.php');
 header("Content-Type: application/json; charset=UTF-8");
-class GeneralSettings extends database
+class Generalsetmail extends database
 {
     public $result = array();
-    public function GETGSETTİNGS()
+    public function GET()
     {
-            $gsettings = $this->select("generalsettings", "1", array());
+            $gsettings = $this->select("generalsettingsmail", "1", array());
             if (count($gsettings) == 0) {
                 $this->result = array("status" => "None");
                 return $this->result;
             } else {
                 for ($i = 0; $i < count($gsettings); $i++) {
-                    $this->result[] = array("status" => "Okey", "gsid" => $gsettings[$i]['gsid'], "gsbegdt" => $gsettings[$i]['gsbegdt'],
-                    "gsenddt" => $gsettings[$i]['gsenddt'],
+                    $this->result[] = array("status" => "Okey", "gsmid" => 
+                    $gsettings[$i]['gsmid'], 
+                    "gsmname" => $gsettings[$i]['gsmname'],
+                    "gsmpass" => $gsettings[$i]['gsmpass'],
                 );
                 }
                 return $this->result;
@@ -25,10 +27,10 @@ class GeneralSettings extends database
         if (isset($_SESSION["UNM"])) {
             for ($index = 0; $index < count($data); $index++) {
                 $sdata = array(
-                    "gsbegdt"=>$data[$index]['gsbegdt'],
-                    "gsenddt"=>$data[$index]['gsenddt']
+                    "gsmname"=>$data[$index]['gsmname'],
+                    "gsmpass"=>$data[$index]['gsmpass']
                 );
-                $upP = $this->update("generalsettings", $sdata, $where, array($param));
+                $upP = $this->update("generalsettingsmail", $sdata, $where, array($param));
             }
             if ($upP) {
                 $this->result = array("status" => "SuccedUpdate");

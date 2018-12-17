@@ -136,18 +136,22 @@ class User extends database
             }
             if ($upP) {
                 $this->result = array("status" => "SuccedUpdate");
-                $this->result;
                 $this->DoOrDie(true);
             } else {
                 $this->result = array("status" => "None");
-                $this->result;
                 $this->DoOrDie(false);
             }
         }
         return $this->result;
     }
     public function DEL($where,$param){
-        $del =$this->delete("usertable",$where,array($param));
+        $fparam;
+        if($param=="not"){
+            $fparam=array();
+        }else{
+            $fparam=array($param);
+        }
+        $del =$this->delete("usertable",$where,$fparam);
         if ($del) {
             $this->result = array("status" => "SuccesDel");
 

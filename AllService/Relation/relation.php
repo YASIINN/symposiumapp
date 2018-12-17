@@ -52,4 +52,23 @@ class Relation extends database
         }
         return $this->result ;
     }
+    public function GETW($where){
+        if (isset($_SESSION["UNM"])) {
+            $getrel =$this->getrows(" SELECT COUNT(usid) cusid,usid FROM `autrelbrodtable` WHERE $where  GROUP BY usid");
+            if(count($getrel)==0){
+                $this->result = array("status" => "None");
+            }else{
+                for ($i=0; $i <count($getrel) ; $i++) { 
+                    $this->result[] = array("status" => "Okey",
+                     "cusid" => $getrel[$i]['cusid'], 
+                     "usid" => $getrel[$i]['usid'],
+                );
+            };
+            }
+        }
+        return $this->result ;
+    
+    
+    
+    }
 } ?>

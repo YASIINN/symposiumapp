@@ -77,7 +77,13 @@ if ($SN == "User") {
     }   else if ($MN == "SET") {
         $result = $user->$MN($_POST['userdata'], $_POST['where'], $_POST['param']);
     }else if($MN=="DEL"){
-        $result = $user->$MN($_POST['where'], $_POST['param']);
+        $result;
+        if (isset($_POST['param'])) {
+            $result = $_POST['param'];
+        } else {
+            $result = "not";
+        }
+        $result = $user->$MN($_POST['where'], $result);
     }
     echo json_encode($result);
 }
@@ -138,6 +144,16 @@ if($SN=="GeneralSetFolder"){
     }
     echo json_encode($result);
 }
+if($SN=="Generalsetmail"){
+    include("/Generalsetmail/generalsetmail.php");
+    $gsmail = new $SN();
+    if ($MN == "GET") {
+        $result = $gsmail->$MN();
+    }else if($MN=="SET"){
+        $result = $gsmail->$MN($_POST['data'],$_POST['where'],$_POST['param']);
+    }
+    echo json_encode($result);
+}
 if ($SN == "Register") {
     include("/Register/register.php");
     $register = new $SN();
@@ -167,9 +183,12 @@ if ($SN == "Relation") {
         $result = $relation->$MN($_POST['where'],$_POST['param']);
     }else if($MN=="GET"){
         $result = $relation->$MN($_POST['where'],$_POST['param']);
+    }else if($MN=="GETW"){
+        $result = $relation->$MN($_POST['where']);
     }
     echo json_encode($result);
 
 }
+
 
 ?>

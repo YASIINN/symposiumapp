@@ -2,6 +2,7 @@ jQuery.sap.require("symposiumapp.Application.Dashboard.Home.folderservice.folder
 jQuery.sap.require("symposiumapp.Servicejs.PluginsService");
 jQuery.sap.require("symposiumapp.Application.ManagementPanel.ManageAllSettings.GeneralSetFolderService.generalsetfolder");
 jQuery.sap.require("symposiumapp.Application.ManagementPanel.ManageAllSettings.GeneralsettingsService.generalsettings");
+jQuery.sap.require("symposiumapp.Application.ManagementPanel.ManageAllSettings.Generalsettingsmail.Generalsettingsmail");
 sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/Filter'], function (Controller, MessageBox, Filter) {
     "use strict";
     return Controller.extend("symposiumapp.Application.ManagementPanel.ManageAllSettings.controller.ManageAllSettings", {
@@ -52,18 +53,78 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                 }
             })
         },
+        savemailset: function (oEvent) {
+            var _this = this
+            if (!CreateComponent.validateemail(oModel.oData.mailsett[0].gsmname)) {
+                sap.m.MessageToast.show("Invalid e-mail address");
+            } else if (oModel.oData.mailsett[0].gsmpass.trim() == "") {
+                sap.m.MessageToast.show("password field is invalid");
+            } else if (oModel.oData.mailsett[0].gsmpass.trim().length < 8) {
+                sap.m.MessageToast.show("password field cannot be less than 8 characters");
+            }
+            else {
+                CreateComponent.showBusyIndicator();
+                var maildata = [{
+                    gsmname: oModel.oData.mailsett[0].gsmname,
+                    gsmpass: oModel.oData.mailsett[0].gsmpass
+                }]
+                gsetmail.gsetmailreq({ SN: "Generalsetmail", MN: "SET", where: "gsmid=?", data: maildata, param: oModel.oData.mailsett[0].gsmid }).then(function (res) {
+                    if (res == "SuccedUpdate") {
+                        CreateComponent.hideBusyIndicator();
+                        sap.m.MessageToast.show("the update process took place successfully");
+                        _this.setidvis();
+                        _this.getmail();
+                    } else {
+                        CreateComponent.hideBusyIndicator();
+                    }
+                })
+
+            }
+        },
+        setidvis: function (oEvent) {
+            var _this = this
+            _this.byId("setidvis").setVisible(!_this.byId("setidvis").getVisible());
+        },
+        editpasvisible: function (oEvent) {
+            var _this = this
+
+        },
+        /*
+        bu fonksiyon sonra istenilirse yapılacak
+        showpas: function (oEvent) {
+            var _this = this
+            if (_this.byId("mailpasid").getType() == "Text") {
+                _this.byId("showid").setIcon("sap-icon://show");
+                _this.byId("mailpasid").setType("Password");
+            } else {
+                _this.byId("showid").setIcon("sap-icon://hide");
+                _this.byId("mailpasid").setType("Text");
+            }
+        },*/
+        getmail: function () {
+            CreateComponent.showBusyIndicator();
+            gsetmail.gsetmailreq({ SN: "Generalsetmail", MN: "GET" }).then(function (res) {
+                if (res != "None") {
+                    oModel.setProperty("/mailsett", res);
+                    CreateComponent.hideBusyIndicator();
+                } else {
+                    CreateComponent.hideBusyIndicator();
+                }
+            })
+        },
         delfile: function (oEvent) {
             var _this = this
             var event = oEvent.oSource._getBindingContext().sPath
-            // const tindex = oEvent.oSource._getBindingContext().sPath.split("/")[2]
-            // if(oModel.oData.titleset[tindex].tid=="1"){
-            //     sap.m.MessageToast.show("this record cannot be deleted");
-            // }else{
-            // PluginService.getPlugin({ SN: "Title", MN: "DELTİTLE", where: "tid=?", param: oModel.oData.titleset[tindex].tid }).then(function (res) {
-            //     CreateComponent.showBusyIndicator()
-            //     _this.getalltitles();
-            // })
-            // }
+            /*
+            const tindex = oEvent.oSource._getBindingContext().sPath.split("/")[2]
+            if(oModel.oData.titleset[tindex].tid=="1"){
+                sap.m.MessageToast.show("this record cannot be deleted");
+            }else{
+            PluginService.getPlugin({ SN: "Title", MN: "DELTİTLE", where: "tid=?", param: oModel.oData.titleset[tindex].tid }).then(function (res) {
+                CreateComponent.showBusyIndicator()
+                _this.getalltitles();
+            })
+            }*/
             MessageBox.warning(
                 "Are you sure you want to delete this file.",
                 {
@@ -78,9 +139,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                     }
                 }
             );
-        },
-        setfilevisible: function (oEvent) {
-
         },
         delfilesys: function (data) {
             var _this = this
@@ -170,6 +228,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                     CreateComponent.showBusyIndicator()
                     _this.getgeneralsettingsfolder();
                     break;
+                case "mails":
+                    _this.getmail();
+                    break;
             }
         },
         getgeneralsettingsfolder: function (oEvent) {
@@ -248,17 +309,19 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
             }
         },
         editfile: function (oEvent) {
+            var filedata = [];
             if (oModel.getProperty(oEvent.oSource._getBindingContext().sPath).gsfname == "") {
                 sap.m.MessageToast.show("please enter the file name")
-            } else {    
+            } else {
+                debugger
                 CreateComponent.showBusyIndicator();
                 var id = oModel.getProperty(oEvent.oSource._getBindingContext().sPath).gsfid
-                var filedata = [{
+                filedata.push({
                     "gsfname": oModel.getProperty(oEvent.oSource._getBindingContext().sPath).gsfname,
-                    "gsftemppath": "/sysword/" + oModel.oData.gsetfolder[0].gsfname + oModel.oData.gsetfolder[0].gsftype,
+                    "gsftemppath": "/sysword/" + oModel.getProperty(oEvent.oSource._getBindingContext().sPath).gsfname + oModel.getProperty(oEvent.oSource._getBindingContext().sPath).gsftype,
                     "gsftype": oModel.getProperty(oEvent.oSource._getBindingContext().sPath).gsftype,
                     "gsfabstype": oModel.getProperty(oEvent.oSource._getBindingContext().sPath).gsfabstype,
-                }]
+                })
                 gsetfolder.gsetfolderreq({ MN: "SET", SN: "GeneralSetFolder", data: filedata, where: "gsfid=?", param: id, prevname: oModel.oData.prevname }).then(function (res) {
                     if (res == "SuccedUpdate") {
                         sap.m.MessageToast.show("Your update has been successfully completed")

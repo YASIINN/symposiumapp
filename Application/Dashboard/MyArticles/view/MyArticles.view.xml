@@ -1,16 +1,21 @@
 <mvc:View controllerName="symposiumapp.Application.Dashboard.MyArticles.controller.MyArticles" 
 	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:l="sap.ui.layout" 
 	xmlns:core="sap.ui.core" 
+	xmlns:u="sap.ui.unified" 
 	xmlns="sap.m">
 	<Page enableScrolling="true" showHeader="false">
 		<content>
-			<Table id="idProductsTable" inset="false" items="{
+			<Table id="idProductsTable" inset="false" mode="SingleSelectLeft" items="{
 			path:'/myarticles'
 		}">
 				<headerToolbar>
 					<Toolbar>
 						<content>
-							<Title text="My Articles" level="H2"/>
+							<Title text="My Articles" level="H2" class="sapUiLargeMarginEnd"/>
+							<Button icon="sap-icon://form" text="Edit Article" press="articleset"/>
+							<Button icon="sap-icon://account" text="Edit Article Author's" press="authorset"/>
+							<Button icon="sap-icon://copy" text="Edit Article File" press="fileset"/>
 							<ToolbarSpacer />
 						</content>
 					</Toolbar>
@@ -40,7 +45,7 @@
 					<Column >
 						<Text text="Author's" />
 					</Column>
-						<Column >
+					<Column >
 					</Column>
 				</columns>
 				<items>
@@ -57,14 +62,131 @@
 								<Link text="{bcfname}" href="/symposiumapp{bcfpath}" class="sapUiTinyMarginEnd" />
 							</HBox>
 							<Button type="Transparent" icon="sap-icon://show" tooltip="Click here to see the authors of this article" press="showauthors"/>
-								<Button type="Transparent" id="delbrod" icon="sap-icon://delete" tooltip="Click here to delete this article" press="deluserauthors"/>
-								
-								<!-- delbroadcast -->
-					
+							<HBox>
+								<Button type="Transparent" id="delbrod" icon="sap-icon://delete" tooltip="Click here to delete this article" press="delbroadcast"/>
+								<Button type="Transparent" id="editbroad" icon="sap-icon://edit" tooltip="Click here to delete this article" press="editbroad"/>
+							</HBox>
+
 						</cells>
 					</ColumnListItem>
 				</items>
 			</Table>
+			<!-- <VBox alignItems="Center" justifyContent="Center">
+		<HBox alignItems="Center" justifyContent="Center">
+                        <Panel width="auto" id="panel2" class="sapUiResponsiveMargin pnlcls" accessibleRole="Region">
+                            <headerToolbar>
+                                <Toolbar height="3rem">
+                                    <Title text="ABSTRACT SUBMISSION(S)"/>
+                                    <Label text="You can submit up to 3 abstracts for free" />
+                                </Toolbar>
+                            </headerToolbar>
+                                    <HBox alignItems="End" justifyContent="End">
+                                    <Text text="You have uploaded" class="sapUiTinyMarginEnd" />
+                                    <Text text="{/UserModel/0/absquota}" class="sapUiTinyMarginEnd"/>
+                                    <Text text=" pieces in total" class="sapUiTinyMarginEnd"/>
+                                    </HBox>
+                            <content>
+                                <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                                    <VBox alignItems="Stretch" justifyContent="Start" width="100%">
+                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%">
+                                            <Label text="Abstract" width="130px" />
+                                        </HBox>
+                                        <HBox class="sapUiTinyMarginTop" alignItems="Center" justifyContent="Stretch" width="100%">
+                                            <Label text="Submission Title" width="130px" />
+                                            <Label text=":" width="10px" />
+                                            <VBox width="100%">
+                                                <Input width="100%" id="titleid" value="" placeholder="Please write the TITLE OF THE ABSTRACT here WITH CAPITAL LETTERS"/>
+                                            </VBox>
+                                        </HBox>
+                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
+                                            <Text width="130px" text="Presentation Type"/>
+                                            <Label text=":" width="10px" />
+                                            <HBox width="100%">
+                                                <RadioButton text="ORAL" id="oralid" />
+                                                <RadioButton text="POSTER" id="posterid" />
+                                            </HBox>
+                                        </HBox>
+                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
+                                            <Label width="130px" text="Topic"/>
+                                            <Label text=":" width="10px" />
+                                            <VBox width="100%" alignItems="Stretch" justifyContent="Stretch">
+                                                   <Select forceSelection="false" width="100%" id="topicid" items="{
+											path: '/topics'
+												}">
+                                                    <core:Item key="{tpid}" text="{tptxt}"/>
+                                                </Select>
+                                            </VBox>
+                                        </HBox>
+                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
+                                            <Text width="130px" text="Specific Session"/>
+                                            <Label text=":" width="10px" />
+                                            <VBox width="100%">
+                                                <Input value="" id="specificid" enabled="false" placeholder="Please write the Title of the Specific Session and it's Code here if your submission will be presented in and specific session."/>
+                                            </VBox>
+                                        </HBox>
+                                        <HBox class="sapUiTinyMarginTop" width="100%" alignItems="Stretch" justifyContent="Stretch">
+                                            <core:Icon src="sap-icon://download" width="130px" color="#031E48">
+                                            </core:Icon>
+                                            <HBox width="100%" alignItems="Stretch" justifyContent="Stretch">
+                                                <Label class="sapUiLargeMarginEnd" text="1. Step : Download the 'Template', prepare your abstract according to the Template "/>
+                                                <HBox width="100%" alignItems="End" justifyContent="End">
+                                                    <core:Icon src="sap-icon://doc-attachment" class="size1 sapUiTinyMarginEnd" color="#031E48">
+                                                    </core:Icon>
+                                                    <Link text="{/gtfolder/0/gsfname}" href="/symposiumapp{/gtfolder/0/gsftemppath}" />
+                                                </HBox>
+                                            
+                                            </HBox>
+                                        </HBox>
+                                        <HBox class="sapUiTinyMarginTop" alignItems="Stretch" justifyContent="Stretch" width="100%">
+                                            <core:Icon src="sap-icon://add" width="130px" color="#031E48">
+                                            </core:Icon>
+                                            <HBox width="100%" alignItems="Stretch" justifyContent="Stretch">
+                                                <Label class="sapUiLargeMarginEnd" text="2. Step : Browse for the 'word file' of abstract you would like to submit "/>
+                                                <HBox width="100%" alignItems="End" justifyContent="End">
+                                                    <u:FileUploader id="fileUploader" fileType="docx,doc" uploadUrl="/" change="changefile" style="Emphasized" tooltip="please select pdf file" />
+                                                </HBox>
+                                            </HBox>
+                                        </HBox>
+                                        <HBox alignItems="Stretch" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
+                                            <core:Icon src="sap-icon://upload" width="130px" color="#031E48">
+                                            </core:Icon>
+                                            <HBox width="100%" alignItems="Stretch" justifyContent="Stretch">
+                                                <Label text="3. Step :Add Author's "/>
+
+                                                <HBox width="100%" alignItems="End" justifyContent="End">
+                                                   
+                                                    <MultiInput id="multiinput1" width="700px" tokens="{
+                                                                path: '/authorsuser'
+                                                            }" tokenUpdate="onRemoveAuthors">
+                                                        <tokens>
+                                                            <Token key="{mail}" text="{ulgnname}" />
+                                                        </tokens>
+                                                    </MultiInput>
+                                                    <Button class="sapUiLargeMarginBegin" text="Add Author's " press="addauthors" />
+                                                </HBox>
+                                            </HBox>
+                                        </HBox>
+                                        <HBox alignItems="Stretch" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
+                                                    <core:Icon src="sap-icon://upload" width="130px" color="#031E48">
+                                                    </core:Icon>
+                                                            <HBox width="100%" alignItems="Stretch" justifyContent="Stretch">
+                                                            <Label text="4. Step :Upload the file " class="sapUiLargeMarginEnd"/>
+                                                               <HBox width="100%" alignItems="End" justifyContent="End">
+                                                            <Button press="abstractvalidate" type="Default" text="SAVE ABSTRACT" tooltip="{i18n>Save}" />
+                                                        </HBox>
+                                                </HBox>
+                                        </HBox>
+                                    </VBox>
+                                </VBox>
+                            </content>
+                        </Panel>
+</HBox>
+</VBox> -->
+
+
+
+
+
 			<HBox alignItems="End" justifyContent="End">
 				<Button type="Transparent" id="artcancel" visible="false" icon="sap-icon://sys-cancel" tooltip="Edit File Name İn System" press="closevisible"/>
 			</HBox>
@@ -81,6 +203,7 @@
 					</HBox>
 				</CustomListItem>
 			</List>
+
 		</content>
 	</Page>
 </mvc:View>

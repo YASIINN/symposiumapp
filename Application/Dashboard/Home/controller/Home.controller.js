@@ -201,20 +201,11 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                 })
             }
         },
-        getuser: function () {
-            UserService.userReq({ MN: "GET", SN: "User", "where": "ulgnname=?", param: [oModel.oData.author.email] }).then(function (res) {
-                if (res == "None") {
-                    _this.adduser();
-                } else {
-                    _this.setuser();
-                }
-            })
-        },
         onsetinfo: function (qouta) {
-
             CreateComponent.showBusyIndicator()
             var _this = this
             var tid = "";
+            var adres=""
             if (oModel.oData.UserModel[0].tid == "") {
                 if (_this.byId("settitle").getSelectedKey() == "") {
                     tid = "1"
@@ -226,6 +217,14 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
             } else {
                 tid = oModel.oData.UserModel[0].tid
             }
+            if(oModel.oData.UserModel[0].adress==""){
+                adres=oModel.oData.author.addres
+            }else{
+                adres=oModel.oData.UserModel[0].adress
+            }
+
+            // oModel.oData.author.addres
+            debugger
             var userdata = [{
                 usname: oModel.oData.UserModel[0].usname,
                 uslname: oModel.oData.UserModel[0].uslname,
@@ -234,7 +233,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                 ulgnname: oModel.oData.UserModel[0].ulgnname,
                 country: oModel.oData.UserModel[0].country == "" ? _this.byId("countryallset").getSelectedKey() : oModel.oData.UserModel[0].country,
                 tid: tid,
-                adress: oModel.oData.author.addres,
+                adress: adres,
                 ftextquota: oModel.oData.UserModel[0].ftextquota,
                 absquota: oModel.oData.UserModel[0].absquota,
                 mainaut: oModel.oData.UserModel[0].mainaut
@@ -409,9 +408,15 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
         onBeforeShow: function () {
             var _this = this
             UseronLogin.onLogin().then(function (e) {
+                _this.byId("absid").setSelectedKey("");
                 var startdate = new Date(moment(oModel.oData.generalsettings[0].gsbegdt, "DD.MM.YYYY"))
                 var enddate = new Date(moment(oModel.oData.generalsettings[0].gsenddt, "DD.MM.YYYY"))
                 var nowdate = new Date();
+                if(oModel.oData.UserModel[0].mainaut=="0"){
+                    _this.byId("panel0").setVisible(false)
+                }else{
+                    _this.byId("panel0").setVisible(true)
+                }
                 if (startdate < nowdate && startdate < enddate) {
                     _this.gettopics();
                     _this.checkfirslogin();
