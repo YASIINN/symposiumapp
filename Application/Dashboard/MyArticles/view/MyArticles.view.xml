@@ -1,77 +1,78 @@
 <mvc:View controllerName="symposiumapp.Application.Dashboard.MyArticles.controller.MyArticles" 
-	xmlns:mvc="sap.ui.core.mvc" 
-	xmlns:l="sap.ui.layout" 
-	xmlns:core="sap.ui.core" 
-	xmlns:u="sap.ui.unified" 
-	xmlns="sap.m">
-	<Page enableScrolling="true" showHeader="false">
-		<content>
-			<Table id="idProductsTable" inset="false" mode="SingleSelectLeft" items="{
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns:l="sap.ui.layout" 
+    xmlns:core="sap.ui.core" 
+    xmlns:u="sap.ui.unified" 
+    xmlns="sap.m">
+    <Page enableScrolling="true" showHeader="false">
+        <content>
+            <Table id="idProductsTable" inset="false" mode="SingleSelectLeft" items="{
 			path:'/myarticles'
 		}">
-				<headerToolbar>
-					<Toolbar>
-						<content>
-							<Title text="My Articles" level="H2" class="sapUiLargeMarginEnd"/>
-							<Button icon="sap-icon://form" text="Edit Article" press="articleset"/>
-							<Button icon="sap-icon://account" text="Edit Article Author's" press="authorset"/>
-							<Button icon="sap-icon://copy" text="Edit Article File" press="fileset"/>
-							<ToolbarSpacer />
-						</content>
-					</Toolbar>
-				</headerToolbar>
-				<infoToolbar>
-					<Toolbar active="ture">
-						<Label text="your installed articles appear here"/>
-					</Toolbar>
-				</infoToolbar>
-				<columns>
-					<Column
+                <headerToolbar>
+                    <Toolbar>
+                        <content>
+                            <Title text="My Articles" level="H2" class="sapUiLargeMarginEnd"/>
+                            <Button icon="sap-icon://form" text="Edit Article" press="articleset"/>
+                            <!-- <Button icon="sap-icon://account" text="Edit Article Author's" press="authorset"/> -->
+                            <Button icon="sap-icon://copy" text="Edit Article File" press="fileset"/>
+                            <!-- <Button icon="sap-icon://add" text="Add  New Author " press="addarticleauthor"/> -->
+                            <ToolbarSpacer />
+                        </content>
+                    </Toolbar>
+                </headerToolbar>
+                <infoToolbar>
+                    <Toolbar active="ture">
+                        <Label text="your installed articles appear here"/>
+                    </Toolbar>
+                </infoToolbar>
+                <columns>
+                    <Column
 				>
-						<Text text="Article Name" />
-					</Column>
-					<Column	>
-						<Text text="Article Subject"/>
-					</Column>
-					<Column	>
-						<Text text="Article Type"/>
-					</Column>
-					<Column >
-						<Text text="Presentation Type" />
-					</Column>
-					<Column >
-						<Text text="File" />
-					</Column>
-					<Column >
-						<Text text="Author's" />
-					</Column>
-					<Column >
-					</Column>
-				</columns>
-				<items>
-					<ColumnListItem>
-						<cells>
-							<Text text="{brdcastname}" />
+                        <Text text="Article Name" />
+                    </Column>
+                    <Column	>
+                        <Text text="Article Subject"/>
+                    </Column>
+                    <Column	>
+                        <Text text="Article Type"/>
+                    </Column>
+                    <Column >
+                        <Text text="Presentation Type" />
+                    </Column>
+                    <Column >
+                        <Text text="File" />
+                    </Column>
+                    <!-- <Column >
+                        <Text text="Author's" />
+                    </Column> -->
+                    <Column >
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{brdcastname}" />
 
-							<Text text="{brdsubject}"/>
-							<Text text="{abstxt}" />
-							<Text text="{btypetxt}"/>
-							<HBox>
-								<core:Icon src="sap-icon://doc-attachment" class="size1 sapUiTinyMarginEnd" color="#031E48">
-								</core:Icon>
-								<Link text="{bcfname}" href="/symposiumapp{bcfpath}" class="sapUiTinyMarginEnd" />
-							</HBox>
-							<Button type="Transparent" icon="sap-icon://show" tooltip="Click here to see the authors of this article" press="showauthors"/>
-							<HBox>
-								<Button type="Transparent" id="delbrod" icon="sap-icon://delete" tooltip="Click here to delete this article" press="delbroadcast"/>
-								<Button type="Transparent" id="editbroad" icon="sap-icon://edit" tooltip="Click here to delete this article" press="editbroad"/>
-							</HBox>
+                            <Text text="{brdsubject}"/>
+                            <Text text="{abstxt}" />
+                            <Text text="{btypetxt}"/>
+                            <HBox>
+                                <core:Icon src="sap-icon://doc-attachment" class="size1 sapUiTinyMarginEnd" color="#031E48">
+                                </core:Icon>
+                                <Link text="{bcfname}" href="/symposiumapp{bcfpath}" class="sapUiTinyMarginEnd" />
+                            </HBox>
+                            <!-- <Button type="Transparent" icon="sap-icon://show" tooltip="Click here to see the authors of this article" press="showauthors"/> -->
+                            <HBox>
+                                <Button type="Transparent" id="delbrod" icon="sap-icon://delete" tooltip="Click here to delete this article" press="delbroadcast"/>
+                                <!-- <Button type="Transparent" id="editbroad" icon="sap-icon://edit" tooltip="Click here to delete this article" press="editbroad"/> -->
+                            </HBox>
 
-						</cells>
-					</ColumnListItem>
-				</items>
-			</Table>
-			<!-- <VBox alignItems="Center" justifyContent="Center">
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+            <!-- <VBox alignItems="Center" justifyContent="Center">
 		<HBox alignItems="Center" justifyContent="Center">
                         <Panel width="auto" id="panel2" class="sapUiResponsiveMargin pnlcls" accessibleRole="Region">
                             <headerToolbar>
@@ -187,23 +188,23 @@
 
 
 
-			<HBox alignItems="End" justifyContent="End">
-				<Button type="Transparent" id="artcancel" visible="false" icon="sap-icon://sys-cancel" tooltip="Edit File Name İn System" press="closevisible"/>
-			</HBox>
-			<List headerText="Author's" id="artaut" visible="false" items="{path: '/artauthors'}">
-				<CustomListItem>
-					<HBox>
-						<core:Icon size="2rem" src="sap-icon://customer" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" />
-						<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
-							<Label text="{usname}  {uslname}"/>
-						</VBox>
-					</HBox>
-					<HBox alignItems="End" justifyContent="End">
-						<Button id="delautid" type="Transparent" icon="sap-icon://delete" tooltip="remove this author" press="removeauthor"/>
-					</HBox>
-				</CustomListItem>
-			</List>
+            <HBox alignItems="End" justifyContent="End">
+                <Button type="Transparent" id="artcancel" visible="false" icon="sap-icon://sys-cancel" tooltip="Edit File Name İn System" press="closevisible"/>
+            </HBox>
+            <List headerText="Author's" id="artaut" visible="false" items="{path: '/artauthors'}">
+                <CustomListItem>
+                    <HBox>
+                        <core:Icon size="2rem" src="sap-icon://customer" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" />
+                        <VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
+                            <Label text="{usname}  {uslname}"/>
+                        </VBox>
+                    </HBox>
+                    <HBox alignItems="End" justifyContent="End">
+                        <Button id="delautid" type="Transparent" icon="sap-icon://delete" tooltip="remove this author" press="removeauthor"/>
+                    </HBox>
+                </CustomListItem>
+            </List>
 
-		</content>
-	</Page>
+        </content>
+    </Page>
 </mvc:View>

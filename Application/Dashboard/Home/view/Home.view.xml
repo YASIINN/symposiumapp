@@ -171,29 +171,10 @@
                                             </HBox>
                                         </HBox>
                                         <HBox alignItems="Stretch" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
-                                            <core:Icon src="sap-icon://upload" width="130px" color="#031E48">
-                                            </core:Icon>
-                                            <HBox width="100%" alignItems="Stretch" justifyContent="Stretch">
-                                                <Label text="3. Step :Add Author's "/>
-
-                                                <HBox width="100%" alignItems="End" justifyContent="End">
-                                                   
-                                                    <MultiInput id="multiinput1" width="700px"  tokens="{
-                                                                path: '/authorsuser'
-                                                            }" tokenUpdate="onRemoveAuthors">
-                                                        <tokens>
-                                                            <Token key="{mail}" text="{ulgnname}" />
-                                                        </tokens>
-                                                    </MultiInput>
-                                                    <Button class="sapUiLargeMarginBegin" text="Add Author's " press="addauthors" />
-                                                </HBox>
-                                            </HBox>
-                                        </HBox>
-                                        <HBox alignItems="Stretch" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
                                                     <core:Icon src="sap-icon://upload" width="130px" color="#031E48">
                                                     </core:Icon>
                                                             <HBox width="100%" alignItems="Stretch" justifyContent="Stretch">
-                                                            <Label text="4. Step :Upload the file " class="sapUiLargeMarginEnd"/>
+                                                            <Label text="3. Step :Upload the file " class="sapUiLargeMarginEnd"/>
                                                                <HBox width="100%" alignItems="End" justifyContent="End">
                                                             <Button press="abstractvalidate" type="Default" text="SAVE ABSTRACT" tooltip="{i18n>Save}" />
                                                         </HBox>
@@ -277,30 +258,11 @@
                                                  </HBox>
                                                 </HBox>
                                         </HBox>
-                                         <HBox alignItems="Stretch" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
-                                            <core:Icon src="sap-icon://upload" width="130px" color="#031E48">
-                                            </core:Icon>
-                                            <HBox width="100%" alignItems="Stretch" justifyContent="Stretch">
-                                                <Label text="3. Step :Add Author's "/>
-
-                                                <HBox width="100%" alignItems="End" justifyContent="End">
-                                                   
-                                                    <MultiInput id="multiinput2" width="700px"  tokens="{
-                                                                path: '/authorsuser'
-                                                            }" tokenUpdate="onRemoveAuthors">
-                                                        <tokens>
-                                                            <Token key="{mail}" text="{ulgnname}" />
-                                                        </tokens>
-                                                    </MultiInput>
-                                                    <Button class="sapUiLargeMarginBegin" text="Add Author's " press="addauthors" />
-                                                </HBox>
-                                            </HBox>
-                                        </HBox>
                                                <HBox alignItems="Stretch" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
                                                     <core:Icon src="sap-icon://upload" width="130px" color="#031E48">
                                                     </core:Icon>
                                                             <HBox width="100%" alignItems="Stretch" justifyContent="Stretch">
-                                                            <Label text="4. Step :Upload the file " class="sapUiLargeMarginEnd"/>
+                                                            <Label text="3. Step :Upload the file " class="sapUiLargeMarginEnd"/>
                                                                <HBox width="100%" alignItems="End" justifyContent="End">
                                             <Button press="fulltextvalidate" type="Default" text="SAVE FULLTEXT" tooltip="{i18n>Save}" />
                                                          
@@ -316,37 +278,107 @@
                         </HBox>
                     </IconTabFilter>
                     <IconTabSeparator icon=""/>
-                    <IconTabFilter key="point" icon="sap-icon://add" iconColor="Neutral" text=" NOT GİR" count="2">
-                        <Table inset="false" items="{
-                                            path: '/userpoint'
-                                        }">
-                            <infoToolbar>
-                                <Toolbar active="ture">
-                                    <Label text="Seçtiğiniz Projelerde Bulunan Derslerin Notlarını Giriniz"/>
+                    <IconTabFilter key="payment" icon="sap-icon://batch-payments" iconColor="Natural" text="PAYMENT - PROFORMA" count="2">
+                        <Panel width="auto" id="panel4" class="sapUiResponsiveMargin pnlcls" accessibleRole="Region">
+                            <headerToolbar>
+                                <Toolbar height="3rem">
+                                    <Title text="PAYMENT - PROFORMA INVOICE GENERATION "/>
                                 </Toolbar>
-                            </infoToolbar>
-                            <columns>
-                                <Column width="3rem">
-                                    <Text text="Ders Adı" />
-                                </Column>
-                                <Column width="3rem">
-                                    <Text text="Ders Notu" />
-                                </Column>
-                            </columns>
-                            <items>
-                                <ColumnListItem>
-                                    <cells>
-                                        <ObjectIdentifier text="{lnm}"/>
-                                        <Input  width ="100px" value="{upnt}"/>
-                                    </cells>
-                                </ColumnListItem>
-                            </items>
-                        </Table>
-                        <HBox alignItems="Center" justifyContent="End" width="100%" class="sapUiTinyMarginTop">
-                            <Button text="Tamam" press="userpointcheck"/>
-                        </HBox>
+                            </headerToolbar>
+                            <content>
+                                <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                                    <VBox alignItems="Stretch" justifyContent="Start" width="100%">
+                            	<ScrollContainer
+                                height="100%"
+                                width="100%"
+                                horizontal="true"
+                                vertical="true"
+		                                        >
+                                        <Table id="idfeestable" inset="false" 
+                                        items="{
+                                            path: '/fees'
+                                        }">
+                <headerToolbar>
+                    <Toolbar>
+                        <content>
+                        <Label text="Way of Payment :" width="15%"/>
+                    <Select forceSelection="false" id="paymentselect" width="100%" items="{
+											path: '/payments'}">
+                                                    <core:Item key="{pwid}" text="{pwtxt}"/>
+                                                </Select>
+                    
+                    
+                            <ToolbarSpacer />
+                        </content>
+                    </Toolbar>
+                </headerToolbar>
+                <infoToolbar>
+                    <Toolbar active="ture">
+                    </Toolbar>
+                </infoToolbar>
+                <columns>
+                    <Column
+				>
+                        <Text text="Item" />
+                    </Column>
+                    <Column	>
+                        <Text text="Description"/>
+                    </Column>
+                    <Column	>
+                        <Text text="Unit Price"/>
+                    </Column>
+                    <Column	>
+                        <Text text="Count"/>
+                    </Column>
+                    <Column >
+                        <Text text="Quantity" />
+                    </Column>
+                    <Column >
+                        <Text text="VAT%" />
+                    </Column>
+                     <Column
+				>
+                        <Text text="VAT" />
+                    </Column>
+                    <Column	>
+                        <Text text="Line Total"/>
+                    </Column>
+                    <Column	>
+                        <Text text="Currency"/>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{fsid}" />
+
+                            <Text text="{fstxt}"/>
+                            <Text text="{fsprice}" />
+                            	<StepInput
+    				        		value="1"
+	    					        min="{min}"
+		    				        max="100"
+			    			        step="1"
+                                    change="changecount"
+                                    enabled="{enb}"
+				    		       />
+                            <Text text="{fsquota}"/>
+                            
+                                  <Text text="{vaty}"/>
+                                  <Text text="{vat}"/>
+                                  <Text text="Line Total : {total} "/>
+                                  <Text text="{fbtxt}"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+            	</ScrollContainer>
+
+                                    </VBox>
+                                </VBox>
+                            </content>
+                        </Panel>
                     </IconTabFilter>
-                    <IconTabSeparator icon=""/>
                 </items>
             </IconTabBar>
         </content>

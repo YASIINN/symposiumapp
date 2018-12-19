@@ -100,50 +100,52 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
         addauthorsuser: function (btid) {
             var _this = this
             var param = "";
-            if (oModel.oData.authorsuser && oModel.oData.authorsuser.length) {
-                var authors = JSON.parse(JSON.stringify(oModel.oData.authorsuser));
-                for (let index = 0; index < oModel.oData.authorsuser.length; index++) {
-                    if (index == oModel.oData.authorsuser.length - 1) {
-                        param += "'" + oModel.oData.authorsuser[index].mail + "'"
-                    } else {
-                        param += "'" + oModel.oData.authorsuser[index].mail + "'" + ","
-                    }
-                }
-                PluginService.getPlugin({ MN: "GETMAİL", SN: "UserMail", where: "mail IN" + "(" + param + ")" }).then(function (res) {
-                    if (res[0].status == "Okey") {
-                        for (let index = 0; index < authors.length; index++) {
-                            for (let j = 0; j < res.length; j++) {
-                                if (authors[index].mail == res[j].mail) {
-                                    authors.splice(index, 1);
-                                }
-                            }
-                        }
-                        UserService.userReq({ MN: "ADD", SN: "User", userdata: authors }).then(function (res) {
-                            if (res[0].status == "SuccesAdd") {
-                                _this.onRelationAuthorsBroadcast(true, btid, param);
-                            } else {
-                                CreateComponent.hideBusyIndicator()
-                            }
-                        })
-                    }
-                    else {
-                        authors = oModel.oData.authorsuser
-                        UserService.userReq({ MN: "ADD", SN: "User", userdata: authors }).then(function (res) {
-                            if (res[0].status == "SuccesAdd") {
-                                _this.onRelationAuthorsBroadcast(true, btid, param);
-                            } else {
-                                CreateComponent.hideBusyIndicator()
-                            }
-                        })
-                    }
-                })
-            } else {
-                _this.onRelationAuthorsBroadcast(false, btid);
-            }
+            /*  if (oModel.oData.authorsuser && oModel.oData.authorsuser.length) {
+                  var authors = JSON.parse(JSON.stringify(oModel.oData.authorsuser));
+                  for (let index = 0; index < oModel.oData.authorsuser.length; index++) {
+                      if (index == oModel.oData.authorsuser.length - 1) {
+                          param += "'" + oModel.oData.authorsuser[index].mail + "'"
+                      } else {
+                          param += "'" + oModel.oData.authorsuser[index].mail + "'" + ","
+                      }
+                  }
+                  PluginService.getPlugin({ MN: "GETMAİL", SN: "UserMail", where: "mail IN" + "(" + param + ")" }).then(function (res) {
+                      if (res[0].status == "Okey") {
+                          for (let index = 0; index < authors.length; index++) {
+                              for (let j = 0; j < res.length; j++) {
+                                  if (authors[index].mail == res[j].mail) {
+                                      authors.splice(index, 1);
+                                  }
+                              }
+                          }
+                          UserService.userReq({ MN: "ADD", SN: "User", userdata: authors }).then(function (res) {
+                              if (res[0].status == "SuccesAdd") {
+                                  _this.onRelationAuthorsBroadcast(true, btid, param);
+                              } else {
+                                  CreateComponent.hideBusyIndicator()
+                              }
+                          })
+                      }
+                      else {
+                          authors = oModel.oData.authorsuser
+                          UserService.userReq({ MN: "ADD", SN: "User", userdata: authors }).then(function (res) {
+                              if (res[0].status == "SuccesAdd") {
+                                  _this.onRelationAuthorsBroadcast(true, btid, param);
+                              } else {
+                                  CreateComponent.hideBusyIndicator()
+                              }
+                          })
+                      }
+                  })
+              } else {
+                  _this.onRelationAuthorsBroadcast(false, btid);
+              }*/
+            _this.onRelationAuthorsBroadcast(false, btid);
         },
         onRelationAuthorsBroadcast: function (result, btid, param) {
             var _this = this
             if (result) {
+                /*
                 var relation;
                 UserService.userReq({ MN: "GET", SN: "User", "where": "ulgnname IN" + "(" + param + ")" }).then(function (res) {
                     if (res[0].status == "Okey") {
@@ -176,6 +178,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                         CreateComponent.hideBusyIndicator()
                     }
                 })
+              
+                */
             } else {
                 RelationService.relationreq({
                     MN: "ADD", SN: "Relation", data: [{
@@ -205,7 +209,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
             CreateComponent.showBusyIndicator()
             var _this = this
             var tid = "";
-            var adres=""
+            var adres = ""
             if (oModel.oData.UserModel[0].tid == "") {
                 if (_this.byId("settitle").getSelectedKey() == "") {
                     tid = "1"
@@ -217,14 +221,11 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
             } else {
                 tid = oModel.oData.UserModel[0].tid
             }
-            if(oModel.oData.UserModel[0].adress==""){
-                adres=oModel.oData.author.addres
-            }else{
-                adres=oModel.oData.UserModel[0].adress
+            if (oModel.oData.UserModel[0].adress == "") {
+                adres = oModel.oData.author.addres
+            } else {
+                adres = oModel.oData.UserModel[0].adress
             }
-
-            // oModel.oData.author.addres
-            debugger
             var userdata = [{
                 usname: oModel.oData.UserModel[0].usname,
                 uslname: oModel.oData.UserModel[0].uslname,
@@ -374,10 +375,32 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                     break;
             }
         },
-        addauthors: function () {
-            var _this = this
-            jQuery.sap.require("symposiumapp.Application.Dashboard.authorspanel.controller.authorspanel");
-            authorpanel.open(this)
+        changecount: function (oEvent) {
+            var setmodel = oModel.getProperty(oEvent.oSource._getBindingContext().sPath)
+            var count = oEvent.oSource.getValue()
+            var price = parseFloat(setmodel.fsprice);
+            var ltotal = price * count;
+            setmodel.total = ltotal;
+            oModel.refresh()
+        },
+        getpayments: function () {
+            PluginService.getPlugin({ SN: "Payments", MN: "GET" }).then(function (res) {
+                oModel.setProperty("/payments", res)
+            })
+        },
+        getfee: function (oEvent) {
+            PluginService.getPlugin({ SN: "FeeSettings", MN: "GET" }).then(function (res) {
+                res.forEach(function (x, i) {
+                    if (i == 0) {
+                        x.enb = false
+                        x.total = x.fsprice
+                    } else {
+                        x.total = 0
+                        x.enb = true;
+                    }
+                })
+                oModel.setProperty("/fees", res)
+            })
         },
         BroadcastType: function () {
             PluginService.getPlugin({ SN: "BroadcastType", MN: "GETTYPE" }).then(function (res) {
@@ -412,9 +435,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                 var startdate = new Date(moment(oModel.oData.generalsettings[0].gsbegdt, "DD.MM.YYYY"))
                 var enddate = new Date(moment(oModel.oData.generalsettings[0].gsenddt, "DD.MM.YYYY"))
                 var nowdate = new Date();
-                if(oModel.oData.UserModel[0].mainaut=="0"){
+                if (oModel.oData.UserModel[0].mainaut == "0") {
                     _this.byId("panel0").setVisible(false)
-                }else{
+                } else {
                     _this.byId("panel0").setVisible(true)
                 }
                 if (startdate < nowdate && startdate < enddate) {
@@ -424,6 +447,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                     _this.getPosition();
                     _this.BroadcastType();
                     _this.getgeneralsettings();
+                    _this.getfee()
+                    _this.getpayments();
                 }
                 else {
                     _this.byId("panel0").setVisible(false)

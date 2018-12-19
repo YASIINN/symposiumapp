@@ -64,7 +64,7 @@ sap.ui.define(['sap/m/MessageBox', 'sap/ui/core/mvc/Controller'], function (Mess
             } else
                 if (oModel.oData.RegisterModel.email != oModel.oData.RegisterModel.cemail) {
                     sap.m.MessageToast.show("email addresses do not match");
-                } 
+                }
                 else if (_this.byId("pnmbrset").getValue().trim() == "") {
                     sap.m.MessageToast.show("please fill in the Phone field");
                 }
@@ -118,15 +118,22 @@ sap.ui.define(['sap/m/MessageBox', 'sap/ui/core/mvc/Controller'], function (Mess
                         rtpass: md5(oModel.oData.RegisterModel.cpass),
                         rtlcode: lcode,
                         rauth: "2",
-                        rphone:_this.byId("pnmbrset").getValue()
+                        rphone: _this.byId("pnmbrset").getValue()
                     }
                 ]
             }).then(function (res) {
                 if (res[0].status == "SuccesAdd") {
                     RegisterService.RegisterReq({ MN: "GET", SN: "Register", where: "rtemail=?", param: [oModel.oData.RegisterModel.cemail] }).then(function (res) {
                         if (res[0].rtlcode) {
-                            var msg = "http://localhost/symposiumapp/#/RegisterCheck?" + res[0].rtlcode;
-                            MailService.AddMail({ systemcheck: [], "maildata": [{ "mail": res[0].rtemail, "messega": msg, subject: "record verification" }] }).then(function (res) {
+                      
+                            var msgg="<html><body>";
+                            msgg+="<b>Thank you for registering for the WMCAUS.</b>";
+                            msgg+="<br>";
+                            msgg+="<b>Here is a link to a activate your account.</b>";
+                            msgg+="<br>";
+                            msgg+="http://localhost/symposiumapp/#/RegisterCheck?"+ res[0].rtlcode ;
+                            msgg+="</body></html>";
+                            MailService.AddMail({ systemcheck: [], "maildata": [{ "mail": res[0].rtemail, "messega": msgg, subject: "Activation Verification" }] }).then(function (res) {
                                 if (res == "None") {
                                     CreateComponent.hideBusyIndicator();
                                     sap.m.MessageToast.show("sorry there was a mistake when sending mail");

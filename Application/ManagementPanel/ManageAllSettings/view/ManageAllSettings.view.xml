@@ -8,17 +8,17 @@
                 <items>
                     <IconTabFilter key="general" icon="sap-icon://action-settings" text="General Settings " iconColor="Positive" count="1">
                         <HBox alignItems="End" justifyContent="End">
-                        <Button text="Edit"  icon="sap-icon://edit" press="setdateenb" type="Emphasized" />
+                            <Button text="Edit" icon="sap-icon://edit" press="setdateenb" type="Emphasized" />
                         </HBox>
                         <VBox>
-                        <Text text="Starting Date" />
-                        <DatePicker change="datecontrol" enabled="false" id="DP4" valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy" value="{path:'/generalsettings/0/gsbegdt'}" class="sapUiSmallMarginBottom"/>
-                        <Text text="End Date" />
-                        <DatePicker change="datecontrol" id="DP5" enabled="false" valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy" value="{path:'/generalsettings/0/gsenddt'}" class="sapUiSmallMarginBottom"/>
-                    </VBox>
-               <HBox alignItems="End" justifyContent="End">
-                        <Button id="savedate" visible="false" text="Save"  press="setsysdate" icon="sap-icon://save" type="Emphasized" />
-                        </HBox>                 
+                            <Text text="Starting Date" />
+                            <DatePicker change="datecontrol" enabled="false" id="DP4" valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy" value="{path:'/generalsettings/0/gsbegdt'}" class="sapUiSmallMarginBottom"/>
+                            <Text text="End Date" />
+                            <DatePicker change="datecontrol" id="DP5" enabled="false" valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy" value="{path:'/generalsettings/0/gsenddt'}" class="sapUiSmallMarginBottom"/>
+                        </VBox>
+                        <HBox alignItems="End" justifyContent="End">
+                            <Button id="savedate" visible="false" text="Save" press="setsysdate" icon="sap-icon://save" type="Emphasized" />
+                        </HBox>
                     </IconTabFilter>
                     <IconTabSeparator icon=""/>
                     <IconTabFilter key="topics" icon="sap-icon://list" iconColor="Natural" text="Topic Settings" count="2">
@@ -103,8 +103,8 @@
                     </IconTabFilter>
                     <IconTabSeparator icon=""/>
                     <IconTabFilter key="files" icon="sap-icon://attachment" iconColor="Natural" text="Template Folder Settings" count="4">
-                        
-                          <Table id="filestable" inset="false" items="{
+
+                        <Table id="filestable" inset="false" items="{
                                             path: '/gsetfolder'
                                         }">
                             <infoToolbar>
@@ -128,7 +128,7 @@
                                     <cells>
                                         <Link text="{gsfname}" target="" href="/symposiumapp{gsftemppath}"/>
                                         <HBox>
-                                          <!-- <Button type="Transparent" icon="sap-icon://delete" tooltip="Delete System Template File" press="delfile"/> -->
+                                            <!-- <Button type="Transparent" icon="sap-icon://delete" tooltip="Delete System Template File" press="delfile"/> -->
                                             <Button type="Transparent" icon="sap-icon://edit" tooltip="Edit" press="editfilevisible"/>
                                         </HBox>
                                         <HBox width="100%" alignItems="Stretch" justifyContent="Stretch">
@@ -140,10 +140,10 @@
                             </items>
                         </Table>
                     </IconTabFilter>
-                      <IconTabSeparator icon=""/>
-                            <IconTabFilter key="mails" iconColor="Positive" icon="sap-icon://email" text="System Mail Settings" count="5">
-                        
-    <Table id="mailstable" inset="false" items="{
+                    <IconTabSeparator icon=""/>
+                    <IconTabFilter key="mails" iconColor="Positive" icon="sap-icon://email" text="System Mail Settings" count="5">
+
+                        <Table id="mailstable" inset="false" items="{
                                             path: '/mailsett'
                                         }">
                             <infoToolbar>
@@ -156,7 +156,7 @@
                                     <Text text="Mail Name" />
                                 </Column>
                                 <Column width="3rem">
-                                <Text text="Mail Password"/>
+                                    <Text text="Mail Password"/>
                                 </Column>
 
                                 <Column width="10rem">
@@ -166,42 +166,191 @@
                             <items>
                                 <ColumnListItem>
                                     <cells>
-                                      <Input value="{gsmname}" width="100%" enabled="false"  />
+                                        <Input value="{gsmname}" width="100%" enabled="false" />
                                         <HBox>
-                                            <Input value="{gsmpass}" id="mailpasid" type="Password" enabled="false"  width="100%"  />
+                                            <Input value="{gsmpass}" id="mailpasid" type="Password" enabled="false" width="100%" />
                                             <Button type="Transparent" icon="sap-icon://edit" tooltip="Edit" press="setidvis"/>
 
-                                        <!-- <Button type="Transparent" icon="sap-icon://show" id="showid" tooltip="Show the Password" press="showpas"/> -->
+                                            <!-- <Button type="Transparent" icon="sap-icon://show" id="showid" tooltip="Show the Password" press="showpas"/> -->
                                         </HBox>
                                     </cells>
                                 </ColumnListItem>
                             </items>
                         </Table>
-                                <VBox alignItems="Center" justifyContent="Center" id="setidvis" visible="false">
-                                <Title text="Set Mail Settings"/>
+                        <VBox alignItems="Center" justifyContent="Center" id="setidvis" visible="false">
+                            <Title text="Set Mail Settings"/>
 
-                                <HBox alignItems="Center" class="SapUiLargeMarginTop" justifyContent="Center">
-                                    <VBox>
+                            <HBox alignItems="Center" class="SapUiLargeMarginTop" justifyContent="Center">
+                                <VBox>
                                     <Label text="Sys Mail : " class="sapUiTinyMarginEnd"/>
                                     <Input value="{/mailsett/0/gsmname}" width="300px"/>
-                                    </VBox>
-                                </HBox>  
-                                <HBox alignItems="Center" class="SapUiLargeMarginTop" justifyContent="Center">
-                                    <VBox>
+                                </VBox>
+                            </HBox>
+                            <HBox alignItems="Center" class="SapUiLargeMarginTop" justifyContent="Center">
+                                <VBox>
                                     <Label text="Sys Pass : " class="sapUiTinyMarginEnd"/>
                                     <Input value="{/mailsett/0/gsmpass}" width="300px"/>
-                                    </VBox>
-                                </HBox>   
-                                <HBox alignItems="Center" class="SapUiLargeMarginTop" justifyContent="Center">
-                                    <VBox>
-                                    <Button type="Emphasized" text="Save Changes" icon="sap-icon://save" press="savemailset" />
-                                    </VBox>
-                                </HBox>   
                                 </VBox>
+                            </HBox>
+                            <HBox alignItems="Center" class="SapUiLargeMarginTop" justifyContent="Center">
+                                <VBox>
+                                    <Button type="Emphasized" text="Save Changes" icon="sap-icon://save" press="savemailset" />
+                                </VBox>
+                            </HBox>
+                        </VBox>
+                    </IconTabFilter>
+                    <IconTabSeparator icon=""/>
+                    <IconTabFilter key="fees" icon="sap-icon://money-bills" iconColor="Natural" text="Fees Settings" count="6">
+                        <ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
+                            <Table id="feetable" inset="false" items="{
+                                            path: '/fesett'
+                                        }">
+                                <headerToolbar>
+                                    <Toolbar>
+                                        <content>
+                                        <Button type="Transparent" icon="sap-icon://add" text="Add New Fee" press="editfee"/>
+                                            <ToolbarSpacer />
+                                        </content>
+                                    </Toolbar>
+                                </headerToolbar>
+                                <infoToolbar>
+                                    <Toolbar active="ture">
+                                        <Title text="Fee Setting's"/>
+                                    </Toolbar>
+                                </infoToolbar>
+                                <columns>
+                                    <Column
+				>
+                                        <Text text="Item" />
+                                    </Column>
+                                    <Column	>
+                                        <Text text="Description"/>
+                                    </Column>
+                                    <Column	>
+                                        <Text text="Unit Price"/>
+                                    </Column>
+                                    <Column >
+                                        <Text text="VAT%" />
+                                    </Column>
+                                    <Column
+				>
+                                        <Text text="VAT" />
+                                    </Column>
+                                    <Column	>
+                                        <Text text="Currency"/>
+                                    </Column>
+                                    <Column	>
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Text text="{fsid}" />
 
-                        
-                        </IconTabFilter>
+                                            <Text text="{fstxt}"/>
+                                            <Text text="{fsprice}" />
+                                            <Text text="{vaty}"/>
+                                            <Text text="{vat}"/>
+
+                                            <Text text="{fbtxt}"/>
+                                            <HBox>
+                                                <Button type="Transparent" icon="sap-icon://delete" tooltip="Delete Fees" press="delfee" />
+                                                <Button type="Transparent" icon="sap-icon://edit" tooltip="Edit Fees" press="editfee" />
+                                            </HBox>
+
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </ScrollContainer>
+                    </IconTabFilter>
+                      <IconTabSeparator icon=""/>
+                    <IconTabFilter key="payments" icon="sap-icon://simple-payment" iconColor="Positive" text="Payment Way Settings" count="7">
+                        <ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
+                            <Table id="paymenttable" inset="false" items="{
+                                            path: '/paymentset'
+                                        }">
+                                <headerToolbar>
+                                    <Toolbar>
+                                        <content>
+                                        <Button type="Transparent" icon="sap-icon://add" text="Add New Payment Way" press="editpayment"/>
+                                            <ToolbarSpacer />
+                                        </content>
+                                    </Toolbar>
+                                </headerToolbar>
+                                <infoToolbar>
+                                    <Toolbar active="ture">
+                                        <Title text="Payment Way Setting's"/>
+                                    </Toolbar>
+                                </infoToolbar>
+                                <columns>
+                                    <Column>
+                                        <Text text="Payment Way Name" />
+                                    </Column>
+                                    <Column	>
+                                    </Column>
+                                         <Column	>
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Text text="{pwtxt}" />
+                                            <HBox>
+                                                <Button type="Transparent" icon="sap-icon://delete" tooltip="Delete Payment Way" press="delpayment" />
+                                                <Button type="Transparent" icon="sap-icon://edit" tooltip="Edit Payment Way" press="editpayment" />
+                                            </HBox>
+                                           
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </ScrollContainer>
+                    </IconTabFilter>
+                       <IconTabFilter key="currencs" icon="sap-icon://lead" iconColor="Natural" text="Currency Settings" count="8">
+                        <ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
+                            <Table id="currenttable" inset="false" items="{
+                                            path: '/paymentset'
+                                        }">
+                                <headerToolbar>
+                                    <Toolbar>
+                                        <content>
+                                        <Button type="Transparent" icon="sap-icon://add" text="Add New Currency" press="editpayment"/>
+                                            <ToolbarSpacer />
+                                        </content>
+                                    </Toolbar>
+                                </headerToolbar>
+                                <infoToolbar>
+                                    <Toolbar active="true">
+                                        <Title text="Currency  Setting's"/>
+                                    </Toolbar>
+                                </infoToolbar>
+                                <columns>
+                                    <Column>
+                                        <Text text="Currency  Name" />
+                                    </Column>
+                                    <Column	>
+                                    </Column>
+                                         <Column	>
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Text text="{pwtxt}" />
+                                            <HBox>
+                                                <Button type="Transparent" icon="sap-icon://delete" tooltip="Delete Payment Way" press="delpayment" />
+                                                <Button type="Transparent" icon="sap-icon://edit" tooltip="Edit Payment Way" press="editpayment" />
+                                            </HBox>
+                                           
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </ScrollContainer>
+                    </IconTabFilter>
                 </items>
+
             </IconTabBar>
         </content>
     </Page>

@@ -22,13 +22,20 @@ if ($SN == "Broadcast") {
         $result = $broadcast->$MN($_POST['broadcastdata']);
     }else if($MN=="GET"){
         $result = $broadcast->$MN($_POST['where'],$_POST['param']);
+    }else if($MN=="SET"){
+        $result = $broadcast->$MN($_POST['data'],$_POST['where'],$_POST['param']);
     }
     echo json_encode($result);
 }
 if ($SN == "Phone") {
     include("/Phone/phone.php");
     $phone = new $SN();
-    $result = $phone->$MN($_POST['pdata']);
+    if($MN=="ADD"){
+        $result = $phone->$MN($_POST['pdata']);
+
+    }else if($MN=="SET"){
+        $result = $phone->$MN($_POST['data'],$_POST['where'],$_POST['param']);
+    }
     echo json_encode($result);
 }
 if ($SN == "Session") {
@@ -41,10 +48,56 @@ if ($SN == "Session") {
     }
     echo json_encode($result);
 }
+if($SN=="FeeSettings"){
+    include("/FeeSettings/feesettings.php");
+    $feeset = new $SN();
+    if($MN=="GET"){
+        $result = $feeset->$MN();
+    }else if($MN=="DEL"){
+        $result = $feeset->$MN($_POST['where'],$_POST['param']);
+    }else if($MN=="SET"){
+        $result = $feeset->$MN($_POST['data'],$_POST['where'],$_POST['param']);
+    }else if($MN=="ADD"){
+        $result = $feeset->$MN($_POST['data']);
+    }
+    echo json_encode($result);
+}
+if($SN=="Currency"){
+    include("/Currency/currency.php");
+    $currency = new $SN();
+    if($MN=="GET"){
+        $result = $currency->$MN();
+    }else if($MN=="DEL"){
+        $result = $currency->$MN($_POST['where'],$_POST['param']);
+    }else if($MN=="SET"){
+        $result = $currency->$MN($_POST['data'],$_POST['where'],$_POST['param']);
+    }else if($MN=="ADD"){
+        $result = $currency->$MN($_POST['data']);
+    }
+    echo json_encode($result);
+}
+if($SN=="Payments"){
+    include("/Payments/payments.php");
+    $payments = new $SN();
+    if($MN=="GET"){
+        $result = $payments->$MN();
+    }else if($MN=="DEL"){
+        $result = $payments->$MN($_POST['where'],$_POST['param']);
+    }else if($MN=="SET"){
+        $result = $payments->$MN($_POST['data'],$_POST['where'],$_POST['param']);
+    }else if($MN=="ADD"){
+        $result = $payments->$MN($_POST['data']);
+    }
+    echo json_encode($result);
+}
 if ($SN == "UserMail") {
     include("/UserMail/usermail.php");
     $usmail = new $SN();
+    if($MN=="SETMAİL"){
+        $result = $usmail->$MN($_POST['data'],$_POST['where'],$_POST['param']);
+    }else if($MN=="GETMAİL"){
     $result = $usmail->$MN($_POST['where']);
+    }
     echo json_encode($result);
 }
 if ($SN == "Topics") {
@@ -124,6 +177,9 @@ if ($SN == "File") {
         $result = $file->$MN($_FILES, $_POST['usid'], $_POST['fileext'], $_POST['size'], $_POST['type'],$_POST['bcext']);
     }else if($MN=="DEL"){
         $result=$file->$MN($_POST['where'],$_POST['param'],$_POST['fname']);
+    }else if($MN=="SET"){
+        $result = $file->$MN($_FILES, $_POST['usid'], $_POST['fileext'], $_POST['size'], $_POST['type'],$_POST['bcext'],$_POST['delfile'],$_POST['where'],$_POST['param']);
+        // $files, $usid, $fileext, $size, $type,$bcext,$delfile,$where,$param
     }
     echo json_encode($result);
 }

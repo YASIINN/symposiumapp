@@ -61,5 +61,33 @@ class File extends database
         }
         return $this->result;
     }
+    public function SET($files, $usid, $fileext, $size, $type,$bcext,$delfile,$where,$param){
+        if ($files) {
+        $tempPath = $_FILES['file']['tmp_name'];
+        $filename = bin2hex(openssl_random_pseudo_bytes(10));
+        $filename = $filename . "_" . $usid;
+        move_uploaded_file($tempPath, "../allword/$filename.$fileext");
+        $fpath = "/allword/" . $filename;
+        $data = array(
+            "bcfsize" => $size,
+            "bcftype" => $type,
+            "bcfname" => $filename,
+            "bcfpath" => $fpath,
+            "bcext"=>$bcext
+        );
+        $file=$delfile;
+        if(file_exists("../allword/$file")){
+            unlink("../allword/$file");
+        }
+        $upP = $this->update("broadcastfile", $data, $where, array($param));
+            if ($upP) {
+           $this->result = array("status" => "SuccedUpdate");
+         } 
+         else {
+              $this->result = array("status" => "None");
+            }
+    }
+    return $this->result;
+}
 
 } ?>

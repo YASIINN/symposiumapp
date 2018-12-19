@@ -45,6 +45,7 @@ class Broadcast extends database
             INNER JOIN  broadcasttypetable bt ON b.brdcasttype=bt.btypeid
             INNER JOIN  abstracttypetable atp ON atp.absid=b.abtype
             INNER JOIN  broadcastfile f ON f.bcfid=b.fileid
+            INNER JOIN phonetable pt on pt.uid=u.usid
              where $where", $fparam);
             if(count($getbrrows)==0){
                 $this->result = array("status" => "None");
@@ -76,9 +77,33 @@ class Broadcast extends database
                  'bcfid'=>$getbrrows[$i]['bcfid'],
                  'bcfname'=>$getbrrows[$i]['bcfname'],
                  'bcfpath'=>$getbrrows[$i]['bcfpath'],
-                 "bcext"=>$getbrrows[$i]['bcext']);
+                 "bcext"=>$getbrrows[$i]['bcext'],
+                 'pid'=>$getbrrows[$i]['pid'],
+                 'pnmbr'=>$getbrrows[$i]['pnmbr']
+                );
 
                 }
+            }
+        }
+        return $this->result;
+    }
+
+    public function SET($data,$where,$param){
+        if (isset($_SESSION["UNM"])) {
+            for ($index = 0; $index < count($data); $index++) {
+                $sdata = array(
+                    "brdcasttype"=>$data[$index]['brdcasttype'],
+                    "brdcastname"=>$data[$index]['brdcastname'],
+                    "brdsubject"=>$data[$index]['brdsubject'],
+                    "abtype"=>$data[$index]['abtype'],
+                    "fileid"=>$data[$index]['fileid']
+                );
+                $upP = $this->update("broadcasttable", $sdata, $where, array($param));
+            }
+            if ($upP) {
+                $this->result = array("status" => "SuccedUpdate");
+            } else {
+                $this->result = array("status" => "None");
             }
         }
         return $this->result;

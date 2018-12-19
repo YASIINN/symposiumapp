@@ -31,4 +31,21 @@ class Phone extends database
         }
         return $this->result;
     }
+    public function SET($data,$where,$param){
+        if (isset($_SESSION["UNM"])) {
+            for ($index = 0; $index < count($data); $index++) {
+                $sdata = array(
+                    "pnmbr"=>$data[$index]['pnmbr'],
+                    "uid"=>$data[$index]['uid'],
+                );
+                $upP = $this->update("phonetable", $sdata, $where, array($param));
+            }
+            if ($upP) {
+                $this->result = array("status" => "SuccedUpdate");
+            } else {
+                $this->result = array("status" => "None");
+            }
+        }
+        return $this->result;
+    }
 } ?>

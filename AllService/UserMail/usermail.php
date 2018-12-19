@@ -20,4 +20,22 @@ class UserMail extends database
             }
         }
     }
+    public function SETMAİL($data,$where,$param)
+    {
+        if (isset($_SESSION["UNM"])) {
+            for ($index = 0; $index < count($data); $index++) {
+                $sdata = array(
+                    "mail"=>$data[$index]['mail'],
+                    "uid"=>$data[$index]['uid'],
+                );
+                $upP = $this->update("mailtable", $sdata, $where, array($param));
+            }
+            if ($upP) {
+                $this->result = array("status" => "SuccedUpdate");
+            } else {
+                $this->result = array("status" => "None");
+            }
+        }
+        return $this->result;
+    }
 } ?>
