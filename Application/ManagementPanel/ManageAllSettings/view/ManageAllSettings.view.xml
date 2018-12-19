@@ -310,12 +310,12 @@
                        <IconTabFilter key="currencs" icon="sap-icon://lead" iconColor="Natural" text="Currency Settings" count="8">
                         <ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
                             <Table id="currenttable" inset="false" items="{
-                                            path: '/paymentset'
+                                            path: '/currency'
                                         }">
                                 <headerToolbar>
                                     <Toolbar>
                                         <content>
-                                        <Button type="Transparent" icon="sap-icon://add" text="Add New Currency" press="editpayment"/>
+                                        <Button type="Transparent" icon="sap-icon://add" text="Add New Currency" press="editcurrency"/>
                                             <ToolbarSpacer />
                                         </content>
                                     </Toolbar>
@@ -337,10 +337,10 @@
                                 <items>
                                     <ColumnListItem>
                                         <cells>
-                                            <Text text="{pwtxt}" />
+                                            <Text text="{fbtxt}" />
                                             <HBox>
-                                                <Button type="Transparent" icon="sap-icon://delete" tooltip="Delete Payment Way" press="delpayment" />
-                                                <Button type="Transparent" icon="sap-icon://edit" tooltip="Edit Payment Way" press="editpayment" />
+                                                <Button type="Transparent" icon="sap-icon://delete" tooltip="Delete Currency" press="delcurrency" />
+                                                <Button type="Transparent" icon="sap-icon://edit" tooltip="Edit Currency" press="editcurrency" />
                                             </HBox>
                                            
                                         </cells>

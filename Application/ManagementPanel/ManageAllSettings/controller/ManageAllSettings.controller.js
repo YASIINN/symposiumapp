@@ -237,6 +237,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                 case "payments":
                     _this.getpayments();
                     break;
+                case "currencs":
+                    _this.getcurrency()
+                    break;
             }
         },
         getpayments: function () {
@@ -258,8 +261,195 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                 oModel.setProperty("/fesett", res)
             })
         },
-        addfee: function (oEvent) {
+        delcurrency:function(oEvent){
+            var _this = this
+            const data = oModel.getProperty(oEvent.oSource._getBindingContext().sPath);
+            MessageBox.warning(
+                "Are you sure you want to delete this currency.",
+                {
+                    title: "Information",
+                    actions: [sap.m.MessageBox.Action.OK, sap.m.MessageBox.Action.CANCEL],
+                    styleClass: "sapUiSizeCompact",
+                    initialFocus: MessageBox.Action.CANCEL,
+                    onClose: function (sAction) {
+                        if (sAction == "OK") {
+                            _this.delcurrencyset(data);
+                        }
+                    }
+                }
+            );
+        },
+        delcurrencyset:function(data){
+            CreateComponent.showBusyIndicator();
+            var _this = this
+                PluginService.getPlugin({ SN: "Currency", MN: "DEL", where: "fbtpid=?", param: data.fbtpid }).then(function (res) {
+                    if (res == "SuccesDel") {
+                        CreateComponent.hideBusyIndicator();
+                        sap.m.MessageToast.show("your deletion took place successfully");
+                        _this.getcurrency();
+                    } else {
+                        CreateComponent.hideBusyIndicator();
+                    }
+                })
+        },
+        editcurrency:function(oEvent){
+            var _this = this
+            var fbtpid;
+            var pwdata;
+            var data = ""
+            var result = false
+            if (oEvent.oSource._getBindingContext() == undefined) {
+                result = false
+                data = ""
+            } else {
+                result = true
+                data = oModel.getProperty(oEvent.oSource._getBindingContext().sPath);
+                fbtpid = data.fbtpid;
+            }
+            var editpaneldialog = new sap.m.Dialog(
+                {
+                    contentWidth: "30%",
+                    contentHeight: "20%",
+                    stretchOnPhone: true,
+                    showCloseButton: true,
+                    beforeClose: function () {
+                        if (sap.ui.getCore().byId("aname")) {
+                            sap.ui.getCore().byId("aname").destroy();
+                        }
+                    }
+                }).addStyleClass("dialogHasFooter sapUiNoMargin  sapUiSizeCompact sapUiResponsiveContentPadding")
+            var bar = new sap.m.Bar({});
+            bar.addContentMiddle(new sap.m.HBox({
+                alignItems: sap.m.FlexAlignItems.Center,
+                justifyContent: sap.m.FlexJustifyContent.Stretch,
+                items: [
+                    new sap.m.Text(
+                        {
+                            text: "EDİT OR ADD CURRENCY",
+                            width: "150px"
+                        }).addStyleClass("sapUiSmallMarginBegin")
+                ]
+            }).addStyleClass("sapUiNoMargin"))
+            bar.addContentRight(
+                new sap.m.Button({
+                    icon: "sap-icon://sys-cancel",
+                    text: "Kapat",
+                    type: "Transparent",
+                    press: function () {
+                        editpaneldialog.close();
+                    }
+                }).addStyleClass("sapUiNoMargin"))
+            var panelarea = new sap.m.HBox({
+                width: "100%",
+                height: "100%",
+                alignItems: sap.m.FlexAlignItems.Stretch,
+                justifyContent: sap.m.FlexJustifyContent.Stretch,
+                items: [
+                    new sap.m.VBox({
+                        width: "100%",
+                        height: "100%",
+                        alignItems: sap.m.FlexAlignItems.Stretch,
+                        justifyContent: sap.m.FlexJustifyContent.Stretch,
+                        items: [
+                            new sap.m.HBox({
+                                width: "100%",
+                                alignItems: sap.m.FlexAlignItems.Stretch,
+                                justifyContent: sap.m.FlexJustifyContent.Stretch,
+                                items: [
+                                    new sap.m.Label({
+                                        text: "Currency",
+                                        width: "130px"
+                                    }),
+                                    new sap.m.Label({
+                                        text: ":",
+                                        width: "10px"
+                                    }),
+                                    new sap.m.VBox({
+                                        width: "100%",
+                                        alignItems: sap.m.FlexAlignItems.Stretch,
+                                        justifyContent: sap.m.FlexJustifyContent.Stretch,
+                                        items: [
+                                            new sap.m.Input("aname", {
+                                                width: "100%",
+                                                value: data.fbtxt == undefined ? data : data.fbtxt
+                                            })
+                                        ]
+                                    })
+                                ]
+                            }),
+                            new sap.m.HBox({
+                                width: "100%",
+                                alignItems: sap.m.FlexAlignItems.Stretch,
+                                justifyContent: sap.m.FlexJustifyContent.Stretch,
+                                items: [
+                                    new sap.m.Label({
+                                        text: "Result",
+                                        width: "130px"
+                                    }),
+                                    new sap.m.Label({
+                                        text: ":",
+                                        width: "10px"
+                                    }),
+                                    new sap.m.VBox({
+                                        width: "100%",
+                                        alignItems: sap.m.FlexAlignItems.Stretch,
+                                        justifyContent: sap.m.FlexJustifyContent.Center,
+                                        items: [
+                                            new sap.m.Button({
+                                                text: "Save Changes",
+                                                press: function () {
+                                                    if (sap.ui.getCore().byId("aname").getValue().trim() == "") {
+                                                        sap.m.MessageToast.show("Please fill Payment Way field")
+                                                    }
+                                                    else {
+                                                        CreateComponent.showBusyIndicator();
 
+                                                        if (result) {
+                                                            pwdata = [{
+                                                                fbtxt: sap.ui.getCore().byId("aname").getValue()
+                                                            }]
+                                                            PluginService.getPlugin({ SN: "Currency", MN: "SET", data: pwdata, where: "fbtpid=?", param: fbtpid }).then(function (res) {
+                                                                if (res == "SuccedUpdate") {
+                                                                    CreateComponent.hideBusyIndicator();
+                                                                    sap.m.MessageToast.show("transaction successful");
+                                                                    editpaneldialog.close();
+                                                                    _this.getcurrency();
+                                                                } else {
+                                                                    CreateComponent.hideBusyIndicator();
+                                                                    sap.m.MessageToast.show("an unexpected error has occurred please try again later");
+                                                                }
+                                                            })
+                                                        } else {
+                                                            pwdata = [{
+                                                                fbtxt: sap.ui.getCore().byId("aname").getValue()
+                                                            }]
+                                                            PluginService.getPlugin({ SN: "Currency", MN: "ADD", data: pwdata }).then(function (res) {
+                                                                if (res == "SuccesAdd") {
+                                                                    CreateComponent.hideBusyIndicator();
+                                                                    sap.m.MessageToast.show("transaction successful");
+                                                                    editpaneldialog.close();
+                                                                    _this.getcurrency();
+                                                                } else {
+                                                                    CreateComponent.hideBusyIndicator();
+                                                                    sap.m.MessageToast.show("an unexpected error has occurred please try again later");
+                                                                }
+                                                            })
+                                                        }
+                                                    }
+                                                }
+                                            })
+
+                                        ]
+                                    })
+                                ]
+                            }),
+                        ]
+                    }),
+                ]
+            });
+            editpaneldialog.addContent(panelarea);
+            editpaneldialog.setCustomHeader(bar);
+            editpaneldialog.open(_this);
         },
         delfee: function (oEvent) {
             var _this = this
@@ -363,7 +553,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                 items: [
                     new sap.m.Text(
                         {
-                            text: "EDİT FEES",
+                            text: "EDİT OR ADD FEES",
                             width: "150px"
                         }).addStyleClass("sapUiSmallMarginBegin")
                 ]
@@ -663,7 +853,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                 items: [
                     new sap.m.Text(
                         {
-                            text: "EDİT PAYMENT WAY",
+                            text: "EDİT OR ADD PAYMENT WAY",
                             width: "150px"
                         }).addStyleClass("sapUiSmallMarginBegin")
                 ]

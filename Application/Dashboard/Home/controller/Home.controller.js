@@ -382,6 +382,11 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
             var ltotal = price * count;
             setmodel.total = ltotal;
             oModel.refresh()
+            var totalc = 0;
+            oModel.oData.fees.forEach(function (x) {
+                totalc += parseFloat(x.total);
+            })
+            oModel.setProperty("/totals", totalc)
         },
         getpayments: function () {
             PluginService.getPlugin({ SN: "Payments", MN: "GET" }).then(function (res) {
@@ -400,6 +405,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                     }
                 })
                 oModel.setProperty("/fees", res)
+            oModel.setProperty("/totals", oModel.oData.fees[0].total)
             })
         },
         BroadcastType: function () {

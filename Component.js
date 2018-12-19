@@ -65,6 +65,17 @@ sap.ui.define(
                 ]
             },
             {
+              pattern: "Forget",
+              viewPath: "symposiumapp.Application.Forget.view",
+              name: "Forget",
+              view: "Forget",
+              targetControl: "masterView",
+              transition: "show",
+              cache: {
+                keys: [version]
+              },
+            },
+            {
               pattern: "Register",
               viewPath: "symposiumapp.Application.Register.view",
               name: "Register",

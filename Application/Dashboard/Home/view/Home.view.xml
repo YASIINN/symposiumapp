@@ -25,7 +25,7 @@
                                 </VBox>
                             </content>
                         </Panel>
-                       
+
                         <Panel width="auto" id="panel0" class="sapUiResponsiveMargin pnlcls" accessibleRole="Region">
                             <headerToolbar>
                                 <Toolbar height="3rem">
@@ -103,11 +103,11 @@
                                     <Label text="You can submit up to 3 abstracts for free" />
                                 </Toolbar>
                             </headerToolbar>
-                                    <HBox alignItems="End" justifyContent="End">
-                                    <Text text="You have uploaded" class="sapUiTinyMarginEnd" />
-                                    <Text text="{/UserModel/0/absquota}" class="sapUiTinyMarginEnd"/>
-                                    <Text text=" pieces in total" class="sapUiTinyMarginEnd"/>
-                                    </HBox>
+                            <HBox alignItems="End" justifyContent="End">
+                                <Text text="You have uploaded" class="sapUiTinyMarginEnd" />
+                                <Text text="{/UserModel/0/absquota}" class="sapUiTinyMarginEnd"/>
+                                <Text text=" pieces in total" class="sapUiTinyMarginEnd"/>
+                            </HBox>
                             <content>
                                 <VBox width="100%" alignItems="Stretch" justifyContent="Start">
                                     <VBox alignItems="Stretch" justifyContent="Start" width="100%">
@@ -133,9 +133,9 @@
                                             <Label width="130px" text="Topic"/>
                                             <Label text=":" width="10px" />
                                             <VBox width="100%" alignItems="Stretch" justifyContent="Stretch">
-                                                   <Select forceSelection="false" width="100%" id="topicid"  items="{
+                                                <Select forceSelection="false" width="100%" id="topicid" items="{
 											path: '/topics'
-												}" >
+												}">
                                                     <core:Item key="{tpid}" text="{tptxt}"/>
                                                 </Select>
                                             </VBox>
@@ -157,7 +157,7 @@
                                                     </core:Icon>
                                                     <Link text="{/gtfolder/0/gsfname}" href="/symposiumapp{/gtfolder/0/gsftemppath}" />
                                                 </HBox>
-                                            
+
                                             </HBox>
                                         </HBox>
                                         <HBox class="sapUiTinyMarginTop" alignItems="Stretch" justifyContent="Stretch" width="100%">
@@ -171,14 +171,14 @@
                                             </HBox>
                                         </HBox>
                                         <HBox alignItems="Stretch" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
-                                                    <core:Icon src="sap-icon://upload" width="130px" color="#031E48">
-                                                    </core:Icon>
-                                                            <HBox width="100%" alignItems="Stretch" justifyContent="Stretch">
-                                                            <Label text="3. Step :Upload the file " class="sapUiLargeMarginEnd"/>
-                                                               <HBox width="100%" alignItems="End" justifyContent="End">
-                                                            <Button press="abstractvalidate" type="Default" text="SAVE ABSTRACT" tooltip="{i18n>Save}" />
-                                                        </HBox>
+                                            <core:Icon src="sap-icon://upload" width="130px" color="#031E48">
+                                            </core:Icon>
+                                            <HBox width="100%" alignItems="Stretch" justifyContent="Stretch">
+                                                <Label text="3. Step :Upload the file " class="sapUiLargeMarginEnd"/>
+                                                <HBox width="100%" alignItems="End" justifyContent="End">
+                                                    <Button press="abstractvalidate" type="Default" text="SAVE ABSTRACT" tooltip="{i18n>Save}" />
                                                 </HBox>
+                                            </HBox>
                                         </HBox>
                                     </VBox>
                                 </VBox>
@@ -192,10 +192,10 @@
                                 </Toolbar>
                             </headerToolbar>
                             <HBox alignItems="End" justifyContent="End">
-                                    <Text text="You have uploaded" class="sapUiTinyMarginEnd" />
-                                    <Text text="{/UserModel/0/ftextquota}" class="sapUiTinyMarginEnd"/>
-                                    <Text text=" pieces in total" class="sapUiTinyMarginEnd"/>
-                                    </HBox>
+                                <Text text="You have uploaded" class="sapUiTinyMarginEnd" />
+                                <Text text="{/UserModel/0/ftextquota}" class="sapUiTinyMarginEnd"/>
+                                <Text text=" pieces in total" class="sapUiTinyMarginEnd"/>
+                            </HBox>
                             <content>
                                 <VBox width="100%" alignItems="Stretch" justifyContent="Start">
                                     <VBox alignItems="Stretch" justifyContent="Start" width="100%">
@@ -221,9 +221,9 @@
                                             <Label width="130px" text="Topic"/>
                                             <Label text=":" width="10px" />
                                             <VBox width="100%" alignItems="Stretch" justifyContent="Stretch">
-                                                <Select forceSelection="false" id="fttopicid"  width="100%"  items="{
+                                                <Select forceSelection="false" id="fttopicid" width="100%" items="{
 											path: '/topics'
-												}" >
+												}">
                                                     <core:Item key="{tpid}" text="{tptxt}"/>
                                                 </Select>
                                             </VBox>
@@ -237,37 +237,37 @@
                                         </HBox>
 
                                         <HBox class="sapUiTinyMarginTop" width="100%" alignItems="Start" justifyContent="Stretch">
-                                                  <HBox width="100%" alignItems="Stretch" justifyContent="Stretch">
-                                                    <core:Icon src="sap-icon://download" width="130px" color="#031E48">
+                                            <HBox width="100%" alignItems="Stretch" justifyContent="Stretch">
+                                                <core:Icon src="sap-icon://download" width="130px" color="#031E48">
+                                                </core:Icon>
+                                                <Label class="sapUiLargeMarginEnd" text="1. Step : Download the 'Template', prepare your abstract according to the Template "/>
+                                                <HBox width="100%" alignItems="End" justifyContent="End">
+                                                    <core:Icon src="sap-icon://doc-attachment" class="size1" color="#031E48">
                                                     </core:Icon>
-                                                            <Label class="sapUiLargeMarginEnd" text="1. Step : Download the 'Template', prepare your abstract according to the Template "/>
-                                                    <HBox width="100%" alignItems="End" justifyContent="End">
-                                                            <core:Icon src="sap-icon://doc-attachment" class="size1" color="#031E48">
-                                                            </core:Icon>
-                                                            <Link text="{/gtfolder/0/gsfname}" href="/symposiumapp{/gtfolder/0/gsftemppath}" />
-                                                        </HBox>
+                                                    <Link text="{/gtfolder/0/gsfname}" href="/symposiumapp{/gtfolder/0/gsftemppath}" />
                                                 </HBox>
+                                            </HBox>
                                         </HBox>
                                         <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
-                                                    <core:Icon src="sap-icon://add" width="130px" color="#031E48">
-                                                    </core:Icon>
-                                               <HBox width="100%" alignItems="Stretch" justifyContent="Stretch">
-                                                        <Label text="2. Step : Browse for the 'word file' of abstract you would like to submit "/>
-                                                 <HBox width="100%" alignItems="End" justifyContent="End">
- <u:FileUploader id="fileuploadftext" fileType="docx,doc" uploadUrl="/" change="changefile" style="Emphasized" tooltip="please select pdf file" />
-                                                 </HBox>
+                                            <core:Icon src="sap-icon://add" width="130px" color="#031E48">
+                                            </core:Icon>
+                                            <HBox width="100%" alignItems="Stretch" justifyContent="Stretch">
+                                                <Label text="2. Step : Browse for the 'word file' of abstract you would like to submit "/>
+                                                <HBox width="100%" alignItems="End" justifyContent="End">
+                                                    <u:FileUploader id="fileuploadftext" fileType="docx,doc" uploadUrl="/" change="changefile" style="Emphasized" tooltip="please select pdf file" />
                                                 </HBox>
+                                            </HBox>
                                         </HBox>
-                                               <HBox alignItems="Stretch" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
-                                                    <core:Icon src="sap-icon://upload" width="130px" color="#031E48">
-                                                    </core:Icon>
-                                                            <HBox width="100%" alignItems="Stretch" justifyContent="Stretch">
-                                                            <Label text="3. Step :Upload the file " class="sapUiLargeMarginEnd"/>
-                                                               <HBox width="100%" alignItems="End" justifyContent="End">
-                                            <Button press="fulltextvalidate" type="Default" text="SAVE FULLTEXT" tooltip="{i18n>Save}" />
-                                                         
-                                                        </HBox>
+                                        <HBox alignItems="Stretch" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
+                                            <core:Icon src="sap-icon://upload" width="130px" color="#031E48">
+                                            </core:Icon>
+                                            <HBox width="100%" alignItems="Stretch" justifyContent="Stretch">
+                                                <Label text="3. Step :Upload the file " class="sapUiLargeMarginEnd"/>
+                                                <HBox width="100%" alignItems="End" justifyContent="End">
+                                                    <Button press="fulltextvalidate" type="Default" text="SAVE FULLTEXT" tooltip="{i18n>Save}" />
+
                                                 </HBox>
+                                            </HBox>
                                         </HBox>
                                     </VBox>
                                 </VBox>
@@ -288,94 +288,133 @@
                             <content>
                                 <VBox width="100%" alignItems="Stretch" justifyContent="Start">
                                     <VBox alignItems="Stretch" justifyContent="Start" width="100%">
-                            	<ScrollContainer
-                                height="100%"
-                                width="100%"
-                                horizontal="true"
-                                vertical="true"
-		                                        >
-                                        <Table id="idfeestable" inset="false" 
-                                        items="{
+                                        <ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
+                                            <Table id="idfeestable" inset="false" items="{
                                             path: '/fees'
                                         }">
-                <headerToolbar>
-                    <Toolbar>
-                        <content>
-                        <Label text="Way of Payment :" width="15%"/>
-                    <Select forceSelection="false" id="paymentselect" width="100%" items="{
+                                                <headerToolbar>
+                                                    <Toolbar>
+                                                        <content>
+                                                            <Label text="Way of Payment :" width="15%"/>
+                                                            <Select forceSelection="false" id="paymentselect" width="100%" items="{
 											path: '/payments'}">
-                                                    <core:Item key="{pwid}" text="{pwtxt}"/>
-                                                </Select>
-                    
-                    
-                            <ToolbarSpacer />
-                        </content>
-                    </Toolbar>
-                </headerToolbar>
-                <infoToolbar>
-                    <Toolbar active="ture">
-                    </Toolbar>
-                </infoToolbar>
-                <columns>
-                    <Column
-				>
-                        <Text text="Item" />
-                    </Column>
-                    <Column	>
-                        <Text text="Description"/>
-                    </Column>
-                    <Column	>
-                        <Text text="Unit Price"/>
-                    </Column>
-                    <Column	>
-                        <Text text="Count"/>
-                    </Column>
-                    <Column >
-                        <Text text="Quantity" />
-                    </Column>
-                    <Column >
-                        <Text text="VAT%" />
-                    </Column>
-                     <Column
-				>
-                        <Text text="VAT" />
-                    </Column>
-                    <Column	>
-                        <Text text="Line Total"/>
-                    </Column>
-                    <Column	>
-                        <Text text="Currency"/>
-                    </Column>
-                </columns>
-                <items>
-                    <ColumnListItem>
-                        <cells>
-                            <Text text="{fsid}" />
+                                                                <core:Item key="{pwid}" text="{pwtxt}"/>
+                                                            </Select>
 
-                            <Text text="{fstxt}"/>
-                            <Text text="{fsprice}" />
-                            	<StepInput
-    				        		value="1"
-	    					        min="{min}"
-		    				        max="100"
-			    			        step="1"
-                                    change="changecount"
-                                    enabled="{enb}"
-				    		       />
-                            <Text text="{fsquota}"/>
-                            
-                                  <Text text="{vaty}"/>
-                                  <Text text="{vat}"/>
-                                  <Text text="Line Total : {total} "/>
-                                  <Text text="{fbtxt}"/>
-                        </cells>
-                    </ColumnListItem>
-                </items>
-            </Table>
-            	</ScrollContainer>
 
+                                                            <ToolbarSpacer />
+                                                        </content>
+                                                    </Toolbar>
+                                                </headerToolbar>
+                                                <infoToolbar>
+                                                    <Toolbar active="ture">
+                                                    </Toolbar>
+                                                </infoToolbar>
+                                                <columns>
+                                                    <Column
+				>
+                                                        <Text text="Item" />
+                                                    </Column>
+                                                    <Column	>
+                                                        <Text text="Description"/>
+                                                    </Column>
+                                                    <Column	>
+                                                        <Text text="Unit Price"/>
+                                                    </Column>
+                                                    <Column	>
+                                                        <Text text="Count"/>
+                                                    </Column>
+                                                    <Column >
+                                                        <Text text="Quantity" />
+                                                    </Column>
+                                                    <Column >
+                                                        <Text text="VAT%" />
+                                                    </Column>
+                                                    <Column
+				>
+                                                        <Text text="VAT" />
+                                                    </Column>
+                                                    <Column	>
+                                                        <Text text="Line Total"/>
+                                                    </Column>
+                                                    <Column	>
+                                                        <Text text="Currency"/>
+                                                    </Column>
+                                                </columns>
+                                                <items>
+                                                    <ColumnListItem>
+                                                        <cells>
+                                                            <Text text="{fsid}" />
+
+                                                            <Text text="{fstxt}"/>
+                                                            <Text text="{fsprice}" />
+                                                            <StepInput value="{fsquota}" min="0" max="100" step="1" change="changecount" enabled="{enb}" />
+                                                            <Text text="{fsquota}"/>
+
+                                                            <Text text="{vaty}"/>
+                                                            <Text text="{vat}"/>
+                                                            <Text text="Line Total : {total} "/>
+                                                            <Text text="{fbtxt}"/>
+                                                        </cells>
+                                                    </ColumnListItem>
+                                                </items>
+                                            </Table>
+                                            <HBox alignItems="End" justifyContent="End">
+                                                <Text text="TOTAL.(including VAT) : {/totals}  {/fees/0/fbtxt}"/>
+                                            </HBox>
+                                            <HBox alignItems="End" justifyContent="End">
+                                                <Text text="Please consider that the authors(s) and co-author(s) is/are not allowed to be Accompanying Person(s)."/>
+                                            </HBox>
+                                        </ScrollContainer>
                                     </VBox>
                                 </VBox>
+
+
+
+   <VBox width="100%" alignItems="Stretch" justifyContent="Start" class="sapUiLargeMarginTop">
+                                    <VBox alignItems="Stretch" justifyContent="Start" width="100%">
+                                        <HBox class="sapUiTinyMarginTop" alignItems="Center" justifyContent="Stretch" width="100%">
+                                            <Label text="Invoiced to" width="130px" />
+                                            <Label text=":" width="10px" />
+                                            <VBox width="100%">
+                                                <Input width="100%" value="" id="invto"/>
+                                            </VBox>
+                                        </HBox>
+                                            <HBox class="sapUiTinyMarginTop" alignItems="Center" justifyContent="Stretch" width="100%">
+                                            <Label text="Invoice Address" width="130px" />
+                                            <Label text=":" width="10px" />
+                                            <VBox width="100%">
+                                                <Input width="100%" value="" id="invadres"/>
+                                            </VBox>
+                                        </HBox>
+                                               <HBox class="sapUiTinyMarginTop" alignItems="Center" justifyContent="Stretch" width="100%">
+                                            <Label text="Trade No" width="130px" />
+                                            <Label text=":" width="10px" />
+                                            <VBox width="100%">
+                                                <Input width="100%" value="" id="tno"/>
+                                            </VBox>
+                                        </HBox>
+                               
+                                      <HBox class="sapUiTinyMarginTop" alignItems="Center" justifyContent="Stretch" width="100%">
+                                            <Label text="VAT No" width="130px" />
+                                            <Label text=":" width="10px" />
+                                            <VBox width="100%">
+                                                <Input width="100%" value="" id="vno"/>
+                                            </VBox>
+                                        </HBox>
+                               
+                               
+                                 
+                                        <HBox alignItems="Stretch" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
+                                            <HBox width="100%" alignItems="Stretch" justifyContent="Stretch">
+                                                <HBox width="100%" alignItems="Start" justifyContent="Start">
+                                                    <Button press="" type="Default" text="GENERATE PROFORMA INVOICE" tooltip="{i18n>Save}" />
+                                                </HBox>
+                                            </HBox>
+                                        </HBox>
+                                    </VBox>
+                                </VBox>
+
                             </content>
                         </Panel>
                     </IconTabFilter>

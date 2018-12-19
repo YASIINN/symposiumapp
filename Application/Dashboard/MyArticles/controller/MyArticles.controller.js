@@ -183,6 +183,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox'], function (e, M
                 _this.gettopics();
                 _this.BroadcastType();
                 var sdata = oModel.getProperty(otable.getSelectedContextPaths()[0])
+
+                var userup = sdata.absid;
                 var editpaneldialog = new sap.m.Dialog(
                     {
                         contentWidth: "50%",
@@ -391,7 +393,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox'], function (e, M
                                                 new sap.m.Button({
                                                     text: "Save Changes",
                                                     press: function () {
-                                                        debugger
                                                         if (sap.ui.getCore().byId("aname").getValue().trim() == "") {
                                                             sap.m.MessageToast.show("Please fill article name field")
                                                         } else {
@@ -402,27 +403,49 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox'], function (e, M
                                                                 abtype: sap.ui.getCore().byId("postitle").getSelectedKey(),
                                                                 fileid: sdata.fileid
                                                             }]
-
-                                                            //user güncellenecek
                                                             broadcastService.broadcastreq({
                                                                 MN: "SET", SN: "Broadcast", data: updatedata, where: "btid=?", param: sdata.btid
                                                             }).then(function (res) {
                                                                 if (res == "SuccedUpdate") {
+                                                                    if (userup == sap.ui.getCore().byId("postitle").getSelectedKey()) {
+                                                                        sap.m.MessageToast.show("the update process took place successfully")
+                                                                    } else {
+                                                                        if (userup == "1") {
+                                                                            oModel.oData.UserModel[0].ftextquota = (parseInt(oModel.oData.UserModel[0].ftextquota) -1).toString()
+                                                                            oModel.oData.UserModel[0].absquota = (parseInt(oModel.oData.UserModel[0].absquota) + 1).toString()
+                                                                            oModel.refresh();
+                                                    
+                                                                            UserService.userReq({ MN: "SET", SN: "User", where: "usid=?", userdata: oModel.oData.UserModel, param: oModel.oData.UserModel[0].usid }).then(function (res) {
+                                                                                if (res == "SuccedUpdate") {
+                                                                                    sap.m.MessageToast.show("the update process took place successfully")
+                                                                                }else{
+                                                                                    sap.m.MessageToast.show("an unexpected error has occurred please try again later")
+                                                                                }
+                                                                            })
+                                                                        } else {
+                                                                            oModel.oData.UserModel[0].ftextquota = (parseInt(oModel.oData.UserModel[0].ftextquota) + 1).toString()
+                                                                            oModel.oData.UserModel[0].absquota = (parseInt(oModel.oData.UserModel[0].absquota) - 1).toString()
+                                                                            oModel.refresh();
+                                                                            
+                                                                            UserService.userReq({ MN: "SET", SN: "User", where: "usid=?", userdata: oModel.oData.UserModel, param: oModel.oData.UserModel[0].usid }).then(function (res) {
+                                                                                if (res == "SuccedUpdate") {
+                                                                                    sap.m.MessageToast.show("the update process took place successfully")
+                                                                                }else{
+                                                                                    sap.m.MessageToast.show("an unexpected error has occurred please try again later")
+                                                                                }
+                                                                            })
+                                                                        }
+                                                                    }
                                                                     editpaneldialog.close();
-                                                                    // _this.addauthorsuser(res[0].btid);
                                                                 } else {
+                                                                    sap.m.MessageToast.show("an unexpected error has occurred please try again later")
                                                                     editpaneldialog.close();
                                                                     CreateComponent.hideBusyIndicator()
                                                                 }
                                                             })
-
-
-
                                                         }
-
                                                     }
                                                 })
-
                                             ]
                                         })
                                     ]
