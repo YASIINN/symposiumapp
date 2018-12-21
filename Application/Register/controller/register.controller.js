@@ -115,7 +115,7 @@ sap.ui.define(['sap/m/MessageBox', 'sap/ui/core/mvc/Controller'], function (Mess
                         rtlname: oModel.oData.RegisterModel.ufname.split(" ")[1].toUpperCase(),
                         rtemail: oModel.oData.RegisterModel.cemail,
                         rtuniinst: oModel.oData.RegisterModel.uniorinst,
-                        rtpass: md5(oModel.oData.RegisterModel.cpass),
+                        rtpass: oModel.oData.RegisterModel.cpass,
                         rtlcode: lcode,
                         rauth: "2",
                         rphone: _this.byId("pnmbrset").getValue()
@@ -132,6 +132,17 @@ sap.ui.define(['sap/m/MessageBox', 'sap/ui/core/mvc/Controller'], function (Mess
                             msgg+="<b>Here is a link to a activate your account.</b>";
                             msgg+="<br>";
                             msgg+="http://localhost/symposiumapp/#/RegisterCheck?"+ res[0].rtlcode ;
+                            msgg+="<br>";
+                            msgg+="<b>Thank you and looking forward to you</b>";
+                            msgg+="<br>";
+                            msgg+="<b>WMCAUS.</b>";
+                            msgg+="<br>";
+                            msgg+="<b>P.S.:Please do not reply.This is an automated-email</b>";
+                            msgg+="<br>";
+                            msgg+="<hr>";
+                            msgg+="<br>";
+                            msgg+="<b>In compliance with data protection regulations,please contact the editoral office.if you would like to have your personal information removed from the database.</b>";
+
                             msgg+="</body></html>";
                             MailService.AddMail({ systemcheck: [], "maildata": [{ "mail": res[0].rtemail, "messega": msgg, subject: "Activation Verification" }] }).then(function (res) {
                                 if (res == "None") {

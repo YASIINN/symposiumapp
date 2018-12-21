@@ -11,7 +11,7 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel', 'sap
             var _this = this;
             var oRouter = sap.ui.core.UIComponent.getRouterFor(_this);
             var day = window.location.hash.split("?")[1].split("_")[1][0] + window.location.hash.split("?")[1].split("_")[1][1];
-            if (parseInt(day) + 2 == parseInt(new Date().toLocaleDateString().split(".")[0])) {
+            if (parseInt(day) + 15 == parseInt(new Date().toLocaleDateString().split(".")[0])) {
                 RegisterService.RegisterReq({ MN: "GET", SN: "Register", where: "rtlcode=?", param: [window.location.hash.split("?")[1]] }).then(function (res) {
                     _this.delTemp(res[0].rtlcode);
                 })

@@ -41,12 +41,6 @@ sap.ui.define(['sap/ui/core/mvc/Controller'], function (Controller) {
         gomanage: function () {
             window.open("#/ManagementPanel/ManageAllSettings", "_blank");
         },
-        DashboardrouterEvent: function (oEvent) {
-            var _this = this
-            var url = oEvent.getSource().data("url");
-            var oRouter = sap.ui.core.UIComponent.getRouterFor(_this);
-            oRouter.navTo("Dashboard/" + url)
-        },
     });
     return PageController;
 });

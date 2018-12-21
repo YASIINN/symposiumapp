@@ -286,10 +286,10 @@
                                 </Toolbar>
                             </headerToolbar>
                             <content>
-                                <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                                <VBox width="100%" alignItems="Stretch" justifyContent="Start" >
                                     <VBox alignItems="Stretch" justifyContent="Start" width="100%">
-                                        <ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
-                                            <Table id="idfeestable" inset="false" items="{
+                                        <ScrollContainer  height="100%" width="100%" horizontal="true" vertical="true">
+                                            <Table id="idfeestable"  inset="false" items="{
                                             path: '/fees'
                                         }">
                                                 <headerToolbar>
@@ -300,8 +300,6 @@
 											path: '/payments'}">
                                                                 <core:Item key="{pwid}" text="{pwtxt}"/>
                                                             </Select>
-
-
                                                             <ToolbarSpacer />
                                                         </content>
                                                     </Toolbar>
@@ -408,7 +406,7 @@
                                         <HBox alignItems="Stretch" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
                                             <HBox width="100%" alignItems="Stretch" justifyContent="Stretch">
                                                 <HBox width="100%" alignItems="Start" justifyContent="Start">
-                                                    <Button press="" type="Default" text="GENERATE PROFORMA INVOICE" tooltip="{i18n>Save}" />
+                                                    <Button press="exportpdf" type="Default" text="GENERATE PROFORMA INVOICE" tooltip="{i18n>Save}" />
                                                 </HBox>
                                             </HBox>
                                         </HBox>

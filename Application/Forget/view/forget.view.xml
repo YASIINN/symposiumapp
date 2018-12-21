@@ -1,0 +1,46 @@
+<View xmlns="sap.m" 
+    xmlns:l="sap.ui.layout" controllerName="symposiumapp.Application.Forget.controller.Forget" 
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" height="100%">
+    <Page showHeader="false">
+        <l:FixFlex class="fixFlexVertical">
+            <l:flexContent>
+                <FlexBox class="pageBGImage loginWrapper" direction="Column" height="100%" alignItems="Center" justifyContent="Center">
+                    <items>
+                        <FlexBox class="login-content" direction="Column" alignItems="Center" justifyContent="Stretch">
+                            <items>
+                                <Panel width="500px" class="sapUiResponsiveMargin pnlcls" accessibleRole="Region">
+                                    <headerToolbar>
+                                        <Toolbar height="3rem">
+                                            <Title text="Learn Your Password"/>
+                                        </Toolbar>
+                                    </headerToolbar>
+                                    <content>
+                                        <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                                            <VBox alignItems="Stretch" justifyContent="Start" width="100%">
+                                                <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
+                                                    <Text width="130px" text="E-mail"/>
+                                                    <Label text=":" width="10px" />
+                                                    <VBox width="100%">
+                                                        <Input id="emailinp" value=""/>
+                                                    </VBox>
+                                                </HBox>
+                                                <HBox alignItems="End" justifyContent="End" width="100%" class="sapUiTinyMarginTop">
+
+                                                    <VBox width="100%" alignItems="End" justifyContent="End">
+                                                        <Button text="Send My Password " press="sendpass" />
+                                                    </VBox>
+                                                </HBox>
+
+
+                                            </VBox>
+                                        </VBox>
+                                    </content>
+                                </Panel>
+                            </items>
+                        </FlexBox>
+                    </items>
+                </FlexBox>
+            </l:flexContent>
+        </l:FixFlex>
+    </Page>
+</View>

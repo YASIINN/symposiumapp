@@ -380,13 +380,22 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
             var count = oEvent.oSource.getValue()
             var price = parseFloat(setmodel.fsprice);
             var ltotal = price * count;
-            setmodel.total = ltotal;
+            var vato = (ltotal * parseInt(setmodel.vaty)) / 100;
+            var vat = vato;
+            var totls = ltotal + vat;
+            setmodel.total = totls;
+            setmodel.vat = vat;
+            // ltotal;
             oModel.refresh()
             var totalc = 0;
             oModel.oData.fees.forEach(function (x) {
                 totalc += parseFloat(x.total);
             })
             oModel.setProperty("/totals", totalc)
+        },
+        exportpdf: function () {
+            var _this = this
+            window.open("Pdf/tesst.php")
         },
         getpayments: function () {
             PluginService.getPlugin({ SN: "Payments", MN: "GET" }).then(function (res) {
@@ -405,7 +414,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                     }
                 })
                 oModel.setProperty("/fees", res)
-            oModel.setProperty("/totals", oModel.oData.fees[0].total)
+                oModel.setProperty("/totals", oModel.oData.fees[0].total)
             })
         },
         BroadcastType: function () {

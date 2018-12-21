@@ -21,7 +21,7 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel', 'sap
             else {
                 var data = {
                     name: oModel.oData.UserModel.name,
-                    pass: md5(oModel.oData.UserModel.pass),
+                    pass:oModel.oData.UserModel.pass,
                     MN: "LG",
                     SN: "Login"
                 }
@@ -50,6 +50,9 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel', 'sap
                 window.location.reload();
             window.open("#/Dashboard/Home" + "", "_self");
             }
+        },
+        goforget:function(){
+            window.open("#/Forget" + "", "_blank");
         },
         createaccount: function (oEvent) {
             var url = oEvent.getSource().data("url");
