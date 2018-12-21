@@ -6,68 +6,75 @@
     xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" 
     xmlns:f="sap.f" height="100%">
     <Page enableScrolling="false" showHeader="false">
-        <l:FixFlex class="fixFlexVertical">
-            <l:flexContent>
-                <Panel width="auto" class="sapUiResponsiveMargin pnlcls" accessibleRole="Region">
-                    <headerToolbar>
-                        <Toolbar height="3rem">
-                            <Title text="Login"/>
-                        </Toolbar>
-                    </headerToolbar>
-                    <HBox alignItems="Start" justifyContent="Start">
-                        <Text text="The article upload process is between the specified dates" class="sapUiTinyMarginEnd" />
-                    </HBox>
-                    <HBox alignItems="Start" justifyContent="Start">
-                        <Text text="Starting Date :  {/generalsettings/0/gsbegdt}" class="sapUiTinyMarginEnd" />
-                    </HBox>
-                    <HBox alignItems="Start" justifyContent="Start">
-                        <Text text="End Date :  {/generalsettings/0/gsenddt}" class="sapUiTinyMarginEnd" />
-                    </HBox>
-                    <content>
-                        <FlexBox class="pageBGImage loginWrapper sapUiLargeMarginTop" direction="Column" height="100%" alignItems="Center" justifyContent="Center">
-                            <items>
-                                <FlexBox class="login-content" direction="Column" alignItems="Center" justifyContent="Stretch">
-                                    <items>
-                                        <VBox width="100%" alignItems="Stretch" justifyContent="Start">
-                                            <l:Grid hSpacing="1" vSpacing="0" defaultSpan="L12 M12 S12">
-                                                <VBox alignItems="Stretch" justifyContent="Start" width="100%">
-                                                    <HBox alignItems="Center" justifyContent="Stretch" width="100%">
-                                                        <Label text="User Name " width="120px" />
-                                                        <Label text=":" width="10px" />
-                                                        <VBox width="100%">
-                                                            <Input width="100%" value="{/UserModel/name}" />
-                                                        </VBox>
-                                                    </HBox>
-                                                    <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
-                                                        <Text width="120px" text="Password"/>
-                                                        <Label text=":" width="10px" />
-                                                        <VBox width="100%">
-                                                            <Input width="100%" type="Password" value="{/UserModel/pass}" />
-                                                        </VBox>
-                                                    </HBox>
-                                                    <VBox width="100%" alignItems="End" justifyContent="Stretch">
-                                                        <Button text="Login" press="onPress" type="Emphasized"/>
-                                                    </VBox>
-                                                    <VBox>
-                                                         <Link text="Forgot your password ?" press="goforget" />
-                                                    </VBox>
-                                                    <VBox width="100%" alignItems="End" justifyContent="Stretch" class="sapUiTinyMarginTop">
-                                                        <Label text="İf you have not yet registered,please create a new account"/>
-                                                        <Button text="CREATE AN ACCOUNT for SUBMISSION" app:url="Register" press="createaccount" type="Emphasized"/>
-                                                    </VBox>
-                                                </VBox>
-                                            </l:Grid>
-                                        </VBox>
-                                    </items>
-                                </FlexBox>
-                            </items>
-                        </FlexBox>
-                    </content>
-                </Panel>
-            </l:flexContent>
-        </l:FixFlex>
         <content>
+            <HBox alignItems="Stretch" justifyContent="Stretch">
+                <!-- <Image src="{/headerset/0/hsimg}"  width="100%" height="100px">
+                    <layoutData>
+                        <FlexItemData growFactor="1" />
+                    </layoutData>
+                </Image> -->
+            </HBox>
+            <l:FixFlex class="fixFlexVertical">
+                <l:flexContent>
+                    <Panel width="auto" class="sapUiResponsiveMargin sapUiLargeMarginTop pnlcls" accessibleRole="Region">
+                        <headerToolbar>
+                            <Toolbar height="3rem">
 
+                                <Title text="Login"/>
+                            </Toolbar>
+                        </headerToolbar>
+                        <HBox alignItems="Start" justifyContent="Start">
+                            <Text text="The article upload process is between the specified dates" class="sapUiTinyMarginEnd" />
+                        </HBox>
+                        <HBox alignItems="Start" justifyContent="Start">
+                            <Text text="Starting Date :  {/generalsettings/0/gsbegdt}" class="sapUiTinyMarginEnd" />
+                        </HBox>
+                        <HBox alignItems="Start" justifyContent="Start">
+                            <Text text="End Date :  {/generalsettings/0/gsenddt}" class="sapUiTinyMarginEnd" />
+                        </HBox>
+                        <content>
+                            <FlexBox class="pageBGImage loginWrapper sapUiLargeMarginTop" direction="Column" height="100%" alignItems="Center" justifyContent="Center">
+                                <items>
+                                    <FlexBox class="login-content" direction="Column" alignItems="Center" justifyContent="Stretch">
+                                        <items>
+                                            <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                                                <l:Grid hSpacing="1" vSpacing="0" defaultSpan="L12 M12 S12">
+                                                    <VBox alignItems="Stretch" justifyContent="Start" width="100%">
+                                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%">
+                                                            <Label text="User Name " width="120px" />
+                                                            <Label text=":" width="10px" />
+                                                            <VBox width="100%">
+                                                                <Input width="100%" value="{/UserModel/name}" />
+                                                            </VBox>
+                                                        </HBox>
+                                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
+                                                            <Text width="120px" text="Password"/>
+                                                            <Label text=":" width="10px" />
+                                                            <VBox width="100%">
+                                                                <Input width="100%" type="Password" value="{/UserModel/pass}" />
+                                                            </VBox>
+                                                        </HBox>
+                                                        <VBox width="100%" alignItems="End" justifyContent="Stretch">
+                                                            <Button text="Login" press="onPress" type="Emphasized"/>
+                                                        </VBox>
+                                                        <VBox>
+                                                            <Link text="Forgot your password ?" press="goforget" />
+                                                        </VBox>
+                                                        <VBox width="100%" alignItems="End" justifyContent="Stretch" class="sapUiTinyMarginTop">
+                                                            <Label text="İf you have not yet registered,please create a new account"/>
+                                                            <Button text="CREATE AN ACCOUNT for SUBMISSION" app:url="Register" press="createaccount" type="Emphasized"/>
+                                                        </VBox>
+                                                    </VBox>
+                                                </l:Grid>
+                                            </VBox>
+                                        </items>
+                                    </FlexBox>
+                                </items>
+                            </FlexBox>
+                        </content>
+                    </Panel>
+                </l:flexContent>
+            </l:FixFlex>
         </content>
     </Page>
 </View>

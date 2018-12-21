@@ -90,6 +90,14 @@ if($SN=="Payments"){
     }
     echo json_encode($result);
 }
+if($SN=="HeaderSettings"){
+    include("/HeaderSettings/headersettings.php");
+    $hsetting = new $SN();
+    if($MN=="GET"){
+        $result = $hsetting->$MN();
+    }
+    echo json_encode($result);
+}
 if ($SN == "UserMail") {
     include("/UserMail/usermail.php");
     $usmail = new $SN();

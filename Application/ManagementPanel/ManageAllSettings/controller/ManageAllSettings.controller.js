@@ -239,6 +239,56 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                 case "currencs":
                     _this.getcurrency()
                     break;
+                case "headerset":
+                    _this.byId("hstable").getItems()[0].setSelected(true)
+                    _this.getheader()
+                    break;
+            }
+        },
+        changefile: function (oEvent) {
+            var _this = this
+            // MN: "ADD",
+            // SN: "UploadPdf",
+            // "file": _this.b64,
+            // tfperiod: new Date().toLocaleDateString().split(".")[2],
+            // tfuid: oModel.oData.UserModel[0].uid,
+            // tfname: oModel.oData.UserModel[0].unm,
+            // tfsize: _this.size,
+            // tftype: _this.type
+            // hsid=? where
+            if (oEvent.getParameter("files")[0].size != 1000000) {
+                _this.cvb64(oEvent.getParameter("files")[0]).then(function (res) {
+                    // if (res) {
+                    //     // oModel.setProperty("/fdata", );
+                    //     /* oModel.setProperty("/fdata", oEvent.getParameter("files")[0]);*/
+                    // }
+                })
+            } else {
+                sap.m.MessageToast.show("Dosya Boyutu Geçersiz")
+            }
+        },
+        cvb64: function (param) {
+            var _this = this
+            var reader = new FileReader();
+            var deferred = new Promise(function (resolve, reject) {
+                if (typeof (FileReader) != "undefined") {
+                    reader.onload = function (evn) {
+                        oModel.setProperty("/fdata", evn.target.result);
+                        oModel.setProperty("/fdata", oModel.oData.fdata.substring(22))
+                        resolve(true)
+                    }
+                    reader.readAsDataURL(param);
+                }
+            })
+            return deferred;
+        },
+        getheader: function () {
+            if (oModel.oData.headerset == undefined) {
+                PluginService.getPlugin({ SN: "HeaderSettings", MN: "GET" }).then(function (res) {
+                    oModel.setProperty("/headerset", res)
+                })
+            } else {
+
             }
         },
         getpayments: function () {
@@ -260,7 +310,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                 oModel.setProperty("/fesett", res)
             })
         },
-        delcurrency:function(oEvent){
+        delcurrency: function (oEvent) {
             var _this = this
             const data = oModel.getProperty(oEvent.oSource._getBindingContext().sPath);
             MessageBox.warning(
@@ -278,20 +328,20 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                 }
             );
         },
-        delcurrencyset:function(data){
+        delcurrencyset: function (data) {
             CreateComponent.showBusyIndicator();
             var _this = this
-                PluginService.getPlugin({ SN: "Currency", MN: "DEL", where: "fbtpid=?", param: data.fbtpid }).then(function (res) {
-                    if (res == "SuccesDel") {
-                        CreateComponent.hideBusyIndicator();
-                        sap.m.MessageToast.show("your deletion took place successfully");
-                        _this.getcurrency();
-                    } else {
-                        CreateComponent.hideBusyIndicator();
-                    }
-                })
+            PluginService.getPlugin({ SN: "Currency", MN: "DEL", where: "fbtpid=?", param: data.fbtpid }).then(function (res) {
+                if (res == "SuccesDel") {
+                    CreateComponent.hideBusyIndicator();
+                    sap.m.MessageToast.show("your deletion took place successfully");
+                    _this.getcurrency();
+                } else {
+                    CreateComponent.hideBusyIndicator();
+                }
+            })
         },
-        editcurrency:function(oEvent){
+        editcurrency: function (oEvent) {
             var _this = this
             var fbtpid;
             var pwdata;

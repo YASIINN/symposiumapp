@@ -194,7 +194,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                         CreateComponent.hideBusyIndicator()
                     }
                 })
-              
                 */
             } else {
                 RelationService.relationreq({
@@ -300,9 +299,10 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                         if (res == "SuccedUpdate") {
                             _this.byId("panel0").setVisible(false)
                             _this.byId("panel1").setVisible(true)
-                            // _this.byId("panel2").setVisible(true)
-                            // _this.byId("panel3").setVisible(true)
-                            // _this.byId("footerinfo").setVisible(true)
+                            /*
+                            _this.byId("panel2").setVisible(true)
+                            _this.byId("panel3").setVisible(true)
+                            _this.byId("footerinfo").setVisible(true)*/
                             sap.m.MessageToast.show("Thank you created your information")
                             CreateComponent.hideBusyIndicator()
                         }
@@ -409,7 +409,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
             var totls = ltotal + vat;
             setmodel.total = totls;
             setmodel.vat = vat;
-            // ltotal;
             oModel.refresh()
             var totalc = 0;
             oModel.oData.fees.forEach(function (x) {
@@ -446,7 +445,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                 res.forEach(function (x, i) {
                     if (i == 0) {
                         x.enb = false
-                        x.total = x.fsprice
+                        x.vat = (x.fsprice * x.vaty) / 100;
+                        x.total = parseFloat(x.fsprice) + parseFloat(x.vat);
                     } else {
                         x.total = 0
                         x.enb = true;

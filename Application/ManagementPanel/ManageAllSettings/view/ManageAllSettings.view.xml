@@ -1,6 +1,7 @@
 <mvc:View controllerName="symposiumapp.Application.ManagementPanel.ManageAllSettings.controller.ManageAllSettings" 
     xmlns:mvc="sap.ui.core.mvc" 
     xmlns:core="sap.ui.core" 
+    xmlns:u="sap.ui.unified" 
     xmlns="sap.m">
     <Page showHeader="false" enableScrolling="true">
         <content>
@@ -208,7 +209,7 @@
                                 <headerToolbar>
                                     <Toolbar>
                                         <content>
-                                        <Button type="Transparent" icon="sap-icon://add" text="Add New Fee" press="editfee"/>
+                                            <Button type="Transparent" icon="sap-icon://add" text="Add New Fee" press="editfee"/>
                                             <ToolbarSpacer />
                                         </content>
                                     </Toolbar>
@@ -264,7 +265,7 @@
                             </Table>
                         </ScrollContainer>
                     </IconTabFilter>
-                      <IconTabSeparator icon=""/>
+                    <IconTabSeparator icon=""/>
                     <IconTabFilter key="payments" icon="sap-icon://simple-payment" iconColor="Positive" text="Payment Way Settings" count="7">
                         <ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
                             <Table id="paymenttable" inset="false" items="{
@@ -273,7 +274,7 @@
                                 <headerToolbar>
                                     <Toolbar>
                                         <content>
-                                        <Button type="Transparent" icon="sap-icon://add" text="Add New Payment Way" press="editpayment"/>
+                                            <Button type="Transparent" icon="sap-icon://add" text="Add New Payment Way" press="editpayment"/>
                                             <ToolbarSpacer />
                                         </content>
                                     </Toolbar>
@@ -289,7 +290,7 @@
                                     </Column>
                                     <Column	>
                                     </Column>
-                                         <Column	>
+                                    <Column	>
                                     </Column>
                                 </columns>
                                 <items>
@@ -300,14 +301,15 @@
                                                 <Button type="Transparent" icon="sap-icon://delete" tooltip="Delete Payment Way" press="delpayment" />
                                                 <Button type="Transparent" icon="sap-icon://edit" tooltip="Edit Payment Way" press="editpayment" />
                                             </HBox>
-                                           
+
                                         </cells>
                                     </ColumnListItem>
                                 </items>
                             </Table>
                         </ScrollContainer>
                     </IconTabFilter>
-                       <IconTabFilter key="currencs" icon="sap-icon://lead" iconColor="Natural" text="Currency Settings" count="8">
+                    <IconTabSeparator icon=""/>
+                    <IconTabFilter key="currencs" icon="sap-icon://lead" iconColor="Natural" text="Currency Settings" count="8">
                         <ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
                             <Table id="currenttable" inset="false" items="{
                                             path: '/currency'
@@ -315,7 +317,7 @@
                                 <headerToolbar>
                                     <Toolbar>
                                         <content>
-                                        <Button type="Transparent" icon="sap-icon://add" text="Add New Currency" press="editcurrency"/>
+                                            <Button type="Transparent" icon="sap-icon://add" text="Add New Currency" press="editcurrency"/>
                                             <ToolbarSpacer />
                                         </content>
                                     </Toolbar>
@@ -331,7 +333,7 @@
                                     </Column>
                                     <Column	>
                                     </Column>
-                                         <Column	>
+                                    <Column	>
                                     </Column>
                                 </columns>
                                 <items>
@@ -342,17 +344,87 @@
                                                 <Button type="Transparent" icon="sap-icon://delete" tooltip="Delete Currency" press="delcurrency" />
                                                 <Button type="Transparent" icon="sap-icon://edit" tooltip="Edit Currency" press="editcurrency" />
                                             </HBox>
-                                           
+
                                         </cells>
                                     </ColumnListItem>
                                 </items>
                             </Table>
                         </ScrollContainer>
                     </IconTabFilter>
-                </items>
+                    <IconTabSeparator icon=""/>
+                    <IconTabFilter key="headerset" icon="sap-icon://simple-payment" iconColor="Positive" text="Header Setting's" count="9">
+                        <ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
+                            <Table mode="SingleSelectLeft" id="hstable" inset="false" items="{
+                                            path: '/headerset'
+                                        }">
+                                <!-- headerset -->
+                                <headerToolbar>
+                                    <Toolbar>
+                                        <content>
+                                            <Button type="Transparent" icon="sap-icon://edit" text="Edit Header Setting's" press="editheaderset"/>
+                                            <ToolbarSpacer />
+                                        </content>
+                                    </Toolbar>
+                                </headerToolbar>
+                                <infoToolbar>
+                                    <Toolbar active="true">
+                                        <Title text="Header Setting's"/>
+                                    </Toolbar>
+                                </infoToolbar>
+                                <columns>
+                                    <Column>
+                                        <Text text="İmg" />
 
+                                    </Column>
+                                    <Column>
+                                        <Text text="Link Name" />
+                                    </Column>
+                                    <Column>
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Image src="{hsimg}" densityAware="false" width="400px">
+                                                <layoutData>
+                                                    <FlexItemData growFactor="1" />
+                                                </layoutData>
+                                            </Image>
+                                            <Link text="{hslink}" press="" href="{hslink}" />
+                                            <HBox>
+                                            </HBox>
+
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+
+                            <VBox width="100%" alignItems="Center" justifyContent="Center">
+                                <VBox alignItems="Center" justifyContent="Center" width="100%">
+                                    <HBox class="sapUiTinyMarginTop" alignItems="Center" justifyContent="Center" width="100%">
+                                        <Label text="File" width="130px" />
+                                        <Label text=":" width="10px" />
+                                        <VBox width="100%">
+                                            <u:FileUploader id="fileUploader" change="changefile" style="Emphasized" tooltip="RESİM DOSYASI SEÇİNİZ.." />
+
+                                        </VBox>
+                                    </HBox>
+                                    <HBox alignItems="Center" justifyContent="Center" width="100%" class="sapUiTinyMarginTop">
+                                        <Text width="130px" text="Link"/>
+                                        <Label text=":" width="10px" />
+                                        <HBox width="100%">
+                                          <Input value="" id="lidk" width="400px"/>
+                                        </HBox>
+                                    </HBox>
+                                       <HBox alignItems="Start" justifyContent="Start" width="100%" class="sapUiTinyMarginTop">
+                                        <Button type="Transparent" text="Save Changes" icon="sap-icon://save"/>
+                                    </HBox>
+                                </VBox>
+                            </VBox>
+                        </ScrollContainer>
+                    </IconTabFilter>
+                </items>
             </IconTabBar>
         </content>
     </Page>
-
 </mvc:View>
