@@ -91,7 +91,6 @@ sap.ui.define(['sap/m/MessageBox', 'sap/ui/core/mvc/Controller'], function (Mess
             var _this = this
             RegisterService.RegisterReq({ MN: "GET", SN: "Register", where: "rtemail=?", param: [oModel.oData.RegisterModel.cemail] }).then(function (res) {
                 if (res == "None") {
-                    debugger
                     UserService.userReq({ MN: "GET", SN: "User", "where": "ulgnname=?", param: [oModel.oData.RegisterModel.cemail] }).then(function (res) {
                         if (res == "None") {
                             _this.onRegister();
@@ -114,7 +113,7 @@ sap.ui.define(['sap/m/MessageBox', 'sap/ui/core/mvc/Controller'], function (Mess
                         rtname: oModel.oData.RegisterModel.ufname.split(" ")[0].toUpperCase(),
                         rtlname: oModel.oData.RegisterModel.ufname.split(" ")[1].toUpperCase(),
                         rtemail: oModel.oData.RegisterModel.cemail,
-                        rtuniinst: oModel.oData.RegisterModel.uniorinst,
+                        rtuniinst: oModel.oData.RegisterModel.uniorinst.registermodel,
                         rtpass: oModel.oData.RegisterModel.cpass,
                         rtlcode: lcode,
                         rauth: "2",

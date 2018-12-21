@@ -1,6 +1,7 @@
 jQuery.sap.require("symposiumapp.Application.ManagementPanel.ManageAllSettings.GeneralSetFolderService.generalsetfolder");
 jQuery.sap.require("symposiumapp.Application.ManagementPanel.ManageAllSettings.GeneralsettingsService.generalsettings");
 jQuery.sap.require("symposiumapp.ApiRequest.ApiRequset");
+jQuery.sap.require("symposiumapp.Servicejs.MailService");
 jQuery.sap.require("symposiumapp.Servicejs.PluginsService");
 jQuery.sap.require("symposiumapp.Application.Dashboard.Home.folderservice.folder");
 jQuery.sap.require("symposiumapp.Application.Dashboard.Home.broadcastservice.broadcast");
@@ -64,35 +65,50 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
         addbroadcast: function (file, key) {
             var _this = this
             if (key == "2") {
-                broadcastService.broadcastreq({
-                    MN: "ADD", SN: "Broadcast", broadcastdata: [{
-                        brdcastname: _this.byId("titleid").getValue(),
-                        brdsubject: _this.byId("topicid").getSelectedItem().mProperties.text,
-                        abtype: key,
-                        brdcasttype: _this.byId("oralid").getSelected() == true ? "1" : "2",
-                        fileid: file
-                    }]
-                }).then(function (res) {
-                    if (res[0].status == "SuccesAdd") {
-                        _this.addauthorsuser(res[0].btid);
-                    } else {
-                        CreateComponent.hideBusyIndicator()
+                var nm = _this.byId("titleid").getValue().toUpperCase()
+                broadcastService.broadcastreq({ MN: "GET", SN: "Broadcast", where: "brdcastname=?", param: [nm] }).then(function (res) {
+                    if (typeof res == "string") {
+                        broadcastService.broadcastreq({
+                            MN: "ADD", SN: "Broadcast", broadcastdata: [{
+                                brdcastname: _this.byId("titleid").getValue().toUpperCase(),
+                                brdsubject: _this.byId("topicid").getSelectedItem().mProperties.text.toUpperCase(),
+                                abtype: key,
+                                brdcasttype: _this.byId("oralid").getSelected() == true ? "1" : "2",
+                                fileid: file
+                            }]
+                        }).then(function (res) {
+                            if (res[0].status == "SuccesAdd") {
+                                _this.addauthorsuser(res[0].btid);
+                            } else {
+                                CreateComponent.hideBusyIndicator()
+                            }
+                        })
+                    } else if (typeof res == "object") {
+                        sap.m.MessageToast.show("this article was used before")
                     }
                 })
+
             } else if (key == "1") {
-                broadcastService.broadcastreq({
-                    MN: "ADD", SN: "Broadcast", broadcastdata: [{
-                        brdcastname: _this.byId("fttid").getValue(),
-                        brdsubject: _this.byId("fttopicid").getSelectedItem().mProperties.text,
-                        abtype: key,
-                        brdcasttype: _this.byId("ftoid").getSelected() == true ? "1" : "2",
-                        fileid: file
-                    }]
-                }).then(function (res) {
-                    if (res[0].status == "SuccesAdd") {
-                        _this.addauthorsuser(res[0].btid);
-                    } else {
-                        CreateComponent.hideBusyIndicator()
+                var nm = _this.byId("titleid").getValue().toUpperCase()
+                broadcastService.broadcastreq({ MN: "GET", SN: "Broadcast", where: "brdcastname=?", param: [nm] }).then(function (res) {
+                    if (typeof res == "string") {
+                        broadcastService.broadcastreq({
+                            MN: "ADD", SN: "Broadcast", broadcastdata: [{
+                                brdcastname: _this.byId("fttid").getValue().toUpperCase(),
+                                brdsubject: _this.byId("fttopicid").getSelectedItem().mProperties.text.toUpperCase(),
+                                abtype: key,
+                                brdcasttype: _this.byId("ftoid").getSelected() == true ? "1" : "2",
+                                fileid: file
+                            }]
+                        }).then(function (res) {
+                            if (res[0].status == "SuccesAdd") {
+                                _this.addauthorsuser(res[0].btid);
+                            } else {
+                                CreateComponent.hideBusyIndicator()
+                            }
+                        })
+                    } else if (typeof res == "object") {
+                        sap.m.MessageToast.show("this article was used before")
                     }
                 })
             }
@@ -227,14 +243,14 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                 adres = oModel.oData.UserModel[0].adress
             }
             var userdata = [{
-                usname: oModel.oData.UserModel[0].usname,
-                uslname: oModel.oData.UserModel[0].uslname,
+                usname: oModel.oData.UserModel[0].usname.toUpperCase(),
+                uslname: oModel.oData.UserModel[0].uslname.toUpperCase(),
                 uauth: oModel.oData.UserModel[0].uauth,
-                uniorinst: oModel.oData.UserModel[0].uniorinst,
+                uniorinst: oModel.oData.UserModel[0].uniorinst.toUpperCase(),
                 ulgnname: oModel.oData.UserModel[0].ulgnname,
                 country: oModel.oData.UserModel[0].country == "" ? _this.byId("countryallset").getSelectedKey() : oModel.oData.UserModel[0].country,
                 tid: tid,
-                adress: adres,
+                adress: adres.toUpperCase(),
                 ftextquota: oModel.oData.UserModel[0].ftextquota,
                 absquota: oModel.oData.UserModel[0].absquota,
                 mainaut: oModel.oData.UserModel[0].mainaut
@@ -255,6 +271,18 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                         _this.byId("topicid").setSelectedKey("");
                         _this.byId("fileUploader").setValue(' ');
                         oModel.setProperty("/authorsuser", []);
+                        var msgg = "<html><body>";
+                        msgg += "<b>Kayıt Yüklendi</b>";
+                        msgg += "</body></html>";
+                        MailService.AddMail({ systemcheck: [], "maildata": [{ "mail": oModel.oData.UserModel[0].ulgnname, "messega": msgg, subject: "Activation Verification" }] }).then(function (res) {
+                            if (res == "None") {
+                                CreateComponent.hideBusyIndicator();
+                                sap.m.MessageToast.show("sorry there was a mistake when sending mail");
+                            } else {
+                                CreateComponent.hideBusyIndicator();
+                                sap.m.MessageToast.show("register successful please check your email address");
+                            }
+                        })
                         CreateComponent.hideBusyIndicator()
                     } else {
                         CreateComponent.hideBusyIndicator()
@@ -268,7 +296,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                 else if (oModel.oData.author.addres.trim() == "") {
                     sap.m.MessageToast.show("please fill in the Address field");
                 } else {
-                    debugger
                     UserService.userReq({ MN: "SET", SN: "User", where: "usid=?", userdata: userdata, param: oModel.oData.UserModel[0].usid }).then(function (res) {
                         if (res == "SuccedUpdate") {
                             _this.byId("panel0").setVisible(false)
@@ -285,9 +312,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                         }
                     })
                 }
-
-
-
             }
         },
         getPosition: function () {
@@ -395,7 +419,22 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
         },
         exportpdf: function () {
             var _this = this
-            window.open("Pdf/tesst.php")
+            if (_this.byId("paymentselect").getSelectedKey() == "") {
+                sap.m.MessageToast.show("Invalid form of payment");
+            } else if (_this.byId("invto").getValue().trim() == "") {
+                sap.m.MessageToast.show("Invalid Invoiced");
+            } else if (_this.byId("invadres").getValue().trim() == "") {
+                sap.m.MessageToast.show("Invalid Invoice Address");
+            }
+            else if (_this.byId("tno").getValue().trim() == "") {
+                sap.m.MessageToast.show("Invalid Trade No");
+            }
+            else if (_this.byId("vno").getValue().trim() == "") {
+                sap.m.MessageToast.show("Invalid VAT No");
+            } else {
+                window.open("Pdf/tesst.php")
+
+            }
         },
         getpayments: function () {
             PluginService.getPlugin({ SN: "Payments", MN: "GET" }).then(function (res) {

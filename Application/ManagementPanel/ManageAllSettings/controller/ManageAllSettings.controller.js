@@ -165,14 +165,14 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                 if (oModel.oData.edittopics[tindex].tptxt.trim() == "") {
                     sap.m.MessageToast.show("please enter the subject name")
                 } else {
-                    PluginService.getPlugin({ SN: "Topics", MN: "ADDTOPİC", tdata: [{ tptxt: oModel.oData.edittopics[tindex].tptxt }] }).then(function (res) {
+                    PluginService.getPlugin({ SN: "Topics", MN: "ADDTOPİC", tdata: [{ tptxt: oModel.oData.edittopics[tindex].tptxt.toUpperCase() }] }).then(function (res) {
                         oModel.setProperty("/edittopics", res)
                         CreateComponent.showBusyIndicator()
                         _this.getalltopic();
                     })
                 }
             } else {
-                PluginService.getPlugin({ SN: "Topics", MN: "EDİTTOPİC", where: "tpid=?", param: oModel.oData.edittopics[tindex].tpid, tdata: [{ tptxt: oModel.oData.edittopics[tindex].tptxt }] }).then(function (res) {
+                PluginService.getPlugin({ SN: "Topics", MN: "EDİTTOPİC", where: "tpid=?", param: oModel.oData.edittopics[tindex].tpid, tdata: [{ tptxt: oModel.oData.edittopics[tindex].tptxt.toUpperCase() }] }).then(function (res) {
                     CreateComponent.showBusyIndicator()
                     _this.getalltopic();
                 })
@@ -190,7 +190,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
         },
         deletetopic: function (oEvent) {
             var _this = this
-            debugger
             const tindex = oEvent.oSource._getBindingContext().sPath.split("/")[2]
             PluginService.getPlugin({ SN: "Topics", MN: "DELTOPİC", where: "tpid=?", param: oModel.oData.edittopics[tindex].tpid }).then(function (res) {
                 CreateComponent.showBusyIndicator()
@@ -406,7 +405,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
 
                                                         if (result) {
                                                             pwdata = [{
-                                                                fbtxt: sap.ui.getCore().byId("aname").getValue()
+                                                                fbtxt: sap.ui.getCore().byId("aname").getValue().toUpperCase()
                                                             }]
                                                             PluginService.getPlugin({ SN: "Currency", MN: "SET", data: pwdata, where: "fbtpid=?", param: fbtpid }).then(function (res) {
                                                                 if (res == "SuccedUpdate") {
@@ -421,7 +420,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                                                             })
                                                         } else {
                                                             pwdata = [{
-                                                                fbtxt: sap.ui.getCore().byId("aname").getValue()
+                                                                fbtxt: sap.ui.getCore().byId("aname").getValue().toUpperCase()
                                                             }]
                                                             PluginService.getPlugin({ SN: "Currency", MN: "ADD", data: pwdata }).then(function (res) {
                                                                 if (res == "SuccesAdd") {
@@ -740,7 +739,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                                                         CreateComponent.showBusyIndicator();
                                                         if (result) {
                                                             setdata = [{
-                                                                fstxt: sap.ui.getCore().byId("aname").getValue(),
+                                                                fstxt: sap.ui.getCore().byId("aname").getValue().toUpperCase(),
                                                                 fsprice: sap.ui.getCore().byId("bname").getValue(),
                                                                 fptype: sap.ui.getCore().byId("currencys").getSelectedKey(),
                                                                 fsquota: data.fsquota,
@@ -761,7 +760,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                                                             })
                                                         } else {
                                                             setdata = [{
-                                                                fstxt: sap.ui.getCore().byId("aname").getValue(),
+                                                                fstxt: sap.ui.getCore().byId("aname").getValue().toUpperCase(),
                                                                 fsprice: sap.ui.getCore().byId("bname").getValue(),
                                                                 fptype: sap.ui.getCore().byId("currencys").getSelectedKey(),
                                                                 fsquota: "0",
@@ -821,7 +820,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
         },
         editpayment: function (oEvent) {
             var _this = this
-            // var data = oModel.getProperty(oEvent.oSource._getBindingContext().sPath);
             var pwid;
             var pwdata;
             var data = ""
@@ -934,7 +932,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
 
                                                         if (result) {
                                                             pwdata = [{
-                                                                pwtxt: sap.ui.getCore().byId("aname").getValue()
+                                                                pwtxt: sap.ui.getCore().byId("aname").getValue().toUpperCase()
                                                             }]
                                                             PluginService.getPlugin({ SN: "Payments", MN: "SET", data: pwdata, where: "pwid=?", param: pwid }).then(function (res) {
                                                                 if (res == "SuccedUpdate") {
@@ -950,7 +948,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                                                             })
                                                         } else {
                                                             pwdata = [{
-                                                                pwtxt: sap.ui.getCore().byId("aname").getValue()
+                                                                pwtxt: sap.ui.getCore().byId("aname").getValue().toUpperCase()
                                                             }]
                                                             PluginService.getPlugin({ SN: "Payments", MN: "ADD", data: pwdata }).then(function (res) {
                                                                 if (res == "SuccesAdd") {
@@ -1044,13 +1042,13 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                 if (oModel.oData.titleset[tindex].titletxt.trim() == "") {
                     sap.m.MessageToast.show("please enter the subject name")
                 } else {
-                    PluginService.getPlugin({ SN: "Title", MN: "ADDTİTLE", tdata: [{ titletxt: oModel.oData.titleset[tindex].titletxt }] }).then(function (res) {
+                    PluginService.getPlugin({ SN: "Title", MN: "ADDTİTLE", tdata: [{ titletxt: oModel.oData.titleset[tindex].titletxt.toUpperCase() }] }).then(function (res) {
                         CreateComponent.showBusyIndicator()
                         _this.getalltitles();
                     })
                 }
             } else {
-                PluginService.getPlugin({ SN: "Title", MN: "EDİTTİTLE", where: "tid=?", param: oModel.oData.titleset[tindex].tid, tdata: [{ titletxt: oModel.oData.titleset[tindex].titletxt }] }).then(function (res) {
+                PluginService.getPlugin({ SN: "Title", MN: "EDİTTİTLE", where: "tid=?", param: oModel.oData.titleset[tindex].tid, tdata: [{ titletxt: oModel.oData.titleset[tindex].titletxt.toUpperCase() }] }).then(function (res) {
                     CreateComponent.showBusyIndicator()
                     _this.getalltopic();
                 })

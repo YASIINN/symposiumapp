@@ -366,10 +366,7 @@
                                         </ScrollContainer>
                                     </VBox>
                                 </VBox>
-
-
-
-   <VBox width="100%" alignItems="Stretch" justifyContent="Start" class="sapUiLargeMarginTop">
+                                <VBox width="100%" alignItems="Stretch" justifyContent="Start" class="sapUiLargeMarginTop">
                                     <VBox alignItems="Stretch" justifyContent="Start" width="100%">
                                         <HBox class="sapUiTinyMarginTop" alignItems="Center" justifyContent="Stretch" width="100%">
                                             <Label text="Invoiced to" width="130px" />
@@ -392,7 +389,6 @@
                                                 <Input width="100%" value="" id="tno"/>
                                             </VBox>
                                         </HBox>
-                               
                                       <HBox class="sapUiTinyMarginTop" alignItems="Center" justifyContent="Stretch" width="100%">
                                             <Label text="VAT No" width="130px" />
                                             <Label text=":" width="10px" />
@@ -400,9 +396,6 @@
                                                 <Input width="100%" value="" id="vno"/>
                                             </VBox>
                                         </HBox>
-                               
-                               
-                                 
                                         <HBox alignItems="Stretch" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
                                             <HBox width="100%" alignItems="Stretch" justifyContent="Stretch">
                                                 <HBox width="100%" alignItems="Start" justifyContent="Start">
@@ -412,7 +405,6 @@
                                         </HBox>
                                     </VBox>
                                 </VBox>
-
                             </content>
                         </Panel>
                     </IconTabFilter>

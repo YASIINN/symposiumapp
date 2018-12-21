@@ -62,12 +62,11 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel', 'sap
         },
         adduser: function (param) {
             var _this = this
-            debugger
             var userData = {
-                usname: param[0].rtname,
-                uslname: param[0].rtlname,
+                usname: param[0].rtname.toUpperCase(),
+                uslname: param[0].rtlname.toUpperCase(),
                 uauth: parseInt(param[0].rauth),
-                uniorinst: param[0].rtuniinst,
+                uniorinst: param[0].rtuniinst.toUpperCase(),
                 ulgnname: param[0].rtemail,
                 upass: param[0].rtpass,
                 mail: param[0].rtemail,
@@ -81,7 +80,6 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel', 'sap
             }
             UserService.userReq({ userdata: [userData], MN: "ADD", SN: "User" }).then(function (res) {
                 if (res[0].status == "SuccesAdd") {
-                    debugger
                     sap.m.MessageToast.show("Registration Successful")
                     _this.delTemp(param[0].rtlcode);
                 } else {

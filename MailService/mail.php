@@ -1,4 +1,4 @@
-    <?php
+<?php
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
 
@@ -19,30 +19,21 @@
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
     $mail->CharSet = 'UTF-8';
-    // if (isset($_POST['systemcheck'])) {
-       
-    // } else {
-    //     // $db = new database("root", "", "localhost", "symposiumapp");
-    //     // $sysrows = $db->getrows("SELECT * FROM systemsettings");
-    //     // $ead = $sysrows[0]['emailaddres'];
-    //     // $epass = $sysrows[0]['emailpass'];
-    //     // $maildata = $_POST['maildata'];
-    //     // for ($i = 0; $i < count($maildata); $i++) {
-    //     //     $umail = $maildata[$i]['mail'];
-    //     //     $messega = $maildata[$i]['messega'];
-    //     //     $mail->addAddress($umail, 'Kişisel');
-    //     // }
-    // }
-    $ead = $_POST['maildata'][0]['mail'];
-    $epass = "4d32adf5";
+    $db = new database("root", "", "localhost", "symposiumapp");
+    $sysrows = $db->select("generalsettingsmail","1",array());
+    $ead =$sysrows[0]['gsmname'];
+
+    //  $_POST['maildata'][0]['mail'];
+    $epass =$sysrows[0]['gsmpass'];
+    //  "4d32adf5";
     // $_POST['maildata'][0]['epass'];
     $subject= $_POST['maildata'][0]['subject'];
     $messega = $_POST['maildata'][0]['messega'];
-    $mail->addAddress($ead, 'Email Adres Değişimi');
+    $mail->addAddress( $_POST['maildata'][0]['mail'], '');
     $mail->Username = $ead;
     $mail->Password = $epass;
-    $mail->setFrom($ead, 'Kayıt Doğrulama');
-    $mail->addReplyTo($ead, 'Bilgi');
+    $mail->setFrom($ead, 'qqqq');
+    $mail->addReplyTo($ead, '');
     $mail->isHTML(true);
     $mail->Subject =$subject;
     $mail->Body = $messega;
