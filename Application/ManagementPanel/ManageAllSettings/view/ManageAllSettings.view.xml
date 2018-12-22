@@ -399,13 +399,13 @@
                                 </items>
                             </Table>
 
-                            <VBox width="100%" alignItems="Center" justifyContent="Center">
+                            <VBox width="100%" alignItems="Center" justifyContent="Center" id="editheades" visible="false">
                                 <VBox alignItems="Center" justifyContent="Center" width="100%">
                                     <HBox class="sapUiTinyMarginTop" alignItems="Center" justifyContent="Center" width="100%">
                                         <Label text="File" width="130px" />
                                         <Label text=":" width="10px" />
                                         <VBox width="100%">
-                                            <u:FileUploader id="fileUploader" change="changefile" style="Emphasized" tooltip="RESİM DOSYASI SEÇİNİZ.." />
+                                            <u:FileUploader id="fileUploader" fileType="png,jpg" change="changefile" style="Emphasized" tooltip="RESİM DOSYASI SEÇİNİZ.." />
 
                                         </VBox>
                                     </HBox>
@@ -417,7 +417,7 @@
                                         </HBox>
                                     </HBox>
                                        <HBox alignItems="Start" justifyContent="Start" width="100%" class="sapUiTinyMarginTop">
-                                        <Button type="Transparent" text="Save Changes" icon="sap-icon://save"/>
+                                        <Button type="Transparent" text="Save Changes" press="saveheader" icon="sap-icon://save"/>
                                     </HBox>
                                 </VBox>
                             </VBox>

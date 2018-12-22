@@ -4,19 +4,19 @@ $SN = $_POST['SN'];
 $MN = $_POST['MN'];
 $result = "";
 if ($SN == "Authority") {
-    include("/Authority/authority.php");
+    include("Authority/authority.php");
     $authority = new $SN();
     $result = $authority->$MN();
     echo json_encode($result);
 }
 if ($SN == "BroadcastType") {
-    include("/BroadcastType/broadcasttype.php");
+    include("BroadcastType/broadcasttype.php");
     $broadcasttype = new $SN();
     $result = $broadcasttype->$MN();
     echo json_encode($result);
 }
 if ($SN == "Broadcast") {
-    include("/Broadcast/broadcast.php");
+    include("Broadcast/broadcast.php");
     $broadcast = new $SN();
     if ($MN == "ADD") {
         $result = $broadcast->$MN($_POST['broadcastdata']);
@@ -28,7 +28,7 @@ if ($SN == "Broadcast") {
     echo json_encode($result);
 }
 if ($SN == "Phone") {
-    include("/Phone/phone.php");
+    include("Phone/phone.php");
     $phone = new $SN();
     if($MN=="ADD"){
         $result = $phone->$MN($_POST['pdata']);
@@ -39,7 +39,7 @@ if ($SN == "Phone") {
     echo json_encode($result);
 }
 if ($SN == "Session") {
-    include("/Session/session.php");
+    include("Session/session.php");
     $session = new $SN();
     if ($MN == "DELS") {
         $result = $session->$MN();
@@ -49,7 +49,7 @@ if ($SN == "Session") {
     echo json_encode($result);
 }
 if($SN=="FeeSettings"){
-    include("/FeeSettings/feesettings.php");
+    include("FeeSettings/feesettings.php");
     $feeset = new $SN();
     if($MN=="GET"){
         $result = $feeset->$MN();
@@ -63,7 +63,7 @@ if($SN=="FeeSettings"){
     echo json_encode($result);
 }
 if($SN=="Currency"){
-    include("/Currency/currency.php");
+    include("Currency/currency.php");
     $currency = new $SN();
     if($MN=="GET"){
         $result = $currency->$MN();
@@ -77,7 +77,7 @@ if($SN=="Currency"){
     echo json_encode($result);
 }
 if($SN=="Payments"){
-    include("/Payments/payments.php");
+    include("Payments/payments.php");
     $payments = new $SN();
     if($MN=="GET"){
         $result = $payments->$MN();
@@ -91,15 +91,20 @@ if($SN=="Payments"){
     echo json_encode($result);
 }
 if($SN=="HeaderSettings"){
-    include("/HeaderSettings/headersettings.php");
+    include("HeaderSettings/headersettings.php");
     $hsetting = new $SN();
     if($MN=="GET"){
         $result = $hsetting->$MN();
+    }else if($MN=="SET"){
+        $result = $hsetting->$MN($_POST['data']);
+    }
+    else if($MN=="DEL"){
+        $result = $hsetting->$MN($_POST['where'],$_POST['param']);
     }
     echo json_encode($result);
 }
 if ($SN == "UserMail") {
-    include("/UserMail/usermail.php");
+    include("UserMail/usermail.php");
     $usmail = new $SN();
     if($MN=="SETMAİL"){
         $result = $usmail->$MN($_POST['data'],$_POST['where'],$_POST['param']);
@@ -109,7 +114,7 @@ if ($SN == "UserMail") {
     echo json_encode($result);
 }
 if ($SN == "Topics") {
-    include("/Topics/topics.php");
+    include("Topics/topics.php");
     $topics = new $SN();
     if ($MN == "DELTOPİC") {
         $result = $topics->$MN($_POST['where'], $_POST['param']);
@@ -123,7 +128,7 @@ if ($SN == "Topics") {
     echo json_encode($result);
 }
 if ($SN == "User") {
-    include("/User/user.php");
+    include("User/user.php");
     $user = new $SN();
     if ($MN == "GET") {
         $result;
@@ -149,7 +154,7 @@ if ($SN == "User") {
     echo json_encode($result);
 }
 if($SN=="GeneralSettings"){
-    include("/GeneralSettings/generalsettings.php");
+    include("GeneralSettings/generalsettings.php");
     $gsettings = new $SN();
     if($MN=="GETGSETTİNGS"){
         $result = $gsettings->$MN();
@@ -159,13 +164,13 @@ if($SN=="GeneralSettings"){
     echo json_encode($result);
 }
 if ($SN == "Login") {
-    include("/Login/login.php");
+    include("Login/login.php");
     $login = new $SN();
     $result = $login->$MN($_POST['name'], $_POST['pass']);
     echo json_encode($result);
 }
 if ($SN == "Title") {
-    include("/Title/title.php");
+    include("Title/title.php");
     $title = new $SN();
     if ($MN == "DELTİTLE") {
         $result = $title->$MN($_POST['where'], $_POST['param']);
@@ -179,7 +184,7 @@ if ($SN == "Title") {
     echo json_encode($result);
 }
 if ($SN == "File") {
-    include("/File/file.php");
+    include("File/file.php");
     $file = new $SN();   
    if($MN=="ADD"){
         $result = $file->$MN($_FILES, $_POST['usid'], $_POST['fileext'], $_POST['size'], $_POST['type'],$_POST['bcext']);
@@ -192,7 +197,7 @@ if ($SN == "File") {
     echo json_encode($result);
 }
 if($SN=="GeneralSetFolder"){
-    include("/GeneralSetFolder/generalsetfolder.php");
+    include("GeneralSetFolder/generalsetfolder.php");
     $gsfolder = new $SN();
     if($MN=="GET"){
         $result = $gsfolder->$MN();
@@ -209,7 +214,7 @@ if($SN=="GeneralSetFolder"){
     echo json_encode($result);
 }
 if($SN=="Generalsetmail"){
-    include("/Generalsetmail/generalsetmail.php");
+    include("Generalsetmail/generalsetmail.php");
     $gsmail = new $SN();
     if ($MN == "GET") {
         $result = $gsmail->$MN();
@@ -219,7 +224,7 @@ if($SN=="Generalsetmail"){
     echo json_encode($result);
 }
 if ($SN == "Register") {
-    include("/Register/register.php");
+    include("Register/register.php");
     $register = new $SN();
     if ($MN == "ADD") {
         $result = $register->$MN($_POST['registerdata']);
@@ -239,7 +244,7 @@ if ($SN == "Register") {
     echo json_encode($result);
 }
 if ($SN == "Relation") {
-    include("/Relation/relation.php");
+    include("Relation/relation.php");
     $relation = new $SN();
     if ($MN == "ADD") {
         $result = $relation->$MN($_POST['data']);

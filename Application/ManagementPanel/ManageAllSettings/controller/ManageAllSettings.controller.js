@@ -208,6 +208,107 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                 oEvent.oSource.oParent.oParent.oParent.getItems()[tindex].getCells()[2].getItems()[1].setVisible(true)
             }
         },
+        key: function (oEvent) {
+            var _this = this
+            switch (oEvent.oSource.getSelectedKey()) {
+                case "topics":
+                    CreateComponent.showBusyIndicator()
+                    _this.getalltopic();
+                    break;
+                case "titles":
+                    CreateComponent.showBusyIndicator()
+                    _this.getalltitles();
+                    break;
+                case "general":
+                    CreateComponent.showBusyIndicator()
+                    _this.getgeneralsettings();
+                    break;
+                case "files":
+                    CreateComponent.showBusyIndicator()
+                    _this.getgeneralsettingsfolder();
+                    break;
+                case "mails":
+                    _this.getmail();
+                    break;
+                case "fees":
+                    _this.getfee();
+                    break;
+                case "payments":
+                    _this.getpayments();
+                    break;
+                case "currencs":
+                    _this.getcurrency()
+                    break;
+                case "headerset":
+                    _this.byId("hstable").getItems()[0].setSelected(true)
+                    _this.getheader()
+                    break;
+            }
+        },
+        saveheader: function (oEvent) {
+            var _this = this
+            var himg = oModel.oData.headerset[0].hsimg;
+            debugger
+            if (_this.byId("lidk").getValue().trim() == "") {
+                sap.m.MessageToast.show("lütfen boş yapmayın")
+            } else {
+                var datas = []
+                if (oModel.oData.fdata == undefined) {
+                    datas.push({
+                        hslink: _this.byId("lidk").getValue(),
+                        hsimg: ""
+                    })
+                } else {
+                    datas.push({
+                        hslink: _this.byId("lidk").getValue(),
+                        hsimg: oModel.oData.fdata
+                    })
+                }
+                CreateComponent.showBusyIndicator();
+                PluginService.getPlugin({ SN: "HeaderSettings", MN: "DEL", where: "hsid=?", param: oModel.oData.headerset[0].hsid }).then(function (res) {
+                    if (res == "SuccesDel") {
+                        PluginService.getPlugin({ SN: "HeaderSettings", MN: "SET", data: datas }).then(function (res) {
+                            if (res == "SuccedUpdate") {
+                                sap.m.MessageToast.show("Your update has been successfully completed");
+                                delete oModel.oData.headerset;
+                                _this.getheader();
+                                delete oModel.oData.fdata;
+                                _this.byId("editheades").setVisible(false);
+                                _this.byId("fileUploader").setValue(' ')
+                                CreateComponent.hideBusyIndicator();
+                            } else {
+                                CreateComponent.hideBusyIndicator();
+                                sap.m.MessageToast.show("unexpected error please try again later");
+                            }
+
+                        })
+
+                    } else {
+                        CreateComponent.hideBusyIndicator();
+                        sap.m.MessageToast.show("unexpected error please try again later");
+                    }
+
+                })
+
+            }
+            // hsid where 
+
+
+        },
+        editheaderset: function (oEvent) {
+            var _this = this
+            if (this.byId("hstable").getSelectedItems().length != "1") {
+                sap.m.MessageToast.show("selected record not found")
+            } else {
+                const model = oModel.getProperty(this.byId("hstable").getSelectedContextPaths()[0])
+                this.byId("lidk").setValue(model.hslink);
+                _this.byId("editheades").setVisible(!_this.byId("editheades").getVisible());
+                if (_this.byId("editheades").getVisible() == false) {
+                    _this.byId("fileUploader").setValue(' ')
+                    delete oModel.oData.fdata
+                }
+            }
+        },
         changekey: function (oEvent) {
             var _this = this
             switch (oEvent.oSource.getSelectedKey()) {
@@ -247,34 +348,30 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
         },
         changefile: function (oEvent) {
             var _this = this
-            // MN: "ADD",
-            // SN: "UploadPdf",
-            // "file": _this.b64,
-            // tfperiod: new Date().toLocaleDateString().split(".")[2],
-            // tfuid: oModel.oData.UserModel[0].uid,
-            // tfname: oModel.oData.UserModel[0].unm,
-            // tfsize: _this.size,
-            // tftype: _this.type
-            // hsid=? where
-            if (oEvent.getParameter("files")[0].size != 1000000) {
-                _this.cvb64(oEvent.getParameter("files")[0]).then(function (res) {
-                    // if (res) {
-                    //     // oModel.setProperty("/fdata", );
-                    //     /* oModel.setProperty("/fdata", oEvent.getParameter("files")[0]);*/
-                    // }
-                })
+            if (oEvent.getParameter("files")[0] != undefined) {
+                if (oEvent.getParameter("files")[0].size != 1000000) {
+                    _this.cvb64(oEvent.getParameter("files")[0], oEvent.getParameter("files")[0]["type"]).then(function (res) {
+                    })
+                } else {
+                    sap.m.MessageToast.show("Dosya Boyutu Geçersiz")
+                }
             } else {
-                sap.m.MessageToast.show("Dosya Boyutu Geçersiz")
+                delete oModel.oData.fdata;
             }
         },
-        cvb64: function (param) {
+        cvb64: function (param, ext) {
             var _this = this
             var reader = new FileReader();
             var deferred = new Promise(function (resolve, reject) {
                 if (typeof (FileReader) != "undefined") {
                     reader.onload = function (evn) {
                         oModel.setProperty("/fdata", evn.target.result);
-                        oModel.setProperty("/fdata", oModel.oData.fdata.substring(22))
+                        if (ext == "image/jpeg") {
+                            oModel.setProperty("/fdata", oModel.oData.fdata.substring(23))
+                        } else if (ext == "image/png") {
+                            oModel.setProperty("/fdata", oModel.oData.fdata.substring(22))
+
+                        }
                         resolve(true)
                     }
                     reader.readAsDataURL(param);
@@ -287,9 +384,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                 PluginService.getPlugin({ SN: "HeaderSettings", MN: "GET" }).then(function (res) {
                     oModel.setProperty("/headerset", res)
                 })
-            } else {
-
-            }
+            } else { return }
         },
         getpayments: function () {
             PluginService.getPlugin({ SN: "Payments", MN: "GET" }).then(function (res) {
@@ -445,7 +540,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                                         justifyContent: sap.m.FlexJustifyContent.Center,
                                         items: [
                                             new sap.m.Button({
-                                                text: "Save Changes",
+                                                text: "Save s",
                                                 press: function () {
                                                     if (sap.ui.getCore().byId("aname").getValue().trim() == "") {
                                                         sap.m.MessageToast.show("Please fill Payment Way field")
@@ -770,7 +865,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                                         justifyContent: sap.m.FlexJustifyContent.Center,
                                         items: [
                                             new sap.m.Button({
-                                                text: "Save Changes",
+                                                text: "Save s",
                                                 press: function () {
                                                     debugger
                                                     if (sap.ui.getCore().byId("aname").getValue().trim() == "") {
@@ -972,7 +1067,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                                         justifyContent: sap.m.FlexJustifyContent.Center,
                                         items: [
                                             new sap.m.Button({
-                                                text: "Save Changes",
+                                                text: "Save s",
                                                 press: function () {
                                                     if (sap.ui.getCore().byId("aname").getValue().trim() == "") {
                                                         sap.m.MessageToast.show("Please fill Payment Way field")

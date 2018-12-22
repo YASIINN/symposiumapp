@@ -13,7 +13,6 @@ $dompdf->loadHtml($html,'UTF-8');
 $dompdf->setPaper('A4','landscape');
 $dompdf->render();
  $dompdf->stream("aaa",array('Attachment'=>0));
-$db = new database("root", "", "localhost", "symposiumapp");
 
 
 ?>
