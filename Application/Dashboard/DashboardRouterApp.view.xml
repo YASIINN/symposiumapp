@@ -7,8 +7,8 @@
     xmlns:f="sap.f" height="100%">
     <Page enableScrolling="false" showHeader="false">
         <l:FixFlex class="fixFlexVertical">
-            <l:fixContent>
-                <tnt:ToolHeader id="rootViewToolHeader">
+            <l:fixContent >
+                <tnt:ToolHeader id="rootViewToolHeader" visible="{/dvisible}">
                     <Button icon="sap-icon://menu2" type="Emphasized" press="onShowSideBarView" class="sapUiSmallMarginBegin">
                         <layoutData>
                             <OverflowToolbarLayoutData priority="NeverOverflow"/>

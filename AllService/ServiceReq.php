@@ -9,6 +9,26 @@ if ($SN == "Authority") {
     $result = $authority->$MN();
     echo json_encode($result);
 }
+if($SN=="Company"){
+    include("Company/company.php");
+    $company = new $SN();
+    if($MN=="GET"){
+        $result = $company->$MN();
+    }else if($MN=="SET"){
+        $result = $company->$MN($_POST['data'],$_POST['where'],$_POST['param']);
+    }
+    echo json_encode($result);
+}
+if($SN=="MailHeaderSet"){
+    include("MailHeaderSet/mailheaderset.php");
+    $mhset = new $SN();
+    if($MN=="GET"){
+        $result = $mhset->$MN();
+    }else if($MN=="SET"){
+        $result = $mhset->$MN($_POST['data'],$_POST['where'],$_POST['param']);
+    }
+    echo json_encode($result);
+}
 if ($SN == "BroadcastType") {
     include("BroadcastType/broadcasttype.php");
     $broadcasttype = new $SN();

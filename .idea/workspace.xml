@@ -2,14 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bdccf3a5-b1f0-4b18-8dc3-20948e34b2a2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/AllService/HeaderSettings/headersettings.php" beforeDir="false" afterPath="$PROJECT_DIR$/AllService/HeaderSettings/headersettings.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AllService/Company/company.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AllService/MailHeaderSet/mailheaderset.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Dashboard/Proforma/controller/Proforma.controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Dashboard/Proforma/view/Proforma.view.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/companyservice/companyservice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AllService/ServiceReq.php" beforeDir="false" afterPath="$PROJECT_DIR$/AllService/ServiceReq.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Dashboard/DashboardRouterApp.view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dashboard/DashboardRouterApp.view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Dashboard/Home/controller/Home.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dashboard/Home/controller/Home.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Dashboard/Home/view/Home.view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dashboard/Home/view/Home.view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Dashboard/MyArticles/controller/MyArticles.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dashboard/MyArticles/controller/MyArticles.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Login/controller/Login.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Login/controller/Login.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Login/view/Login.view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Login/view/Login.view.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/controller/ManageAllSettings.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/controller/ManageAllSettings.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/view/ManageAllSettings.view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/view/ManageAllSettings.view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MailService/tesst.php" beforeDir="false" afterPath="$PROJECT_DIR$/MailService/tesst.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pdf/tesst.php" beforeDir="false" afterPath="$PROJECT_DIR$/Pdf/tesst.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pdf/test.php" beforeDir="false" afterPath="$PROJECT_DIR$/Pdf/test.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Component.js" beforeDir="false" afterPath="$PROJECT_DIR$/Component.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MailService/mail.php" beforeDir="false" afterPath="$PROJECT_DIR$/MailService/mail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MasterApp.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/MasterApp.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MasterApp.view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MasterApp.view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allword/00d60494178fd6bcc03e_117.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allword/4ff3a21f5f41af28248a_117.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allword/64aeff0bb7b12662c048_116.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allword/99c2ef0e1d8651828444_117.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allword/ac37ff2b747dba7360ca_117.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allword/b3346df35110cc94f4a7_117.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allword/bbd42e2d4bc39df9584e_117.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allword/e413792fdeb7c12a70c6_117.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/css/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/css/global.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,26 +38,115 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/AllRequest/AllRequest.js">
-          <provider selected="true" editor-type-id="text-editor" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Login/view/Login.view.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="63" lean-forward="true" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="63" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AllService/ServiceReq.php">
+        <entry file="file://$PROJECT_DIR$/Application/Dashboard/Proforma/view/Proforma.view.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="30" column="31" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
+            <state relative-caret-position="170">
+              <caret line="10" column="91" selection-start-line="10" selection-start-column="91" selection-end-line="10" selection-end-column="91" />
+              <folding>
+                <element signature="n#List#0;n#VBox#0;n#content#0;n#Page#0;n#mvc:View#0;n#!!top" />
+                <element signature="n#List#1;n#HBox#0;n#VBox#0;n#content#0;n#Page#0;n#mvc:View#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Dashboard/Proforma/controller/Proforma.controller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="267">
+              <caret line="20" column="51" lean-forward="true" selection-start-line="20" selection-start-column="51" selection-end-line="20" selection-end-column="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Dashboard/Home/view/Home.view.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="344" column="56" selection-start-line="344" selection-start-column="56" selection-end-line="354" selection-end-column="82" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Application/Dashboard/Home/controller/Home.controller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="13" column="49" lean-forward="true" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/css/global.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="3203" selection-start-column="3203" selection-end-column="3203" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/view/ManageAllSettings.view.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="511">
+              <caret line="44" selection-start-line="44" selection-end-line="44" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>include(&quot;/</find>
+      <find>ms</find>
+      <find>submiss</find>
+      <find>fulltex</find>
+      <find>getm</find>
+      <find>msgg</find>
+      <find>fee</find>
+      <find>change</find>
+      <find>getcom</find>
+      <find>try aga</find>
+      <find>editco</find>
+      <find>getCompany</find>
+      <find>companytable</find>
+      <find>Pr</find>
+      <find>route</find>
+      <find>visible</find>
+      <find>onbef</find>
+      <find>lis</find>
+      <find>expo</find>
+      <find>payment</find>
+      <find>mail</find>
+      <find>qqq</find>
+      <find>addma</find>
+      <find>compa</find>
+      <find>export</find>
+      <find>customer</find>
+      <find>proforma</find>
+      <find>total</find>
+      <find>deta</find>
+      <find>large</find>
+      <find>image</find>
     </findStrings>
     <replaceStrings>
       <replace>include(&quot;</replace>
@@ -49,7 +158,25 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/AllService/MailHeaderSet/mailheaderset.php" />
+        <option value="$PROJECT_DIR$/Application/Login/view/Login.view.xml" />
+        <option value="$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/companyservice/companyservice.js" />
+        <option value="$PROJECT_DIR$/AllService/Company/company.php" />
         <option value="$PROJECT_DIR$/AllService/ServiceReq.php" />
+        <option value="$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/controller/ManageAllSettings.controller.js" />
+        <option value="$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/view/ManageAllSettings.view.xml" />
+        <option value="$PROJECT_DIR$/Component.js" />
+        <option value="$PROJECT_DIR$/Application/Dashboard/MyArticles/controller/MyArticles.controller.js" />
+        <option value="$PROJECT_DIR$/Application/Login/controller/Login.controller.js" />
+        <option value="$PROJECT_DIR$/MasterApp.controller.js" />
+        <option value="$PROJECT_DIR$/Application/Dashboard/DashboardRouterApp.view.xml" />
+        <option value="$PROJECT_DIR$/Application/Dashboard/Home/view/Home.view.xml" />
+        <option value="$PROJECT_DIR$/MailService/mail.php" />
+        <option value="$PROJECT_DIR$/MasterApp.view.xml" />
+        <option value="$PROJECT_DIR$/Application/Dashboard/Proforma/controller/Proforma.controller.js" />
+        <option value="$PROJECT_DIR$/resources/css/global.css" />
+        <option value="$PROJECT_DIR$/Application/Dashboard/Proforma/view/Proforma.view.xml" />
+        <option value="$PROJECT_DIR$/Application/Dashboard/Home/controller/Home.controller.js" />
       </list>
     </option>
   </component>
@@ -59,8 +186,13 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
+  <component name="PhpServers">
+    <servers>
+      <server host="localhost" id="9eb337ea-5627-4ddb-8168-98963bab7a9d" name="localhost" />
+    </servers>
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="10" />
     <option name="y" value="20" />
     <option name="width" value="1346" />
@@ -84,6 +216,164 @@
               <item name="symposiumapp" type="462c0819:PsiDirectoryNode" />
               <item name="AllService" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="symposiumapp" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="symposiumapp" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="Dashboard" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="symposiumapp" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="Dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="Home" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="symposiumapp" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="Dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="Home" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="symposiumapp" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="Dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="Home" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="symposiumapp" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="Dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="MyArticles" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="symposiumapp" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="Dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="MyArticles" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="symposiumapp" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="Dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="MyArticles" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="symposiumapp" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="Dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="Proforma" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="symposiumapp" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="Dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="Proforma" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="symposiumapp" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="Dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="Proforma" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="symposiumapp" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="Login" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="symposiumapp" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="Login" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="symposiumapp" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="Login" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="symposiumapp" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="ManagementPanel" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="symposiumapp" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="ManagementPanel" type="462c0819:PsiDirectoryNode" />
+              <item name="ManageAllSettings" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="symposiumapp" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="ManagementPanel" type="462c0819:PsiDirectoryNode" />
+              <item name="ManageAllSettings" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="symposiumapp" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="ManagementPanel" type="462c0819:PsiDirectoryNode" />
+              <item name="ManageAllSettings" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="symposiumapp" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="Register" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="symposiumapp" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="Register" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="symposiumapp" type="462c0819:PsiDirectoryNode" />
+              <item name="MailService" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="symposiumapp" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="symposiumapp" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -95,7 +385,13 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="prof" />
+    </option>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -109,6 +405,16 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="Home.controller.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/Application/Dashboard/Home/controller/Home.controller.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.Home.controller.js" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -120,51 +426,223 @@
       <option name="presentableId" value="Default" />
       <updated>1545484974023</updated>
       <workItem from="1545484975742" duration="89000" />
+      <workItem from="1545491182256" duration="7311000" />
+      <workItem from="1545551068532" duration="17910000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89000" />
+    <option name="totallyTimeSpent" value="25310000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="10" y="20" width="1346" height="698" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2496112" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25037822" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32850242" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Remote Host" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Remote Host" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/AllService/ServiceReq.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="31" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/AllService/Login/login.php">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/AllRequest/AllRequest.js">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Register/controller/register.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2193">
+          <caret line="129" column="25" selection-start-line="129" selection-start-column="25" selection-end-line="131" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/companyservice/companyservice.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="24" lean-forward="true" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/GeneralsettingsService/generalsettings.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" lean-forward="true" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AllService/Currency/currency.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="54" lean-forward="true" selection-end-line="79" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AllService/Company/company.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="54" column="63" selection-start-line="54" selection-start-column="51" selection-end-line="54" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AllService/ServiceReq.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="26" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AllService/MailHeaderSet/mailheaderset.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="43">
+          <caret line="11" column="19" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AllService/Generalsetmail/generalsetmail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="417">
+          <caret line="27" column="56" selection-end-line="42" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Dashboard/MyArticles/view/MyArticles.view.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="32" lean-forward="true" selection-end-line="209" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Component.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="485">
+          <caret line="65" column="47" selection-start-line="65" selection-start-column="27" selection-end-line="65" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Login/controller/Login.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="49" selection-start-line="5" selection-start-column="49" selection-end-line="5" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Dashboard/MyArticles/controller/MyArticles.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="1197" column="48" lean-forward="true" selection-start-line="1197" selection-start-column="48" selection-end-line="1197" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MasterApp.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="49" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Dashboard/DashboardRouterApp.view.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="77" selection-start-line="10" selection-start-column="77" selection-end-line="10" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/controller/ManageAllSettings.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="110" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MailService/mail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="38" column="27" lean-forward="true" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MasterApp.view.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Dashboard/DashboardRouter.controller.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/view/ManageAllSettings.view.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="511">
+          <caret line="44" selection-start-line="44" selection-end-line="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Login/view/Login.view.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="63" lean-forward="true" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/css/global.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="3203" selection-start-column="3203" selection-end-column="3203" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Dashboard/Proforma/controller/Proforma.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="20" column="51" lean-forward="true" selection-start-line="20" selection-start-column="51" selection-end-line="20" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Dashboard/Proforma/view/Proforma.view.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="91" selection-start-line="10" selection-start-column="91" selection-end-line="10" selection-end-column="91" />
+          <folding>
+            <element signature="n#List#0;n#VBox#0;n#content#0;n#Page#0;n#mvc:View#0;n#!!top" />
+            <element signature="n#List#1;n#HBox#0;n#VBox#0;n#content#0;n#Page#0;n#mvc:View#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Dashboard/Home/view/Home.view.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="344" column="56" selection-start-line="344" selection-start-column="56" selection-end-line="354" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Dashboard/Home/controller/Home.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="49" lean-forward="true" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="49" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>

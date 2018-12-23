@@ -1,0 +1,320 @@
+<mvc:View controllerName="symposiumapp.Application.Dashboard.Proforma.controller.Proforma"
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns:l="sap.ui.layout"
+          xmlns:core="sap.ui.core"
+          xmlns:u="sap.ui.unified"
+          xmlns="sap.m">
+    <Page enableScrolling="true" showHeader="false">
+        <content>
+            <HBox>
+                <HBox alignItems="Stretch" justifyContent="Stretch">
+                    <Image press="gowm" src="{/headerset/0/hsimg}"  width="100%" height="100px">
+                        <layoutData>
+                            <FlexItemData growFactor="1" />
+                        </layoutData>
+                    </Image>
+                </HBox>
+
+            </HBox>
+            <HBox alignItems="End" justifyContent="End" class="pclass">
+                <Title text="PROFORMA INVOICE"/>
+            </HBox>
+            <VBox>
+                <HBox>
+                <List id="productList" class="hrclas" items="{/company}" >
+                    <items>
+                        <CustomListItem>
+                                    <VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" >
+                                        <HBox>
+                                            <Text
+                                                    text="COMPANY NAME :" />
+                                            <HBox alignItems="End" justifyContent="End">
+                                            <Text
+                                                    text="{cpname}" />
+                                            </HBox>
+
+                                        </HBox>
+                                        <HBox>
+                                            <Text
+                                                    text="COMPANY ADDRESS: " />
+
+                                            <HBox alignItems="End" justifyContent="End">
+                                                <Text
+                                                        text="{cpadress}" />
+                                            </HBox>
+
+                                        </HBox>
+                                        <HBox>
+                                            <Text
+                                                    text="ID/IC: " />
+                                            <HBox alignItems="End" justifyContent="End">
+                                                <Text
+                                                        text="{cpidic}" />
+                                            </HBox>
+
+                                        </HBox>
+                                        <HBox>
+                                            <Text
+                                                    text="VAT REG./DIC: " />
+                                            <HBox alignItems="End" justifyContent="End">
+                                                <Text
+                                                        text="{cpvatreg}" />
+                                            </HBox>
+
+                                        </HBox>
+                                        <HBox>
+                                            <Text
+                                                    text="BANK NAME: " />
+                                            <HBox alignItems="End" justifyContent="End">
+                                                <Text
+                                                        text="{cpbankname}" />
+                                            </HBox>
+
+                                        </HBox>
+                                        <HBox>
+
+                                            <Text
+                                                    text="BANK ADDRESS:" />
+                                            <HBox alignItems="End" justifyContent="End">
+                                                <Text
+                                                        text="{cpbankadres}" />
+                                            </HBox>
+
+                                        </HBox>
+                                        <HBox>
+                                            <Text
+                                                    text="ACCOUNT NO: " />
+                                            <HBox alignItems="End" justifyContent="End">
+                                                <Text
+                                                        text="{cpbankaccount}" />
+                                            </HBox>
+
+                                        </HBox>
+                                        <HBox>
+                                            <Text
+                                                    text="IBAN NO: " />
+                                            <HBox alignItems="End" justifyContent="End">
+                                                <Text
+                                                        text="{cpiban}" />
+                                            </HBox>
+
+                                        </HBox>
+                                        <HBox>
+                                            <Text
+                                                    text="BIC SWIFT: " />
+                                            <HBox alignItems="End" justifyContent="End">
+                                                <Text
+                                                        text="{cpbicswift}" />
+                                            </HBox>
+
+                                        </HBox>
+                                    </VBox>
+                        </CustomListItem>
+                    </items>
+                    <headerToolbar>
+                        <Toolbar>
+                            <Title text="Company Info" level="H2" />
+                            <ToolbarSpacer />
+                        </Toolbar>
+                    </headerToolbar>
+                    <infoToolbar>
+                    </infoToolbar>
+                </List>
+                    <List id="customerList"  items="{/customer}" >
+                        <items>
+                            <CustomListItem>
+                                <VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" >
+                                    <HBox>
+                                        <Text
+                                                text="INVOICED TO :" />
+                                        <HBox alignItems="End" justifyContent="End">
+                                            <Text
+                                                    text="{invto}" />
+                                        </HBox>
+
+                                    </HBox>
+                                    <HBox>
+                                        <Text
+                                                text="ADDRESS :" />
+
+                                        <HBox alignItems="End" justifyContent="End">
+                                            <Text
+                                                    text="{adres}" />
+                                        </HBox>
+
+                                    </HBox>
+                                    <HBox>
+                                        <Text
+                                                text="TRADE NO :" />
+                                        <HBox alignItems="End" justifyContent="End">
+                                            <Text
+                                                    text="{tradeno}" />
+                                        </HBox>
+
+                                    </HBox>
+                                    <HBox>
+                                        <Text
+                                                text="VAT NO : " />
+                                        <HBox alignItems="End" justifyContent="End">
+                                            <Text
+                                                    text="{vatno}" />
+                                        </HBox>
+
+                                    </HBox>
+                                </VBox>
+                            </CustomListItem>
+                        </items>
+                        <headerToolbar>
+                            <Toolbar>
+                                <Title text="CUSTOMER" level="H2" />
+                                <ToolbarSpacer />
+                            </Toolbar>
+                        </headerToolbar>
+                        <infoToolbar>
+                        </infoToolbar>
+                    </List>
+
+                </HBox>
+            </VBox>
+            <VBox>
+                <HBox alignItems="Stretch" justifyContent="Stretch">
+                <ScrollContainer  height="100%" width="100%" horizontal="true" vertical="true">
+                    <Table id="idproforma" width="100%" inset="false" items="{
+                                            path: '/proforma'
+                                        }">
+                        <columns>
+                            <Column
+                            >
+                                <Text text="Item" />
+                            </Column>
+                            <Column	>
+                                <Text text="Description"/>
+                            </Column>
+                            <Column	>
+                                <Text text="Unit Price"/>
+                            </Column>
+                            <Column >
+                                <Text text="Quantity" />
+                            </Column>
+                            <Column >
+                                <Text text="VAT%" />
+                            </Column>
+                            <Column
+                            >
+                                <Text text="VAT" />
+                            </Column>
+                            <Column	>
+                                <Text text="Line Total"/>
+                            </Column>
+                            <Column	>
+                                <Text text="Currency"/>
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                    <Text text="{fsid}" />
+
+                                    <Text text="{fstxt}"/>
+                                    <Text text="{fsprice}" />
+                                    <Text text="{fsquota}"/>
+
+                                    <Text text="{vaty}"/>
+                                    <Text text="{vat}"/>
+                                    <Text text="Line Total : {total} "/>
+                                    <Text text="{fbtxt}"/>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                    <HBox alignItems="Start" justifyContent="Start">
+                        <Text text="SUBTOTAL : {/subtotal}   {/fees/0/fbtxt}"/>
+                    </HBox>
+                    <HBox alignItems="Start" justifyContent="Start">
+                        <HBox alignItems="End" justifyContent="End">
+                            <Text text="VAT%: 0"/>
+                        </HBox>
+                    </HBox>
+                    <HBox alignItems="Start" justifyContent="Start">
+                        <Text text="TOTAL VAT: {/totalvat}  {/fees/0/fbtxt}"/>
+                    </HBox>
+                    <HBox alignItems="Start" justifyContent="Start">
+                        <Text text="TOTAL.(including VAT) : {/totals}  {/fees/0/fbtxt}"/>
+                    </HBox>
+                </ScrollContainer>
+                </HBox>
+            </VBox>
+            <HBox alignItems="Start" justifyContent="Start" class="sapUiTinyMarginTop">
+                <Text text="{/mhead/0/mhstxt} - 2019 Registration fee fpr Participant : Işık Yılmaz"/>
+
+            </HBox>
+            <VBox alignItems="Start" justifyContent="Start" class="sapUiTinyMarginBottom">
+                <Text text="Currency: {/fees/0/fbtxt}"/>
+
+            </VBox>
+            <VBox alignItems="Start" justifyContent="Start">
+                <Text text="Details of charges: sender charges (do not use SHARED)"/>
+            </VBox>
+            <VBox width="100%" alignItems="Stretch" justifyContent="Start" class="pfclass">
+                <l:Grid hSpacing="1" vSpacing="0" defaultSpan="L6 M12 S12">
+                    <VBox alignItems="Stretch" justifyContent="Start" width="100%">
+                        <HBox alignItems="Center" justifyContent="Stretch" width="100%">
+                            <VBox width="100%"  >
+                                <Text text="Issuedt by : {/company/0/cpname} "  />
+                            </VBox>
+                        </HBox>
+                        <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
+                            <VBox width="100%" alignItems="Stretch" justifyContent="Stretch">
+                                <Text text="Accountant : Dagmar Welszarova "  />
+                            </VBox>
+                        </HBox>
+
+                        <HBox class="sapUiTinyMarginTop" width="100%" alignItems="Start" justifyContent="Stretch">
+                            <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                                <HBox alignItems="Center" justifyContent="Stretch" width="100%">
+                                    <VBox width="100%" alignItems="Stretch" justifyContent="Start">
+                                        <Text text="Stamp "/>
+                                    </VBox>
+                                </HBox>
+                            </VBox>
+                        </HBox>
+                    </VBox>
+
+
+                    <VBox alignItems="Stretch" justifyContent="Start" width="100%">
+                        <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTopEnd">
+                            <VBox width="100%">
+                                <HBox>
+                                    <Image press="gowm" src="https://www.affsupply.com/wp-content/uploads/2018/01/lgoo-kohler.jpg"  width="100px" height="150px">
+                                    </Image>
+                                </HBox>
+                            </VBox>
+                        </HBox>
+                    </VBox>
+                </l:Grid>
+            </VBox>
+       <!--
+            <VBox alignItems="Start" justifyContent="Start">
+
+            </VBox>
+            <HBox alignItems="Start" justifyContent="Start" >
+
+
+            </HBox>
+            <HBox alignItems="Center" justifyContent="Center">
+
+            </HBox>
+            <HBox alignItems="Start" justifyContent="Start">
+
+            </HBox>
+            <HBox alignItems="Start" justifyContent="Start">
+
+            </HBox>-->
+
+
+            <VBox class="endfhr">
+
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

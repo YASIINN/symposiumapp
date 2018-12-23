@@ -1,5 +1,6 @@
 jQuery.sap.require("symposiumapp.Application.Dashboard.Home.folderservice.folder");
 jQuery.sap.require("symposiumapp.Servicejs.PluginsService");
+jQuery.sap.require("symposiumapp.Application.ManagementPanel.ManageAllSettings.companyservice.companyservice");
 jQuery.sap.require("symposiumapp.Application.ManagementPanel.ManageAllSettings.GeneralSetFolderService.generalsetfolder");
 jQuery.sap.require("symposiumapp.Application.ManagementPanel.ManageAllSettings.GeneralsettingsService.generalsettings");
 jQuery.sap.require("symposiumapp.Application.ManagementPanel.ManageAllSettings.Generalsettingsmail.Generalsettingsmail");
@@ -15,6 +16,34 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
         getalltopic: function () {
             PluginService.getPlugin({ SN: "Topics", MN: "GETTOPİC" }).then(function (res) {
                 oModel.setProperty("/edittopics", res)
+                CreateComponent.hideBusyIndicator()
+            })
+        },
+        changevismhead:function(oEvent){
+            var _this=this;
+            _this.byId("btnmhead").setEnabled(!_this.byId("btnmhead").getEnabled())
+            _this.byId("savemh").setVisible(!_this.byId("savemh").getVisible())
+        },
+        savemhead:function(){
+          var _this=this
+            if(oModel.oData.mhead[0].mhstxt.trim()==""){
+                sap.m.MessageToast.show("Please fill input");
+            }else{
+                CreateComponent.showBusyIndicator()
+                const mdata=[{
+                    mhstxt:oModel.oData.mhead[0].mhstxt
+                }]
+                PluginService.getPlugin({ SN: "MailHeaderSet", MN: "SET",data:mdata,where:"mhsid=?",param:oModel.oData.mhead[0].mhsid }).then(function (res) {
+                    sap.m.MessageToast.show("the update process took place successfully")
+                    _this.byId("btnmhead").setEnabled(!_this.byId("btnmhead").getEnabled())
+                    _this.byId("savemh").setVisible(!_this.byId("savemh").getVisible())
+                    _this.getmailhead();
+                })
+            }
+        },
+        getmailhead:function(){
+            PluginService.getPlugin({ SN: "MailHeaderSet", MN: "GET" }).then(function (res) {
+                oModel.setProperty("/mhead", res)
                 CreateComponent.hideBusyIndicator()
             })
         },
@@ -291,7 +320,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                 })
 
             }
-            // hsid where 
+            // hsid where
 
 
         },
@@ -344,7 +373,425 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                     _this.byId("hstable").getItems()[0].setSelected(true)
                     _this.getheader()
                     break;
+                case "mnames":
+                    CreateComponent.showBusyIndicator()
+                    _this.getmailhead();
+                    break;
+                case "company":
+                    CreateComponent.showBusyIndicator()
+                    _this.getCompany();
+                    break;
             }
+        },
+        editcompany:function(oEvent){
+            var _this = this
+            var data = ""
+            if(_this.byId("companytable").getSelectedItems().length!="1"){
+                sap.m.MessageToast.show("selected record not found")
+            }else{
+                data= oModel.getProperty(_this.byId("companytable").getSelectedContextPaths()[0]);
+              var  csid=data.csid
+                var editpaneldialog = new sap.m.Dialog(
+                {
+                    contentWidth: "60%",
+                    contentHeight: "80%",
+                    stretchOnPhone: true,
+                    showCloseButton: true,
+                    beforeClose: function () {
+                        if (sap.ui.getCore().byId("cname")) {
+                            sap.ui.getCore().byId("cname").destroy();
+
+                        }
+                        if (sap.ui.getCore().byId("cadres")) {
+                            sap.ui.getCore().byId("cadres").destroy();
+
+                        }
+                        if (sap.ui.getCore().byId("idic")) {
+                            sap.ui.getCore().byId("idic").destroy();
+
+                        }
+                        if (sap.ui.getCore().byId("vatreg")) {
+                            sap.ui.getCore().byId("vatreg").destroy();
+
+                        }
+                        if (sap.ui.getCore().byId("bname")) {
+                            sap.ui.getCore().byId("bname").destroy()
+                        }
+                        if (sap.ui.getCore().byId("badres")) {
+                            sap.ui.getCore().byId("badres").destroy()
+                        }
+                        if (sap.ui.getCore().byId("baccount")) {
+                            sap.ui.getCore().byId("baccount").destroy()
+                        }
+                        if (sap.ui.getCore().byId("iban")) {
+                            sap.ui.getCore().byId("iban").destroy()
+                        }
+                        if (sap.ui.getCore().byId("bcswif")) {
+                            sap.ui.getCore().byId("bcswif").destroy()
+                        }
+                    }
+                }).addStyleClass("dialogHasFooter sapUiNoMargin  sapUiSizeCompact sapUiResponsiveContentPadding")
+            var bar = new sap.m.Bar({});
+            bar.addContentMiddle(new sap.m.HBox({
+                alignItems: sap.m.FlexAlignItems.Center,
+                justifyContent: sap.m.FlexJustifyContent.Stretch,
+                items: [
+                    new sap.m.Text(
+                        {
+                            text: "EDİT COMPANY SETTİNGS",
+                            width: "150px"
+                        }).addStyleClass("sapUiSmallMarginBegin")
+                ]
+            }).addStyleClass("sapUiNoMargin"))
+            bar.addContentRight(
+                new sap.m.Button({
+                    icon: "sap-icon://sys-cancel",
+                    text: "Kapat",
+                    type: "Transparent",
+                    press: function () {
+                        editpaneldialog.close();
+                    }
+                }).addStyleClass("sapUiNoMargin"))
+            var panelarea = new sap.m.HBox({
+                width: "100%",
+                height: "100%",
+                alignItems: sap.m.FlexAlignItems.Stretch,
+                justifyContent: sap.m.FlexJustifyContent.Stretch,
+                items: [
+                    new sap.m.VBox({
+                        width: "100%",
+                        height: "100%",
+                        alignItems: sap.m.FlexAlignItems.Stretch,
+                        justifyContent: sap.m.FlexJustifyContent.Stretch,
+                        items: [
+                            new sap.m.HBox({
+                                width: "100%",
+                                alignItems: sap.m.FlexAlignItems.Stretch,
+                                justifyContent: sap.m.FlexJustifyContent.Stretch,
+                                items: [
+                                    new sap.m.Label({
+                                        text: "Company Name",
+                                        width: "130px"
+                                    }),
+                                    new sap.m.Label({
+                                        text: ":",
+                                        width: "10px"
+                                    }),
+                                    new sap.m.VBox({
+                                        width: "100%",
+                                        alignItems: sap.m.FlexAlignItems.Stretch,
+                                        justifyContent: sap.m.FlexJustifyContent.Stretch,
+                                        items: [
+                                            new sap.m.Input("cname", {
+                                                width: "100%",
+                                                value: data.cpname == undefined ? data : data.cpname
+                                            })
+                                        ]
+                                    })
+                                ]
+                            }),
+                            new sap.m.HBox({
+                                width: "100%",
+                                alignItems: sap.m.FlexAlignItems.Stretch,
+                                justifyContent: sap.m.FlexJustifyContent.Stretch,
+                                items: [
+                                    new sap.m.Label({
+                                        text: "Company Adres",
+                                        width: "130px"
+                                    }),
+                                    new sap.m.Label({
+                                        text: ":",
+                                        width: "10px"
+                                    }),
+                                    new sap.m.VBox({
+                                        width: "100%",
+                                        items: [
+                                            new sap.m.TextArea("cadres",{
+                                                rows:4,
+                                                width:"100%",
+                                                value: data.cpadress == undefined ? data : data.cpadress
+                                            })
+                                        ]
+                                    })
+                                ]
+                            }),
+                            new sap.m.HBox({
+                                width: "100%",
+                                alignItems: sap.m.FlexAlignItems.Stretch,
+                                justifyContent: sap.m.FlexJustifyContent.Stretch,
+                                items: [
+                                    new sap.m.Label({
+                                        text: "ID/IC",
+                                        width: "130px"
+                                    }),
+                                    new sap.m.Label({
+                                        text: ":",
+                                        width: "10px"
+                                    }),
+                                    new sap.m.VBox({
+                                        width: "100%",
+                                        alignItems: sap.m.FlexAlignItems.Stretch,
+                                        justifyContent: sap.m.FlexJustifyContent.Stretch,
+                                        items: [
+                                            new sap.m.Input("idic", {
+                                                width: "100%",
+                                                value: data.cpidic == undefined ? data : data.cpidic
+                                            })
+
+                                        ]
+                                    })
+                                ]
+                            }),
+                            new sap.m.HBox({
+                                width: "100%",
+                                alignItems: sap.m.FlexAlignItems.Stretch,
+                                justifyContent: sap.m.FlexJustifyContent.Stretch,
+                                items: [
+                                    new sap.m.Label({
+                                        text: "VAT REG",
+                                        width: "130px"
+                                    }),
+                                    new sap.m.Label({
+                                        text: ":",
+                                        width: "10px"
+                                    }),
+                                    new sap.m.VBox({
+                                        width: "100%",
+                                        items: [
+                                            new sap.m.Input("vatreg", {
+                                                width: "100%",
+                                                value: data.cpvatreg == undefined ? data : data.cpvatreg
+                                            })
+                                        ]
+                                    })
+                                ]
+                            }),
+                            new sap.m.HBox({
+                                width: "100%",
+                                alignItems: sap.m.FlexAlignItems.Stretch,
+                                justifyContent: sap.m.FlexJustifyContent.Stretch,
+                                items: [
+                                    new sap.m.Label({
+                                        text: "BANK NAME",
+                                        width: "130px"
+                                    }),
+                                    new sap.m.Label({
+                                        text: ":",
+                                        width: "10px"
+                                    }),
+                                    new sap.m.VBox({
+                                        width: "100%",
+                                        items: [
+                                            new sap.m.Input("bname", {
+                                                width: "100%",
+                                                value: data.cpbankname == undefined ? data : data.cpbankname
+                                            })
+
+                                        ]
+                                    })
+                                ]
+                            }),
+                            new sap.m.HBox({
+                                width: "100%",
+                                alignItems: sap.m.FlexAlignItems.Stretch,
+                                justifyContent: sap.m.FlexJustifyContent.Stretch,
+                                items: [
+                                    new sap.m.Label({
+                                        text: "BANK ADRESS",
+                                        width: "130px"
+                                    }),
+                                    new sap.m.Label({
+                                        text: ":",
+                                        width: "10px"
+                                    }),
+                                    new sap.m.VBox({
+                                        width: "100%",
+                                        items: [
+                                            new sap.m.Input("badres", {
+                                                width: "100%",
+                                                value: data.cpbankadres == undefined ? data : data.cpbankadres
+                                            })
+
+                                        ]
+                                    })
+                                ]
+                            }),
+                            new sap.m.HBox({
+                                width: "100%",
+                                alignItems: sap.m.FlexAlignItems.Stretch,
+                                justifyContent: sap.m.FlexJustifyContent.Stretch,
+                                items: [
+                                    new sap.m.Label({
+                                        text: "BANK ACCOUNT NO",
+                                        width: "130px"
+                                    }),
+                                    new sap.m.Label({
+                                        text: ":",
+                                        width: "10px"
+                                    }),
+                                    new sap.m.VBox({
+                                        width: "100%",
+                                        items: [
+                                            new sap.m.Input("baccount", {
+                                                width: "100%",
+                                                value: data.cpbankaccount == undefined ? data : data.cpbankaccount
+                                            })
+
+                                        ]
+                                    })
+                                ]
+                            }),
+                            new sap.m.HBox({
+                                width: "100%",
+                                alignItems: sap.m.FlexAlignItems.Stretch,
+                                justifyContent: sap.m.FlexJustifyContent.Stretch,
+                                items: [
+                                    new sap.m.Label({
+                                        text: "IBAN",
+                                        width: "130px"
+                                    }),
+                                    new sap.m.Label({
+                                        text: ":",
+                                        width: "10px"
+                                    }),
+                                    new sap.m.VBox({
+                                        width: "100%",
+                                        items: [
+                                            new sap.m.Input("iban", {
+                                                width: "100%",
+                                                value: data.cpiban == undefined ? data : data.cpiban
+                                            })
+
+                                        ]
+                                    })
+                                ]
+                            }),
+                            new sap.m.HBox({
+                                width: "100%",
+                                alignItems: sap.m.FlexAlignItems.Stretch,
+                                justifyContent: sap.m.FlexJustifyContent.Stretch,
+                                items: [
+                                    new sap.m.Label({
+                                        text: "BIC SWIFT",
+                                        width: "130px"
+                                    }),
+                                    new sap.m.Label({
+                                        text: ":",
+                                        width: "10px"
+                                    }),
+                                    new sap.m.VBox({
+                                        width: "100%",
+                                        items: [
+                                            new sap.m.Input("bcswif", {
+                                                width: "100%",
+                                                value: data.cpbicswift == undefined ? data : data.cpbicswift
+                                            })
+
+                                        ]
+                                    })
+                                ]
+                            }),
+
+                            new sap.m.HBox({
+                                width: "100%",
+                                alignItems: sap.m.FlexAlignItems.Stretch,
+                                justifyContent: sap.m.FlexJustifyContent.Stretch,
+                                items: [
+                                    new sap.m.Label({
+                                        text: "Result",
+                                        width: "130px"
+                                    }),
+                                    new sap.m.Label({
+                                        text: ":",
+                                        width: "10px"
+                                    }),
+                                    new sap.m.VBox({
+                                        width: "100%",
+                                        alignItems: sap.m.FlexAlignItems.Stretch,
+                                        justifyContent: sap.m.FlexJustifyContent.Center,
+                                        items: [
+                                            new sap.m.Button({
+                                                text: "Save s",
+                                                press: function () {
+                                                    if (sap.ui.getCore().byId("cname").getValue().trim()=="") {
+                                                     sap.m.MessageToast.show("Please fill in the company field")
+                                                    }
+                                                   else if (sap.ui.getCore().byId("cadres").getValue().trim()=="") {
+                                                        sap.m.MessageToast.show("Please fill in the company adress field")
+                                                    }
+                                                  else  if (sap.ui.getCore().byId("idic").getValue().trim()=="") {
+                                                        sap.m.MessageToast.show("Please fill in the ID/IC field")
+                                                    }
+                                                  else  if (sap.ui.getCore().byId("vatreg").getValue().trim()=="") {
+                                                        sap.m.MessageToast.show("Please fill in the VAT/REG field")
+
+                                                    }
+                                                 else   if (sap.ui.getCore().byId("bname").getValue().trim()=="") {
+                                                        sap.m.MessageToast.show("Please fill in the bank name field")
+                                                    }
+                                                   else if (sap.ui.getCore().byId("badres").getValue().trim()=="") {
+                                                        sap.m.MessageToast.show("Please fill in the bank adress field")
+                                                    }
+                                                 else   if (sap.ui.getCore().byId("baccount").getValue().trim()=="") {
+                                                        sap.m.MessageToast.show("Please fill in the bank acoount no field")
+                                                    }
+                                                 else   if (sap.ui.getCore().byId("iban").getValue().trim()=="") {
+                                                        sap.m.MessageToast.show("Please fill in the iban no field")
+                                                    }
+                                                  else  if (sap.ui.getCore().byId("bcswif").getValue().trim()=="") {
+                                                        sap.m.MessageToast.show("Please fill in the bic swift field")
+                                                    }
+                                                    else {
+                                                        CreateComponent.showBusyIndicator();
+                                                        var setdata=[{
+                                                            cpname:sap.ui.getCore().byId("cname").getValue().toUpperCase(),
+                                                            cpadress:sap.ui.getCore().byId("cadres").getValue().toUpperCase(),
+                                                            cpidic:sap.ui.getCore().byId("idic").getValue().toUpperCase(),
+                                                            cpvatreg:sap.ui.getCore().byId("vatreg").getValue().toUpperCase(),
+                                                            cpbankname:sap.ui.getCore().byId("bname").getValue().toUpperCase(),
+                                                            cpbankadres:sap.ui.getCore().byId("badres").getValue().toUpperCase(),
+                                                            cpbankaccount:sap.ui.getCore().byId("baccount").getValue().toUpperCase(),
+                                                            cpiban:sap.ui.getCore().byId("iban").getValue().toUpperCase(),
+                                                            cpbicswift:sap.ui.getCore().byId("bcswif").getValue().toUpperCase()
+
+                                                        }]
+                                                    company.companyreq({SN:"Company",MN:"SET",data:setdata,where:"csid=?",param:csid}).then(function (res) {
+                                                            if(res=="SuccedUpdate"){
+                                                                CreateComponent.hideBusyIndicator();
+                                                                sap.m.MessageToast.show("transaction successful");
+                                                                editpaneldialog.close();
+                                                                _this.getCompany();
+                                                            }else{
+                                                                CreateComponent.hideBusyIndicator();
+                                                                sap.m.MessageToast.show("unexpected error please try again later");
+                                                            }
+                                                        })
+
+
+                                                    }
+
+                                                }
+                                            })
+
+                                        ]
+                                    })
+                                ]
+                            }),
+                        ]
+                    }),
+                ]
+            });
+            editpaneldialog.addContent(panelarea);
+            editpaneldialog.setCustomHeader(bar);
+            editpaneldialog.open(_this);
+            }
+
+        },
+        getCompany:function(){
+                  company.companyreq({SN:"Company",MN:"GET"}).then(function (res) {
+                        CreateComponent.hideBusyIndicator()
+                        oModel.setProperty("/company",res);
+                 })
         },
         changefile: function (oEvent) {
             var _this = this

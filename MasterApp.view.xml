@@ -9,7 +9,6 @@
         <l:fixContent>
            <VBox alignItems="Stretch" justifyContent="Stretch" height="20%" width="100%">
                     <VBox>
-        	<!-- <Title id="WrappingTitle" text="REGISTRATION-SUBMISSON - PAYMENT MODULE"  class="sapUiResponsiveMargin"/> -->
 
                     </VBox>
                 </VBox>

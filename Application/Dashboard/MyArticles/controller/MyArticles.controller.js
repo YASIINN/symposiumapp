@@ -1195,6 +1195,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox'], function (e, M
         },
         onBeforeShow: function () {
             var _this = this
+            oModel.setProperty("/dvisible",true);
             UseronLogin.onLogin().then(function (e) {
                 _this.byId("artcancel").setVisible(false);
                 _this.byId("artaut").setVisible(false);

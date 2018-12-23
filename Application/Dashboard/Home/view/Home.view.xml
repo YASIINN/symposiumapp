@@ -296,7 +296,7 @@
                                                     <Toolbar>
                                                         <content>
                                                             <Label text="Way of Payment :" width="15%"/>
-                                                            <Select forceSelection="false" id="paymentselect" width="100%" items="{
+                                                            <Select forceSelection="false" id="paymentselect" selectedKey="{/customer/0/payment}" width="100%" items="{
 											path: '/payments'}">
                                                                 <core:Item key="{pwid}" text="{pwtxt}"/>
                                                             </Select>
@@ -366,34 +366,36 @@
                                         </ScrollContainer>
                                     </VBox>
                                 </VBox>
+
+
                                 <VBox width="100%" alignItems="Stretch" justifyContent="Start" class="sapUiLargeMarginTop">
                                     <VBox alignItems="Stretch" justifyContent="Start" width="100%">
                                         <HBox class="sapUiTinyMarginTop" alignItems="Center" justifyContent="Stretch" width="100%">
                                             <Label text="Invoiced to" width="130px" />
                                             <Label text=":" width="10px" />
                                             <VBox width="100%">
-                                                <Input width="100%" value="" id="invto"/>
+                                                <Input width="100%" value="{/customer/0/invto}" id="invto"/>
                                             </VBox>
                                         </HBox>
                                             <HBox class="sapUiTinyMarginTop" alignItems="Center" justifyContent="Stretch" width="100%">
                                             <Label text="Invoice Address" width="130px" />
                                             <Label text=":" width="10px" />
                                             <VBox width="100%">
-                                                <Input width="100%" value="" id="invadres"/>
+                                                <Input width="100%"  value="{/customer/0/adres}" id="invadres"/>
                                             </VBox>
                                         </HBox>
                                                <HBox class="sapUiTinyMarginTop" alignItems="Center" justifyContent="Stretch" width="100%">
                                             <Label text="Trade No" width="130px" />
                                             <Label text=":" width="10px" />
                                             <VBox width="100%">
-                                                <Input width="100%" value="" id="tno"/>
+                                                <Input width="100%" value="{/customer/0/vatno}" id="tno"/>
                                             </VBox>
                                         </HBox>
                                       <HBox class="sapUiTinyMarginTop" alignItems="Center" justifyContent="Stretch" width="100%">
                                             <Label text="VAT No" width="130px" />
                                             <Label text=":" width="10px" />
                                             <VBox width="100%">
-                                                <Input width="100%" value="" id="vno"/>
+                                                <Input width="100%" value="{/customer/0/tradeno}" id="vno"/>
                                             </VBox>
                                         </HBox>
                                         <HBox alignItems="Stretch" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">

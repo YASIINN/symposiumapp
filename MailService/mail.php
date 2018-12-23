@@ -32,7 +32,7 @@
     $mail->addAddress( $_POST['maildata'][0]['mail'], '');
     $mail->Username = $ead;
     $mail->Password = $epass;
-    $mail->setFrom($ead, 'qqqq');
+    $mail->setFrom($ead, '');
     $mail->addReplyTo($ead, '');
     $mail->isHTML(true);
     $mail->Subject =$subject;

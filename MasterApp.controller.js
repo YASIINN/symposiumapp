@@ -15,6 +15,7 @@ sap.ui.define(['sap/ui/core/mvc/Controller', "sap/ui/model/resource/ResourceMode
                 oModel.setProperty("/generalsettings", res);
                 CreateComponent.hideBusyIndicator()
             })
+            oModel.setProperty("/dvisible",true);
             var i18nModel = new ResourceModel({
                 bundleName: "symposiumapp.i18n.i18n"
             });

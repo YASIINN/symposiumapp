@@ -62,6 +62,17 @@ sap.ui.define(
                     keys: [version]
                   },
                 },
+                {
+                  pattern: "Dashboard/Proforma",
+                  viewPath: "symposiumapp.Application.Dashboard.Proforma.view",
+                  name: "Dashboard/Proforma",
+                  view: "Proforma",
+                  targetControl: "DashboardRouterId",
+                  transition: "show",
+                  cache: {
+                    keys: [version]
+                  },
+                },
                 ]
             },
             {

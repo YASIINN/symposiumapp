@@ -10,13 +10,25 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
     "use strict";
     return e.extend("symposiumapp.Application.Dashboard.Home.controller.Home", {
         onInit: function () {
-            var _this = this
+            var _this=this
+            oModel.setProperty("/dvisible",true);
+            oModel.refresh()
             var e = this;
             _this.setauthormodel();
+        _this.setcustomermodel();
             e.getView().setModel(oModel),
                 sap.ui.core.UIComponent.getRouterFor(this).getRoute("Dashboard/Home").attachPatternMatched(e.onBeforeShow, e)
             this.getView().byId('fileuploadftext').oBrowse.mProperties.text = "Browse"
             this.getView().byId('fileUploader').oBrowse.mProperties.text = "Browse"
+        },
+        setcustomermodel:function(){
+            oModel.setProperty("/customer",[{
+                payment:"",
+                invto:"",
+                adres:"",
+                vatno:"",
+                tradeno:""
+            }])
         },
         getcountry: function () {
             if (localStorage.getItem("country") == null) {
@@ -255,9 +267,62 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                 mainaut: oModel.oData.UserModel[0].mainaut
             }]
             if (qouta == "quota") {
+                var subj;
                 UserService.userReq({ MN: "SET", SN: "User", where: "usid=?", userdata: userdata, param: oModel.oData.UserModel[0].usid }).then(function (res) {
                     if (res == "SuccedUpdate") {
+                        var msgg;
                         sap.m.MessageToast.show("Your Transaction Took Place With Success");
+                        if(_this.byId("absid").getSelectedKey()=="1"){
+                            msgg = "<html><body>";
+                            msgg += "<b>Dear</b>"+" "+oModel.oData.UserModel[0].fullnametit;
+                            msgg+="<br>";
+                            msgg+="<p>Thank you for your interest in</p>"+" "+oModel.oData.mhead[0].mhstxt;
+                            msgg+="<br>";
+                            msgg+="Your fulltext entitled"+ " "+ _this.byId("fttid").getValue().toUpperCase()+" "+"with the reference number"+" "+ "123123"+" "+"has just been"
+                            msgg+="<br>"
+                            msgg+="successfully uploaded and safely reveived by the editorial office."
+                            msgg+="<br>"
+                            msgg+="<br>"
+                            msgg+="You will be informed after the completion of the review process."
+                            msgg+="<br>"
+                            msgg+="Sincerely yours,"
+                            msgg+="<br>"
+                            msgg+="Editorial Office"
+                            msgg+="<br>"
+                            msgg+="P.S.:Please do not reply.This is an automated e-mail"
+                            msgg+="<br>"
+                            msgg+="<hr>"
+                            msgg+="In compliance with data protection regulations,please contact the editorial office if you would like to"
+                            msgg+="<br>"
+                            msgg+="have your personal information removed from the database"
+                            msgg += "</body></html>";
+                            subj="FullText Upload Info"
+                        }else if(_this.byId("absid").getSelectedKey()=="2"){
+                            msgg = "<html><body>";
+                            msgg += "<b>Dear</b>"+" "+oModel.oData.UserModel[0].fullnametit;
+                            msgg+="<br>";
+                            msgg+="<p>Thank you for your interest in</p>"+" "+oModel.oData.mhead[0].mhstxt;
+                            msgg+="<br>";
+                            msgg+="Your abstract entitled"+ " "+ _this.byId("titleid").getValue().toUpperCase()+" "+"with the reference number"+" "+ "123123"+" "+"has just been"
+                            msgg+="<br>"
+                            msgg+="successfully uploaded and safely reveived by the editorial office."
+                            msgg+="<br>"
+                            msgg+="<br>"
+                            msgg+="You will be informed after the completion of the review process."
+                            msgg+="<br>"
+                            msgg+="Sincerely yours,"
+                            msgg+="<br>"
+                            msgg+="Editorial Office"
+                            msgg+="<br>"
+                            msgg+="P.S.:Please do not reply.This is an automated e-mail"
+                            msgg+="<br>"
+                            msgg+="<hr>"
+                            msgg+="In compliance with data protection regulations,please contact the editorial office if you would like to"
+                            msgg+="<br>"
+                            msgg+="have your personal information removed from the database"
+                            msgg += "</body></html>";
+                            subj="Abstract  Info"
+                        }
                         oModel.setProperty("/fdata", [])
                         _this.byId("fileuploadftext").setValue(' ')
                         _this.byId("fttid").setValue("")
@@ -270,16 +335,13 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                         _this.byId("topicid").setSelectedKey("");
                         _this.byId("fileUploader").setValue(' ');
                         oModel.setProperty("/authorsuser", []);
-                        var msgg = "<html><body>";
-                        msgg += "<b>Kayıt Yüklendi</b>";
-                        msgg += "</body></html>";
-                        MailService.AddMail({ systemcheck: [], "maildata": [{ "mail": oModel.oData.UserModel[0].ulgnname, "messega": msgg, subject: "Activation Verification" }] }).then(function (res) {
+
+                        MailService.AddMail({ systemcheck: [], "maildata": [{ "mail": oModel.oData.UserModel[0].ulgnname, "messega": msgg, subject: subj }] }).then(function (res) {
                             if (res == "None") {
                                 CreateComponent.hideBusyIndicator();
                                 sap.m.MessageToast.show("sorry there was a mistake when sending mail");
                             } else {
                                 CreateComponent.hideBusyIndicator();
-                                sap.m.MessageToast.show("register successful please check your email address");
                             }
                         })
                         CreateComponent.hideBusyIndicator()
@@ -408,15 +470,32 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
             var vat = vato;
             var totls = ltotal + vat;
             setmodel.total = totls;
+            setmodel.total=  setmodel.total.toFixed(2)
             setmodel.vat = vat;
+            setmodel.vat=  setmodel.vat.toFixed(2)
+
             oModel.refresh()
             var totalc = 0;
+            var totalvat=0;
+            oModel.oData.fees.forEach(function (x) {
+                totalvat += parseFloat(x.vat);
+            })
             oModel.oData.fees.forEach(function (x) {
                 totalc += parseFloat(x.total);
             })
+            totalc =  totalc.toFixed(2)
+            totalvat=totalvat.toFixed(2)
+
             oModel.setProperty("/totals", totalc)
+            oModel.setProperty("/totalvat", totalvat)
+            const total=parseFloat(oModel.oData.totals)
+            const vattotal=parseFloat(oModel.oData.totalvat)
+            var result=(total-vattotal);
+            result =  result.toFixed(2)
+            oModel.setProperty("/subtotal",result);
         },
         exportpdf: function () {
+
             var _this = this
             if (_this.byId("paymentselect").getSelectedKey() == "") {
                 sap.m.MessageToast.show("Invalid form of payment");
@@ -431,8 +510,14 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
             else if (_this.byId("vno").getValue().trim() == "") {
                 sap.m.MessageToast.show("Invalid VAT No");
             } else {
-                window.open("Pdf/tesst.php")
-
+                oModel.oData.dvisible=false
+                oModel.refresh();
+                CreateComponent.showBusyIndicator()
+                var newmodel=oModel.oData.fees.filter(function(x){
+                    return   x.fsquota>0
+                })
+                oModel.setProperty("/proforma",newmodel);
+                window.open("#/Dashboard/Proforma" + "", "_self");
             }
         },
         getpayments: function () {
@@ -446,14 +531,24 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                     if (i == 0) {
                         x.enb = false
                         x.vat = (x.fsprice * x.vaty) / 100;
+                        x.vat= x.vat.toFixed(2)
                         x.total = parseFloat(x.fsprice) + parseFloat(x.vat);
+                        x.total =  x.total.toFixed(2)
                     } else {
                         x.total = 0
                         x.enb = true;
                     }
                 })
+
+
                 oModel.setProperty("/fees", res)
+                oModel.setProperty("/totalvat",oModel.oData.fees[0].vat )
                 oModel.setProperty("/totals", oModel.oData.fees[0].total)
+                const total=parseFloat(oModel.oData.totals)
+                const vattotal=parseFloat(oModel.oData.totalvat)
+                var result=(total-vattotal);
+                result =  result.toFixed(2)
+                oModel.setProperty("/subtotal",result);
             })
         },
         BroadcastType: function () {
@@ -482,9 +577,17 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                 oModel.setProperty("/gtfolder", res);
             })
         },
+        getmailhead:function(){
+            PluginService.getPlugin({ SN: "MailHeaderSet", MN: "GET" }).then(function (res) {
+                oModel.setProperty("/mhead", res)
+                CreateComponent.hideBusyIndicator()
+            })
+        },
+
         onBeforeShow: function () {
             var _this = this
             UseronLogin.onLogin().then(function (e) {
+                _this.setcustomermodel();
                 _this.byId("absid").setSelectedKey("");
                 var startdate = new Date(moment(oModel.oData.generalsettings[0].gsbegdt, "DD.MM.YYYY"))
                 var enddate = new Date(moment(oModel.oData.generalsettings[0].gsenddt, "DD.MM.YYYY"))
@@ -495,13 +598,15 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                     _this.byId("panel0").setVisible(true)
                 }
                 if (startdate < nowdate && startdate < enddate) {
+
                     _this.gettopics();
                     _this.checkfirslogin();
                     _this.getcountry();
                     _this.getPosition();
                     _this.BroadcastType();
                     _this.getgeneralsettings();
-                    _this.getfee()
+                    _this.getfee();
+                    _this.getmailhead();
                     _this.getpayments();
                 }
                 else {

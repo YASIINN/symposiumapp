@@ -3,6 +3,7 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel', 'sap
     var myControl = Controller.extend("symposiumapp.Application.Login.controller.Login", {
         onInit: function () {
             var _this = this;
+            oModel.setProperty("/dvisible",true);
             _this.getView().setModel(oModel);
             var UserModel = {
                 name: "",
@@ -10,6 +11,9 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel', 'sap
             }
             oModel.setProperty("/UserModel", UserModel);
         },
+        gowm:function(){
+            window.open(oModel.oData.headerset[0].hslink)
+            },
         onPress: function () {
             var _this = this;
             if (_this.checkValidate()[0] == false && _this.checkValidate()[1] == "blank") {

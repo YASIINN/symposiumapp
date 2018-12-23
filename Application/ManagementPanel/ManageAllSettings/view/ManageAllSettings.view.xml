@@ -423,6 +423,83 @@
                             </VBox>
                         </ScrollContainer>
                     </IconTabFilter>
+                    <IconTabFilter key="mnames" icon="sap-icon://lead" iconColor="Natural" text="Mail Header Settings" count="10">
+                    <HBox>
+                        <Input value="{/mhead/0/mhstxt}" id="btnmhead" enabled="false"/>
+                        <Button text="Edit" icon="sap-icon://edit" type="Transparent" press="changevismhead"/>
+                        <Button text="Save" icon="sap-icon://save" type="Transparent" press="savemhead" visible="false" id="savemh"/>
+                    </HBox>
+                    </IconTabFilter>
+                    <IconTabSeparator icon=""/>
+                    <IconTabSeparator icon=""/>
+                    <IconTabFilter key="company" icon="sap-icon://building" iconColor="Positive" text="Company  Setting's" count="11">
+                        <ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
+                            <Table mode="SingleSelectLeft" id="companytable" inset="false" items="{
+                                            path: '/company'
+                                        }">
+                                <!-- headerset -->
+                                <headerToolbar>
+                                    <Toolbar>
+                                        <content>
+                                            <Button type="Transparent" icon="sap-icon://edit" text="Edit Company Setting's" press="editcompany"/>
+                                            <ToolbarSpacer />
+                                        </content>
+                                    </Toolbar>
+                                </headerToolbar>
+                                <infoToolbar>
+                                    <Toolbar active="true">
+                                        <Title text="Company Setting's"/>
+                                    </Toolbar>
+                                </infoToolbar>
+                                <columns>
+                                    <Column>
+                                        <Text text="Company Name" />
+
+                                    </Column>
+                                    <Column>
+                                        <Text text="Company Adress" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="ID/IC" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="VAT REG./DIC" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Bank Name" />
+                                    </Column>
+                                <Column>
+                                    <Text text="Bank Adress" />
+                                </Column>
+                                    <Column>
+                                        <Text text="Bank Account No" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="IBAN" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="BICSWIFT" />
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Text text="{cpname}" />
+                                            <Text text="{cpadress}" />
+                                            <Text text="{cpidic}" />
+                                            <Text text="{cpvatreg}" />
+                                            <Text text="{cpbankname}" />
+                                            <Text text="{cpbankadres}" />
+                                            <Text text="{cpbankaccount}" />
+                                            <Text text="{cpiban}" />
+                                            <Text text="{cpbicswift}" />
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </ScrollContainer>
+
+                    </IconTabFilter>
                 </items>
             </IconTabBar>
         </content>
