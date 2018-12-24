@@ -71,6 +71,12 @@
                                 </VBox>
                             </content>
                         </Panel>
+                        <VBox>
+                            <HBox>
+                                <Title  text="{/headerset/0/hsimg}" class="tclas"/>
+
+                            </HBox>
+                        </VBox>
                         <Panel width="auto" class="sapUiResponsiveMargin pnlcls" id="panel1" accessibleRole="Region">
                             <headerToolbar>
                                 <Toolbar height="3rem">
@@ -138,13 +144,6 @@
 												}">
                                                     <core:Item key="{tpid}" text="{tptxt}"/>
                                                 </Select>
-                                            </VBox>
-                                        </HBox>
-                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
-                                            <Text width="130px" text="Specific Session"/>
-                                            <Label text=":" width="10px" />
-                                            <VBox width="100%">
-                                                <Input value="" id="specificid" enabled="false" placeholder="Please write the Title of the Specific Session and it's Code here if your submission will be presented in and specific session."/>
                                             </VBox>
                                         </HBox>
                                         <HBox class="sapUiTinyMarginTop" width="100%" alignItems="Stretch" justifyContent="Stretch">
@@ -228,14 +227,6 @@
                                                 </Select>
                                             </VBox>
                                         </HBox>
-                                        <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
-                                            <Text width="130px" text="Specific Session"/>
-                                            <Label text=":" width="10px" />
-                                            <VBox width="100%">
-                                                <Input value="" enabled="false" placeholder="Please write the Title of the Specific Session and it's Code here if your submission will be presented in and specific session."/>
-                                            </VBox>
-                                        </HBox>
-
                                         <HBox class="sapUiTinyMarginTop" width="100%" alignItems="Start" justifyContent="Stretch">
                                             <HBox width="100%" alignItems="Stretch" justifyContent="Stretch">
                                                 <core:Icon src="sap-icon://download" width="130px" color="#031E48">

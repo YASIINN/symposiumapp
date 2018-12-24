@@ -16,7 +16,7 @@ class HeaderSettings extends database
                     $this->result[] = array("status" => "Okey", "hsid" => 
                     $gsettings[$i]['hsid'], 
                     "hslink" => $gsettings[$i]['hslink'],
-                    "hsimg" =>"data:image/jpeg:image/png;base64,".base64_encode($gsettings[$i]['hsimg']),
+                    "hsimg" =>$gsettings[$i]['hsimg'],
                 );
                 }
                 return $this->result;
@@ -28,7 +28,7 @@ class HeaderSettings extends database
             for ($index = 0; $index < count($data); $index++) {
                 $sdata = array(
                     "hslink"=>$data[$index]['hslink'],
-                    "hsimg"=> base64_decode($data[$index]['hsimg'])
+                    "hsimg"=> $data[$index]['hsimg'],
                 );
                 $upP = $this->insert("headersettings", $sdata);
             }

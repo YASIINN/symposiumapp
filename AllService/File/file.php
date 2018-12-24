@@ -5,12 +5,12 @@ header("Content-Type: application/json; charset=UTF-8");
 class File extends database
 {
     public $result = array();
-    public function ADD($files, $usid, $fileext, $size, $type,$bcext)
+    public function ADD($files, $usid, $fileext, $size, $type,$bcext,$abstype)
     {
         if ($files) {
             $tempPath = $_FILES['file']['tmp_name'];
             $filename = bin2hex(openssl_random_pseudo_bytes(10));
-            $filename = $filename . "_" . $usid;
+            $filename =$usid."_".$abstype."_". $filename;
             move_uploaded_file($tempPath, "../allword/$filename.$fileext");
             $fpath = "/allword/" . $filename;
             $data = array(

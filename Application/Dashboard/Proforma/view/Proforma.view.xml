@@ -245,7 +245,7 @@
                 </HBox>
             </VBox>
             <HBox alignItems="Start" justifyContent="Start" class="sapUiTinyMarginTop">
-                <Text text="{/mhead/0/mhstxt} - 2019 Registration fee fpr Participant : Işık Yılmaz"/>
+                <Text text="{/mhead/0/mhstxt} - 2019 Registration fee fpr Participant : {/UserModel/0/fullname}"/>
 
             </HBox>
             <VBox alignItems="Start" justifyContent="Start" class="sapUiTinyMarginBottom">

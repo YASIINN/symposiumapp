@@ -373,7 +373,7 @@
                                 </infoToolbar>
                                 <columns>
                                     <Column>
-                                        <Text text="İmg" />
+                                        <Text text="Title" />
 
                                     </Column>
                                     <Column>
@@ -385,28 +385,21 @@
                                 <items>
                                     <ColumnListItem>
                                         <cells>
-                                            <Image src="{hsimg}" densityAware="false" width="400px">
-                                                <layoutData>
-                                                    <FlexItemData growFactor="1" />
-                                                </layoutData>
-                                            </Image>
+                                            <Text text="{hsimg}"/>
                                             <Link text="{hslink}" press="" href="{hslink}" />
                                             <HBox>
                                             </HBox>
-
                                         </cells>
                                     </ColumnListItem>
                                 </items>
                             </Table>
-
                             <VBox width="100%" alignItems="Center" justifyContent="Center" id="editheades" visible="false">
                                 <VBox alignItems="Center" justifyContent="Center" width="100%">
                                     <HBox class="sapUiTinyMarginTop" alignItems="Center" justifyContent="Center" width="100%">
-                                        <Label text="File" width="130px" />
+                                        <Label text="Title" width="130px" />
                                         <Label text=":" width="10px" />
                                         <VBox width="100%">
-                                            <u:FileUploader id="fileUploader" fileType="png,jpg" change="changefile" style="Emphasized" tooltip="RESİM DOSYASI SEÇİNİZ.." />
-
+                                            <Input value="" id="hhead" width="400px"/>
                                         </VBox>
                                     </HBox>
                                     <HBox alignItems="Center" justifyContent="Center" width="100%" class="sapUiTinyMarginTop">
@@ -430,7 +423,6 @@
                         <Button text="Save" icon="sap-icon://save" type="Transparent" press="savemhead" visible="false" id="savemh"/>
                     </HBox>
                     </IconTabFilter>
-                    <IconTabSeparator icon=""/>
                     <IconTabSeparator icon=""/>
                     <IconTabFilter key="company" icon="sap-icon://building" iconColor="Positive" text="Company  Setting's" count="11">
                         <ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
@@ -493,6 +485,116 @@
                                             <Text text="{cpbankaccount}" />
                                             <Text text="{cpiban}" />
                                             <Text text="{cpbicswift}" />
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </ScrollContainer>
+
+                    </IconTabFilter>
+                    <IconTabSeparator icon=""/>
+                    <IconTabFilter key="users" icon="sap-icon://building" iconColor="Natural" text="User's" count="12">
+                        <ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
+                            <Table id="userstable"  inset="false" items="{
+                                            path: '/users'
+                                        }">
+                                <columns>
+                                    <Column>
+                                        <Text text="User ID" />
+
+                                    </Column>
+                                    <Column>
+                                        <Text text="User Name" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="User LastName" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Article ID" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Article Name" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Article Subject" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Article Type" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Presentation Type" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="File" />
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Text text="{usid}" />
+                                            <Text text="{usname}" />
+                                            <Text text="{uslname}" />
+                                            <Text text="{btid}" />
+                                            <Text text="{brdcastname}" />
+                                            <Text text="{brdsubject}" />
+                                            <Text text="{abstxt}" />
+                                            <Text text="{btypetxt}" />
+                                            <Link text="{bcfname}" href="/symposiumapp{bcfpath}" class="sapUiTinyMarginEnd" />
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </ScrollContainer>
+
+                    </IconTabFilter>
+                    <IconTabSeparator icon=""/>
+                    <IconTabFilter key="proformaimg" icon="sap-icon://picture" iconColor="Positive" text="Proforma Img Setting's" count="13">
+                        <ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
+                            <Table   inset="false" items="{
+                                            path: '/users'
+                                        }">
+                                <columns>
+                                    <Column>
+                                        <Text text="User ID" />
+
+                                    </Column>
+                                    <Column>
+                                        <Text text="User Name" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="User LastName" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Article ID" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Article Name" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Article Subject" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Article Type" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Presentation Type" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="File" />
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Text text="{usid}" />
+                                            <Text text="{usname}" />
+                                            <Text text="{uslname}" />
+                                            <Text text="{btid}" />
+                                            <Text text="{brdcastname}" />
+                                            <Text text="{brdsubject}" />
+                                            <Text text="{abstxt}" />
+                                            <Text text="{btypetxt}" />
+                                            <Link text="{bcfname}" href="/symposiumapp{bcfpath}" class="sapUiTinyMarginEnd" />
                                         </cells>
                                     </ColumnListItem>
                                 </items>

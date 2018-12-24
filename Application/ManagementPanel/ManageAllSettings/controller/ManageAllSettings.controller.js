@@ -1,3 +1,4 @@
+jQuery.sap.require("symposiumapp.Application.Dashboard.Home.broadcastservice.broadcast");
 jQuery.sap.require("symposiumapp.Application.Dashboard.Home.folderservice.folder");
 jQuery.sap.require("symposiumapp.Servicejs.PluginsService");
 jQuery.sap.require("symposiumapp.Application.ManagementPanel.ManageAllSettings.companyservice.companyservice");
@@ -276,23 +277,18 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
         },
         saveheader: function (oEvent) {
             var _this = this
-            var himg = oModel.oData.headerset[0].hsimg;
-            debugger
             if (_this.byId("lidk").getValue().trim() == "") {
-                sap.m.MessageToast.show("lütfen boş yapmayın")
-            } else {
+                sap.m.MessageToast.show("Please fill link name field")
+            } else if(_this.byId("hhead").getValue().trim()==""){
+                sap.m.MessageToast.show("Please fill title field")
+            }
+            else
+                {
                 var datas = []
-                if (oModel.oData.fdata == undefined) {
                     datas.push({
                         hslink: _this.byId("lidk").getValue(),
-                        hsimg: ""
+                        hsimg: _this.byId("hhead").getValue()
                     })
-                } else {
-                    datas.push({
-                        hslink: _this.byId("lidk").getValue(),
-                        hsimg: oModel.oData.fdata
-                    })
-                }
                 CreateComponent.showBusyIndicator();
                 PluginService.getPlugin({ SN: "HeaderSettings", MN: "DEL", where: "hsid=?", param: oModel.oData.headerset[0].hsid }).then(function (res) {
                     if (res == "SuccesDel") {
@@ -301,28 +297,19 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                                 sap.m.MessageToast.show("Your update has been successfully completed");
                                 delete oModel.oData.headerset;
                                 _this.getheader();
-                                delete oModel.oData.fdata;
                                 _this.byId("editheades").setVisible(false);
-                                _this.byId("fileUploader").setValue(' ')
                                 CreateComponent.hideBusyIndicator();
                             } else {
                                 CreateComponent.hideBusyIndicator();
                                 sap.m.MessageToast.show("unexpected error please try again later");
                             }
-
                         })
-
                     } else {
                         CreateComponent.hideBusyIndicator();
                         sap.m.MessageToast.show("unexpected error please try again later");
                     }
-
                 })
-
             }
-            // hsid where
-
-
         },
         editheaderset: function (oEvent) {
             var _this = this
@@ -331,11 +318,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
             } else {
                 const model = oModel.getProperty(this.byId("hstable").getSelectedContextPaths()[0])
                 this.byId("lidk").setValue(model.hslink);
+                this.byId("hhead").setValue(model.hsimg);
                 _this.byId("editheades").setVisible(!_this.byId("editheades").getVisible());
-                if (_this.byId("editheades").getVisible() == false) {
-                    _this.byId("fileUploader").setValue(' ')
-                    delete oModel.oData.fdata
-                }
             }
         },
         changekey: function (oEvent) {
@@ -381,7 +365,27 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                     CreateComponent.showBusyIndicator()
                     _this.getCompany();
                     break;
+                case "users":
+                    CreateComponent.showBusyIndicator();
+                    _this.getbusers();
+                    break;
             }
+        },
+        getbusers:function(){
+          var _this=this
+            debugger
+
+            broadcastService.broadcastreq({
+                MN: "GET", SN: "Broadcast", "where": "1"
+            }).then(function (res) {
+                if (res == "None") {
+                    oModel.setProperty("/users", []);
+                    CreateComponent.hideBusyIndicator()
+                } else {
+                    oModel.setProperty("/users", res);
+                    CreateComponent.hideBusyIndicator()
+                }
+            })
         },
         editcompany:function(oEvent){
             var _this = this

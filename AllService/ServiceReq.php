@@ -41,7 +41,13 @@ if ($SN == "Broadcast") {
     if ($MN == "ADD") {
         $result = $broadcast->$MN($_POST['broadcastdata']);
     }else if($MN=="GET"){
-        $result = $broadcast->$MN($_POST['where'],$_POST['param']);
+        $result;
+        if (isset($_POST['param'])) {
+            $result = $_POST['param'];
+        } else {
+            $result = "not";
+        }
+        $result = $broadcast->$MN($_POST['where'],$result);
     }else if($MN=="SET"){
         $result = $broadcast->$MN($_POST['data'],$_POST['where'],$_POST['param']);
     }
@@ -207,7 +213,7 @@ if ($SN == "File") {
     include("File/file.php");
     $file = new $SN();   
    if($MN=="ADD"){
-        $result = $file->$MN($_FILES, $_POST['usid'], $_POST['fileext'], $_POST['size'], $_POST['type'],$_POST['bcext']);
+        $result = $file->$MN($_FILES, $_POST['usid'], $_POST['fileext'], $_POST['size'], $_POST['type'],$_POST['bcext'],$_POST['abstype']);
     }else if($MN=="DEL"){
         $result=$file->$MN($_POST['where'],$_POST['param'],$_POST['fname']);
     }else if($MN=="SET"){

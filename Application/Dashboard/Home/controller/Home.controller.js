@@ -55,6 +55,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
         changefile: function (oEvent) {
             oModel.setProperty("/fdata", oEvent.getParameter("files")[0]);
         },
+        gowm:function(){
+            window.open(oModel.oData.headerset[0].hslink)
+        },
         addfile: function () {
             var _this = this
             var form_data = new FormData();
@@ -66,6 +69,15 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
             form_data.append('fileext', oModel.oData.fdata["name"].split(".")[1]);
             form_data.append('type', oModel.oData.fdata["type"]);
             form_data.append("bcext", oModel.oData.fdata.name.slice(oModel.oData.fdata.name.lastIndexOf(".")));
+
+            if(_this.byId("absid").getSelectedKey()=="1"){
+                form_data.append("abstype","ftxt");
+
+            }else{
+                form_data.append("abstype","abs");
+            }
+            debugger
+            debugger
             folderservice.folderreq(form_data).then(function (res) {
                 if (res.status == "SuccesAdd") {
                     _this.addbroadcast(res.fid, _this.byId("absid").getSelectedKey());
@@ -231,6 +243,12 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                     }
                 })
             }
+        },
+        //on set infodan önceki adım
+        getBroad:function(){
+          broadcastService.broadcastreq({MN:"GET"}).then(function (res) {
+              return res
+          })
         },
         onsetinfo: function (qouta) {
             CreateComponent.showBusyIndicator()

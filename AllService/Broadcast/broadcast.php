@@ -36,8 +36,10 @@ class Broadcast extends database
     public function GET($where,$param){
         if (isset($_SESSION["UNM"])) {
             $fparam = array();
-            for ($index = 0; $index < count($param); $index++) {
-                array_push($fparam, $param[$index]);
+            if($param!="not") {
+                for ($index = 0; $index < count($param); $index++) {
+                    array_push($fparam, $param[$index]);
+                }
             }
             $getbrrows =$this->getrows("SELECT  * FROM autrelbrodtable ab
             INNER JOIN  broadcasttable b ON b.btid=ab.btid
