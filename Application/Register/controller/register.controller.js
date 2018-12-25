@@ -8,7 +8,14 @@ sap.ui.define(['sap/m/MessageBox', 'sap/ui/core/mvc/Controller'], function (Mess
             _this.getView().setModel(oModel);
             _this.registermodel();
             _this.RefreshCaptcha();
+            _this.getmailhead();
 
+        },
+        getmailhead:function(){
+            PluginService.getPlugin({ SN: "MailHeaderSet", MN: "GET" }).then(function (res) {
+                oModel.setProperty("/mhead", res)
+                CreateComponent.hideBusyIndicator()
+            })
         },
         submitRegister: function () {
             var _this = this
@@ -126,7 +133,7 @@ sap.ui.define(['sap/m/MessageBox', 'sap/ui/core/mvc/Controller'], function (Mess
                         if (res[0].rtlcode) {
                       
                             var msgg="<html><body>";
-                            msgg+="<b>Thank you for registering for the WMCAUS.</b>";
+                            msgg+="<b>Thank you for registering for the</b>"+oModel.oData.mhead[0].mhstxt;
                             msgg+="<br>";
                             msgg+="<b>Here is a link to a activate your account.</b>";
                             msgg+="<br>";

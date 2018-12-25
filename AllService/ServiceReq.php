@@ -9,6 +9,18 @@ if ($SN == "Authority") {
     $result = $authority->$MN();
     echo json_encode($result);
 }
+if($SN=="ProformaImg"){
+    include("ProformaImg/proformaimg.php");
+    $pimage= new $SN();
+    if($MN=="GET"){
+        $result = $pimage->$MN();
+    }else if($MN=="SET"){
+        $result = $pimage->$MN($_POST['data']);
+    }else if($MN=="DEL"){
+        $result = $pimage->$MN($_POST['where'],$_POST['param']);
+    }
+    echo json_encode($result);
+}
 if($SN=="Company"){
     include("Company/company.php");
     $company = new $SN();

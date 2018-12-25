@@ -122,7 +122,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox'], function (e, M
             var form_data = new FormData();
             form_data.append('SN', "File");
             form_data.append('MN', "DEL");
-            form_data.append('fname', data.bcfname + data.bcext);
+            form_data.append('fname', data.bcfname);
             form_data.append('where', "bcfid=?");
             form_data.append('param', data.bcfid);
             folderservice.folderreq(form_data).then(function (res) {
@@ -183,7 +183,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox'], function (e, M
                 _this.gettopics();
                 _this.BroadcastType();
                 var sdata = oModel.getProperty(otable.getSelectedContextPaths()[0])
-
+                var date=sdata.brdcastupdate
                 var userup = sdata.absid;
                 var editpaneldialog = new sap.m.Dialog(
                     {
@@ -401,7 +401,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox'], function (e, M
                                                                 brdsubject: sap.ui.getCore().byId("subjectall").getSelectedKey(),
                                                                 brdcasttype: sap.ui.getCore().byId("countryall").getSelectedKey(),
                                                                 abtype: sap.ui.getCore().byId("postitle").getSelectedKey(),
-                                                                fileid: sdata.fileid
+                                                                fileid: sdata.fileid,
+                                                                brdcastupdate:date
                                                             }]
                                                             broadcastService.broadcastreq({
                                                                 MN: "SET", SN: "Broadcast", data: updatedata, where: "btid=?", param: sdata.btid

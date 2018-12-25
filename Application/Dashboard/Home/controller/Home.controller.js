@@ -98,7 +98,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                                 brdsubject: _this.byId("topicid").getSelectedItem().mProperties.text.toUpperCase(),
                                 abtype: key,
                                 brdcasttype: _this.byId("oralid").getSelected() == true ? "1" : "2",
-                                fileid: file
+                                fileid: file,
+                                brdcastupdate:new Date().toLocaleDateString()
                             }]
                         }).then(function (res) {
                             if (res[0].status == "SuccesAdd") {
@@ -122,7 +123,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                                 brdsubject: _this.byId("fttopicid").getSelectedItem().mProperties.text.toUpperCase(),
                                 abtype: key,
                                 brdcasttype: _this.byId("ftoid").getSelected() == true ? "1" : "2",
-                                fileid: file
+                                fileid: file,
+                                brdcastupdate:new Date().toLocaleDateString()
                             }]
                         }).then(function (res) {
                             if (res[0].status == "SuccesAdd") {
@@ -136,6 +138,12 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                     }
                 })
             }
+        },
+        golink:function(oEvent){
+        /*   */
+            if(oEvent.oSource.getSelectedItem().mProperties.key	=="4")
+                window.open(" https://www.paypal.com/","_blank")
+          debugger
         },
         addauthorsuser: function (btid) {
             var _this = this
@@ -230,12 +238,14 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                         switch (_this.byId("absid").getSelectedKey()) {
                             case "1":
                                 oModel.oData.UserModel[0].ftextquota = (parseInt(oModel.oData.UserModel[0].ftextquota) + 1).toString()
-                                _this.onsetinfo("quota");
+                               /* _this.onsetinfo("quota");*/
+                                _this.getBroad()
                                 break;
 
                             case "2":
                                 oModel.oData.UserModel[0].absquota = (parseInt(oModel.oData.UserModel[0].absquota) + 1).toString()
-                                _this.onsetinfo("quota");
+                                _this.getBroad()
+                               /* _this.onsetinfo("quota");*/
                                 break;
                         }
                     } else {
@@ -244,13 +254,20 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                 })
             }
         },
-        //on set infodan önceki adım
         getBroad:function(){
-          broadcastService.broadcastreq({MN:"GET"}).then(function (res) {
-              return res
+            debugger
+            var _this=this
+          broadcastService.broadcastreq({MN:"GET",where:"u.usid",SN:"Broadcast",param:[oModel.oData.UserModel[0].usid]}).then(function (res) {
+              if(res=="None"){
+              }else if(res==""){
+                  sap.m.MessageToast.show("an unexpected error has occurred please try again later")
+              }else{
+                  _this.onsetinfo("quota",res[res.length-1].btid);
+              }
+
           })
         },
-        onsetinfo: function (qouta) {
+        onsetinfo: function (qouta,refno) {
             CreateComponent.showBusyIndicator()
             var _this = this
             var tid = "";
@@ -296,7 +313,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                             msgg+="<br>";
                             msgg+="<p>Thank you for your interest in</p>"+" "+oModel.oData.mhead[0].mhstxt;
                             msgg+="<br>";
-                            msgg+="Your fulltext entitled"+ " "+ _this.byId("fttid").getValue().toUpperCase()+" "+"with the reference number"+" "+ "123123"+" "+"has just been"
+                            msgg+="Your fulltext entitled"+ " "+ _this.byId("fttid").getValue().toUpperCase()+" "+"with the reference number"+" "+ refno+" "+"has just been"
                             msgg+="<br>"
                             msgg+="successfully uploaded and safely reveived by the editorial office."
                             msgg+="<br>"
@@ -321,7 +338,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                             msgg+="<br>";
                             msgg+="<p>Thank you for your interest in</p>"+" "+oModel.oData.mhead[0].mhstxt;
                             msgg+="<br>";
-                            msgg+="Your abstract entitled"+ " "+ _this.byId("titleid").getValue().toUpperCase()+" "+"with the reference number"+" "+ "123123"+" "+"has just been"
+                            msgg+="Your abstract entitled"+ " "+ _this.byId("titleid").getValue().toUpperCase()+" "+"with the reference number"+" "+ refno+" "+"has just been"
                             msgg+="<br>"
                             msgg+="successfully uploaded and safely reveived by the editorial office."
                             msgg+="<br>"

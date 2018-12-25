@@ -493,7 +493,7 @@
 
                     </IconTabFilter>
                     <IconTabSeparator icon=""/>
-                    <IconTabFilter key="users" icon="sap-icon://building" iconColor="Natural" text="User's" count="12">
+                    <IconTabFilter key="users" icon="sap-icon://account" iconColor="Natural" text="User's" count="12">
                         <ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
                             <Table id="userstable"  inset="false" items="{
                                             path: '/users'
@@ -527,6 +527,7 @@
                                     <Column>
                                         <Text text="File" />
                                     </Column>
+
                                 </columns>
                                 <items>
                                     <ColumnListItem>
@@ -539,7 +540,7 @@
                                             <Text text="{brdsubject}" />
                                             <Text text="{abstxt}" />
                                             <Text text="{btypetxt}" />
-                                            <Link text="{bcfname}" href="/symposiumapp{bcfpath}" class="sapUiTinyMarginEnd" />
+                                            <Link text="{bcfname}" href="/symposiumapp{bcfpath}{bcext}" class="sapUiTinyMarginEnd" />
                                         </cells>
                                     </ColumnListItem>
                                 </items>
@@ -550,55 +551,63 @@
                     <IconTabSeparator icon=""/>
                     <IconTabFilter key="proformaimg" icon="sap-icon://picture" iconColor="Positive" text="Proforma Img Setting's" count="13">
                         <ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
+                          <VBox>
+                              <HBox>
+                                  <Button type="Transparent" icon="sap-icon://edit" text="Edit Proforma Image Setting's" press="editpfimage"/>
+                              </HBox>
+                          </VBox>
                             <Table   inset="false" items="{
-                                            path: '/users'
+                                            path: '/pimages'
                                         }">
                                 <columns>
                                     <Column>
-                                        <Text text="User ID" />
+                                        <Text text="Header Image" />
 
                                     </Column>
                                     <Column>
-                                        <Text text="User Name" />
-                                    </Column>
-                                    <Column>
-                                        <Text text="User LastName" />
-                                    </Column>
-                                    <Column>
-                                        <Text text="Article ID" />
-                                    </Column>
-                                    <Column>
-                                        <Text text="Article Name" />
-                                    </Column>
-                                    <Column>
-                                        <Text text="Article Subject" />
-                                    </Column>
-                                    <Column>
-                                        <Text text="Article Type" />
-                                    </Column>
-                                    <Column>
-                                        <Text text="Presentation Type" />
-                                    </Column>
-                                    <Column>
-                                        <Text text="File" />
+                                        <Text text="Footer Image" />
                                     </Column>
                                 </columns>
                                 <items>
                                     <ColumnListItem>
                                         <cells>
-                                            <Text text="{usid}" />
-                                            <Text text="{usname}" />
-                                            <Text text="{uslname}" />
-                                            <Text text="{btid}" />
-                                            <Text text="{brdcastname}" />
-                                            <Text text="{brdsubject}" />
-                                            <Text text="{abstxt}" />
-                                            <Text text="{btypetxt}" />
-                                            <Link text="{bcfname}" href="/symposiumapp{bcfpath}" class="sapUiTinyMarginEnd" />
+                                            <Image
+                                                    src="{pheaderimg}"
+                                                    densityAware="false"
+                                                    width="300px" >
+                                            </Image>
+                                            <Image
+                                                    src="{pfooterimg}"
+                                                    densityAware="false"
+                                                    width="300px" >
+                                            </Image>
                                         </cells>
                                     </ColumnListItem>
                                 </items>
                             </Table>
+                            <VBox width="100%" alignItems="Center" justifyContent="Center" id="filesvb" visible="false">
+                                <VBox alignItems="Center" justifyContent="Center" width="100%">
+                                    <HBox class="sapUiTinyMarginTop" alignItems="Center" justifyContent="Center" width="100%">
+                                        <Label text="Header File" width="130px" />
+                                        <Label text=":" width="10px" />
+                                        <VBox width="100%">
+                                            <u:FileUploader id="fileUploader" fileType= "png,jpg" change="changefile" style="Emphasized" tooltip="please select jpg or png file.." />
+
+                                        </VBox>
+                                    </HBox>
+                                    <HBox class="sapUiTinyMarginTop" alignItems="Center" justifyContent="Center" width="100%">
+                                        <Label text="Footer File" width="130px" />
+                                        <Label text=":" width="10px" />
+                                        <VBox width="100%">
+                                            <u:FileUploader id="fileUploaderf"  fileType= "png,jpg" change="changefilef" style="Emphasized" tooltip="please select jpg or png file.." />
+
+                                        </VBox>
+                                    </HBox>
+                                    <HBox alignItems="Start" justifyContent="Start" width="100%" class="sapUiTinyMarginTop">
+                                        <Button type="Transparent" press="saveimages" text="Save Changes" icon="sap-icon://save"/>
+                                    </HBox>
+                                </VBox>
+                            </VBox>
                         </ScrollContainer>
 
                     </IconTabFilter>

@@ -48,6 +48,8 @@
                     </Column> -->
                     <Column >
                     </Column>
+                    <Column >
+                    </Column>
                 </columns>
                 <items>
                     <ColumnListItem>
@@ -60,7 +62,7 @@
                             <HBox>
                                 <core:Icon src="sap-icon://doc-attachment" class="size1 sapUiTinyMarginEnd" color="#031E48">
                                 </core:Icon>
-                                <Link text="{bcfname}" href="/symposiumapp{bcfpath}" class="sapUiTinyMarginEnd" />
+                                <Link text="{bcfname}" href="/symposiumapp{bcfpath}{bcext}"  wrapping="true" class="sapUiTinyMarginEnd" />
                             </HBox>
                             <!-- <Button type="Transparent" icon="sap-icon://show" tooltip="Click here to see the authors of this article" press="showauthors"/> -->
                             <HBox>

@@ -2,22 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bdccf3a5-b1f0-4b18-8dc3-20948e34b2a2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/AllService/ProformaImg/proformaimg.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AllService/Broadcast/broadcast.php" beforeDir="false" afterPath="$PROJECT_DIR$/AllService/Broadcast/broadcast.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AllService/File/file.php" beforeDir="false" afterPath="$PROJECT_DIR$/AllService/File/file.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AllService/HeaderSettings/headersettings.php" beforeDir="false" afterPath="$PROJECT_DIR$/AllService/HeaderSettings/headersettings.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AllService/ServiceReq.php" beforeDir="false" afterPath="$PROJECT_DIR$/AllService/ServiceReq.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Dashboard/Home/controller/Home.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dashboard/Home/controller/Home.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Dashboard/Home/view/Home.view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dashboard/Home/view/Home.view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Dashboard/MyArticles/controller/MyArticles.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dashboard/MyArticles/controller/MyArticles.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Dashboard/MyArticles/view/MyArticles.view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dashboard/MyArticles/view/MyArticles.view.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Dashboard/Proforma/view/Proforma.view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dashboard/Proforma/view/Proforma.view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Login/view/Login.view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Login/view/Login.view.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/controller/ManageAllSettings.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/controller/ManageAllSettings.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/view/ManageAllSettings.view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/view/ManageAllSettings.view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allword/3ee7665b1e6cec5d8a20_117.doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/allword/7687a4cc513ef221ed21_117.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/allword/a1e6ec49446a807859d8_117.doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/allword/f98a133e40548d1ea4f0_117.doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/css/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/css/global.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Register/controller/register.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Register/controller/register.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MasterApp.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/MasterApp.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allword/117_absddab99257f775942c0ee.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allword/117_ftxt_9527f45d3500e134bf9b.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/automation mails.docx" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,73 +28,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Application/Login/view/Login.view.xml">
+        <entry file="file://$PROJECT_DIR$/AllService/ProformaImg/proformaimg.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="61" lean-forward="true" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="61" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Application/Dashboard/Home/controller/Home.controller.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="246" column="36" selection-start-line="246" selection-start-column="36" selection-end-line="246" selection-end-column="36" />
+            <state relative-caret-position="697">
+              <caret line="41" column="63" selection-start-line="41" selection-start-column="51" selection-end-line="41" selection-end-column="63" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Application/Login/controller/Login.controller.js">
+        <entry file="file://$PROJECT_DIR$/AllService/ServiceReq.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="14" column="7" lean-forward="true" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="57" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Application/Dashboard/Home/view/Home.view.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="116">
-              <caret line="75" column="66" selection-start-line="75" selection-start-column="66" selection-end-line="75" selection-end-column="66" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AllService/HeaderSettings/headersettings.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="32" column="36" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/css/global.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="3225" selection-start-column="3225" selection-end-column="3225" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/view/ManageAllSettings.view.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="411" column="40" lean-forward="true" selection-start-line="411" selection-start-column="40" selection-end-line="411" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Application/Dashboard/MyArticles/view/MyArticles.view.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="62" column="28" selection-start-line="62" selection-start-column="28" selection-end-line="62" selection-end-column="114" />
+            <state relative-caret-position="306">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
             </state>
           </provider>
         </entry>
@@ -102,8 +48,74 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/controller/ManageAllSettings.controller.js">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="181">
+              <caret line="879" column="45" selection-start-line="879" selection-start-column="44" selection-end-line="879" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Application/Register/controller/register.controller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Dashboard/Proforma/view/Proforma.view.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="181">
+              <caret line="246" column="45" selection-start-line="246" selection-start-column="28" selection-end-line="246" selection-end-column="45" />
+              <folding>
+                <element signature="n#List#1;n#HBox#0;n#VBox#0;n#content#0;n#Page#0;n#mvc:View#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Dashboard/Home/controller/Home.controller.js">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
-              <caret line="150" column="44" lean-forward="true" selection-start-line="150" selection-start-column="44" selection-end-line="150" selection-end-column="44" />
+              <caret line="614" selection-start-line="614" selection-end-line="619" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Dashboard/MyArticles/controller/MyArticles.controller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="181">
+              <caret line="121" column="18" selection-start-line="121" selection-start-column="18" selection-end-line="121" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Dashboard/MyArticles/view/MyArticles.view.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="417">
+              <caret line="67" column="28" selection-start-line="67" selection-start-column="28" selection-end-line="70" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MasterApp.controller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/view/ManageAllSettings.view.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="317">
+              <caret line="601" column="77" selection-start-line="601" selection-start-column="64" selection-end-line="601" selection-end-column="77" />
             </state>
           </provider>
         </entry>
@@ -119,36 +131,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>expo</find>
-      <find>payment</find>
-      <find>mail</find>
-      <find>qqq</find>
-      <find>addma</find>
-      <find>compa</find>
-      <find>export</find>
-      <find>customer</find>
-      <find>proforma</find>
-      <find>total</find>
-      <find>deta</find>
-      <find>large</find>
-      <find>input</find>
-      <find>ışık</find>
-      <find>speci</find>
-      <find>File</find>
-      <find>isset</find>
-      <find>get</find>
-      <find>broadca</find>
-      <find>change</find>
-      <find>broad</find>
-      <find>addfile</find>
-      <find>select ar</find>
-      <find>image</find>
-      <find>base64</find>
-      <find>editheadersetti</find>
-      <find>fileuploader</find>
-      <find>editheaderset</find>
       <find>Img</find>
       <find>saveheader</find>
+      <find>onsetinfo</find>
+      <find>broadc</find>
+      <find>res[res-</find>
+      <find>broad</find>
+      <find>edit</find>
+      <find>addbr</find>
+      <find>editar</find>
+      <find>add</find>
+      <find>way</find>
+      <find>link</find>
+      <find>base64</find>
+      <find>cvb</find>
+      <find>change</find>
+      <find>lidk</find>
+      <find>changeke</find>
+      <find>changefilef</find>
+      <find>saveimages</find>
+      <find>res=&quot;</find>
+      <find>users</find>
+      <find>fileup</find>
+      <find>your</find>
+      <find>image</find>
+      <find>invoice</find>
+      <find>bu fon</find>
+      <find>fonk</find>
+      <find>2019</find>
+      <find>/</find>
+      <find>addma</find>
     </findStrings>
     <replaceStrings>
       <replace>include(&quot;</replace>
@@ -164,24 +176,27 @@
         <option value="$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/companyservice/companyservice.js" />
         <option value="$PROJECT_DIR$/AllService/Company/company.php" />
         <option value="$PROJECT_DIR$/Component.js" />
-        <option value="$PROJECT_DIR$/Application/Dashboard/MyArticles/controller/MyArticles.controller.js" />
         <option value="$PROJECT_DIR$/Application/Login/controller/Login.controller.js" />
-        <option value="$PROJECT_DIR$/MasterApp.controller.js" />
         <option value="$PROJECT_DIR$/Application/Dashboard/DashboardRouterApp.view.xml" />
         <option value="$PROJECT_DIR$/MailService/mail.php" />
         <option value="$PROJECT_DIR$/MasterApp.view.xml" />
         <option value="$PROJECT_DIR$/Application/Dashboard/Proforma/controller/Proforma.controller.js" />
         <option value="$PROJECT_DIR$/AllService/File/file.php" />
-        <option value="$PROJECT_DIR$/Application/Dashboard/Proforma/view/Proforma.view.xml" />
-        <option value="$PROJECT_DIR$/AllService/Broadcast/broadcast.php" />
-        <option value="$PROJECT_DIR$/AllService/ServiceReq.php" />
         <option value="$PROJECT_DIR$/resources/css/global.css" />
         <option value="$PROJECT_DIR$/Application/Login/view/Login.view.xml" />
-        <option value="$PROJECT_DIR$/Application/Dashboard/Home/view/Home.view.xml" />
         <option value="$PROJECT_DIR$/AllService/HeaderSettings/headersettings.php" />
-        <option value="$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/view/ManageAllSettings.view.xml" />
-        <option value="$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/controller/ManageAllSettings.controller.js" />
+        <option value="$PROJECT_DIR$/Application/Dashboard/Home/view/Home.view.xml" />
+        <option value="$PROJECT_DIR$/AllService/Broadcast/broadcast.php" />
         <option value="$PROJECT_DIR$/Application/Dashboard/Home/controller/Home.controller.js" />
+        <option value="$PROJECT_DIR$/MasterApp.controller.js" />
+        <option value="$PROJECT_DIR$/AllService/ProformaImg/proformaimg.php" />
+        <option value="$PROJECT_DIR$/AllService/ServiceReq.php" />
+        <option value="$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/view/ManageAllSettings.view.xml" />
+        <option value="$PROJECT_DIR$/Application/Dashboard/MyArticles/view/MyArticles.view.xml" />
+        <option value="$PROJECT_DIR$/Application/Dashboard/MyArticles/controller/MyArticles.controller.js" />
+        <option value="$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/controller/ManageAllSettings.controller.js" />
+        <option value="$PROJECT_DIR$/Application/Dashboard/Proforma/view/Proforma.view.xml" />
+        <option value="$PROJECT_DIR$/Application/Register/controller/register.controller.js" />
       </list>
     </option>
   </component>
@@ -197,7 +212,7 @@
     </servers>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="10" />
     <option name="y" value="20" />
     <option name="width" value="1346" />
@@ -208,7 +223,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -225,13 +239,7 @@
               <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
               <item name="symposiumapp" type="462c0819:PsiDirectoryNode" />
               <item name="AllService" type="462c0819:PsiDirectoryNode" />
-              <item name="Broadcast" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="symposiumapp" type="462c0819:PsiDirectoryNode" />
-              <item name="AllService" type="462c0819:PsiDirectoryNode" />
-              <item name="HeaderSettings" type="462c0819:PsiDirectoryNode" />
+              <item name="ProformaImg" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
@@ -401,6 +409,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -453,16 +462,19 @@
       <workItem from="1545551068532" duration="17910000" />
       <workItem from="1545641671499" duration="1314000" />
       <workItem from="1545646121900" duration="6087000" />
+      <workItem from="1545659588807" duration="10399000" />
+      <workItem from="1545733350394" duration="1844000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32711000" />
+    <option name="totallyTimeSpent" value="44954000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25718608" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2647504" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -514,98 +526,33 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/AllService/ServiceReq.php</url>
-          <line>215</line>
+          <line>227</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/AllService/ServiceReq.php</url>
-          <line>214</line>
+          <line>226</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/AllService/ServiceReq.php</url>
-          <line>213</line>
+          <line>225</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/AllService/ServiceReq.php</url>
-          <line>40</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/AllService/ServiceReq.php</url>
-          <line>42</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/AllService/ServiceReq.php</url>
-          <line>50</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/AllService/ServiceReq.php</url>
-          <line>52</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/AllService/ServiceReq.php</url>
-          <line>49</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/AllService/ServiceReq.php</url>
-          <line>41</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/AllService/ServiceReq.php</url>
-          <line>39</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/AllService/ServiceReq.php</url>
-          <line>159</line>
+          <line>171</line>
           <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/AllService/ServiceReq.php</url>
-          <line>160</line>
+          <line>172</line>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/AllService/ServiceReq.php</url>
-          <line>162</line>
+          <line>174</line>
           <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/AllService/ServiceReq.php</url>
-          <line>44</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/AllService/ServiceReq.php</url>
-          <line>46</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/AllService/ServiceReq.php</url>
-          <line>48</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/AllService/ServiceReq.php</url>
-          <line>47</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/AllService/ServiceReq.php</url>
-          <line>45</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/AllService/ServiceReq.php</url>
-          <line>43</line>
-          <option name="timeStamp" value="26" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -616,13 +563,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AllRequest/AllRequest.js">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Register/controller/register.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2193">
-          <caret line="129" column="25" selection-start-line="129" selection-start-column="25" selection-end-line="131" selection-end-column="41" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/companyservice/companyservice.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -673,13 +613,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MasterApp.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="49" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Dashboard/DashboardRouterApp.view.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -718,76 +651,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Dashboard/Proforma/view/Proforma.view.xml">
+    <entry file="file://$PROJECT_DIR$/Application/ManagementPanel/ManagementPanelRouter.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="247" column="90" selection-start-line="247" selection-start-column="90" selection-end-line="247" selection-end-column="90" />
-          <folding>
-            <element signature="n#List#1;n#HBox#0;n#VBox#0;n#content#0;n#Page#0;n#mvc:View#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Dashboard/MyArticles/controller/MyArticles.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="47" selection-start-line="14" selection-start-column="47" selection-end-line="25" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AllService/Broadcast/broadcast.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="43" column="13" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AllService/ServiceReq.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="50" column="25" lean-forward="true" selection-start-line="50" selection-start-column="25" selection-end-line="50" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Dashboard/MyArticles/view/MyArticles.view.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="62" column="28" selection-start-line="62" selection-start-column="28" selection-end-line="62" selection-end-column="114" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Login/controller/Login.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="14" column="7" lean-forward="true" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/css/global.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="3225" selection-start-column="3225" selection-end-column="3225" />
+        <state relative-caret-position="17">
+          <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/Login/view/Login.view.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="10" column="61" lean-forward="true" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="61" />
+          <caret line="10" column="61" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Login/controller/Login.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AllService/Relation/relation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AllService/Broadcast/broadcast.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="102" column="34" selection-start-line="102" selection-start-column="21" selection-end-line="102" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/Dashboard/Home/view/Home.view.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="75" column="66" selection-start-line="75" selection-start-column="66" selection-end-line="75" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/ManagementPanel/ManagementPanelRouter.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+        <state relative-caret-position="198">
+          <caret line="289" column="124" selection-start-line="289" selection-start-column="118" selection-end-line="289" selection-end-column="124" />
         </state>
       </provider>
     </entry>
@@ -798,24 +700,83 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/css/global.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="3225" selection-start-column="3225" selection-end-column="3225" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AllService/ProformaImg/proformaimg.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="41" column="63" selection-start-line="41" selection-start-column="51" selection-end-line="41" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AllService/ServiceReq.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MasterApp.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/view/ManageAllSettings.view.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="411" column="40" lean-forward="true" selection-start-line="411" selection-start-column="40" selection-end-line="411" selection-end-column="40" />
+        <state relative-caret-position="317">
+          <caret line="601" column="77" selection-start-line="601" selection-start-column="64" selection-end-line="601" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Dashboard/MyArticles/view/MyArticles.view.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="417">
+          <caret line="67" column="28" selection-start-line="67" selection-start-column="28" selection-end-line="70" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Dashboard/MyArticles/controller/MyArticles.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="121" column="18" selection-start-line="121" selection-start-column="18" selection-end-line="121" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/controller/ManageAllSettings.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="150" column="44" lean-forward="true" selection-start-line="150" selection-start-column="44" selection-end-line="150" selection-end-column="44" />
+        <state relative-caret-position="181">
+          <caret line="879" column="45" selection-start-line="879" selection-start-column="44" selection-end-line="879" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Dashboard/Proforma/view/Proforma.view.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="246" column="45" selection-start-line="246" selection-start-column="28" selection-end-line="246" selection-end-column="45" />
+          <folding>
+            <element signature="n#List#1;n#HBox#0;n#VBox#0;n#content#0;n#Page#0;n#mvc:View#0;n#!!top" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/Dashboard/Home/controller/Home.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="246" column="36" selection-start-line="246" selection-start-column="36" selection-end-line="246" selection-end-column="36" />
+        <state relative-caret-position="204">
+          <caret line="614" selection-start-line="614" selection-end-line="619" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Register/controller/register.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>

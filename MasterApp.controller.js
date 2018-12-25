@@ -7,6 +7,9 @@ sap.ui.define(['sap/ui/core/mvc/Controller', "sap/ui/model/resource/ResourceMode
             PluginService.getPlugin({ SN: "HeaderSettings", MN: "GET" }).then(function (res) {
                 oModel.setProperty("/headerset", res)
             })
+            PluginService.getPlugin({MN:"GET",SN:"ProformaImg"}).then(function (res) {
+                oModel.setProperty("/pimages",res);
+            })
             generalsettings.gsettingreq({ MN: "GETGSETTİNGS", SN: "GeneralSettings" }).then(function (res) {
                 res.forEach(element => {
                     element.gsabsfoldertemp = element.gsabsfoldertemp

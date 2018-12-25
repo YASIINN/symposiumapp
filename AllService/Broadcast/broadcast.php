@@ -16,6 +16,7 @@ class Broadcast extends database
                     "brdsubject" => $broadcastdata[$i]['brdsubject'],
                     "abtype" => $broadcastdata[$i]['abtype'],
                     "fileid" => $broadcastdata[$i]['fileid'],
+                    "brdcastupdate"=>$broadcastdata[$i]['brdcastupdate'],
                 );
                 if(null !==$this->beginTransaction()){
                     $this->beginTransaction();
@@ -77,7 +78,7 @@ class Broadcast extends database
                  'absid'=>$getbrrows[$i]['absid'],
                  'abstxt'=>$getbrrows[$i]['abstxt'],
                  'bcfid'=>$getbrrows[$i]['bcfid'],
-                 'bcfname'=>$getbrrows[$i]['bcfname'],
+                 'bcfname'=>$getbrrows[$i]['bcfname'].$getbrrows[$i]['bcext'],
                  'bcfpath'=>$getbrrows[$i]['bcfpath'],
                  "bcext"=>$getbrrows[$i]['bcext'],
                  'pid'=>$getbrrows[$i]['pid'],
@@ -98,7 +99,8 @@ class Broadcast extends database
                     "brdcastname"=>$data[$index]['brdcastname'],
                     "brdsubject"=>$data[$index]['brdsubject'],
                     "abtype"=>$data[$index]['abtype'],
-                    "fileid"=>$data[$index]['fileid']
+                    "fileid"=>$data[$index]['fileid'],
+                    "brdcastupdate"=>$data[$index]['brdcastupdate'],
                 );
                 $upP = $this->update("broadcasttable", $sdata, $where, array($param));
             }

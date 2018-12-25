@@ -8,13 +8,12 @@
         <content>
             <HBox>
                 <HBox alignItems="Stretch" justifyContent="Stretch">
-                    <Image press="gowm" src="{/headerset/0/hsimg}"  width="100%" height="100px">
+                    <Image press="gowm" src="{/pimages/0/pheaderimg}"  width="100%" height="100px">
                         <layoutData>
                             <FlexItemData growFactor="1" />
                         </layoutData>
                     </Image>
                 </HBox>
-
             </HBox>
             <HBox alignItems="End" justifyContent="End" class="pclass">
                 <Title text="PROFORMA INVOICE"/>
@@ -126,8 +125,8 @@
                                 <VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" >
                                     <HBox>
                                         <Text
-                                                text="INVOICED TO :" />
-                                        <HBox alignItems="End" justifyContent="End">
+                                                text="INVOICED TO:" />
+                                        <HBox class="sapUiSmallMarginBegin" alignItems="End" justifyContent="End">
                                             <Text
                                                     text="{invto}" />
                                         </HBox>
@@ -135,9 +134,9 @@
                                     </HBox>
                                     <HBox>
                                         <Text
-                                                text="ADDRESS :" />
+                                                text="ADDRESS:" />
 
-                                        <HBox alignItems="End" justifyContent="End">
+                                        <HBox alignItems="End" class="sapUiSmallMarginBegin" justifyContent="End">
                                             <Text
                                                     text="{adres}" />
                                         </HBox>
@@ -263,11 +262,11 @@
                                 <Text text="Issuedt by : {/company/0/cpname} "  />
                             </VBox>
                         </HBox>
-                        <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
+                        <!--<HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
                             <VBox width="100%" alignItems="Stretch" justifyContent="Stretch">
                                 <Text text="Accountant : Dagmar Welszarova "  />
                             </VBox>
-                        </HBox>
+                        </HBox>-->
 
                         <HBox class="sapUiTinyMarginTop" width="100%" alignItems="Start" justifyContent="Stretch">
                             <VBox width="100%" alignItems="Stretch" justifyContent="Start">
@@ -285,7 +284,7 @@
                         <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTopEnd">
                             <VBox width="100%">
                                 <HBox>
-                                    <Image press="gowm" src="https://www.affsupply.com/wp-content/uploads/2018/01/lgoo-kohler.jpg"  width="100px" height="150px">
+                                    <Image press="gowm" src="{/pimages/0/pfooterimg}"  width="100px" height="150px">
                                     </Image>
                                 </HBox>
                             </VBox>
@@ -293,27 +292,7 @@
                     </VBox>
                 </l:Grid>
             </VBox>
-       <!--
-            <VBox alignItems="Start" justifyContent="Start">
-
-            </VBox>
-            <HBox alignItems="Start" justifyContent="Start" >
-
-
-            </HBox>
-            <HBox alignItems="Center" justifyContent="Center">
-
-            </HBox>
-            <HBox alignItems="Start" justifyContent="Start">
-
-            </HBox>
-            <HBox alignItems="Start" justifyContent="Start">
-
-            </HBox>-->
-
-
             <VBox class="endfhr">
-
             </VBox>
         </content>
     </Page>

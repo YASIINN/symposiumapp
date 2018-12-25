@@ -119,18 +119,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
             var _this = this
 
         },
-        /*
-        bu fonksiyon sonra istenilirse yapılacak
-        showpas: function (oEvent) {
-            var _this = this
-            if (_this.byId("mailpasid").getType() == "Text") {
-                _this.byId("showid").setIcon("sap-icon://show");
-                _this.byId("mailpasid").setType("Password");
-            } else {
-                _this.byId("showid").setIcon("sap-icon://hide");
-                _this.byId("mailpasid").setType("Text");
-            }
-        },*/
         getmail: function () {
             CreateComponent.showBusyIndicator();
             gsetmail.gsetmailreq({ SN: "Generalsetmail", MN: "GET" }).then(function (res) {
@@ -145,16 +133,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
         delfile: function (oEvent) {
             var _this = this
             var event = oEvent.oSource._getBindingContext().sPath
-            /*
-            const tindex = oEvent.oSource._getBindingContext().sPath.split("/")[2]
-            if(oModel.oData.titleset[tindex].tid=="1"){
-                sap.m.MessageToast.show("this record cannot be deleted");
-            }else{
-            PluginService.getPlugin({ SN: "Title", MN: "DELTİTLE", where: "tid=?", param: oModel.oData.titleset[tindex].tid }).then(function (res) {
-                CreateComponent.showBusyIndicator()
-                _this.getalltitles();
-            })
-            }*/
             MessageBox.warning(
                 "Are you sure you want to delete this file.",
                 {
@@ -369,12 +347,94 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                     CreateComponent.showBusyIndicator();
                     _this.getbusers();
                     break;
+                case "proformaimg":
+                    CreateComponent.showBusyIndicator();
+                    _this.pimage();
+                    break;
             }
+        },
+        saveimages:function(){
+            var _this=this
+            PluginService.getPlugin({MN:"DEL",SN:"ProformaImg",where:"pimgid=?",param:oModel.oData.pimages[0].pimgid}).then(function (res) {
+                          if(res=="SuccesDel"){
+                              var imgdata=[]
+                              if(oModel.oData.fdata!=undefined && oModel.oData.dataf!=undefined){
+                                   imgdata.push({
+                                      pheaderimg:oModel.oData.fdata,
+                                      pfooterimg:oModel.oData.dataf
+                                  })
+                                  PluginService.getPlugin({MN:"SET",SN:"ProformaImg",data:imgdata}).then(function (res) {
+                                      if(res=="SuccedUpdate"){
+                                          _this.pimage();
+                                          _this.editpfimage()
+                                         _this.byId("fileUploader").setValue(' ')
+                                          _this.byId("fileUploaderf").setValue(' ')
+                                          delete oModel.oData.fdata
+                                          delete oModel.oData.dataf
+                                          sap.m.MessageToast.show("Your update has been successfully completed");
+                                      }else{
+                                          sap.m.MessageToast.show("unexpected error please try again later");
+                                      }
+                                  })
+                              }else if(oModel.oData.fdata!=undefined && oModel.oData.dataf==undefined){
+                                  imgdata.push({
+                                      pheaderimg:oModel.oData.fdata,
+                                      pfooterimg:oModel.oData.pimages[0].pfooterimg.slice(oModel.oData.pimages[0].pfooterimg.indexOf(",")+1)
+                                  })
+                                  PluginService.getPlugin({MN:"SET",SN:"ProformaImg",data:imgdata}).then(function (res) {
+                                      if(res=="SuccedUpdate"){
+                                          _this.pimage();
+                                          _this.editpfimage()
+                                          _this.byId("fileUploader").setValue(' ')
+                                          _this.byId("fileUploaderf").setValue(' ')
+                                          delete oModel.oData.fdata
+                                          delete oModel.oData.dataf
+                                          sap.m.MessageToast.show("Your update has been successfully completed");
+
+                                      }else{
+                                          sap.m.MessageToast.show("unexpected error please try again later");
+                                      }
+                                  })
+                              }else if(oModel.oData.dataf!=undefined && oModel.oData.fdata==undefined){
+                                  imgdata.push({
+                                    pheaderimg:oModel.oData.pimages[0].pheaderimg.slice(oModel.oData.pimages[0].pheaderimg.indexOf(",")+1),
+                                      pfooterimg:oModel.oData.dataf
+                                  })
+                                  PluginService.getPlugin({MN:"SET",SN:"ProformaImg",data:imgdata}).then(function (res) {
+                                      if(res=="SuccedUpdate"){
+                                          _this.pimage();
+                                          _this.editpfimage()
+                                          _this.byId("fileUploader").setValue(' ')
+                                          _this.byId("fileUploaderf").setValue(' ')
+                                          delete oModel.oData.fdata
+                                          delete oModel.oData.dataf
+                                          sap.m.MessageToast.show("Your update has been successfully completed");
+                                      }else{
+                                          sap.m.MessageToast.show("unexpected error please try again later");
+                                      }
+                                  })
+                              }else{
+                                  sap.m.MessageToast.show("Please Select file");
+                              }
+                    }else{
+                              sap.m.MessageToast.show("unexpected error please try again later");
+                    }
+            })
+
+        },
+        editpfimage:function(){
+          var _this=this
+            _this.byId("filesvb").setVisible(!_this.byId("filesvb").getVisible())
+        },
+        pimage:function(){
+            CreateComponent.hideBusyIndicator()
+            var _this=this
+            PluginService.getPlugin({MN:"GET",SN:"ProformaImg"}).then(function (res) {
+                oModel.setProperty("/pimages",res);
+            })
         },
         getbusers:function(){
           var _this=this
-            debugger
-
             broadcastService.broadcastreq({
                 MN: "GET", SN: "Broadcast", "where": "1"
             }).then(function (res) {
@@ -796,6 +856,39 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                         CreateComponent.hideBusyIndicator()
                         oModel.setProperty("/company",res);
                  })
+        },
+        changefilef: function (oEvent) {
+            var _this = this
+            if (oEvent.getParameter("files")[0] != undefined) {
+                if (oEvent.getParameter("files")[0].size != 1000000) {
+                    _this.cvb64f(oEvent.getParameter("files")[0], oEvent.getParameter("files")[0]["type"]).then(function (res) {
+                    })
+                } else {
+                    sap.m.MessageToast.show("Dosya Boyutu Geçersiz")
+                }
+            } else {
+                delete oModel.oData.dataf;
+            }
+        },
+        cvb64f: function (param, ext) {
+            var _this = this
+            var reader = new FileReader();
+            var deferred = new Promise(function (resolve, reject) {
+                if (typeof (FileReader) != "undefined") {
+                    reader.onload = function (evn) {
+                        debugger
+                        oModel.setProperty("/dataf", evn.target.result);
+                        if (ext == "image/jpeg") {
+                            oModel.setProperty("/dataf", oModel.oData.dataf.substring(23))
+                        } else if (ext == "image/png") {
+                            oModel.setProperty("/dataf", oModel.oData.dataf.substring(22))
+                        }
+                        resolve(true)
+                    }
+                    reader.readAsDataURL(param);
+                }
+            })
+            return deferred;
         },
         changefile: function (oEvent) {
             var _this = this
