@@ -289,6 +289,7 @@
                                         <Text text="Payment Way Name" />
                                     </Column>
                                     <Column	>
+                                        <Text text="Payment Gate"/>
                                     </Column>
                                     <Column	>
                                     </Column>
@@ -297,6 +298,7 @@
                                     <ColumnListItem>
                                         <cells>
                                             <Text text="{pwtxt}" />
+                                            <Link href="{plink}" text="{plink}"/>
                                             <HBox>
                                                 <Button type="Transparent" icon="sap-icon://delete" tooltip="Delete Payment Way" press="delpayment" />
                                                 <Button type="Transparent" icon="sap-icon://edit" tooltip="Edit Payment Way" press="editpayment" />

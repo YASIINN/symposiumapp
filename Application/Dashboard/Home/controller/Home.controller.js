@@ -1,3 +1,4 @@
+jQuery.sap.require("symposiumapp.Application.ManagementPanel.ManageAllSettings.companyservice.companyservice")
 jQuery.sap.require("symposiumapp.Application.ManagementPanel.ManageAllSettings.GeneralSetFolderService.generalsetfolder");
 jQuery.sap.require("symposiumapp.Application.ManagementPanel.ManageAllSettings.GeneralsettingsService.generalsettings");
 jQuery.sap.require("symposiumapp.ApiRequest.ApiRequset");
@@ -20,6 +21,12 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                 sap.ui.core.UIComponent.getRouterFor(this).getRoute("Dashboard/Home").attachPatternMatched(e.onBeforeShow, e)
             this.getView().byId('fileuploadftext').oBrowse.mProperties.text = "Browse"
             this.getView().byId('fileUploader').oBrowse.mProperties.text = "Browse"
+        },
+        getCompany:function(){
+            company.companyreq({SN:"Company",MN:"GET"}).then(function (res) {
+                CreateComponent.hideBusyIndicator()
+                oModel.setProperty("/company",res);
+            })
         },
         setcustomermodel:function(){
             oModel.setProperty("/customer",[{
@@ -140,93 +147,17 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
             }
         },
         golink:function(oEvent){
-        /*   */
-            if(oEvent.oSource.getSelectedItem().mProperties.key	=="4")
-                window.open(" https://www.paypal.com/","_blank")
-          debugger
+            var _this=this;
+            if(oEvent.oSource.getSelectedItem().mProperties.key!="1")
+                _this.paymentdialog(oEvent.oSource.getSelectedItem().mProperties.key);
         },
         addauthorsuser: function (btid) {
             var _this = this
-            var param = "";
-            /*  if (oModel.oData.authorsuser && oModel.oData.authorsuser.length) {
-                  var authors = JSON.parse(JSON.stringify(oModel.oData.authorsuser));
-                  for (let index = 0; index < oModel.oData.authorsuser.length; index++) {
-                      if (index == oModel.oData.authorsuser.length - 1) {
-                          param += "'" + oModel.oData.authorsuser[index].mail + "'"
-                      } else {
-                          param += "'" + oModel.oData.authorsuser[index].mail + "'" + ","
-                      }
-                  }
-                  PluginService.getPlugin({ MN: "GETMAİL", SN: "UserMail", where: "mail IN" + "(" + param + ")" }).then(function (res) {
-                      if (res[0].status == "Okey") {
-                          for (let index = 0; index < authors.length; index++) {
-                              for (let j = 0; j < res.length; j++) {
-                                  if (authors[index].mail == res[j].mail) {
-                                      authors.splice(index, 1);
-                                  }
-                              }
-                          }
-                          UserService.userReq({ MN: "ADD", SN: "User", userdata: authors }).then(function (res) {
-                              if (res[0].status == "SuccesAdd") {
-                                  _this.onRelationAuthorsBroadcast(true, btid, param);
-                              } else {
-                                  CreateComponent.hideBusyIndicator()
-                              }
-                          })
-                      }
-                      else {
-                          authors = oModel.oData.authorsuser
-                          UserService.userReq({ MN: "ADD", SN: "User", userdata: authors }).then(function (res) {
-                              if (res[0].status == "SuccesAdd") {
-                                  _this.onRelationAuthorsBroadcast(true, btid, param);
-                              } else {
-                                  CreateComponent.hideBusyIndicator()
-                              }
-                          })
-                      }
-                  })
-              } else {
-                  _this.onRelationAuthorsBroadcast(false, btid);
-              }*/
             _this.onRelationAuthorsBroadcast(false, btid);
         },
         onRelationAuthorsBroadcast: function (result, btid, param) {
             var _this = this
             if (result) {
-                /*
-                var relation;
-                UserService.userReq({ MN: "GET", SN: "User", "where": "ulgnname IN" + "(" + param + ")" }).then(function (res) {
-                    if (res[0].status == "Okey") {
-                        relation = res.map(function (x) {
-                            return { usid: x.usid, btid: btid }
-                        })
-                        relation.push({
-                            usid: oModel.oData.UserModel[0].usid,
-                            btid: btid
-                        })
-                        RelationService.relationreq({ MN: "ADD", SN: "Relation", data: relation }).then(function (res) {
-                            if (res == "SuccesAdd") {
-                                switch (_this.byId("absid").getSelectedKey()) {
-                                    case "1":
-                                        oModel.oData.UserModel[0].ftextquota = (parseInt(oModel.oData.UserModel[0].ftextquota) + 1).toString()
-                                        _this.onsetinfo("quota");
-                                        break;
-
-                                    case "2":
-                                        oModel.oData.UserModel[0].absquota = (parseInt(oModel.oData.UserModel[0].absquota) + 1).toString()
-                                        _this.onsetinfo("quota");
-                                        break;
-                                }
-                            } else {
-                                CreateComponent.hideBusyIndicator()
-                            }
-
-                        })
-                    } else {
-                        CreateComponent.hideBusyIndicator()
-                    }
-                })
-                */
             } else {
                 RelationService.relationreq({
                     MN: "ADD", SN: "Relation", data: [{
@@ -238,14 +169,12 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                         switch (_this.byId("absid").getSelectedKey()) {
                             case "1":
                                 oModel.oData.UserModel[0].ftextquota = (parseInt(oModel.oData.UserModel[0].ftextquota) + 1).toString()
-                               /* _this.onsetinfo("quota");*/
                                 _this.getBroad()
                                 break;
 
                             case "2":
                                 oModel.oData.UserModel[0].absquota = (parseInt(oModel.oData.UserModel[0].absquota) + 1).toString()
                                 _this.getBroad()
-                               /* _this.onsetinfo("quota");*/
                                 break;
                         }
                     } else {
@@ -497,6 +426,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
             }
         },
         changecount: function (oEvent) {
+            var _this=this;
             var setmodel = oModel.getProperty(oEvent.oSource._getBindingContext().sPath)
             var count = oEvent.oSource.getValue()
             var price = parseFloat(setmodel.fsprice);
@@ -508,7 +438,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
             setmodel.total=  setmodel.total.toFixed(2)
             setmodel.vat = vat;
             setmodel.vat=  setmodel.vat.toFixed(2)
-
+            _this.byId("paymentselect").setSelectedKey("");
             oModel.refresh()
             var totalc = 0;
             var totalvat=0;
@@ -596,6 +526,231 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                 oModel.setProperty("/topics", res)
             })
         },
+        paymentdialog:function(param){
+            var _this = this
+            var data = oModel.oData.payments.filter(function(x){ return x.pwid==param})
+            var total2=(parseFloat(oModel.oData.totals)*2)/100;
+            total2=total2+parseFloat(oModel.oData.totals);
+            total2=  total2.toFixed(2)
+            var editpaneldialog = new sap.m.Dialog(
+                {
+                    contentWidth: "50%",
+                    contentHeight: "50%",
+                    stretchOnPhone: true,
+                    showCloseButton: true,
+                    beforeClose: function () {
+                        if (sap.ui.getCore().byId("bname")) {
+                            sap.ui.getCore().byId("bname").destroy();
+
+                        }
+                        if (sap.ui.getCore().byId("postitle")) {
+                            sap.ui.getCore().byId("postitle").destroy();
+
+                        }
+                        if (sap.ui.getCore().byId("vnamee")) {
+                            sap.ui.getCore().byId("vnamee").destroy();
+
+                        }
+                        if (sap.ui.getCore().byId("vname")) {
+                            sap.ui.getCore().byId("vname").destroy();
+
+                        }
+                        if (sap.ui.getCore().byId("aname")) {
+                            sap.ui.getCore().byId("aname").destroy()
+                        }
+                    }
+                }).addStyleClass("dialogHasFooter sapUiNoMargin  sapUiSizeCompact sapUiResponsiveContentPadding")
+            var bar = new sap.m.Bar({});
+            bar.addContentMiddle(new sap.m.HBox({
+                alignItems: sap.m.FlexAlignItems.Center,
+                justifyContent: sap.m.FlexJustifyContent.Stretch,
+                items: [
+                    new sap.m.Text(
+                        {
+                            text: "Payment BY"+ " "+ data[0].pwtxt,
+                            width: "150px"
+                        }).addStyleClass("sapUiSmallMarginBegin")
+                ]
+            }).addStyleClass("sapUiNoMargin"))
+            bar.addContentRight(
+                new sap.m.Button({
+                    icon: "sap-icon://sys-cancel",
+                    text: "Close",
+                    type: "Transparent",
+                    press: function () {
+                        editpaneldialog.close();
+                    }
+                }).addStyleClass("sapUiNoMargin"))
+            var panelarea = new sap.m.HBox({
+                width: "100%",
+                height: "100%",
+                alignItems: sap.m.FlexAlignItems.Stretch,
+                justifyContent: sap.m.FlexJustifyContent.Stretch,
+                items: [
+                    new sap.m.VBox({
+                        width: "100%",
+                        height: "100%",
+                        alignItems: sap.m.FlexAlignItems.Stretch,
+                        justifyContent: sap.m.FlexJustifyContent.Stretch,
+                        items: [
+                            new sap.m.HBox({
+                                width: "100%",
+                                alignItems: sap.m.FlexAlignItems.Stretch,
+                                justifyContent: sap.m.FlexJustifyContent.Stretch,
+                                items: [
+                                    new sap.m.Label({
+                                        text: "Total Payment +(2%)",
+                                        width: "130px"
+                                    }),
+                                    new sap.m.Label({
+                                        text: ":",
+                                        width: "10px"
+                                    }),
+                                    new sap.m.VBox({
+                                        width: "100%",
+                                        alignItems: sap.m.FlexAlignItems.Stretch,
+                                        justifyContent: sap.m.FlexJustifyContent.Stretch,
+                                        items: [
+                                            new sap.m.Input("aname", {
+                                                width: "100%",
+                                                value: total2,
+                                                enabled:false
+                                            })
+                                        ]
+                                    })
+                                ]
+                            }),
+                            new sap.m.HBox({
+                                width: "100%",
+                                alignItems: sap.m.FlexAlignItems.Stretch,
+                                justifyContent: sap.m.FlexJustifyContent.Stretch,
+                                items: [
+                                    new sap.m.Label({
+                                        text: "Date of Transaction",
+                                        width: "130px"
+                                    }),
+                                    new sap.m.Label({
+                                        text: ":",
+                                        width: "10px"
+                                    }),
+                                    new sap.m.VBox({
+                                        width: "100%",
+                                        items: [
+                                            new sap.m.Input("bname", {
+                                                width: "100%",
+                                                value: new Date().toLocaleDateString(),
+                                                enabled:false
+                                            })
+                                        ]
+                                    })
+                                ]
+                            }),
+                            new sap.m.HBox({
+                                width: "100%",
+                                alignItems: sap.m.FlexAlignItems.Stretch,
+                                justifyContent: sap.m.FlexJustifyContent.Stretch,
+                                items: [
+                                    new sap.m.Label({
+                                        text: "Time of Transaction",
+                                        width: "130px"
+
+                                    }),
+                                    new sap.m.Label({
+                                        text: ":",
+                                        width: "10px"
+                                    }),
+                                    new sap.m.VBox({
+                                        width: "100%",
+                                        alignItems: sap.m.FlexAlignItems.Stretch,
+                                        justifyContent: sap.m.FlexJustifyContent.Stretch,
+                                        items: [
+                                            new sap.m.Input("vname", {
+                                                width: "100%",
+                                                value: new Date().getHours()+":"+new Date().getMinutes(),
+                                                enabled:false
+                                            })
+
+                                        ]
+                                    })
+                                ]
+                            }),
+                            new sap.m.HBox({
+                                width: "100%",
+                                alignItems: sap.m.FlexAlignItems.Stretch,
+                                justifyContent: sap.m.FlexJustifyContent.Stretch,
+                                items: [
+                                    new sap.m.Label({
+                                        text: "Transferred To",
+                                        width: "130px"
+                                    }),
+                                    new sap.m.Label({
+                                        text: ":",
+                                        width: "10px"
+                                    }),
+                                    new sap.m.VBox({
+                                        width: "100%",
+                                        items: [
+                                            new sap.m.Input("vnamee", {
+                                                width: "100%",
+                                                value: oModel.oData.company[0].cpname,
+                                                enabled:false
+                                            })
+                                        ]
+                                    })
+                                ]
+                            }),
+                            new sap.m.HBox({
+                                width: "100%",
+                                alignItems: sap.m.FlexAlignItems.Stretch,
+                                justifyContent: sap.m.FlexJustifyContent.Stretch,
+                                items: [
+                                    new sap.m.Label({
+                                        text: "Result",
+                                        width: "130px"
+                                    }),
+                                    new sap.m.Label({
+                                        text: ":",
+                                        width: "10px"
+                                    }),
+                                    new sap.m.VBox({
+                                        width: "100%",
+                                        alignItems: sap.m.FlexAlignItems.Stretch,
+                                        justifyContent: sap.m.FlexJustifyContent.Center,
+                                        items: [
+                                            new sap.m.Button({
+                                                text: "PROCEDD TO PAYMENT GATE",
+                                                press: function () {
+                                                    debugger
+                                                    if (sap.ui.getCore().byId("aname").getValue().trim() == "") {
+                                                        sap.m.MessageToast.show("Please fill Description field")
+                                                    } else if (sap.ui.getCore().byId("bname").getValue().trim() == "" || isNaN(sap.ui.getCore().byId("bname").getValue()) == true) {
+                                                        sap.m.MessageToast.show("Please fill Unit Price only number")
+                                                    } else if (sap.ui.getCore().byId("vname").getValue().trim() == "" || isNaN(sap.ui.getCore().byId("vname").getValue()) == true) {
+                                                        sap.m.MessageToast.show("Please fill VAT% only number")
+                                                    }
+                                                    else if (sap.ui.getCore().byId("vnamee").getValue().trim() == "" || isNaN(sap.ui.getCore().byId("vnamee").getValue()) == true) {
+                                                        sap.m.MessageToast.show("Please fill VAT only number")
+                                                    }
+                                                    else {
+
+                                                    }
+
+                                                }
+                                            })
+
+                                        ]
+                                    })
+                                ]
+                            }),
+                        ]
+                    }),
+                ]
+            });
+            editpaneldialog.addContent(panelarea);
+            editpaneldialog.setCustomHeader(bar);
+            editpaneldialog.open(_this);
+
+        },
         getgeneralsettings: function (oEvent) {
             generalsettings.gsettingreq({ MN: "GETGSETTİNGS", SN: "GeneralSettings" }).then(function (res) {
                 res.forEach(element => {
@@ -633,7 +788,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                     _this.byId("panel0").setVisible(true)
                 }
                 if (startdate < nowdate && startdate < enddate) {
-
+                    _this.getCompany();
                     _this.gettopics();
                     _this.checkfirslogin();
                     _this.getcountry();

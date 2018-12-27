@@ -15,6 +15,7 @@ class Payments extends database
                     $this->result[] = array("status" => "Okey", "pwid" => 
                     $gsettings[$i]['pwid'], 
                     "pwtxt" => $gsettings[$i]['pwtxt'],
+                        "plink"=>$gsettings[$i]['plink']
                 );
                 }
             }
@@ -42,6 +43,7 @@ class Payments extends database
             for ($i = 0; $i < count($data); $i++) {
                 $sdata = array(
                     "pwtxt"=>$data[$i]['pwtxt'],
+                    "plink"=>$data[$i]['plink']
                 );
                 if(null !==$this->beginTransaction()){
                     $this->beginTransaction();
@@ -65,6 +67,7 @@ class Payments extends database
             for ($index = 0; $index < count($data); $index++) {
                 $sdata = array(
                     "pwtxt"=>$data[$index]['pwtxt'],
+                    "plink"=>$data[$index]['plink']
                 );
                 $upP = $this->update("paymentway", $sdata, $where, array($param));
             }

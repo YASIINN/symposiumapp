@@ -1524,13 +1524,17 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
             var editpaneldialog = new sap.m.Dialog(
                 {
                     contentWidth: "30%",
-                    contentHeight: "20%",
+                    contentHeight: "40%",
                     stretchOnPhone: true,
                     showCloseButton: true,
                     beforeClose: function () {
                         if (sap.ui.getCore().byId("aname")) {
                             sap.ui.getCore().byId("aname").destroy();
                         }
+                        if (sap.ui.getCore().byId("bname")) {
+                            sap.ui.getCore().byId("bname").destroy();
+                        }
+
                     }
                 }).addStyleClass("dialogHasFooter sapUiNoMargin  sapUiSizeCompact sapUiResponsiveContentPadding")
             var bar = new sap.m.Bar({});
@@ -1598,6 +1602,32 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                                 justifyContent: sap.m.FlexJustifyContent.Stretch,
                                 items: [
                                     new sap.m.Label({
+                                        text: "Payment Gate",
+                                        width: "130px"
+                                    }),
+                                    new sap.m.Label({
+                                        text: ":",
+                                        width: "10px"
+                                    }),
+                                    new sap.m.VBox({
+                                        width: "100%",
+                                        alignItems: sap.m.FlexAlignItems.Stretch,
+                                        justifyContent: sap.m.FlexJustifyContent.Stretch,
+                                        items: [
+                                            new sap.m.Input("bname", {
+                                                width: "100%",
+                                                value: data.plink == undefined ? data : data.plink
+                                            })
+                                        ]
+                                    })
+                                ]
+                            }),
+                            new sap.m.HBox({
+                                width: "100%",
+                                alignItems: sap.m.FlexAlignItems.Stretch,
+                                justifyContent: sap.m.FlexJustifyContent.Stretch,
+                                items: [
+                                    new sap.m.Label({
                                         text: "Result",
                                         width: "130px"
                                     }),
@@ -1621,7 +1651,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
 
                                                         if (result) {
                                                             pwdata = [{
-                                                                pwtxt: sap.ui.getCore().byId("aname").getValue().toUpperCase()
+                                                                pwtxt: sap.ui.getCore().byId("aname").getValue().toUpperCase(),
+                                                                plink:sap.ui.getCore().byId("bname").getValue()
+
                                                             }]
                                                             PluginService.getPlugin({ SN: "Payments", MN: "SET", data: pwdata, where: "pwid=?", param: pwid }).then(function (res) {
                                                                 if (res == "SuccedUpdate") {
@@ -1637,7 +1669,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                                                             })
                                                         } else {
                                                             pwdata = [{
-                                                                pwtxt: sap.ui.getCore().byId("aname").getValue().toUpperCase()
+                                                                pwtxt: sap.ui.getCore().byId("aname").getValue().toUpperCase(),
+                                                                plink:sap.ui.getCore().byId("bname").getValue()
                                                             }]
                                                             PluginService.getPlugin({ SN: "Payments", MN: "ADD", data: pwdata }).then(function (res) {
                                                                 if (res == "SuccesAdd") {

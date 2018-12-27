@@ -286,11 +286,7 @@
                                                 <headerToolbar>
                                                     <Toolbar>
                                                         <content>
-                                                            <Label text="Way of Payment :" width="15%"/>
-                                                            <Select forceSelection="false" id="paymentselect" change="golink" selectedKey="{/customer/0/payment}" width="100%" items="{
-											path: '/payments'}">
-                                                                <core:Item key="{pwid}" text="{pwtxt}"/>
-                                                            </Select>
+
                                                             <ToolbarSpacer />
                                                         </content>
                                                     </Toolbar>
@@ -387,6 +383,16 @@
                                             <Label text=":" width="10px" />
                                             <VBox width="100%">
                                                 <Input width="100%" value="{/customer/0/tradeno}" id="vno"/>
+                                            </VBox>
+                                        </HBox>
+                                        <HBox class="sapUiTinyMarginTop" alignItems="Center" justifyContent="Stretch" width="100%">
+                                            <Label text="Way of Payment :" width="130px" />
+                                            <Label text=":" width="10px" />
+                                            <VBox width="100%">
+                                            <Select forceSelection="false" id="paymentselect" change="golink" selectedKey="{/customer/0/payment}" width="100%" items="{
+											path: '/payments'}">
+                                                <core:Item key="{pwid}" text="{pwtxt}"/>
+                                            </Select>
                                             </VBox>
                                         </HBox>
                                         <HBox alignItems="Stretch" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
