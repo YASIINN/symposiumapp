@@ -229,7 +229,7 @@ if ($SN == "File") {
     }else if($MN=="DEL"){
         $result=$file->$MN($_POST['where'],$_POST['param'],$_POST['fname']);
     }else if($MN=="SET"){
-        $result = $file->$MN($_FILES, $_POST['usid'], $_POST['fileext'], $_POST['size'], $_POST['type'],$_POST['bcext'],$_POST['delfile'],$_POST['where'],$_POST['param']);
+        $result = $file->$MN($_FILES, $_POST['usid'], $_POST['fileext'], $_POST['size'], $_POST['type'],$_POST['bcext'],$_POST['delfile'],$_POST['where'],$_POST['param'],$_POST['abstype']);
         // $files, $usid, $fileext, $size, $type,$bcext,$delfile,$where,$param
     }
     echo json_encode($result);

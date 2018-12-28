@@ -16,6 +16,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
         },
         getalltopic: function () {
             PluginService.getPlugin({ SN: "Topics", MN: "GETTOPİC" }).then(function (res) {
+                res.forEach(function (x) {
+                    x.tptxt=x.tptxt.toUpperCase()
+                })
                 oModel.setProperty("/edittopics", res)
                 CreateComponent.hideBusyIndicator()
             })
@@ -44,6 +47,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
         },
         getmailhead:function(){
             PluginService.getPlugin({ SN: "MailHeaderSet", MN: "GET" }).then(function (res) {
+                res.forEach(function (x) {
+                    x.mhstxt=x.mhstxt.toUpperCase()
+                })
                 oModel.setProperty("/mhead", res)
                 CreateComponent.hideBusyIndicator()
             })
@@ -56,7 +62,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
             this._iEvent++;
             if (bValid) oDP.setValueState(sap.ui.core.ValueState.None);
             else oDP.setValueState(sap.ui.core.ValueState.Error);
-
         },
         setdateenb: function () {
             var _this = this
@@ -108,16 +113,11 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                         CreateComponent.hideBusyIndicator();
                     }
                 })
-
             }
         },
         setidvis: function (oEvent) {
             var _this = this
             _this.byId("setidvis").setVisible(!_this.byId("setidvis").getVisible());
-        },
-        editpasvisible: function (oEvent) {
-            var _this = this
-
         },
         getmail: function () {
             CreateComponent.showBusyIndicator();
@@ -420,7 +420,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                               sap.m.MessageToast.show("unexpected error please try again later");
                     }
             })
-
         },
         editpfimage:function(){
           var _this=this
@@ -464,19 +463,15 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                     beforeClose: function () {
                         if (sap.ui.getCore().byId("cname")) {
                             sap.ui.getCore().byId("cname").destroy();
-
                         }
                         if (sap.ui.getCore().byId("cadres")) {
                             sap.ui.getCore().byId("cadres").destroy();
-
                         }
                         if (sap.ui.getCore().byId("idic")) {
                             sap.ui.getCore().byId("idic").destroy();
-
                         }
                         if (sap.ui.getCore().byId("vatreg")) {
                             sap.ui.getCore().byId("vatreg").destroy();
-
                         }
                         if (sap.ui.getCore().byId("bname")) {
                             sap.ui.getCore().byId("bname").destroy()
@@ -601,7 +596,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                                                 width: "100%",
                                                 value: data.cpidic == undefined ? data : data.cpidic
                                             })
-
                                         ]
                                     })
                                 ]
@@ -650,7 +644,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                                                 width: "100%",
                                                 value: data.cpbankname == undefined ? data : data.cpbankname
                                             })
-
                                         ]
                                     })
                                 ]
@@ -675,7 +668,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                                                 width: "100%",
                                                 value: data.cpbankadres == undefined ? data : data.cpbankadres
                                             })
-
                                         ]
                                     })
                                 ]
@@ -700,7 +692,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                                                 width: "100%",
                                                 value: data.cpbankaccount == undefined ? data : data.cpbankaccount
                                             })
-
                                         ]
                                     })
                                 ]
@@ -725,7 +716,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                                                 width: "100%",
                                                 value: data.cpiban == undefined ? data : data.cpiban
                                             })
-
                                         ]
                                     })
                                 ]
@@ -750,12 +740,10 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                                                 width: "100%",
                                                 value: data.cpbicswift == undefined ? data : data.cpbicswift
                                             })
-
                                         ]
                                     })
                                 ]
                             }),
-
                             new sap.m.HBox({
                                 width: "100%",
                                 alignItems: sap.m.FlexAlignItems.Stretch,
@@ -788,7 +776,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                                                     }
                                                   else  if (sap.ui.getCore().byId("vatreg").getValue().trim()=="") {
                                                         sap.m.MessageToast.show("Please fill in the VAT/REG field")
-
                                                     }
                                                  else   if (sap.ui.getCore().byId("bname").getValue().trim()=="") {
                                                         sap.m.MessageToast.show("Please fill in the bank name field")
@@ -830,13 +817,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                                                                 sap.m.MessageToast.show("unexpected error please try again later");
                                                             }
                                                         })
-
-
                                                     }
-
                                                 }
                                             })
-
                                         ]
                                     })
                                 ]
@@ -849,10 +832,20 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
             editpaneldialog.setCustomHeader(bar);
             editpaneldialog.open(_this);
             }
-
         },
         getCompany:function(){
                   company.companyreq({SN:"Company",MN:"GET"}).then(function (res) {
+                      res.forEach(function (x) {
+                          x.cpadress=x.cpadress.toUpperCase()
+                          x.cpbankaccount=x.cpbankaccount.toUpperCase()
+                          x.cpbankadres=x.cpbankadres.toUpperCase()
+                          x.cpbankname=x.cpbankname.toUpperCase()
+                          x.cpbicswift=x.cpbicswift.toUpperCase()
+                          x.cpiban=x.cpiban.toUpperCase()
+                          x.cpname=x.cpname.toUpperCase()
+                          x.cpidic=x.cpidic.toUpperCase()
+                          x.cpvatreg=x.cpvatreg.toUpperCase()
+                      })
                         CreateComponent.hideBusyIndicator()
                         oModel.setProperty("/company",res);
                  })
@@ -926,18 +919,25 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
         getheader: function () {
             if (oModel.oData.headerset == undefined) {
                 PluginService.getPlugin({ SN: "HeaderSettings", MN: "GET" }).then(function (res) {
+                    res.forEach(function (x) {
+                        x.hsimg=x.hsimg.toUpperCase()
+                    })
                     oModel.setProperty("/headerset", res)
                 })
             } else { return }
         },
         getpayments: function () {
             PluginService.getPlugin({ SN: "Payments", MN: "GET" }).then(function (res) {
+                res.forEach(function (x) {
+                    x.pwtxt=x.pwtxt.toUpperCase();
+                })
                 oModel.setProperty("/paymentset", res)
             })
         },
         getfee: function (oEvent) {
             PluginService.getPlugin({ SN: "FeeSettings", MN: "GET" }).then(function (res) {
                 res.forEach(function (x, i) {
+                    x.fstxt=x.fstxt.toUpperCase();
                     if (i == 0) {
                         x.enb = false
                         x.total = x.fsprice
@@ -1177,6 +1177,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
         },
         getcurrency: function () {
             PluginService.getPlugin({ SN: "Currency", MN: "GET" }).then(function (res) {
+                res.forEach(function (x) {
+                    x.fbtxt=x.fbtxt.toUpperCase()
+                })
                 oModel.setProperty("/currency", res)
             })
         },
@@ -1338,9 +1341,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                                             new sap.m.Input("vname", {
                                                 width: "100%",
                                                 value: data.vaty == undefined ? data : data.vaty
-
                                             })
-
                                         ]
                                     })
                                 ]
@@ -1409,7 +1410,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                                         justifyContent: sap.m.FlexJustifyContent.Center,
                                         items: [
                                             new sap.m.Button({
-                                                text: "Save s",
+                                                text: "Save",
                                                 press: function () {
                                                     debugger
                                                     if (sap.ui.getCore().byId("aname").getValue().trim() == "") {
@@ -1445,7 +1446,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                                                                     CreateComponent.hideBusyIndicator();
                                                                     sap.m.MessageToast.show("an unexpected error has occurred please try again later");
                                                                 }
-
                                                             })
                                                         } else {
                                                             setdata = [{
@@ -1466,16 +1466,11 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                                                                     CreateComponent.hideBusyIndicator();
                                                                     sap.m.MessageToast.show("an unexpected error has occurred please try again later");
                                                                 }
-
                                                             })
-
                                                         }
-
                                                     }
-
                                                 }
                                             })
-
                                         ]
                                     })
                                 ]
@@ -1665,7 +1660,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                                                                     CreateComponent.hideBusyIndicator();
                                                                     sap.m.MessageToast.show("an unexpected error has occurred please try again later");
                                                                 }
-
                                                             })
                                                         } else {
                                                             pwdata = [{
@@ -1682,9 +1676,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                                                                     CreateComponent.hideBusyIndicator();
                                                                     sap.m.MessageToast.show("an unexpected error has occurred please try again later");
                                                                 }
-
                                                             })
-
                                                         }
                                                     }
                                                 }
@@ -1717,6 +1709,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
         },
         getgeneralsettingsfolder: function (oEvent) {
             gsetfolder.gsetfolderreq({ MN: "GET", SN: "GeneralSetFolder" }).then(function (res) {
+                res.forEach(function (x) {
+                    x.gsfname=x.gsfname.toUpperCase();
+                })
                 oModel.setProperty("/gsetfolder", res);
                 CreateComponent.hideBusyIndicator()
             })
@@ -1728,7 +1723,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                     element.gsftxtfoldertemp = element.gsftxtfoldertemp
                 });
                 oModel.setProperty("/generalsettings", res);
-
                 CreateComponent.hideBusyIndicator()
             })
         },
@@ -1795,7 +1789,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
             if (oModel.getProperty(oEvent.oSource._getBindingContext().sPath).gsfname == "") {
                 sap.m.MessageToast.show("please enter the file name")
             } else {
-                debugger
                 CreateComponent.showBusyIndicator();
                 var id = oModel.getProperty(oEvent.oSource._getBindingContext().sPath).gsfid
                 filedata.push({
@@ -1818,6 +1811,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
         },
         getalltitles: function (oEvent) {
             PluginService.getPlugin({ SN: "Title", MN: "GETTİTLE" }).then(function (res) {
+                res.forEach(function (x) {
+                    x.titletxt=x.titletxt.toUpperCase()
+                })
                 oModel.setProperty("/titleset", res)
                 CreateComponent.hideBusyIndicator();
             })

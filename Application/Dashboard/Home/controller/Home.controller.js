@@ -1,4 +1,4 @@
-jQuery.sap.require("symposiumapp.Application.ManagementPanel.ManageAllSettings.companyservice.companyservice")
+jQuery.sap.require("symposiumapp.Application.ManagementPanel.ManageAllSettings.companyservice.companyservice");
 jQuery.sap.require("symposiumapp.Application.ManagementPanel.ManageAllSettings.GeneralSetFolderService.generalsetfolder");
 jQuery.sap.require("symposiumapp.Application.ManagementPanel.ManageAllSettings.GeneralsettingsService.generalsettings");
 jQuery.sap.require("symposiumapp.ApiRequest.ApiRequset");
@@ -16,7 +16,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
             oModel.refresh()
             var e = this;
             _this.setauthormodel();
-        _this.setcustomermodel();
+            _this.setcustomermodel();
             e.getView().setModel(oModel),
                 sap.ui.core.UIComponent.getRouterFor(this).getRoute("Dashboard/Home").attachPatternMatched(e.onBeforeShow, e)
             this.getView().byId('fileuploadftext').oBrowse.mProperties.text = "Browse"
@@ -24,6 +24,17 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
         },
         getCompany:function(){
             company.companyreq({SN:"Company",MN:"GET"}).then(function (res) {
+                res.forEach(function (x) {
+                    x.cpadress=x.cpadress.toUpperCase()
+                    x.cpbankaccount=x.cpbankaccount.toUpperCase()
+                    x.cpbankadres=x.cpbankadres.toUpperCase()
+                    x.cpbankname=x.cpbankname.toUpperCase()
+                    x.cpbicswift=x.cpbicswift.toUpperCase()
+                    x.cpiban=x.cpiban.toUpperCase()
+                    x.cpname=x.cpname.toUpperCase()
+                    x.cpidic=x.cpidic.toUpperCase()
+                    x.cpvatreg=x.cpvatreg.toUpperCase()
+                })
                 CreateComponent.hideBusyIndicator()
                 oModel.setProperty("/company",res);
             })
@@ -76,15 +87,11 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
             form_data.append('fileext', oModel.oData.fdata["name"].split(".")[1]);
             form_data.append('type', oModel.oData.fdata["type"]);
             form_data.append("bcext", oModel.oData.fdata.name.slice(oModel.oData.fdata.name.lastIndexOf(".")));
-
             if(_this.byId("absid").getSelectedKey()=="1"){
                 form_data.append("abstype","ftxt");
-
             }else{
                 form_data.append("abstype","abs");
             }
-            debugger
-            debugger
             folderservice.folderreq(form_data).then(function (res) {
                 if (res.status == "SuccesAdd") {
                     _this.addbroadcast(res.fid, _this.byId("absid").getSelectedKey());
@@ -184,7 +191,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
             }
         },
         getBroad:function(){
-            debugger
             var _this=this
           broadcastService.broadcastreq({MN:"GET",where:"u.usid",SN:"Broadcast",param:[oModel.oData.UserModel[0].usid]}).then(function (res) {
               if(res=="None"){
@@ -193,7 +199,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
               }else{
                   _this.onsetinfo("quota",res[res.length-1].btid);
               }
-
           })
         },
         onsetinfo: function (qouta,refno) {
@@ -325,10 +330,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                         if (res == "SuccedUpdate") {
                             _this.byId("panel0").setVisible(false)
                             _this.byId("panel1").setVisible(true)
-                            /*
-                            _this.byId("panel2").setVisible(true)
-                            _this.byId("panel3").setVisible(true)
-                            _this.byId("footerinfo").setVisible(true)*/
                             sap.m.MessageToast.show("Thank you created your information")
                             CreateComponent.hideBusyIndicator()
                         }
@@ -342,6 +343,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
         },
         getPosition: function () {
             PluginService.getPlugin({ SN: "Title", MN: "GETTİTLE" }).then(function (res) {
+                res.forEach(function (x) {
+                    x.titletxt=x.titletxt.toUpperCase()
+                })
                 oModel.setProperty("/title", res)
             })
         },
@@ -358,12 +362,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                 this.byId("panel2").setVisible(false)
                 this.byId("panel3").setVisible(false)
                 this.byId("footerinfo").setVisible(false)
-            }
-        },
-        onRemoveAuthors: function (oEvent) {
-            if (oEvent.getParameters("type").type == "removed") {
-                oModel.oData.authorsuser.splice(oEvent.getParameters("type").removedTokens[0]._getBindingContext().sPath.split("/")[2], 1)
-                oModel.setProperty("/authorsuser", oModel.oData.authorsuser);
             }
         },
         abstractvalidate: function () {
@@ -450,7 +448,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
             })
             totalc =  totalc.toFixed(2)
             totalvat=totalvat.toFixed(2)
-
             oModel.setProperty("/totals", totalc)
             oModel.setProperty("/totalvat", totalvat)
             const total=parseFloat(oModel.oData.totals)
@@ -460,7 +457,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
             oModel.setProperty("/subtotal",result);
         },
         exportpdf: function () {
-
             var _this = this
             if (_this.byId("paymentselect").getSelectedKey() == "") {
                 sap.m.MessageToast.show("Invalid form of payment");
@@ -487,12 +483,16 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
         },
         getpayments: function () {
             PluginService.getPlugin({ SN: "Payments", MN: "GET" }).then(function (res) {
+                res.forEach(function (x) {
+                    x.pwtxt=x.pwtxt.toUpperCase()
+                })
                 oModel.setProperty("/payments", res)
             })
         },
         getfee: function (oEvent) {
             PluginService.getPlugin({ SN: "FeeSettings", MN: "GET" }).then(function (res) {
                 res.forEach(function (x, i) {
+                    x.fstxt=x.fstxt.toUpperCase()
                     if (i == 0) {
                         x.enb = false
                         x.vat = (x.fsprice * x.vaty) / 100;
@@ -504,8 +504,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                         x.enb = true;
                     }
                 })
-
-
                 oModel.setProperty("/fees", res)
                 oModel.setProperty("/totalvat",oModel.oData.fees[0].vat )
                 oModel.setProperty("/totals", oModel.oData.fees[0].total)
@@ -518,11 +516,17 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
         },
         BroadcastType: function () {
             PluginService.getPlugin({ SN: "BroadcastType", MN: "GETTYPE" }).then(function (res) {
+                res.forEach(function (x) {
+                    x.abstxt=x.abstxt.toUpperCase()
+                })
                 oModel.setProperty("/btype", res)
             })
         },
         gettopics: function () {
             PluginService.getPlugin({ SN: "Topics", MN: "GETTOPİC" }).then(function (res) {
+                res.forEach(function (x) {
+                   x.tptxt=x.tptxt.toUpperCase()
+                })
                 oModel.setProperty("/topics", res)
             })
         },
@@ -539,21 +543,18 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                     stretchOnPhone: true,
                     showCloseButton: true,
                     beforeClose: function () {
+                        _this.byId("paymentselect").setSelectedKey("");
                         if (sap.ui.getCore().byId("bname")) {
                             sap.ui.getCore().byId("bname").destroy();
-
                         }
                         if (sap.ui.getCore().byId("postitle")) {
                             sap.ui.getCore().byId("postitle").destroy();
-
                         }
                         if (sap.ui.getCore().byId("vnamee")) {
                             sap.ui.getCore().byId("vnamee").destroy();
-
                         }
                         if (sap.ui.getCore().byId("vname")) {
                             sap.ui.getCore().byId("vname").destroy();
-
                         }
                         if (sap.ui.getCore().byId("aname")) {
                             sap.ui.getCore().byId("aname").destroy()
@@ -720,21 +721,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                                             new sap.m.Button({
                                                 text: "PROCEDD TO PAYMENT GATE",
                                                 press: function () {
-                                                    debugger
-                                                    if (sap.ui.getCore().byId("aname").getValue().trim() == "") {
-                                                        sap.m.MessageToast.show("Please fill Description field")
-                                                    } else if (sap.ui.getCore().byId("bname").getValue().trim() == "" || isNaN(sap.ui.getCore().byId("bname").getValue()) == true) {
-                                                        sap.m.MessageToast.show("Please fill Unit Price only number")
-                                                    } else if (sap.ui.getCore().byId("vname").getValue().trim() == "" || isNaN(sap.ui.getCore().byId("vname").getValue()) == true) {
-                                                        sap.m.MessageToast.show("Please fill VAT% only number")
-                                                    }
-                                                    else if (sap.ui.getCore().byId("vnamee").getValue().trim() == "" || isNaN(sap.ui.getCore().byId("vnamee").getValue()) == true) {
-                                                        sap.m.MessageToast.show("Please fill VAT only number")
-                                                    }
-                                                    else {
-
-                                                    }
-
+                                                if(data[0].plink!="")
+                                                    window.open(data[0].plink,"_href");
                                                 }
                                             })
 
@@ -749,7 +737,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
             editpaneldialog.addContent(panelarea);
             editpaneldialog.setCustomHeader(bar);
             editpaneldialog.open(_this);
-
         },
         getgeneralsettings: function (oEvent) {
             generalsettings.gsettingreq({ MN: "GETGSETTİNGS", SN: "GeneralSettings" }).then(function (res) {
@@ -758,22 +745,26 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                     element.gsftxtfoldertemp = element.gsftxtfoldertemp
                 });
                 oModel.setProperty("/generalsettings", res);
-
                 CreateComponent.hideBusyIndicator()
             })
         },
         getgeneralsettingsfolder: function (data) {
             gsetfolder.gsetfolderreq({ MN: "GETWHERE", SN: "GeneralSetFolder", where: "gsfabstype=?", param: data }).then(function (res) {
+              res.forEach(element=>{
+                  element.gsfname=element.gsfname.toUpperCase()
+              })
                 oModel.setProperty("/gtfolder", res);
             })
         },
         getmailhead:function(){
             PluginService.getPlugin({ SN: "MailHeaderSet", MN: "GET" }).then(function (res) {
+                res.forEach(element=>{
+                    element.mhstxt=element.mhstxt.toUpperCase()
+                })
                 oModel.setProperty("/mhead", res)
                 CreateComponent.hideBusyIndicator()
             })
         },
-
         onBeforeShow: function () {
             var _this = this
             UseronLogin.onLogin().then(function (e) {

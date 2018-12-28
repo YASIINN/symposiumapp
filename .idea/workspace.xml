@@ -3,18 +3,24 @@
   <component name="ChangeListManager">
     <list default="true" id="bdccf3a5-b1f0-4b18-8dc3-20948e34b2a2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AllService/Payments/payments.php" beforeDir="false" afterPath="$PROJECT_DIR$/AllService/Payments/payments.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AllService/Phone/phone.php" beforeDir="false" afterPath="$PROJECT_DIR$/AllService/Phone/phone.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AllService/Session/session.php" beforeDir="false" afterPath="$PROJECT_DIR$/AllService/Session/session.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Abstract_Template.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AllService/Broadcast/broadcast.php" beforeDir="false" afterPath="$PROJECT_DIR$/AllService/Broadcast/broadcast.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AllService/File/file.php" beforeDir="false" afterPath="$PROJECT_DIR$/AllService/File/file.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AllService/ServiceReq.php" beforeDir="false" afterPath="$PROJECT_DIR$/AllService/ServiceReq.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Dashboard/Home/controller/Home.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dashboard/Home/controller/Home.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Dashboard/Home/view/Home.view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dashboard/Home/view/Home.view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Dashboard/Home/view/Untitled-1.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Dashboard/MyArticles/controller/MyArticles.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dashboard/MyArticles/controller/MyArticles.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Dashboard/MyArticles/view/MyArticles.view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dashboard/MyArticles/view/MyArticles.view.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/controller/ManageAllSettings.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/controller/ManageAllSettings.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/view/ManageAllSettings.view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/view/ManageAllSettings.view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/img/banner.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/img/lgnusr.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Component/CreateComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/Component/CreateComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Headings.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Topics List.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allword/117_abs_0dc5c5ee3450b7bbd330.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allword/117_abs_30628bffbbce57ece31e.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allword/117_abs_a4bef8cdbac8cea225e8.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allword/117_abs_a8004fc0d72fa6a3d62e.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allword/117_ftxt_4525befa9fd2e274f60c.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allword/118_ftxt_5ae3112375346c21dc6d.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allword/118_ftxt_b2913540268a4041f8f5.docx" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,62 +33,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AllService/ServiceReq.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="247">
+              <caret line="231" column="187" selection-start-line="231" selection-start-column="187" selection-end-line="231" selection-end-column="187" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/Dashboard/Home/controller/Home.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="569" column="66" selection-start-line="569" selection-start-column="66" selection-end-line="569" selection-end-column="66" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/view/ManageAllSettings.view.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="303" column="143" selection-start-line="303" selection-start-column="132" selection-end-line="303" selection-end-column="143" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/controller/ManageAllSettings.controller.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="443">
-              <caret line="1672" column="98" selection-start-line="1672" selection-start-column="98" selection-end-line="1672" selection-end-column="98" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Application/Dashboard/Proforma/controller/Proforma.controller.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-column="110" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Application/Dashboard/MyArticles/controller/MyArticles.controller.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="495" selection-start-line="495" selection-end-line="495" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AllService/Payments/payments.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
-              <caret line="66" column="41" lean-forward="true" selection-start-line="66" selection-start-column="41" selection-end-line="66" selection-end-column="41" />
+            <state relative-caret-position="368">
+              <caret line="89" column="7" selection-start-line="89" selection-start-column="7" selection-end-line="93" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -90,26 +51,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/Dashboard/Home/view/Home.view.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="391" column="92" selection-start-line="391" selection-start-column="79" selection-end-line="391" selection-end-column="92" />
+            <state relative-caret-position="181">
+              <caret line="335" column="135" selection-start-line="335" selection-start-column="124" selection-end-line="335" selection-end-column="135" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Application/Dashboard/MyArticles/controller/MyArticles.controller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="650" column="78" selection-start-line="650" selection-start-column="78" selection-end-line="650" selection-end-column="78" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Application/Register/view/register.view.xml">
+        <entry file="file://$PROJECT_DIR$/AllService/File/file.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="57" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="57" />
+            <state relative-caret-position="374">
+              <caret line="67" column="8" selection-start-line="67" selection-start-column="8" selection-end-line="67" selection-end-column="8" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Component.js">
+        <entry file="file://$PROJECT_DIR$/Application/Dashboard/MyArticles/view/MyArticles.view.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1564">
-              <caret line="92" column="29" selection-start-line="92" selection-start-column="21" selection-end-line="92" selection-end-column="29" />
+            <state relative-caret-position="133">
+              <caret line="62" column="92" selection-start-line="62" selection-start-column="63" selection-end-line="62" selection-end-column="92" />
             </state>
           </provider>
         </entry>
@@ -125,36 +95,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>lidk</find>
-      <find>changeke</find>
-      <find>changefilef</find>
-      <find>saveimages</find>
-      <find>res=&quot;</find>
-      <find>users</find>
-      <find>fileup</find>
-      <find>your</find>
-      <find>image</find>
-      <find>invoice</find>
-      <find>bu fon</find>
-      <find>fonk</find>
-      <find>2019</find>
-      <find>/</find>
-      <find>addma</find>
-      <find>register</find>
-      <find>edit</find>
-      <find>way</find>
-      <find>golin</find>
-      <find>/*</find>
-      <find>kapat</find>
-      <find>currencys</find>
-      <find>stepin</find>
-      <find>wa</find>
-      <find>changecount</find>
-      <find>payment</find>
-      <find>editpayment</find>
+      <find>onBeforeShow</find>
+      <find>oSelect</find>
+      <find>subject</find>
+      <find>selectedKey</find>
+      <find>abstr</find>
+      <find>getalltopic</find>
+      <find>getalltitles</find>
+      <find>folder</find>
+      <find>files</find>
+      <find>getgeneralsettingsfolder</find>
+      <find>getfee</find>
+      <find>getpayments</find>
+      <find>currency</find>
+      <find>getheader</find>
+      <find>mhead</find>
+      <find>getcompan</find>
+      <find>PluginService</find>
+      <find>topics</find>
+      <find>onRemoveAuthors</find>
+      <find>title</find>
+      <find>showauthors</find>
+      <find>getupdateauthors</find>
+      <find>delauthor</find>
+      <find>step</find>
+      <find>stepi</find>
+      <find>word file</find>
+      <find>fna</find>
+      <find>addfile</find>
       <find>dialog</find>
-      <find>goli</find>
-      <find>edit or add payment</find>
+      <find>nfile</find>
     </findStrings>
     <replaceStrings>
       <replace>include(&quot;</replace>
@@ -175,25 +145,26 @@
         <option value="$PROJECT_DIR$/MailService/mail.php" />
         <option value="$PROJECT_DIR$/MasterApp.view.xml" />
         <option value="$PROJECT_DIR$/Application/Dashboard/Proforma/controller/Proforma.controller.js" />
-        <option value="$PROJECT_DIR$/AllService/File/file.php" />
         <option value="$PROJECT_DIR$/resources/css/global.css" />
         <option value="$PROJECT_DIR$/Application/Login/view/Login.view.xml" />
         <option value="$PROJECT_DIR$/AllService/HeaderSettings/headersettings.php" />
-        <option value="$PROJECT_DIR$/AllService/Broadcast/broadcast.php" />
         <option value="$PROJECT_DIR$/MasterApp.controller.js" />
         <option value="$PROJECT_DIR$/AllService/ProformaImg/proformaimg.php" />
-        <option value="$PROJECT_DIR$/AllService/ServiceReq.php" />
         <option value="$PROJECT_DIR$/Application/Dashboard/Proforma/view/Proforma.view.xml" />
         <option value="$PROJECT_DIR$/Application/Register/controller/register.controller.js" />
-        <option value="$PROJECT_DIR$/Application/Dashboard/MyArticles/view/MyArticles.view.xml" />
         <option value="$PROJECT_DIR$/AllService/Phone/phone.php" />
         <option value="$PROJECT_DIR$/AllService/Session/session.php" />
         <option value="$PROJECT_DIR$/AllService/Payments/payments.php" />
-        <option value="$PROJECT_DIR$/Application/Dashboard/MyArticles/controller/MyArticles.controller.js" />
         <option value="$PROJECT_DIR$/Application/Dashboard/Home/view/Home.view.xml" />
         <option value="$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/view/ManageAllSettings.view.xml" />
+        <option value="$PROJECT_DIR$/AllService/Broadcast/broadcast.php" />
+        <option value="$PROJECT_DIR$/Component/CreateComponent.js" />
         <option value="$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/controller/ManageAllSettings.controller.js" />
         <option value="$PROJECT_DIR$/Application/Dashboard/Home/controller/Home.controller.js" />
+        <option value="$PROJECT_DIR$/Application/Dashboard/MyArticles/view/MyArticles.view.xml" />
+        <option value="$PROJECT_DIR$/AllService/File/file.php" />
+        <option value="$PROJECT_DIR$/AllService/ServiceReq.php" />
+        <option value="$PROJECT_DIR$/Application/Dashboard/MyArticles/controller/MyArticles.controller.js" />
       </list>
     </option>
   </component>
@@ -220,6 +191,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -236,7 +208,7 @@
               <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
               <item name="symposiumapp" type="462c0819:PsiDirectoryNode" />
               <item name="AllService" type="462c0819:PsiDirectoryNode" />
-              <item name="Payments" type="462c0819:PsiDirectoryNode" />
+              <item name="File" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
@@ -292,15 +264,8 @@
               <item name="symposiumapp" type="462c0819:PsiDirectoryNode" />
               <item name="Application" type="462c0819:PsiDirectoryNode" />
               <item name="Dashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="Proforma" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="symposiumapp" type="462c0819:PsiDirectoryNode" />
-              <item name="Application" type="462c0819:PsiDirectoryNode" />
-              <item name="Dashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="Proforma" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="MyArticles" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
@@ -363,6 +328,16 @@
               <item name="Application" type="462c0819:PsiDirectoryNode" />
               <item name="Register" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="symposiumapp" type="462c0819:PsiDirectoryNode" />
+              <item name="Component" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="symposiumapp" type="462c0819:PsiDirectoryNode" />
+              <item name="dbclas" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
@@ -373,7 +348,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -430,22 +404,23 @@
       <workItem from="1545733350394" duration="2444000" />
       <workItem from="1545894020149" duration="9265000" />
       <workItem from="1545934863333" duration="4895000" />
+      <workItem from="1545991007402" duration="10768000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59714000" />
+    <option name="totallyTimeSpent" value="70482000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27231467" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27609682" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32850242" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.23349437" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.33655393" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -461,13 +436,13 @@
       <window_info anchor="right" id="Database" order="4" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25718608" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27609682" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32850242" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.23349437" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.23349437" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -518,6 +493,56 @@
           <url>file://$PROJECT_DIR$/AllService/ServiceReq.php</url>
           <line>174</line>
           <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/AllService/File/file.php</url>
+          <line>63</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/AllService/File/file.php</url>
+          <line>64</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/AllService/File/file.php</url>
+          <line>65</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/AllService/File/file.php</url>
+          <line>66</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/AllService/File/file.php</url>
+          <line>68</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/AllService/File/file.php</url>
+          <line>70</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/AllService/File/file.php</url>
+          <line>69</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/AllService/File/file.php</url>
+          <line>79</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/AllService/File/file.php</url>
+          <line>80</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/AllService/File/file.php</url>
+          <line>81</line>
+          <option name="timeStamp" value="31" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -588,13 +613,6 @@
     <entry file="file://$PROJECT_DIR$/Application/Dashboard/DashboardRouter.controller.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/AllService/File/file.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="20" column="31" lean-forward="true" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/ManagementPanel/ManagementPanelRouter.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -613,13 +631,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AllService/Broadcast/broadcast.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="102" column="34" selection-start-line="102" selection-start-column="21" selection-end-line="102" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -668,13 +679,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Dashboard/MyArticles/view/MyArticles.view.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="16" column="98" selection-start-line="16" selection-start-column="91" selection-end-line="16" selection-end-column="98" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MasterApp.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -701,20 +705,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Register/view/register.view.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="57" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Component.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1564">
-          <caret line="92" column="29" selection-start-line="92" selection-start-column="21" selection-end-line="92" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AllService/Register/register.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -736,31 +726,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AllService/ServiceReq.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AllService/Payments/payments.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
+        <state relative-caret-position="1122">
           <caret line="66" column="41" lean-forward="true" selection-start-line="66" selection-start-column="41" selection-end-line="66" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Dashboard/MyArticles/controller/MyArticles.controller.js">
+    <entry file="file://$PROJECT_DIR$/Application/Register/view/register.view.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="495" selection-start-line="495" selection-end-line="495" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Dashboard/Home/view/Home.view.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="391" column="92" selection-start-line="391" selection-start-column="79" selection-end-line="391" selection-end-column="92" />
+        <state relative-caret-position="187">
+          <caret line="11" column="57" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="57" />
         </state>
       </provider>
     </entry>
@@ -778,17 +754,76 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Component.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="559">
+          <caret line="92" column="29" selection-start-line="92" selection-start-column="21" selection-end-line="92" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AllService/Broadcast/broadcast.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1428">
+          <caret line="84" column="50" selection-start-line="84" selection-start-column="50" selection-end-line="84" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Component/CreateComponent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="67" column="5" lean-forward="true" selection-start-line="67" selection-start-column="5" selection-end-line="67" selection-end-column="5" />
+          <folding>
+            <element signature="e#1085#2568#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/controller/ManageAllSettings.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="1672" column="98" selection-start-line="1672" selection-start-column="98" selection-end-line="1672" selection-end-column="98" />
+        <state relative-caret-position="68">
+          <caret line="22" column="12" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Dashboard/Home/view/Home.view.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="335" column="135" selection-start-line="335" selection-start-column="124" selection-end-line="335" selection-end-column="135" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/Dashboard/Home/controller/Home.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="569" column="66" selection-start-line="569" selection-start-column="66" selection-end-line="569" selection-end-column="66" />
+        <state relative-caret-position="368">
+          <caret line="89" column="7" selection-start-line="89" selection-start-column="7" selection-end-line="93" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AllService/File/file.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="67" column="8" selection-start-line="67" selection-start-column="8" selection-end-line="67" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AllService/ServiceReq.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="231" column="187" selection-start-line="231" selection-start-column="187" selection-end-line="231" selection-end-column="187" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Dashboard/MyArticles/view/MyArticles.view.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="62" column="92" selection-start-line="62" selection-start-column="63" selection-end-line="62" selection-end-column="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Dashboard/MyArticles/controller/MyArticles.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="650" column="78" selection-start-line="650" selection-start-column="78" selection-end-line="650" selection-end-column="78" />
         </state>
       </provider>
     </entry>

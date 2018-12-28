@@ -13,8 +13,8 @@
                     <Toolbar>
                         <content>
                             <Title text="My Articles" level="H2" class="sapUiLargeMarginEnd"/>
-                            <Button icon="sap-icon://form" text="Edit Article" press="articleset"/>
-                            <Button icon="sap-icon://copy" text="Edit Article File" press="fileset"/>
+                            <Button icon="sap-icon://form" text="Edit Article" visible="{/myvisible}" id="sart" press="articleset"/>
+                            <Button icon="sap-icon://copy" text="Edit Article File" visible="{/myvisible}" id="fset" press="fileset"/>
                             <ToolbarSpacer />
                         </content>
                     </Toolbar>
@@ -60,7 +60,7 @@
                             <HBox>
                                 <core:Icon src="sap-icon://doc-attachment" class="size1 sapUiTinyMarginEnd" color="#031E48">
                                 </core:Icon>
-                                <Link text="{bcfname}" href="/symposiumapp{bcfpath}{bcext}"  wrapping="true" class="sapUiTinyMarginEnd" />
+                                <Link text="{nfilename}" href="/symposiumapp{bcfpath}{bcext}"  wrapping="true" class="sapUiTinyMarginEnd" />
                             </HBox>
                             <HBox>
                                 <Button type="Transparent" id="delbrod" icon="sap-icon://delete" tooltip="Click here to delete this article" press="delbroadcast"/>
@@ -82,7 +82,7 @@
                         </VBox>
                     </HBox>
                     <HBox alignItems="End" justifyContent="End">
-                        <Button id="delautid" type="Transparent" icon="sap-icon://delete" tooltip="remove this author" press="removeauthor"/>
+                        <Button id="delautid" visible="{/myvisible}" type="Transparent" icon="sap-icon://delete" tooltip="remove this author" press="removeauthor"/>
                     </HBox>
                 </CustomListItem>
             </List>

@@ -82,7 +82,8 @@ class Broadcast extends database
                  'bcfpath'=>$getbrrows[$i]['bcfpath'],
                  "bcext"=>$getbrrows[$i]['bcext'],
                  'pid'=>$getbrrows[$i]['pid'],
-                 'pnmbr'=>$getbrrows[$i]['pnmbr']
+                 'pnmbr'=>$getbrrows[$i]['pnmbr'],
+                    "brdcastupdate"=>$getbrrows[$i]['brdcastupdate']
                 );
 
                 }

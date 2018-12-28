@@ -61,10 +61,11 @@ class File extends database
         }
         return $this->result;
     }
-    public function SET($files, $usid, $fileext, $size, $type,$bcext,$delfile,$where,$param){
+    public function SET($files, $usid, $fileext, $size, $type,$bcext,$delfile,$where,$param,$abstype){
         if ($files) {
         $tempPath = $_FILES['file']['tmp_name'];
         $filename = bin2hex(openssl_random_pseudo_bytes(10));
+        $filename =$usid."_".$abstype."_". $filename;
         $filename = $filename . "_" . $usid;
         move_uploaded_file($tempPath, "../allword/$filename.$fileext");
         $fpath = "/allword/" . $filename;

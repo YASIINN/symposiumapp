@@ -65,5 +65,5 @@ CreateComponent = {
             }
         })
         return dizi;
-    },
+    }
 }

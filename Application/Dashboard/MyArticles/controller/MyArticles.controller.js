@@ -8,7 +8,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox'], function (e, M
     return e.extend("symposiumapp.Application.Dashboard.MyArticles.controller.MyArticles", {
         onInit: function () {
             var e = this;
-            e.getView().setModel(oModel),
+            e.getView().setModel(oModel)
+            oModel.setProperty("/myvisible",true);
                 sap.ui.core.UIComponent.getRouterFor(this).getRoute("Dashboard/MyArticles").attachPatternMatched(e.onBeforeShow, e)
         },
         getMyArticles: function () {
@@ -20,6 +21,10 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox'], function (e, M
                     oModel.setProperty("/myarticles", []);
                     CreateComponent.hideBusyIndicator()
                 } else {
+                    debugger
+                    res.forEach(function (x) {
+                        x.nfilename="Word File"
+                    })
                     oModel.setProperty("/myarticles", res);
                     CreateComponent.hideBusyIndicator()
                 }
@@ -110,7 +115,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox'], function (e, M
                 } else if (res == "None") {
                     CreateComponent.hideBusyIndicator()
                     _this.delbroadcastsystem(data);
-
                 } else {
                     CreateComponent.hideBusyIndicator()
                 }
@@ -157,7 +161,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox'], function (e, M
                 if (res == "SuccedUpdate") {
                     sap.m.MessageToast.show("deletion took place successfully");
                     _this.getMyArticles();
-
                 } else {
                     CreateComponent.hideBusyIndicator()
                     sap.m.MessageToast.show("an unexpected error has occurred please try again later");
@@ -166,11 +169,17 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox'], function (e, M
         },
         gettopics: function () {
             PluginService.getPlugin({ SN: "Topics", MN: "GETTOPİC" }).then(function (res) {
+                res.forEach(function (x) {
+                    x.tptxt=x.tptxt.toUpperCase()
+                })
                 oModel.setProperty("/topics", res)
             })
         },
         BroadcastType: function () {
             PluginService.getPlugin({ SN: "BroadcastType", MN: "GETTYPE" }).then(function (res) {
+                res.forEach(element=>{
+                    element.abstxt=element.abstxt.toUpperCase()
+                })
                 oModel.setProperty("/btype", res)
             })
         },
@@ -180,10 +189,10 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox'], function (e, M
             if (otable.getSelectedItems().length != "1") {
                 sap.m.MessageToast.show("Selected record not found please select a record");
             } else {
-                _this.gettopics();
                 _this.BroadcastType();
                 var sdata = oModel.getProperty(otable.getSelectedContextPaths()[0])
-                var date=sdata.brdcastupdate
+                debugger
+                var date=sdata.brdcastupdate||new Date().toLocaleDateString();
                 var userup = sdata.absid;
                 var editpaneldialog = new sap.m.Dialog(
                     {
@@ -194,19 +203,15 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox'], function (e, M
                         beforeClose: function () {
                             if (sap.ui.getCore().byId("subjectall")) {
                                 sap.ui.getCore().byId("subjectall").destroy();
-
                             }
                             if (sap.ui.getCore().byId("postitle")) {
                                 sap.ui.getCore().byId("postitle").destroy();
-
                             }
                             if (sap.ui.getCore().byId("countryall")) {
                                 sap.ui.getCore().byId("countryall").destroy();
-
                             }
                             if (sap.ui.getCore().byId("postitle")) {
                                 sap.ui.getCore().byId("postitle").destroy();
-
                             }
                             if (sap.ui.getCore().byId("aname")) {
                                 sap.ui.getCore().byId("aname").destroy()
@@ -395,9 +400,16 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox'], function (e, M
                                                     press: function () {
                                                         if (sap.ui.getCore().byId("aname").getValue().trim() == "") {
                                                             sap.m.MessageToast.show("Please fill article name field")
-                                                        } else {
+                                                        }else if(sap.ui.getCore().byId("subjectall").getSelectedKey()==""){
+                                                            sap.m.MessageToast.show("Please fill Subject field")
+                                                        } else if(sap.ui.getCore().byId("countryall").getSelectedKey()==""){
+                                                            sap.m.MessageToast.show("Please fill Article Type field")
+                                                        }else if(sap.ui.getCore().byId("postitle").getSelectedKey()==""){
+                                                            sap.m.MessageToast.show("Please fill Presentation Type field")
+                                                        }
+                                                        else {
                                                             var updatedata = [{
-                                                                brdcastname: sap.ui.getCore().byId("aname").getValue(),
+                                                                brdcastname: sap.ui.getCore().byId("aname").getValue().toUpperCase(),
                                                                 brdsubject: sap.ui.getCore().byId("subjectall").getSelectedKey(),
                                                                 brdcasttype: sap.ui.getCore().byId("countryall").getSelectedKey(),
                                                                 abtype: sap.ui.getCore().byId("postitle").getSelectedKey(),
@@ -427,7 +439,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox'], function (e, M
                                                                             oModel.oData.UserModel[0].ftextquota = (parseInt(oModel.oData.UserModel[0].ftextquota) + 1).toString()
                                                                             oModel.oData.UserModel[0].absquota = (parseInt(oModel.oData.UserModel[0].absquota) - 1).toString()
                                                                             oModel.refresh();
-                                                                            
                                                                             UserService.userReq({ MN: "SET", SN: "User", where: "usid=?", userdata: oModel.oData.UserModel, param: oModel.oData.UserModel[0].usid }).then(function (res) {
                                                                                 if (res == "SuccedUpdate") {
                                                                                     sap.m.MessageToast.show("the update process took place successfully")
@@ -460,21 +471,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox'], function (e, M
                 editpaneldialog.open(_this);
             }
         },
-        getupdateauthors: function (param) {
-            /*
-            var id = param.btid
-            broadcastService.broadcastreq({
-                MN: "GET", SN: "Broadcast", "where": "u.mainaut=? AND b.btid=?", param: ["0", id]
-            }).then(function (res) {
-                if (res == "None") {
-                    oModel.setProperty("/updateauth", []);
-                    CreateComponent.hideBusyIndicator()
-                } else {
-                    oModel.setProperty("/updateauth", res);
-                    CreateComponent.hideBusyIndicator()
-                }
-            })*/
-        },
         getcountry: function () {
             if (localStorage.getItem("country") == null) {
                 ApiReq.GET().then(function (res) {
@@ -489,10 +485,11 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox'], function (e, M
         },
         getPosition: function () {
             PluginService.getPlugin({ SN: "Title", MN: "GETTİTLE" }).then(function (res) {
+                res.forEach(element=>{
+                    element.titletxt=element.titletxt.toUpperCase()
+                })
                 oModel.setProperty("/title", res)
             })
-        },
-        authorset: function (oEvent) {
         },
         fileset: function (oEvent) {
             var _this = this
@@ -501,6 +498,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox'], function (e, M
                 sap.m.MessageToast.show("Selected record not found please select a record");
             } else {
                 var sdata = oModel.getProperty(otable.getSelectedContextPaths()[0])
+                debugger
                 var editfiledialog = new sap.m.Dialog(
                     {
                         contentWidth: "38%",
@@ -568,7 +566,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox'], function (e, M
                                             items: [
                                                 new sap.m.Link({
                                                     text: sdata.bcfname,
-                                                    href: "/symposiumapp" + sdata.bcfpath,
+                                                    href: "/symposiumapp" + sdata.bcfpath+sdata.bcext,
                                                     target: sdata.fileid
                                                 })
                                             ]
@@ -599,12 +597,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox'], function (e, M
                                                                 oModel.setProperty("/nfdata", oEvent.getParameter("files")[0]);
                                                             },
                                                             fileType: "docx,doc"
-
                                                         }),
-
                                                     ]
                                                 })
-
                                             ]
                                         })
                                     ]
@@ -644,16 +639,21 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox'], function (e, M
                                                             form_data.append('fileext', oModel.oData.nfdata["name"].split(".")[1]);
                                                             form_data.append('type', oModel.oData.nfdata["type"]);
                                                             form_data.append("bcext", oModel.oData.nfdata.name.slice(oModel.oData.nfdata.name.lastIndexOf(".")));
-                                                            form_data.append("delfile", sdata.bcfname + sdata.bcext);
+                                                            form_data.append("delfile", sdata.bcfname);
                                                             form_data.append("where", "bcfid=?");
                                                             form_data.append("param", sdata.bcfid);
+                                                            if(sdata.abtype=="1"){
+                                                                form_data.append("abstype","ftxt");
+                                                            }else{
+                                                                form_data.append("abstype","abs");
+                                                            }
                                                             folderservice.folderreq(form_data).then(function (res) {
-                                                                if (res == "SuccedUpdate") {
+                                                                if (res.status == "SuccedUpdate") {
                                                                     sap.m.MessageToast.show("your update has been successful");
                                                                     CreateComponent.hideBusyIndicator();
                                                                     editfiledialog.close();
-
                                                                 } else {
+                                                                    debugger
                                                                     sap.m.MessageToast.show("an unexpected error please try again later");
                                                                     CreateComponent.hideBusyIndicator()
                                                                     editfiledialog.close();
@@ -698,9 +698,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox'], function (e, M
                 }
             })
         },
-        showauthors: function (oEvent) {
-            var _this = this
-        },
         onBeforeShow: function () {
             var _this = this
             oModel.setProperty("/dvisible",true);
@@ -712,16 +709,13 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox'], function (e, M
                 var enddate = new Date(moment(oModel.oData.generalsettings[0].gsenddt, "DD.MM.YYYY"))
                 var nowdate = new Date();
                 if (startdate < nowdate && startdate < enddate) {
+                    _this.gettopics();
                     _this.getMyArticles();
-                    _this.byId("delautid").setVisible(true);
-                    _this.byId("articleset").setVisible(true);
-                    _this.byId("fileset").setVisible(true);
+                    oModel.setProperty("myvisible",false);
                 }
                 else {
                     _this.getMyArticles();
-                    _this.byId("articleset").setVisible(false);
-                    _this.byId("fileset").setVisible(false);
-                    _this.byId("delautid").setVisible(false);
+                    oModel.setProperty("myvisible",false);
                 }
             })
         }
