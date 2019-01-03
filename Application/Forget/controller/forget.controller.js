@@ -27,7 +27,15 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel', 'sap
                         msgg += "<br>";
                         msgg += res[0].ulgnname;
                         msgg += "</body></html>";
-                        MailService.AddMail({ systemcheck: [], "maildata": [{ "mail": _this.byId("emailinp").getValue(), "messega": msgg, subject: "Forget Password" }] }).then(function (res) {
+                        PluginService.getPlugin({MN:"sendmail",
+                            SN:"MailService",
+                            hostname:oModel.oData.generalmail[0].gshostname,
+                            mailname:oModel.oData.generalmail[0].gsmname,
+                            mpassword:oModel.oData.generalmail[0].gsmpass,
+                            subjectm:"Forget Password",
+                            messagem:msgg,
+                            maildata:_this.byId("emailinp").getValue()
+                        }).then(function (res) {
                             if (res == "None") {
                                 CreateComponent.hideBusyIndicator();
                                 sap.m.MessageToast.show("sorry there was a mistake when sending mail");
@@ -38,6 +46,17 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel', 'sap
                                 window.open("#/Login" + "", "_self");
                             }
                         })
+                   /*     MailService.AddMail({ systemcheck: [], "maildata": [{ "mail": _this.byId("emailinp").getValue(), "messega": msgg, subject: "Forget Password" }] }).then(function (res) {
+                            if (res == "None") {
+                                CreateComponent.hideBusyIndicator();
+                                sap.m.MessageToast.show("sorry there was a mistake when sending mail");
+                            } else {
+                                CreateComponent.hideBusyIndicator();
+                                sap.m.MessageToast.show("your password has been sent to your email address, please check your email address");
+                                _this.byId("emailinp").setValue()
+                                window.open("#/Login" + "", "_self");
+                            }
+                        })*/
                     } else {
                         CreateComponent.hideBusyIndicator();
                         sap.m.MessageToast.show("User not found")

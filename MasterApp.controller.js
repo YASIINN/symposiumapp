@@ -10,6 +10,22 @@ sap.ui.define(['sap/ui/core/mvc/Controller', "sap/ui/model/resource/ResourceMode
             PluginService.getPlugin({MN:"GET",SN:"ProformaImg"}).then(function (res) {
                 oModel.setProperty("/pimages",res);
             })
+            PluginService.getPlugin({MN:"GET",SN:"Generalsetmail"}).then(function (res) {
+                if (res != "None") {
+                    oModel.setProperty("/generalmail", res);
+                    CreateComponent.hideBusyIndicator();
+                } else {
+                    CreateComponent.hideBusyIndicator();
+                }
+            })
+            PluginService.getPlugin({MN:"GET",SN:"ArticleMail"}).then(function (res) {
+                if (res != "None") {
+                    oModel.setProperty("/artmail", res);
+                    CreateComponent.hideBusyIndicator();
+                } else {
+                    CreateComponent.hideBusyIndicator();
+                }
+            })
             generalsettings.gsettingreq({ MN: "GETGSETTİNGS", SN: "GeneralSettings" }).then(function (res) {
                 res.forEach(element => {
                     element.gsabsfoldertemp = element.gsabsfoldertemp

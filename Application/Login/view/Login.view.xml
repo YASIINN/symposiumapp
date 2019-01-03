@@ -58,7 +58,7 @@
                                                             <Button text="Login" press="onPress" type="Emphasized"/>
                                                         </VBox>
                                                         <VBox>
-                                                            <Link text="Forgot your password ?" press="goforget" />
+                                                            <Link text="Forget your password ?" press="goforget" />
                                                         </VBox>
                                                         <VBox width="100%" alignItems="End" justifyContent="Stretch" class="sapUiTinyMarginTop">
                                                             <Label text="İf you have not yet registered,please create a new account"/>

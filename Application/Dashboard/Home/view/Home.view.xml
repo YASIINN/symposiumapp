@@ -26,7 +26,7 @@
                             </content>
                         </Panel>
 
-                        <Panel width="auto" id="panel0" class="sapUiResponsiveMargin pnlcls" accessibleRole="Region">
+                        <Panel width="auto" id="panel0" visible="false" class="sapUiResponsiveMargin pnlcls" accessibleRole="Region">
                             <headerToolbar>
                                 <Toolbar height="3rem">
                                     <Title text="please fill in the following fields"/>
@@ -80,7 +80,7 @@
                         <Panel width="auto" class="sapUiResponsiveMargin pnlcls" id="panel1" accessibleRole="Region">
                             <headerToolbar>
                                 <Toolbar height="3rem">
-                                    <Title text="SELECT ARTİCLE TYPE"/>
+                                    <Title text="SELECT ARTICLE TYPE"/>
                                 </Toolbar>
                             </headerToolbar>
                             <content>
@@ -102,7 +102,7 @@
                                 </VBox>
                             </content>
                         </Panel>
-                        <Panel width="auto" id="panel2" class="sapUiResponsiveMargin pnlcls" accessibleRole="Region">
+                        <Panel width="auto" id="panel2" visible="false" class="sapUiResponsiveMargin pnlcls" accessibleRole="Region">
                             <headerToolbar>
                                 <Toolbar height="3rem">
                                     <Title text="ABSTRACT SUBMISSION(S)"/>
@@ -118,7 +118,6 @@
                                 <VBox width="100%" alignItems="Stretch" justifyContent="Start">
                                     <VBox alignItems="Stretch" justifyContent="Start" width="100%">
                                         <HBox alignItems="Center" justifyContent="Stretch" width="100%">
-                                            <Label text="Abstract" width="130px" />
                                         </HBox>
                                         <HBox class="sapUiTinyMarginTop" alignItems="Center" justifyContent="Stretch" width="100%">
                                             <Label text="Submission Title" width="130px" />
@@ -183,7 +182,7 @@
                                 </VBox>
                             </content>
                         </Panel>
-                        <Panel width="auto" id="panel3" class="sapUiResponsiveMargin pnlcls" accessibleRole="Region">
+                        <Panel width="auto" id="panel3" visible="false" class="sapUiResponsiveMargin pnlcls" accessibleRole="Region">
                             <headerToolbar>
                                 <Toolbar height="3rem">
                                     <Title text="FULLTEXT SUBMISSION(S)"/>
@@ -199,7 +198,6 @@
                                 <VBox width="100%" alignItems="Stretch" justifyContent="Start">
                                     <VBox alignItems="Stretch" justifyContent="Start" width="100%">
                                         <HBox alignItems="Center" justifyContent="Stretch" width="100%">
-                                            <Label text="Fulltext - 1" width="130px" />
                                         </HBox>
                                         <HBox class="sapUiTinyMarginTop" alignItems="Center" justifyContent="Stretch" width="100%">
                                             <Label text="Submission Title" width="130px" />
@@ -265,7 +263,7 @@
                             </content>
                         </Panel>
                         <HBox>
-                            <Label id="footerinfo" text="Please consider that you can submit 1 fulltext for free.Each additional fulltext will be charged to be +190 Euro."/>
+                            <Label id="footerinfo" visible="false" text="Please consider that you can submit 1 fulltext for free.Each additional fulltext will be charged to be +190 Euro."/>
                         </HBox>
                     </IconTabFilter>
                     <IconTabSeparator icon=""/>

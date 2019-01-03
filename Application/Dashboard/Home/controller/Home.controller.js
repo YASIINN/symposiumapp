@@ -304,15 +304,31 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (e) {
                         _this.byId("topicid").setSelectedKey("");
                         _this.byId("fileUploader").setValue(' ');
                         oModel.setProperty("/authorsuser", []);
+                        PluginService.getPlugin({MN:"sendmail",
+                            SN:"MailService",
+                            hostname:oModel.oData.artmail[0].asmhost,
+                            mailname:oModel.oData.artmail[0].asmname,
+                            mpassword:oModel.oData.artmail[0].asmpass,
+                            subjectm:subj,
+                            messagem:msgg,
+                            maildata:oModel.oData.UserModel[0].ulgnname
+                        }).then(function (res) {
+                            if (res == "None") {
+                                CreateComponent.hideBusyIndicator();
+                                sap.m.MessageToast.show("sorry there was a mistake when sending mail");
 
-                        MailService.AddMail({ systemcheck: [], "maildata": [{ "mail": oModel.oData.UserModel[0].ulgnname, "messega": msgg, subject: subj }] }).then(function (res) {
+                            } else {
+                                CreateComponent.hideBusyIndicator();
+                            }
+                        })
+                      /*  MailService.AddMail({ systemcheck: [], "maildata": [{ "mail": oModel.oData.UserModel[0].ulgnname, "messega": msgg, subject: subj }] }).then(function (res) {
                             if (res == "None") {
                                 CreateComponent.hideBusyIndicator();
                                 sap.m.MessageToast.show("sorry there was a mistake when sending mail");
                             } else {
                                 CreateComponent.hideBusyIndicator();
                             }
-                        })
+                        })*/
                         CreateComponent.hideBusyIndicator()
                     } else {
                         CreateComponent.hideBusyIndicator()

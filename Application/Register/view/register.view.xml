@@ -18,10 +18,17 @@
                         <VBox width="50%" alignItems="Stretch" justifyContent="Center">
                             <VBox alignItems="Stretch" justifyContent="Start" width="100%">
                                 <HBox alignItems="Center" justifyContent="Stretch" width="100%">
-                                    <Label text="Name SURNAME" width="130px" />
+                                    <Label text="Name" width="130px" />
                                     <Label text=":" width="10px" />
                                     <VBox width="100%">
-                                        <Input placeholder="Please write the corresponding author's Name SURNAME here" width="100%" value="{/RegisterModel/ufname}"/>
+                                        <Input placeholder="Please write the corresponding author's Name  here" width="100%" value="{/RegisterModel/ufname}"/>
+                                    </VBox>
+                                </HBox>
+                                <HBox alignItems="Center" justifyContent="Stretch" width="100%">
+                                    <Label text="Surname" width="130px" />
+                                    <Label text=":" width="10px" />
+                                    <VBox width="100%">
+                                        <Input placeholder="Please write the corresponding author's  SURNAME here" width="100%" value="{/RegisterModel/ulname}"/>
                                     </VBox>
                                 </HBox>
                                 <HBox alignItems="Center" justifyContent="Stretch" width="100%" class="sapUiTinyMarginTop">
@@ -75,7 +82,7 @@
                                         <Text text="{/Captcha}" class="sapUiTinyMarginTop" press="getAllRegister"/>
                                         <Button press="RefreshCaptcha" icon="sap-icon://refresh" tooltip="Refresh Captcha" class="sapUiSmallMarginEnd sapUiSmallMarginBegin" width="20px" height="20px" type="Transparent"/>
                                         <Input class="sapUiTinyMarginBegin" id="cpt" value="" maxLength="5" width="40%"/>
-                                        <Button text="SUBMİT" press="submitRegister" class="sapUiLargeMarginBegin" type="Emphasized"/>
+                                        <Button text="SUBMIT" press="submitRegister" class="sapUiLargeMarginBegin" type="Emphasized"/>
                                     </HBox>
 
                                 </VBox>

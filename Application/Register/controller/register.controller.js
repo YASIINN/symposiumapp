@@ -1,3 +1,4 @@
+jQuery.sap.require("symposiumapp.Servicejs.PluginsService");
 jQuery.sap.require("symposiumapp.Application.Register.RegisterServicejs.RegisterService");
 jQuery.sap.require("symposiumapp.Servicejs.MailService");
 sap.ui.define(['sap/m/MessageBox', 'sap/ui/core/mvc/Controller'], function (MessageBox, Controller) {
@@ -29,6 +30,7 @@ sap.ui.define(['sap/m/MessageBox', 'sap/ui/core/mvc/Controller'], function (Mess
             var _this = this
             var RegisterData = {
                 ufname: "",
+                ulname:"",
                 uniorinst: "",
                 email: "",
                 cemail: "",
@@ -56,12 +58,10 @@ sap.ui.define(['sap/m/MessageBox', 'sap/ui/core/mvc/Controller'], function (Mess
             var result = false
             if (oModel.oData.RegisterModel.ufname.trim() == "") {
                 sap.m.MessageToast.show("please fill in the first and last name fields");
-            } else if (oModel.oData.RegisterModel.ufname.split(" ")[0].length < 3) {
+            } else if (oModel.oData.RegisterModel.ufname.trim()=="") {
                 sap.m.MessageToast.show("your name cannot be less than 3 characters");
-            } else if (oModel.oData.RegisterModel.ufname.split(" ")[1] == undefined) {
-                sap.m.MessageToast.show("please enter a name after your name and enter your last name");
-            } else if (oModel.oData.RegisterModel.ufname.split(" ")[1].length < 3) {
-                sap.m.MessageToast.show("your last name cannot be less than 3 characters");
+            } else if(oModel.oData.RegisterModel.ulname.trim()==""){
+                sap.m.MessageToast.show("your surname cannot be less than 3 characters");
             }
             else if (oModel.oData.RegisterModel.uniorinst.trim() == "") {
                 sap.m.MessageToast.show("Please fill the field of university or institute");
@@ -117,10 +117,10 @@ sap.ui.define(['sap/m/MessageBox', 'sap/ui/core/mvc/Controller'], function (Mess
             RegisterService.RegisterReq({
                 MN: "ADD", SN: "Register", registerdata: [
                     {
-                        rtname: oModel.oData.RegisterModel.ufname.split(" ")[0].toUpperCase(),
-                        rtlname: oModel.oData.RegisterModel.ufname.split(" ")[1].toUpperCase(),
+                        rtname: oModel.oData.RegisterModel.ufname.toUpperCase(),
+                        rtlname: oModel.oData.RegisterModel.ulname.toUpperCase(),
                         rtemail: oModel.oData.RegisterModel.cemail,
-                        rtuniinst: oModel.oData.RegisterModel.uniorinst.registermodel,
+                        rtuniinst: oModel.oData.RegisterModel.uniorinst ,
                         rtpass: oModel.oData.RegisterModel.cpass,
                         rtlcode: lcode,
                         rauth: "2",
@@ -148,9 +148,16 @@ sap.ui.define(['sap/m/MessageBox', 'sap/ui/core/mvc/Controller'], function (Mess
                             msgg+="<hr>";
                             msgg+="<br>";
                             msgg+="<b>In compliance with data protection regulations,please contact the editoral office.if you would like to have your personal information removed from the database.</b>";
-
                             msgg+="</body></html>";
-                            MailService.AddMail({ systemcheck: [], "maildata": [{ "mail": res[0].rtemail, "messega": msgg, subject: "Activation Verification" }] }).then(function (res) {
+                            PluginService.getPlugin({MN:"sendmail",
+                                SN:"MailService",
+                                hostname:oModel.oData.generalmail[0].gshostname,
+                                mailname:oModel.oData.generalmail[0].gsmname,
+                                mpassword:oModel.oData.generalmail[0].gsmpass,
+                                subjectm:"Activation Verification",
+                                messagem:msgg,
+                                maildata: res[0].rtemail
+                            }).then(function (res) {
                                 if (res == "None") {
                                     CreateComponent.hideBusyIndicator();
                                     sap.m.MessageToast.show("sorry there was a mistake when sending mail");

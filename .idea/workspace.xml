@@ -2,25 +2,354 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bdccf3a5-b1f0-4b18-8dc3-20948e34b2a2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/AllService/MailService/sendmail.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Abstract_Template.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AllService/Broadcast/broadcast.php" beforeDir="false" afterPath="$PROJECT_DIR$/AllService/Broadcast/broadcast.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AllService/File/file.php" beforeDir="false" afterPath="$PROJECT_DIR$/AllService/File/file.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AllService/Generalsetmail/generalsetmail.php" beforeDir="false" afterPath="$PROJECT_DIR$/AllService/Generalsetmail/generalsetmail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AllService/Payments/payments.php" beforeDir="false" afterPath="$PROJECT_DIR$/AllService/Payments/payments.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AllService/ServiceReq.php" beforeDir="false" afterPath="$PROJECT_DIR$/AllService/ServiceReq.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Dashboard/Home/controller/Home.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dashboard/Home/controller/Home.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Dashboard/Home/view/Home.view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dashboard/Home/view/Home.view.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Dashboard/MyArticles/controller/MyArticles.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dashboard/MyArticles/controller/MyArticles.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Dashboard/MyArticles/view/MyArticles.view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dashboard/MyArticles/view/MyArticles.view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Forget/controller/forget.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Forget/controller/forget.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Login/view/Login.view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Login/view/Login.view.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/controller/ManageAllSettings.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/controller/ManageAllSettings.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Component/CreateComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/Component/CreateComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Headings.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Topics List.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/allword/117_abs_0dc5c5ee3450b7bbd330.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/allword/117_abs_30628bffbbce57ece31e.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/allword/117_abs_a4bef8cdbac8cea225e8.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/allword/117_abs_a8004fc0d72fa6a3d62e.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/allword/117_ftxt_4525befa9fd2e274f60c.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/allword/118_ftxt_5ae3112375346c21dc6d.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/allword/118_ftxt_b2913540268a4041f8f5.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/view/ManageAllSettings.view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/view/ManageAllSettings.view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Register/controller/register.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Register/controller/register.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Register/view/register.view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Register/view/register.view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MailService/0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MailService/abc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MailService/mail.php" beforeDir="false" afterPath="$PROJECT_DIR$/MailService/mail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MailService/tesst.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MasterApp.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/MasterApp.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/OFL.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/.travis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/CONTRIBUTING.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/LICENSE.LGPL" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/VERSION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/autoload.inc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/composer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/Cpdf.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/75e439f5ad012ab3979380c21b1c1170.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/75e439f5ad012ab3979380c21b1c1170.ufm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/75e439f5ad012ab3979380c21b1c1170.ufm.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/Courier-Bold.afm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/Courier-BoldOblique.afm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/Courier-Oblique.afm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/Courier.afm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/DejaVuSans-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/DejaVuSans-Bold.ufm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/DejaVuSans-BoldOblique.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/DejaVuSans-BoldOblique.ufm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/DejaVuSans-Oblique.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/DejaVuSans-Oblique.ufm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/DejaVuSans.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/DejaVuSans.ufm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/DejaVuSansMono-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/DejaVuSansMono-Bold.ufm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/DejaVuSansMono-BoldOblique.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/DejaVuSansMono-BoldOblique.ufm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/DejaVuSansMono-Oblique.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/DejaVuSansMono-Oblique.ufm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/DejaVuSansMono.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/DejaVuSansMono.ufm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/DejaVuSerif-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/DejaVuSerif-Bold.ufm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/DejaVuSerif-BoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/DejaVuSerif-BoldItalic.ufm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/DejaVuSerif-Italic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/DejaVuSerif-Italic.ufm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/DejaVuSerif.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/DejaVuSerif.ufm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/Helvetica-Bold.afm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/Helvetica-Bold.afm.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/Helvetica-BoldOblique.afm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/Helvetica-Oblique.afm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/Helvetica.afm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/Helvetica.afm.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/Symbol.afm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/Times-Bold.afm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/Times-Bold.afm.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/Times-BoldItalic.afm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/Times-BoldItalic.afm.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/Times-Italic.afm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/Times-Roman.afm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/Times-Roman.afm.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/ZapfDingbats.afm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/dompdf_font_family_cache.dist.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/dompdf_font_family_cache.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/fonts/mustRead.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/html5lib/Data.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/html5lib/InputStream.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/html5lib/Parser.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/html5lib/Tokenizer.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/html5lib/TreeBuilder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/html5lib/named-character-references.ser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/.travis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/Doxyfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/composer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/composer.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/CSSList/AtRuleBlockList.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/CSSList/CSSBlockList.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/CSSList/CSSList.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/CSSList/Document.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/CSSList/KeyFrame.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Comment/Comment.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Comment/Commentable.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/OutputFormat.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Parser.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Parsing/OutputException.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Parsing/SourceException.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Parsing/UnexpectedTokenException.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Property/AtRule.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Property/CSSNamespace.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Property/Charset.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Property/Import.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Property/Selector.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Renderable.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Rule/Rule.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/RuleSet/AtRuleSet.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/RuleSet/DeclarationBlock.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/RuleSet/RuleSet.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Settings.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Value/CSSFunction.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Value/CSSString.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Value/Color.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Value/PrimitiveValue.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Value/RuleValueList.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Value/Size.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Value/URL.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Value/Value.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Value/ValueList.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/phpunit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/Sabberworm/CSS/CSSList/AtRuleBlockListTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/Sabberworm/CSS/CSSList/DocumentTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/Sabberworm/CSS/OutputFormatTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/Sabberworm/CSS/ParserTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/Sabberworm/CSS/RuleSet/DeclarationBlockTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/Sabberworm/CSS/RuleSet/LenientParsingTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/bootstrap.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/files/-charset-after-rule.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/files/-charset-in-block.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/files/-empty.css" beforeDir="false" afterPath="$PROJECT_DIR$/AllService/ArticleMail/articlemail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/files/-end-token-2.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/files/-end-token.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/files/-fault-tolerance.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/files/-tobedone.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/files/1readme.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/files/2readme.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/files/atrules.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/files/case-insensitivity.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/files/colortest.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/files/comments.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/files/create-shorthands.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/files/docuwiki.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/files/expand-shorthands.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/files/functions.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/files/ie-hacks.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/files/ie.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/files/important.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/files/inner-color.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/files/line-numbers.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/files/namespaces.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/files/nested.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/files/slashed.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/files/specificity.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/files/unicode.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/files/url.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/files/values.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/files/webkit.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/files/whitespace.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/phpunit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-css-parser/tests/quickdump.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/.htaccess" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/.travis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/bower.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/composer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/index.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/maps/adobe-standard-encoding.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/maps/cp1250.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/maps/cp1251.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/maps/cp1252.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/maps/cp1253.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/maps/cp1254.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/maps/cp1255.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/maps/cp1257.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/maps/cp1258.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/maps/cp874.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/maps/iso-8859-1.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/maps/iso-8859-11.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/maps/iso-8859-15.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/maps/iso-8859-16.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/maps/iso-8859-2.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/maps/iso-8859-4.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/maps/iso-8859-5.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/maps/iso-8859-7.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/maps/iso-8859-9.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/maps/koi8-r.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/maps/koi8-u.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/phpunit.xml.dist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/sample-fonts/IntelClear-Light.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/sample-fonts/NotoSansShavian-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/src/FontLib/AdobeFontMetrics.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/src/FontLib/Autoloader.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/src/FontLib/BinaryStream.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/src/FontLib/EOT/File.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/src/FontLib/EOT/Header.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/src/FontLib/EncodingMap.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/src/FontLib/Exception/FontNotFoundException.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/src/FontLib/Font.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/src/FontLib/Glyph/Outline.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/src/FontLib/Glyph/OutlineComponent.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/src/FontLib/Glyph/OutlineComposite.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/src/FontLib/Glyph/OutlineSimple.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/src/FontLib/Header.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/src/FontLib/OpenType/File.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/src/FontLib/OpenType/TableDirectoryEntry.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/src/FontLib/Table/DirectoryEntry.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/src/FontLib/Table/Table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/src/FontLib/Table/Type/cmap.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/src/FontLib/Table/Type/glyf.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/src/FontLib/Table/Type/head.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/src/FontLib/Table/Type/hhea.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/src/FontLib/Table/Type/hmtx.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/src/FontLib/Table/Type/kern.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/src/FontLib/Table/Type/loca.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/src/FontLib/Table/Type/maxp.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/src/FontLib/Table/Type/name.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/src/FontLib/Table/Type/nameRecord.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/src/FontLib/Table/Type/os2.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/src/FontLib/Table/Type/post.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/src/FontLib/TrueType/Collection.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/src/FontLib/TrueType/File.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/src/FontLib/TrueType/Header.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/src/FontLib/TrueType/TableDirectoryEntry.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/src/FontLib/WOFF/File.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/src/FontLib/WOFF/Header.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/src/FontLib/WOFF/TableDirectoryEntry.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-font-lib/tests/FontLib/FontTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-svg-lib/.travis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-svg-lib/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-svg-lib/composer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-svg-lib/phpunit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-svg-lib/src/Svg/DefaultStyle.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-svg-lib/src/Svg/Document.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-svg-lib/src/Svg/Gradient/Stop.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-svg-lib/src/Svg/Style.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-svg-lib/src/Svg/Surface/CPdf.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-svg-lib/src/Svg/Surface/SurfaceCpdf.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-svg-lib/src/Svg/Surface/SurfaceGmagick.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-svg-lib/src/Svg/Surface/SurfaceInterface.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-svg-lib/src/Svg/Surface/SurfacePDFLib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-svg-lib/src/Svg/Tag/AbstractTag.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-svg-lib/src/Svg/Tag/Anchor.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-svg-lib/src/Svg/Tag/Circle.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-svg-lib/src/Svg/Tag/ClipPath.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-svg-lib/src/Svg/Tag/Ellipse.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-svg-lib/src/Svg/Tag/Group.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-svg-lib/src/Svg/Tag/Image.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-svg-lib/src/Svg/Tag/Line.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-svg-lib/src/Svg/Tag/LinearGradient.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-svg-lib/src/Svg/Tag/Path.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-svg-lib/src/Svg/Tag/Polygon.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-svg-lib/src/Svg/Tag/Polyline.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-svg-lib/src/Svg/Tag/RadialGradient.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-svg-lib/src/Svg/Tag/Rect.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-svg-lib/src/Svg/Tag/Shape.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-svg-lib/src/Svg/Tag/Stop.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-svg-lib/src/Svg/Tag/StyleTag.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-svg-lib/src/Svg/Tag/Text.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-svg-lib/src/Svg/Tag/UseTag.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-svg-lib/src/autoload.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/php-svg-lib/tests/Svg/StyleTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/res/broken_image.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/lib/res/html.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/phpcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/phpunit.xml.dist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Adapter/CPDF.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Adapter/GD.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Adapter/PDFLib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Autoloader.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Canvas.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/CanvasFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Cellmap.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Css/AttributeTranslator.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Css/Color.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Css/Style.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Css/Stylesheet.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Dompdf.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Exception.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Exception/ImageException.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/FontMetrics.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Frame.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Frame/Factory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Frame/FrameList.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Frame/FrameListIterator.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Frame/FrameTree.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Frame/FrameTreeIterator.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Frame/FrameTreeList.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/FrameDecorator/AbstractFrameDecorator.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/FrameDecorator/Block.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/FrameDecorator/Image.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/FrameDecorator/Inline.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/FrameDecorator/ListBullet.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/FrameDecorator/ListBulletImage.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/FrameDecorator/NullFrameDecorator.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/FrameDecorator/Page.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/FrameDecorator/Table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/FrameDecorator/TableCell.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/FrameDecorator/TableRow.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/FrameDecorator/TableRowGroup.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/FrameDecorator/Text.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/FrameReflower/AbstractFrameReflower.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/FrameReflower/Block.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/FrameReflower/Image.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/FrameReflower/Inline.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/FrameReflower/ListBullet.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/FrameReflower/NullFrameReflower.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/FrameReflower/Page.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/FrameReflower/Table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/FrameReflower/TableCell.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/FrameReflower/TableRow.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/FrameReflower/TableRowGroup.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/FrameReflower/Text.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Helpers.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Image/Cache.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/JavascriptEmbedder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/LineBox.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Options.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/PhpEvaluator.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Positioner/Absolute.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Positioner/AbstractPositioner.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Positioner/Block.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Positioner/Fixed.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Positioner/Inline.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Positioner/ListBullet.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Positioner/NullPositioner.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Positioner/TableCell.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Positioner/TableRow.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Renderer.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Renderer/AbstractRenderer.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Renderer/Block.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Renderer/Image.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Renderer/Inline.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Renderer/ListBullet.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Renderer/TableCell.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Renderer/TableRowGroup.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/dompdf/src/Renderer/Text.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/fonts/VarelaRound-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/fonts/VarelaRound-Regular.ufm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/pp.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/qqqqqqqq.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/qwewqesdffdsf.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/tesst.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pdf/test.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allword/117_abs_83f43e3fef91ad7a399e_117.doc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dbclas/Untitled-2.txt" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,55 +360,91 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AllService/ServiceReq.php">
+        <entry file="file://$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/controller/ManageAllSettings.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="231" column="187" selection-start-line="231" selection-start-column="187" selection-end-line="231" selection-end-column="187" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Application/Dashboard/Home/controller/Home.controller.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="89" column="7" selection-start-line="89" selection-start-column="7" selection-end-line="93" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Application/Dashboard/Home/view/Home.view.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="335" column="135" selection-start-line="335" selection-start-column="124" selection-end-line="335" selection-end-column="135" />
+            <state relative-caret-position="266">
+              <caret line="294" column="52" selection-start-line="294" selection-start-column="52" selection-end-line="294" selection-end-column="52" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Application/Dashboard/MyArticles/controller/MyArticles.controller.js">
+        <entry file="file://$PROJECT_DIR$/Application/Dashboard/Home/controller/Home.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="650" column="78" selection-start-line="650" selection-start-column="78" selection-end-line="650" selection-end-column="78" />
+            <state relative-caret-position="266">
+              <caret line="321" selection-start-line="321" selection-end-line="321" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AllService/File/file.php">
+        <entry file="file://$PROJECT_DIR$/MasterApp.controller.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="374">
-              <caret line="67" column="8" selection-start-line="67" selection-start-column="8" selection-end-line="67" selection-end-column="8" />
+              <caret line="22" column="56" lean-forward="true" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="56" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Application/Dashboard/MyArticles/view/MyArticles.view.xml">
+        <entry file="file://$PROJECT_DIR$/AllService/ArticleMail/articlemail.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="62" column="92" selection-start-line="62" selection-start-column="63" selection-end-line="62" selection-end-column="92" />
+            <state relative-caret-position="153">
+              <caret line="9" column="60" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="60" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AllService/ServiceReq.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="287">
+              <caret line="224" column="30" selection-start-line="224" selection-start-column="30" selection-end-line="224" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AllService/Generalsetmail/generalsetmail.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="145">
+              <caret line="11" column="58" lean-forward="true" selection-start-line="11" selection-start-column="58" selection-end-line="11" selection-end-column="58" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Register/controller/register.controller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="334">
+              <caret line="122" column="72" selection-start-line="122" selection-start-column="72" selection-end-line="122" selection-end-column="72" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/view/ManageAllSettings.view.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="276">
+              <caret line="682" column="130" selection-start-line="682" selection-start-column="130" selection-end-line="682" selection-end-column="130" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Forget/controller/Forget.controller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="266">
+              <caret line="47" column="26" lean-forward="true" selection-start-line="29" selection-start-column="21" selection-end-line="47" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Register/view/register.view.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="181">
+              <caret line="84" column="59" selection-start-line="84" selection-start-column="59" selection-end-line="84" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -95,22 +460,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>onBeforeShow</find>
-      <find>oSelect</find>
-      <find>subject</find>
-      <find>selectedKey</find>
-      <find>abstr</find>
-      <find>getalltopic</find>
-      <find>getalltitles</find>
-      <find>folder</find>
-      <find>files</find>
-      <find>getgeneralsettingsfolder</find>
-      <find>getfee</find>
-      <find>getpayments</find>
-      <find>currency</find>
-      <find>getheader</find>
-      <find>mhead</find>
-      <find>getcompan</find>
       <find>PluginService</find>
       <find>topics</find>
       <find>onRemoveAuthors</find>
@@ -123,8 +472,24 @@
       <find>word file</find>
       <find>fna</find>
       <find>addfile</find>
-      <find>dialog</find>
       <find>nfile</find>
+      <find>article</find>
+      <find>abstrac</find>
+      <find>dialog</find>
+      <find>edit or</find>
+      <find>forgot</find>
+      <find>name S</find>
+      <find>addma</find>
+      <find>ADD</find>
+      <find>switch</find>
+      <find>changekey</find>
+      <find>savema</find>
+      <find>system ma</find>
+      <find>setidvis</find>
+      <find>asetidv</find>
+      <find>getarticlemail</find>
+      <find>addmail</find>
+      <find>MailSer</find>
     </findStrings>
     <replaceStrings>
       <replace>include(&quot;</replace>
@@ -146,25 +511,27 @@
         <option value="$PROJECT_DIR$/MasterApp.view.xml" />
         <option value="$PROJECT_DIR$/Application/Dashboard/Proforma/controller/Proforma.controller.js" />
         <option value="$PROJECT_DIR$/resources/css/global.css" />
-        <option value="$PROJECT_DIR$/Application/Login/view/Login.view.xml" />
         <option value="$PROJECT_DIR$/AllService/HeaderSettings/headersettings.php" />
-        <option value="$PROJECT_DIR$/MasterApp.controller.js" />
         <option value="$PROJECT_DIR$/AllService/ProformaImg/proformaimg.php" />
         <option value="$PROJECT_DIR$/Application/Dashboard/Proforma/view/Proforma.view.xml" />
-        <option value="$PROJECT_DIR$/Application/Register/controller/register.controller.js" />
         <option value="$PROJECT_DIR$/AllService/Phone/phone.php" />
         <option value="$PROJECT_DIR$/AllService/Session/session.php" />
         <option value="$PROJECT_DIR$/AllService/Payments/payments.php" />
-        <option value="$PROJECT_DIR$/Application/Dashboard/Home/view/Home.view.xml" />
-        <option value="$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/view/ManageAllSettings.view.xml" />
         <option value="$PROJECT_DIR$/AllService/Broadcast/broadcast.php" />
         <option value="$PROJECT_DIR$/Component/CreateComponent.js" />
-        <option value="$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/controller/ManageAllSettings.controller.js" />
-        <option value="$PROJECT_DIR$/Application/Dashboard/Home/controller/Home.controller.js" />
         <option value="$PROJECT_DIR$/Application/Dashboard/MyArticles/view/MyArticles.view.xml" />
         <option value="$PROJECT_DIR$/AllService/File/file.php" />
-        <option value="$PROJECT_DIR$/AllService/ServiceReq.php" />
+        <option value="$PROJECT_DIR$/Application/Dashboard/Home/view/Home.view.xml" />
         <option value="$PROJECT_DIR$/Application/Dashboard/MyArticles/controller/MyArticles.controller.js" />
+        <option value="$PROJECT_DIR$/Application/Login/view/Login.view.xml" />
+        <option value="$PROJECT_DIR$/Application/Register/view/register.view.xml" />
+        <option value="$PROJECT_DIR$/Application/Register/controller/register.controller.js" />
+        <option value="$PROJECT_DIR$/AllService/ServiceReq.php" />
+        <option value="$PROJECT_DIR$/AllService/ArticleMail/articlemail.php" />
+        <option value="$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/view/ManageAllSettings.view.xml" />
+        <option value="$PROJECT_DIR$/MasterApp.controller.js" />
+        <option value="$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/controller/ManageAllSettings.controller.js" />
+        <option value="$PROJECT_DIR$/Application/Dashboard/Home/controller/Home.controller.js" />
       </list>
     </option>
   </component>
@@ -191,7 +558,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -208,7 +574,7 @@
               <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
               <item name="symposiumapp" type="462c0819:PsiDirectoryNode" />
               <item name="AllService" type="462c0819:PsiDirectoryNode" />
-              <item name="File" type="462c0819:PsiDirectoryNode" />
+              <item name="Generalsetmail" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
@@ -271,6 +637,19 @@
               <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
               <item name="symposiumapp" type="462c0819:PsiDirectoryNode" />
               <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="Forget" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="symposiumapp" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="Forget" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="symposiumapp" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
               <item name="Login" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -279,6 +658,13 @@
               <item name="Application" type="462c0819:PsiDirectoryNode" />
               <item name="Login" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="symposiumapp" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="Login" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="symposiumapp" type="b2602c69:ProjectViewProjectNode" />
@@ -348,6 +734,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -405,16 +792,19 @@
       <workItem from="1545894020149" duration="9265000" />
       <workItem from="1545934863333" duration="4895000" />
       <workItem from="1545991007402" duration="10768000" />
+      <workItem from="1546072938433" duration="1527000" />
+      <workItem from="1546534361779" duration="3074000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70482000" />
+    <option name="totallyTimeSpent" value="75083000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27609682" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28517398" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -466,17 +856,17 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/AllService/ServiceReq.php</url>
-          <line>227</line>
+          <line>238</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/AllService/ServiceReq.php</url>
-          <line>226</line>
+          <line>237</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/AllService/ServiceReq.php</url>
-          <line>225</line>
+          <line>236</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
@@ -589,13 +979,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AllService/Generalsetmail/generalsetmail.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="27" column="56" selection-end-line="42" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Dashboard/DashboardRouterApp.view.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -617,13 +1000,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Login/view/Login.view.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="61" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="61" />
         </state>
       </provider>
     </entry>
@@ -679,13 +1055,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MasterApp.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/img/lgnusr.png" />
     <entry file="file://$PROJECT_DIR$/resources/img/banner.png" />
     <entry file="file://$PROJECT_DIR$/resources/css/global.css">
@@ -719,31 +1088,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Register/controller/register.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="14" column="93" selection-start-line="14" selection-start-column="93" selection-end-line="14" selection-end-column="93" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AllService/Payments/payments.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1122">
           <caret line="66" column="41" lean-forward="true" selection-start-line="66" selection-start-column="41" selection-end-line="66" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Register/view/register.view.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="57" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/view/ManageAllSettings.view.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="303" column="143" selection-start-line="303" selection-start-column="132" selection-end-line="303" selection-end-column="143" />
         </state>
       </provider>
     </entry>
@@ -778,24 +1126,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/controller/ManageAllSettings.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="22" column="12" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Dashboard/Home/view/Home.view.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
-          <caret line="335" column="135" selection-start-line="335" selection-start-column="124" selection-end-line="335" selection-end-column="135" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Dashboard/Home/controller/Home.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="89" column="7" selection-start-line="89" selection-start-column="7" selection-end-line="93" selection-end-column="13" />
+          <caret line="188" column="107" selection-start-line="188" selection-start-column="107" selection-end-line="188" selection-end-column="107" />
+          <folding>
+            <element signature="n#Panel#2;n#IconTabFilter#0;n#items#0;n#IconTabBar#0;n#content#0;n#Page#0;n#mvc:View#0;n#!!top" />
+            <element signature="n#Panel#3;n#IconTabFilter#0;n#items#0;n#IconTabBar#0;n#content#0;n#Page#0;n#mvc:View#0;n#!!top" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -803,13 +1141,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="67" column="8" selection-start-line="67" selection-start-column="8" selection-end-line="67" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AllService/ServiceReq.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="231" column="187" selection-start-line="231" selection-start-column="187" selection-end-line="231" selection-end-column="187" />
         </state>
       </provider>
     </entry>
@@ -822,8 +1153,85 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/Dashboard/MyArticles/controller/MyArticles.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="650" column="78" selection-start-line="650" selection-start-column="78" selection-end-line="650" selection-end-column="78" />
+        <state relative-caret-position="385">
+          <caret line="522" column="54" selection-start-line="522" selection-start-column="54" selection-end-line="522" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Login/view/Login.view.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="60" column="77" selection-start-line="60" selection-start-column="77" selection-end-line="60" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Register/view/register.view.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="84" column="59" selection-start-line="84" selection-start-column="59" selection-end-line="84" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AllService/ArticleMail/articlemail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="60" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AllService/ServiceReq.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="224" column="30" selection-start-line="224" selection-start-column="30" selection-end-line="224" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Register/controller/register.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="122" column="72" selection-start-line="122" selection-start-column="72" selection-end-line="122" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AllService/Generalsetmail/generalsetmail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="11" column="58" lean-forward="true" selection-start-line="11" selection-start-column="58" selection-end-line="11" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/view/ManageAllSettings.view.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="682" column="130" selection-start-line="682" selection-start-column="130" selection-end-line="682" selection-end-column="130" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MasterApp.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="56" lean-forward="true" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/ManagementPanel/ManageAllSettings/controller/ManageAllSettings.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="294" column="52" selection-start-line="294" selection-start-column="52" selection-end-line="294" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Forget/controller/Forget.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="47" column="26" lean-forward="true" selection-start-line="29" selection-start-column="21" selection-end-line="47" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Dashboard/Home/controller/Home.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="321" selection-start-line="321" selection-end-line="321" />
         </state>
       </provider>
     </entry>

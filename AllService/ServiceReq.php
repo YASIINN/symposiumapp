@@ -9,6 +9,13 @@ if ($SN == "Authority") {
     $result = $authority->$MN();
     echo json_encode($result);
 }
+if($SN=="MailService"){
+   include ("MailService/sendmail.php");
+    $mailsend = new $SN();
+ /*   $hostname,$mailname,$mpassword,$subjectm,$messagem,$maildata*/
+    $result = $mailsend->$MN($_POST['hostname'],$_POST['mailname'],$_POST['mpassword'],$_POST['subjectm'],$_POST['messagem'],$_POST['maildata']);
+    echo json_encode($result);
+}
 if($SN=="ProformaImg"){
     include("ProformaImg/proformaimg.php");
     $pimage= new $SN();
@@ -207,6 +214,17 @@ if ($SN == "Login") {
     $result = $login->$MN($_POST['name'], $_POST['pass']);
     echo json_encode($result);
 }
+if($SN=="ArticleMail"){
+    include("ArticleMail/articlemail.php");
+    $artmail = new $SN();
+    if ($MN == "GET") {
+        $result = $artmail->$MN();
+    }else if($MN=="SET"){
+        $result = $artmail->$MN($_POST['data'],$_POST['where'],$_POST['param']);
+    }
+    echo json_encode($result);
+
+}
 if ($SN == "Title") {
     include("Title/title.php");
     $title = new $SN();
@@ -230,7 +248,6 @@ if ($SN == "File") {
         $result=$file->$MN($_POST['where'],$_POST['param'],$_POST['fname']);
     }else if($MN=="SET"){
         $result = $file->$MN($_FILES, $_POST['usid'], $_POST['fileext'], $_POST['size'], $_POST['type'],$_POST['bcext'],$_POST['delfile'],$_POST['where'],$_POST['param'],$_POST['abstype']);
-        // $files, $usid, $fileext, $size, $type,$bcext,$delfile,$where,$param
     }
     echo json_encode($result);
 }
@@ -240,7 +257,6 @@ if($SN=="GeneralSetFolder"){
     if($MN=="GET"){
         $result = $gsfolder->$MN();
     }else if($MN=="SET"){
-        // data,$where,$param,$prevname){
             $result = $gsfolder->$MN($_POST['data'],$_POST['where'],$_POST['param'],$_POST['prevname']);
     }
     else if($MN=="GETWHERE")

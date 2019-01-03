@@ -20,7 +20,6 @@ class Payments extends database
                 }
             }
             return $this->result;
-
     }
     public function DEL($where, $param)
     {

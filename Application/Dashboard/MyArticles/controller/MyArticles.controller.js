@@ -260,7 +260,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox'], function (e, M
                     items: [
                         new sap.m.Text(
                             {
-                                text: "EDİT ARTİCLES",
+                                text: "EDIT ARTICLES",
                                 width: "150px"
                             }).addStyleClass("sapUiSmallMarginBegin")
                     ]
@@ -520,7 +520,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox'], function (e, M
                     items: [
                         new sap.m.Text(
                             {
-                                text: "EDİT ARTİCLE FİLES",
+                                text: "EDIT ARTICLE FILES",
                                 width: "150px"
                             }).addStyleClass("sapUiSmallMarginBegin")
                     ]

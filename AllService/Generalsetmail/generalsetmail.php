@@ -17,6 +17,7 @@ class Generalsetmail extends database
                     $gsettings[$i]['gsmid'], 
                     "gsmname" => $gsettings[$i]['gsmname'],
                     "gsmpass" => $gsettings[$i]['gsmpass'],
+                        "gshostname"=>$gsettings[$i]['gshostname']
                 );
                 }
                 return $this->result;
@@ -28,7 +29,8 @@ class Generalsetmail extends database
             for ($index = 0; $index < count($data); $index++) {
                 $sdata = array(
                     "gsmname"=>$data[$index]['gsmname'],
-                    "gsmpass"=>$data[$index]['gsmpass']
+                    "gsmpass"=>$data[$index]['gsmpass'],
+                    "gshostname"=>$data[$index]['gshostname']
                 );
                 $upP = $this->update("generalsettingsmail", $sdata, $where, array($param));
             }

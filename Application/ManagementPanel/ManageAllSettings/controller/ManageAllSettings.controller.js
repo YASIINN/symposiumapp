@@ -88,6 +88,36 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                 }
             })
         },
+        savearticlemailset:function(oEvent){
+            var _this = this
+            if (!CreateComponent.validateemail(oModel.oData.amailset[0].asmname)) {
+                sap.m.MessageToast.show("Invalid e-mail address");
+            } else if (oModel.oData.amailset[0].asmpass == "") {
+                sap.m.MessageToast.show("password field is invalid");
+            } else if (oModel.oData.amailset[0].asmpass.trim().length < 8) {
+                sap.m.MessageToast.show("password field cannot be less than 8 characters");
+            }else if(oModel.oData.amailset[0].asmhost.trim()==""){
+                sap.m.MessageToast.show("Please fill host name");
+            }
+            else {
+                CreateComponent.showBusyIndicator();
+                var maildata = [{
+                    asmname: oModel.oData.amailset[0].asmname,
+                    asmpass: oModel.oData.amailset[0].asmpass,
+                    asmhost:oModel.oData.amailset[0].asmhost
+                }]
+                gsetmail.gsetmailreq({ SN: "ArticleMail", MN: "SET", where: "asmid=?", data: maildata, param: oModel.oData.amailset[0].asmid }).then(function (res) {
+                    if (res == "SuccedUpdate") {
+                        CreateComponent.hideBusyIndicator();
+                        sap.m.MessageToast.show("the update process took place successfully");
+                        _this.asetidvis();
+                        _this.getarticlemail();
+                    } else {
+                        CreateComponent.hideBusyIndicator();
+                    }
+                })
+            }
+        },
         savemailset: function (oEvent) {
             var _this = this
             if (!CreateComponent.validateemail(oModel.oData.mailsett[0].gsmname)) {
@@ -96,12 +126,15 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                 sap.m.MessageToast.show("password field is invalid");
             } else if (oModel.oData.mailsett[0].gsmpass.trim().length < 8) {
                 sap.m.MessageToast.show("password field cannot be less than 8 characters");
+            }else if(oModel.oData.mailsett[0].gshostname.trim()==""){
+                sap.m.MessageToast.show("Please fill host name");
             }
             else {
                 CreateComponent.showBusyIndicator();
                 var maildata = [{
                     gsmname: oModel.oData.mailsett[0].gsmname,
-                    gsmpass: oModel.oData.mailsett[0].gsmpass
+                    gsmpass: oModel.oData.mailsett[0].gsmpass,
+                    gshostname:oModel.oData.mailsett[0].gshostname
                 }]
                 gsetmail.gsetmailreq({ SN: "Generalsetmail", MN: "SET", where: "gsmid=?", data: maildata, param: oModel.oData.mailsett[0].gsmid }).then(function (res) {
                     if (res == "SuccedUpdate") {
@@ -123,6 +156,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
             CreateComponent.showBusyIndicator();
             gsetmail.gsetmailreq({ SN: "Generalsetmail", MN: "GET" }).then(function (res) {
                 if (res != "None") {
+                    oModel.setProperty("/generalmail",res);
                     oModel.setProperty("/mailsett", res);
                     CreateComponent.hideBusyIndicator();
                 } else {
@@ -253,6 +287,14 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                     break;
             }
         },
+        getarticlemail:function(){
+            var _this=this;
+            CreateComponent.hideBusyIndicator();
+            PluginService.getPlugin({MN:"GET",SN:"ArticleMail"}).then(function (res) {
+                oModel.setProperty("/artmail", res);
+                oModel.setProperty("/amailset",res);
+            })
+        },
         saveheader: function (oEvent) {
             var _this = this
             if (_this.byId("lidk").getValue().trim() == "") {
@@ -351,7 +393,16 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                     CreateComponent.showBusyIndicator();
                     _this.pimage();
                     break;
+                case "artmail":
+                    CreateComponent.showBusyIndicator()
+                    _this.getarticlemail();
+                    break;
             }
+        },
+        asetidvis:function(oEvent){
+          var _this=this;
+            var _this = this
+            _this.byId("asetidvis").setVisible(!_this.byId("asetidvis").getVisible());
         },
         saveimages:function(){
             var _this=this
@@ -1013,7 +1064,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                 items: [
                     new sap.m.Text(
                         {
-                            text: "EDİT OR ADD CURRENCY",
+                            text: "EDIT OR ADD CURRENCY",
                             width: "150px"
                         }).addStyleClass("sapUiSmallMarginBegin")
                 ]
@@ -1244,7 +1295,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                 items: [
                     new sap.m.Text(
                         {
-                            text: "EDİT OR ADD FEES",
+                            text: "EDIT OR ADD FEES",
                             width: "150px"
                         }).addStyleClass("sapUiSmallMarginBegin")
                 ]
@@ -1539,7 +1590,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", 'sap/m/MessageBox', 'sap/ui/model/F
                 items: [
                     new sap.m.Text(
                         {
-                            text: "EDİT OR ADD PAYMENT WAY",
+                            text: "EDIT OR ADD PAYMENT WAY",
                             width: "150px"
                         }).addStyleClass("sapUiSmallMarginBegin")
                 ]

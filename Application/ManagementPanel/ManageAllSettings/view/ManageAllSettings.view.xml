@@ -143,7 +143,6 @@
                     </IconTabFilter>
                     <IconTabSeparator icon=""/>
                     <IconTabFilter key="mails" iconColor="Positive" icon="sap-icon://email" text="System Mail Settings" count="5">
-
                         <Table id="mailstable" inset="false" items="{
                                             path: '/mailsett'
                                         }">
@@ -159,7 +158,9 @@
                                 <Column width="3rem">
                                     <Text text="Mail Password"/>
                                 </Column>
-
+                                <Column width="3rem">
+                                    <Text text="Mail Host Name"/>
+                                </Column>
                                 <Column width="10rem">
                                 </Column>
 
@@ -168,11 +169,11 @@
                                 <ColumnListItem>
                                     <cells>
                                         <Input value="{gsmname}" width="100%" enabled="false" />
-                                        <HBox>
-                                            <Input value="{gsmpass}" id="mailpasid" type="Password" enabled="false" width="100%" />
-                                            <Button type="Transparent" icon="sap-icon://edit" tooltip="Edit" press="setidvis"/>
+                                        <Input value="{gsmpass}" id="mailpasid" type="Password" enabled="false" width="100%" />
 
-                                            <!-- <Button type="Transparent" icon="sap-icon://show" id="showid" tooltip="Show the Password" press="showpas"/> -->
+                                        <HBox>
+                                            <Input value="{gshostname}" width="100%" enabled="false" />
+                                            <Button type="Transparent" icon="sap-icon://edit" tooltip="Edit" press="setidvis"/>
                                         </HBox>
                                     </cells>
                                 </ColumnListItem>
@@ -191,6 +192,12 @@
                                 <VBox>
                                     <Label text="Sys Pass : " class="sapUiTinyMarginEnd"/>
                                     <Input value="{/mailsett/0/gsmpass}" width="300px"/>
+                                </VBox>
+                            </HBox>
+                            <HBox alignItems="Center" class="SapUiLargeMarginTop" justifyContent="Center">
+                                <VBox>
+                                    <Label text="Sys Host : " class="sapUiTinyMarginEnd"/>
+                                    <Input value="{/mailsett/0/gshostname}" width="300px"/>
                                 </VBox>
                             </HBox>
                             <HBox alignItems="Center" class="SapUiLargeMarginTop" justifyContent="Center">
@@ -611,7 +618,72 @@
                                 </VBox>
                             </VBox>
                         </ScrollContainer>
+                    </IconTabFilter>
+                    <IconTabSeparator icon=""/>
+                    <IconTabFilter key="artmail" iconColor="Natural" icon="sap-icon://email" text="Article Mail Settings" count="14">
+                        <Table id="articletmail" inset="false" items="{
+                                            path: '/amailset'
+                                        }">
+                            <infoToolbar>
+                                <Toolbar active="true">
+                                    <Label text="Article  Mail Settings"/>
+                                </Toolbar>
+                            </infoToolbar>
+                            <columns>
+                                <Column width="3rem">
+                                    <Text text="Mail Name" />
+                                </Column>
+                                <Column width="3rem">
+                                    <Text text="Mail Password"/>
+                                </Column>
+                                <Column width="3rem">
+                                    <Text text="Mail Host Name"/>
+                                </Column>
+                                <Column width="10rem">
+                                </Column>
 
+                            </columns>
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <Input value="{asmname}" width="100%" enabled="false" />
+                                        <Input value="{asmpass}" id="amailpasid" type="Password" enabled="false" width="100%" />
+
+                                        <HBox>
+                                            <Input value="{asmhost}" width="100%" enabled="false" />
+                                            <Button type="Transparent" icon="sap-icon://edit" tooltip="Edit" press="asetidvis"/>
+                                        </HBox>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                        <VBox alignItems="Center" justifyContent="Center" id="asetidvis" visible="false">
+                            <Title text="Set Article Mail Settings"/>
+
+                            <HBox alignItems="Center" class="SapUiLargeMarginTop" justifyC="Center">
+                                <VBox>
+                                    <Label text="Sys Mail : " class="sapUiTinyMarginEnd"/>
+                                    <Input value="{/amailset/0/asmname}" width="300px"/>
+                                </VBox>
+                            </HBox>
+                            <HBox alignItems="Center" class="SapUiLargeMarginTop" justifyContent="Center">
+                                <VBox>
+                                    <Label text="Sys Pass : " class="sapUiTinyMarginEnd"/>
+                                    <Input value="{/amailset/0/asmpass}" width="300px"/>
+                                </VBox>
+                            </HBox>
+                            <HBox alignItems="Center" class="SapUiLargeMarginTop" justifyContent="Center">
+                                <VBox>
+                                    <Label text="Sys Host : " class="sapUiTinyMarginEnd"/>
+                                    <Input value="{/amailset/0/asmhost}" width="300px"/>
+                                </VBox>
+                            </HBox>
+                            <HBox alignItems="Center" class="SapUiLargeMarginTop" justifyContent="Center">
+                                <VBox>
+                                    <Button type="Emphasized" text="Save Changes" icon="sap-icon://save" press="savearticlemailset" />
+                                </VBox>
+                            </HBox>
+                        </VBox>
                     </IconTabFilter>
                 </items>
             </IconTabBar>
