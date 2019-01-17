@@ -113,7 +113,7 @@ sap.ui.define(['sap/m/MessageBox', 'sap/ui/core/mvc/Controller'], function (Mess
         onRegister: function () {
             CreateComponent.showBusyIndicator();
             var _this = this
-            var lcode = md5(_this.makeid()) + "_" + new Date().toLocaleDateString().split(".")[0] + new Date().toLocaleDateString().split(".")[1] + new Date().toLocaleDateString().split(".")[2];
+            var lcode = md5(_this.makeid())+"%"+ new Date().toLocaleDateString().split(".")[0] + new Date().toLocaleDateString().split(".")[1] + new Date().toLocaleDateString().split(".")[2];
             RegisterService.RegisterReq({
                 MN: "ADD", SN: "Register", registerdata: [
                     {
@@ -129,15 +129,15 @@ sap.ui.define(['sap/m/MessageBox', 'sap/ui/core/mvc/Controller'], function (Mess
                 ]
             }).then(function (res) {
                 if (res[0].status == "SuccesAdd") {
+                    var host="http://www.worldmcaus.org/symposiumapp/#/Registercheck?";
                     RegisterService.RegisterReq({ MN: "GET", SN: "Register", where: "rtemail=?", param: [oModel.oData.RegisterModel.cemail] }).then(function (res) {
                         if (res[0].rtlcode) {
-                      
                             var msgg="<html><body>";
                             msgg+="<b>Thank you for registering for the</b>"+oModel.oData.mhead[0].mhstxt;
                             msgg+="<br>";
                             msgg+="<b>Here is a link to a activate your account.</b>";
                             msgg+="<br>";
-                            msgg+="http://localhost/symposiumapp/#/RegisterCheck?"+ res[0].rtlcode ;
+                            msgg+=host+res[0].rtlcode ;
                             msgg+="<br>";
                             msgg+="<b>Thank you and looking forward to you</b>";
                             msgg+="<br>";

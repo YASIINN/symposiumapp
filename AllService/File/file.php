@@ -66,7 +66,6 @@ class File extends database
         $tempPath = $_FILES['file']['tmp_name'];
         $filename = bin2hex(openssl_random_pseudo_bytes(10));
         $filename =$usid."_".$abstype."_". $filename;
-        $filename = $filename . "_" . $usid;
         move_uploaded_file($tempPath, "../allword/$filename.$fileext");
         $fpath = "/allword/" . $filename;
         $data = array(

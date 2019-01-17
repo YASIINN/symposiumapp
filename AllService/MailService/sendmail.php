@@ -31,20 +31,10 @@ class MailService extends database
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
         $mail->CharSet = 'UTF-8';
-        /*  $db = new database("root", "", "localhost", "symposiumapp");*/
-        /*   $sysrows = $db->select("generalsettingsmail", "1", array());*/
         $ead = $mailname;
-        /*$sysrows[0]['gsmname'];*/
-
-        //  $_POST['maildata'][0]['mail'];
         $epass = $mpassword;
-        /*$sysrows[0]['gsmpass'];*/
-        // $_POST['maildata'][0]['epass'];
         $subject = $subjectm;
-        /* $_POST['maildata'][0]['subject'];*/
         $messega =$messagem;
-        /*   $_POST['maildata'][0]['messega'];*/
-        /*$_POST['maildata'][0]['mail']*/
         $mail->addAddress($maildata, '');
         $mail->Username = $ead;
         $mail->Password = $epass;

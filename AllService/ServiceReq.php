@@ -12,7 +12,6 @@ if ($SN == "Authority") {
 if($SN=="MailService"){
    include ("MailService/sendmail.php");
     $mailsend = new $SN();
- /*   $hostname,$mailname,$mpassword,$subjectm,$messagem,$maildata*/
     $result = $mailsend->$MN($_POST['hostname'],$_POST['mailname'],$_POST['mpassword'],$_POST['subjectm'],$_POST['messagem'],$_POST['maildata']);
     echo json_encode($result);
 }
